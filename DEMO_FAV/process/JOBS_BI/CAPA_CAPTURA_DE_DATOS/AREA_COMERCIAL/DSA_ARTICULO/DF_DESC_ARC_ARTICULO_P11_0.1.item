@@ -125,8 +125,6 @@
     <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:X30C8P4iXuGGGuF0gU7Qd423qYEGPJ4hS/CNOo7HOLwrex8Y5YA="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q - SCSPETARTICULO"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCSPETARTICULO&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
@@ -438,7 +436,7 @@
       <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="Fecha de última actualización del registro."/>
       </column>
-      <column comment="Contenido de la imagen del artículo." key="false" length="4194304" name="DATOIMAGEN" nullable="true" pattern="" precision="0" sourceType="BLOB" type="id_String" usefulColumn="true">
+      <column comment="Contenido de la imagen del artículo." key="false" length="4194304" name="DATOIMAGEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Contenido de la imagen del artículo."/>
       </column>
       <column comment="Indica el código que maneja el proveedor para el artículo." key="false" length="20" name="CODIGOINTERNOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -486,7 +484,7 @@
       <column comment="Indica si el artículo tiene la caracteristica de interproveedor en relación a su proveedor, puede tener los valores [1] SI APLICA, [0] NO APLICA" defaultValue="'0'" key="false" length="1" name="ESTADOINTERPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si el artículo tiene la caracteristica de interproveedor en relación a su proveedor, puede tener los valores [1] SI APLICA, [0] NO APLICA"/>
       </column>
-      <column comment="" key="false" length="4194304" name="IMAGENCODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="BLOB" type="id_String" usefulColumn="true">
+      <column comment="" key="false" length="4194304" name="IMAGENCODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="El precio de mayoreo para el artículo" defaultValue="0" key="false" length="12" name="PRECIOMAYORISTA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -504,16 +502,16 @@
       <column comment="La cantidad mínima para tomar en cuenta el precio de mayorista en un artículo." defaultValue="0" key="false" length="10" name="CANTIDADMINIMAMAYOREO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="La cantidad mínima para tomar en cuenta el precio de mayorista en un artículo."/>
       </column>
-      <column comment="Imagen del registro sanitario" key="false" length="4194304" name="IMAGENREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="BLOB" type="id_String" usefulColumn="true">
+      <column comment="Imagen del registro sanitario" key="false" length="4194304" name="IMAGENREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Imagen del registro sanitario"/>
       </column>
-      <column comment="Marca del articulo que tienen garantía" defaultValue="'0'" key="false" length="1" name="GARANTIA" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Marca del articulo que tienen garantía" defaultValue="'0'" key="false" length="1" name="GARANTIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Marca del articulo que tienen garantía"/>
       </column>
       <column comment="Tiempo que cubre la garantía" key="false" length="10" name="TIEMPOGARANTIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Tiempo que cubre la garantía"/>
       </column>
-      <column comment="Indica si al articulo aplica una extensión de garantía" defaultValue="'0'" key="false" length="1" name="EXTENSIONGARANTIA" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si al articulo aplica una extensión de garantía" defaultValue="'0'" key="false" length="1" name="EXTENSIONGARANTIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si al articulo aplica una extensión de garantía"/>
       </column>
       <column comment="Tiempo maximo que puede cubrir una extensión de garantía" key="false" length="10" name="TIEMAXEXTGAR" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
@@ -531,10 +529,10 @@
       <column comment="nuevo campo donde se almacena el costoNetoArticulo." defaultValue="0" key="false" length="14" name="COSTONETOARTICULO" nullable="false" pattern="" precision="4" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
         <additionalField key="Comment" value="nuevo campo donde se almacena el costoNetoArticulo."/>
       </column>
-      <column comment="Indicador para saber si un artículo debe tener registro sanitario" defaultValue="'0'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indicador para saber si un artículo debe tener registro sanitario" defaultValue="'0'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indicador para saber si un artículo debe tener registro sanitario"/>
       </column>
-      <column comment="Bandera que indica si el artículo es comercializado por la corporación" defaultValue="'1'" key="false" length="1" name="ESCOMERCIALIZADO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Bandera que indica si el artículo es comercializado por la corporación" defaultValue="'1'" key="false" length="1" name="ESCOMERCIALIZADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Bandera que indica si el artículo es comercializado por la corporación"/>
       </column>
       <column comment="El identificador del sistema que originó el registro" defaultValue="'MAX'" key="false" length="32" name="CODIGOSISTEMAORIGEN" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -549,22 +547,22 @@
       <column comment="" key="false" length="20" name="CODIGORESPALDO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="PORPROCESAR" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="PORPROCESAR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULOPADRE" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULOPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="CÓDIGO DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="NULL" key="false" length="10" name="CODIGOESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="CÓDIGO DEL ESTADO DE LA CARACTERISTICA TRANSGENICO"/>
       </column>
-      <column comment="VALOR DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="NULL" key="false" length="3" name="VALORESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="VALOR DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="null" key="false" length="3" name="VALORESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="VALOR DEL ESTADO DE LA CARACTERISTICA TRANSGENICO"/>
       </column>
       <column comment="Campo que almacena el total de registros sanitario activos; ayudando a determinar que existen multiples registros sanitario para un artículo. " defaultValue="1" key="false" length="10" name="CANTIDADREGISTROSANITARIO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Campo que almacena el total de registros sanitario activos; ayudando a determinar que existen multiples registros sanitario para un artículo. "/>
       </column>
-      <column comment="Indica si un artículo aplica para tener compuestos transgénicos " defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si un artículo aplica para tener compuestos transgénicos " defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si un artículo aplica para tener compuestos transgénicos "/>
       </column>
       <column comment="valor de estado para verificar que una articulo posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -573,13 +571,13 @@
       <column comment="codigo de estado para verificar que una articulo posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="codigo de estado para verificar que una articulo posea o no registro sanitario"/>
       </column>
-      <column comment="Codigo de articulo base con el que se codifica un nuevo articulo" defaultValue="NULL" key="false" length="20" name="ARTICULOPLANTILLA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Codigo de articulo base con el que se codifica un nuevo articulo" defaultValue="null" key="false" length="20" name="ARTICULOPLANTILLA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Codigo de articulo base con el que se codifica un nuevo articulo"/>
       </column>
       <column comment="Almacena el codigo del establecimiento" key="false" length="10" name="IMPORTANCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Almacena el codigo del establecimiento"/>
       </column>
-      <column comment="INDICA SI TIENE CONVENIO CON EL PROVEEDOR" defaultValue="'0'" key="false" length="1" name="INDICADORI" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="INDICA SI TIENE CONVENIO CON EL PROVEEDOR" defaultValue="'0'" key="false" length="1" name="INDICADORI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="INDICA SI TIENE CONVENIO CON EL PROVEEDOR"/>
       </column>
       <column comment="" key="false" length="10" name="CODIGOCLIENTEIMPORTACION" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -603,7 +601,7 @@
       <column comment="CAMPO QUE REGISTRA LA PRIMERA RECEPCION DEL ARTÍCULO" key="false" length="26" name="FECHAPRIMERAENTREGA" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="CAMPO QUE REGISTRA LA PRIMERA RECEPCION DEL ARTÍCULO"/>
       </column>
-      <column comment="Campo que muestra si un articulo puede ser ofertado por los proveedores" defaultValue="'0'" key="false" length="1" name="OFERTAPEDIDOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campo que muestra si un articulo puede ser ofertado por los proveedores" defaultValue="'0'" key="false" length="1" name="OFERTAPEDIDOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campo que muestra si un articulo puede ser ofertado por los proveedores"/>
       </column>
       <column comment="" key="false" length="10" name="CODIGOTIEMPOVIDA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
@@ -636,10 +634,10 @@
       <column comment="" defaultValue="'0'" key="false" length="1" name="ESNUEVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Campo para identificar si el artículo tiene un articulo relacionado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="EXIARTREL" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campo para identificar si el artículo tiene un articulo relacionado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="EXIARTREL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campo para identificar si el artículo tiene un articulo relacionado, 1:tiene, 0:no tiene"/>
       </column>
-      <column comment="Campo para identificar si el artículo tiene al menos un registro sanitario caducado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="REGSANCAD" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campo para identificar si el artículo tiene al menos un registro sanitario caducado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="REGSANCAD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campo para identificar si el artículo tiene al menos un registro sanitario caducado, 1:tiene, 0:no tiene"/>
       </column>
       <column comment="Determina si un artículo tiene un cupón que entrará en vigencia" defaultValue="'0'" key="false" length="1" name="EXICUPFUT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -648,13 +646,13 @@
       <column comment="Determina si un artículo se encuentra relacionado a un cupón vigente" defaultValue="'0'" key="false" length="1" name="EXICUPVIG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Determina si un artículo se encuentra relacionado a un cupón vigente"/>
       </column>
-      <column comment="Secuencial del innerpack al que pertenece" defaultValue="NULL" key="false" length="36" name="SECASOART" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Secuencial del innerpack al que pertenece" defaultValue="null" key="false" length="36" name="SECASOART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Secuencial del innerpack al que pertenece"/>
       </column>
       <column comment="Codigo de barras del innerpack al que representa este articulo" defaultValue="'-1'" key="false" length="20" name="IDENTIFICADORASOCIACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Codigo de barras del innerpack al que representa este articulo"/>
       </column>
-      <column comment="Campos de informacion de mayoria de ofertas, [1] Es definicion por la mayoria de alcances, [0] sin el minimo de la mitad de alcances" defaultValue="NULL" key="false" length="1" name="ESOFEMAYORIA" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campos de informacion de mayoria de ofertas, [1] Es definicion por la mayoria de alcances, [0] sin el minimo de la mitad de alcances" defaultValue="null" key="false" length="1" name="ESOFEMAYORIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campos de informacion de mayoria de ofertas, [1] Es definicion por la mayoria de alcances, [0] sin el minimo de la mitad de alcances"/>
       </column>
       <column comment="Nombre para identificar la promoción que tuvo o tiene vigente un artículo." key="false" length="100" name="TIPOPROMOCIONRESUMEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -672,7 +670,7 @@
       <column comment="Identficador grupo rey" key="false" length="20" name="CODIGOUNICOSAP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Identficador grupo rey"/>
       </column>
-      <column comment="Descripción original del artículo" defaultValue="NULL" key="false" length="300" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Descripción original del artículo" defaultValue="null" key="false" length="300" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Descripción original del artículo"/>
       </column>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSPE00002"/>
@@ -793,7 +791,7 @@
       <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="Fecha de última actualización del registro."/>
       </column>
-      <column comment="Contenido de la imagen del artículo." key="false" length="4194304" name="DATOIMAGEN" nullable="true" pattern="" precision="0" sourceType="BLOB" type="id_String" usefulColumn="true">
+      <column comment="Contenido de la imagen del artículo." key="false" length="4194304" name="DATOIMAGEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Contenido de la imagen del artículo."/>
       </column>
       <column comment="Indica el código que maneja el proveedor para el artículo." key="false" length="20" name="CODIGOINTERNOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -841,7 +839,7 @@
       <column comment="Indica si el artículo tiene la caracteristica de interproveedor en relación a su proveedor, puede tener los valores [1] SI APLICA, [0] NO APLICA" defaultValue="'0'" key="false" length="1" name="ESTADOINTERPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si el artículo tiene la caracteristica de interproveedor en relación a su proveedor, puede tener los valores [1] SI APLICA, [0] NO APLICA"/>
       </column>
-      <column comment="" key="false" length="4194304" name="IMAGENCODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="BLOB" type="id_String" usefulColumn="true">
+      <column comment="" key="false" length="4194304" name="IMAGENCODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="El precio de mayoreo para el artículo" defaultValue="0" key="false" length="12" name="PRECIOMAYORISTA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -859,16 +857,16 @@
       <column comment="La cantidad mínima para tomar en cuenta el precio de mayorista en un artículo." defaultValue="0" key="false" length="10" name="CANTIDADMINIMAMAYOREO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="La cantidad mínima para tomar en cuenta el precio de mayorista en un artículo."/>
       </column>
-      <column comment="Imagen del registro sanitario" key="false" length="4194304" name="IMAGENREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="BLOB" type="id_String" usefulColumn="true">
+      <column comment="Imagen del registro sanitario" key="false" length="4194304" name="IMAGENREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Imagen del registro sanitario"/>
       </column>
-      <column comment="Marca del articulo que tienen garantía" defaultValue="'0'" key="false" length="1" name="GARANTIA" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Marca del articulo que tienen garantía" defaultValue="'0'" key="false" length="1" name="GARANTIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Marca del articulo que tienen garantía"/>
       </column>
       <column comment="Tiempo que cubre la garantía" key="false" length="10" name="TIEMPOGARANTIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Tiempo que cubre la garantía"/>
       </column>
-      <column comment="Indica si al articulo aplica una extensión de garantía" defaultValue="'0'" key="false" length="1" name="EXTENSIONGARANTIA" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si al articulo aplica una extensión de garantía" defaultValue="'0'" key="false" length="1" name="EXTENSIONGARANTIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si al articulo aplica una extensión de garantía"/>
       </column>
       <column comment="Tiempo maximo que puede cubrir una extensión de garantía" key="false" length="10" name="TIEMAXEXTGAR" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
@@ -886,10 +884,10 @@
       <column comment="nuevo campo donde se almacena el costoNetoArticulo." defaultValue="0" key="false" length="14" name="COSTONETOARTICULO" nullable="false" pattern="" precision="4" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
         <additionalField key="Comment" value="nuevo campo donde se almacena el costoNetoArticulo."/>
       </column>
-      <column comment="Indicador para saber si un artículo debe tener registro sanitario" defaultValue="'0'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indicador para saber si un artículo debe tener registro sanitario" defaultValue="'0'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indicador para saber si un artículo debe tener registro sanitario"/>
       </column>
-      <column comment="Bandera que indica si el artículo es comercializado por la corporación" defaultValue="'1'" key="false" length="1" name="ESCOMERCIALIZADO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Bandera que indica si el artículo es comercializado por la corporación" defaultValue="'1'" key="false" length="1" name="ESCOMERCIALIZADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Bandera que indica si el artículo es comercializado por la corporación"/>
       </column>
       <column comment="El identificador del sistema que originó el registro" defaultValue="'MAX'" key="false" length="32" name="CODIGOSISTEMAORIGEN" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -904,22 +902,22 @@
       <column comment="" key="false" length="20" name="CODIGORESPALDO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="PORPROCESAR" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="PORPROCESAR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULOPADRE" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULOPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="CÓDIGO DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="NULL" key="false" length="10" name="CODIGOESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="CÓDIGO DEL ESTADO DE LA CARACTERISTICA TRANSGENICO"/>
       </column>
-      <column comment="VALOR DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="NULL" key="false" length="3" name="VALORESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="VALOR DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="null" key="false" length="3" name="VALORESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="VALOR DEL ESTADO DE LA CARACTERISTICA TRANSGENICO"/>
       </column>
       <column comment="Campo que almacena el total de registros sanitario activos; ayudando a determinar que existen multiples registros sanitario para un artículo. " defaultValue="1" key="false" length="10" name="CANTIDADREGISTROSANITARIO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Campo que almacena el total de registros sanitario activos; ayudando a determinar que existen multiples registros sanitario para un artículo. "/>
       </column>
-      <column comment="Indica si un artículo aplica para tener compuestos transgénicos " defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si un artículo aplica para tener compuestos transgénicos " defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si un artículo aplica para tener compuestos transgénicos "/>
       </column>
       <column comment="valor de estado para verificar que una articulo posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -928,13 +926,13 @@
       <column comment="codigo de estado para verificar que una articulo posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="codigo de estado para verificar que una articulo posea o no registro sanitario"/>
       </column>
-      <column comment="Codigo de articulo base con el que se codifica un nuevo articulo" defaultValue="NULL" key="false" length="20" name="ARTICULOPLANTILLA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Codigo de articulo base con el que se codifica un nuevo articulo" defaultValue="null" key="false" length="20" name="ARTICULOPLANTILLA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Codigo de articulo base con el que se codifica un nuevo articulo"/>
       </column>
       <column comment="Almacena el codigo del establecimiento" key="false" length="10" name="IMPORTANCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Almacena el codigo del establecimiento"/>
       </column>
-      <column comment="INDICA SI TIENE CONVENIO CON EL PROVEEDOR" defaultValue="'0'" key="false" length="1" name="INDICADORI" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="INDICA SI TIENE CONVENIO CON EL PROVEEDOR" defaultValue="'0'" key="false" length="1" name="INDICADORI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="INDICA SI TIENE CONVENIO CON EL PROVEEDOR"/>
       </column>
       <column comment="" key="false" length="10" name="CODIGOCLIENTEIMPORTACION" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -958,7 +956,7 @@
       <column comment="CAMPO QUE REGISTRA LA PRIMERA RECEPCION DEL ARTÍCULO" key="false" length="26" name="FECHAPRIMERAENTREGA" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="CAMPO QUE REGISTRA LA PRIMERA RECEPCION DEL ARTÍCULO"/>
       </column>
-      <column comment="Campo que muestra si un articulo puede ser ofertado por los proveedores" defaultValue="'0'" key="false" length="1" name="OFERTAPEDIDOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campo que muestra si un articulo puede ser ofertado por los proveedores" defaultValue="'0'" key="false" length="1" name="OFERTAPEDIDOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campo que muestra si un articulo puede ser ofertado por los proveedores"/>
       </column>
       <column comment="" key="false" length="10" name="CODIGOTIEMPOVIDA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
@@ -991,10 +989,10 @@
       <column comment="" defaultValue="'0'" key="false" length="1" name="ESNUEVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Campo para identificar si el artículo tiene un articulo relacionado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="EXIARTREL" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campo para identificar si el artículo tiene un articulo relacionado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="EXIARTREL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campo para identificar si el artículo tiene un articulo relacionado, 1:tiene, 0:no tiene"/>
       </column>
-      <column comment="Campo para identificar si el artículo tiene al menos un registro sanitario caducado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="REGSANCAD" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campo para identificar si el artículo tiene al menos un registro sanitario caducado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="REGSANCAD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campo para identificar si el artículo tiene al menos un registro sanitario caducado, 1:tiene, 0:no tiene"/>
       </column>
       <column comment="Determina si un artículo tiene un cupón que entrará en vigencia" defaultValue="'0'" key="false" length="1" name="EXICUPFUT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1003,13 +1001,13 @@
       <column comment="Determina si un artículo se encuentra relacionado a un cupón vigente" defaultValue="'0'" key="false" length="1" name="EXICUPVIG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Determina si un artículo se encuentra relacionado a un cupón vigente"/>
       </column>
-      <column comment="Secuencial del innerpack al que pertenece" defaultValue="NULL" key="false" length="36" name="SECASOART" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Secuencial del innerpack al que pertenece" defaultValue="null" key="false" length="36" name="SECASOART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Secuencial del innerpack al que pertenece"/>
       </column>
       <column comment="Codigo de barras del innerpack al que representa este articulo" defaultValue="'-1'" key="false" length="20" name="IDENTIFICADORASOCIACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Codigo de barras del innerpack al que representa este articulo"/>
       </column>
-      <column comment="Campos de informacion de mayoria de ofertas, [1] Es definicion por la mayoria de alcances, [0] sin el minimo de la mitad de alcances" defaultValue="NULL" key="false" length="1" name="ESOFEMAYORIA" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Campos de informacion de mayoria de ofertas, [1] Es definicion por la mayoria de alcances, [0] sin el minimo de la mitad de alcances" defaultValue="null" key="false" length="1" name="ESOFEMAYORIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Campos de informacion de mayoria de ofertas, [1] Es definicion por la mayoria de alcances, [0] sin el minimo de la mitad de alcances"/>
       </column>
       <column comment="Nombre para identificar la promoción que tuvo o tiene vigente un artículo." key="false" length="100" name="TIPOPROMOCIONRESUMEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1027,7 +1025,7 @@
       <column comment="Identficador grupo rey" key="false" length="20" name="CODIGOUNICOSAP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Identficador grupo rey"/>
       </column>
-      <column comment="Descripción original del artículo" defaultValue="NULL" key="false" length="300" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Descripción original del artículo" defaultValue="null" key="false" length="300" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Descripción original del artículo"/>
       </column>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSPE00002"/>
@@ -1047,8 +1045,6 @@
     <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:0pI3UPuOTG7/eJJsCzGbBhdpaRINk3sa9KDH6DG6CpC6UEjFPG0="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q - SCSADTARTPROIMP"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCSADTARTPROIMP&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
@@ -1128,7 +1124,7 @@
       <column comment="El porcentaje de comisión que cobra el proveedor en la importación" key="false" length="5" name="PORCENTAJECOMISION" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
         <additionalField key="Comment" value="El porcentaje de comisión que cobra el proveedor en la importación"/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="Fecha en la que se debe aplicar el factor" key="false" length="26" name="FECHAAPLICACIONFACTOR" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -1207,7 +1203,7 @@
       <column comment="El porcentaje de comisión que cobra el proveedor en la importación" key="false" length="5" name="PORCENTAJECOMISION" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
         <additionalField key="Comment" value="El porcentaje de comisión que cobra el proveedor en la importación"/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="Fecha en la que se debe aplicar el factor" key="false" length="26" name="FECHAAPLICACIONFACTOR" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -1233,8 +1229,6 @@
     <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:m8J3s1DkHM9eJqwYKOUz7X+NLhu64/gBHLvI//B92VDunpcZ5l0="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q - SCSADTARTUNIMAN"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCSADTARTUNIMAN&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
@@ -1396,7 +1390,7 @@
       <column comment="Secuencial del tipo de descuento" key="false" length="5" name="CODIGOTIPODESCUENTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Secuencial del tipo de descuento"/>
       </column>
-      <column comment="Indica si la unidad de manejo es principal para el artículo. 1: es principal, 0: no es principal" defaultValue="'0'" key="false" length="1" name="ESPRINCIPAL" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si la unidad de manejo es principal para el artículo. 1: es principal, 0: no es principal" defaultValue="'0'" key="false" length="1" name="ESPRINCIPAL" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si la unidad de manejo es principal para el artículo. 1: es principal, 0: no es principal"/>
       </column>
       <column comment="Alto en centimetros del contenedor del artículo" key="false" length="8" name="ALTO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -1417,7 +1411,7 @@
       <column comment="Indica la prioridad de la unidad de manejo de recepción" key="false" length="10" name="PRIORIDAD" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Indica la prioridad de la unidad de manejo de recepción"/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="CAMPO QUE REGISTRA LA FECHA DEL CAMBIO EN LA UNIDAD DE MANEJO" key="false" length="26" name="FECHACAMBIO" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -1429,7 +1423,7 @@
       <column comment="CAMPO QUE INDENTIFICA EL TIPO DE CAMBIO EN LA UNIDAD DE MANEJO" key="false" length="10" name="CODIGOTIPOCAMBIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="CAMPO QUE INDENTIFICA EL TIPO DE CAMBIO EN LA UNIDAD DE MANEJO"/>
       </column>
-      <column comment="" defaultValue="NULL" key="false" length="1" name="PALLETIZADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="null" key="false" length="1" name="PALLETIZADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" defaultValue="NULL" key="false" length="10" name="CODIGOPROCESO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -1562,7 +1556,7 @@
       <column comment="Secuencial del tipo de descuento" key="false" length="5" name="CODIGOTIPODESCUENTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Secuencial del tipo de descuento"/>
       </column>
-      <column comment="Indica si la unidad de manejo es principal para el artículo. 1: es principal, 0: no es principal" defaultValue="'0'" key="false" length="1" name="ESPRINCIPAL" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si la unidad de manejo es principal para el artículo. 1: es principal, 0: no es principal" defaultValue="'0'" key="false" length="1" name="ESPRINCIPAL" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si la unidad de manejo es principal para el artículo. 1: es principal, 0: no es principal"/>
       </column>
       <column comment="Alto en centimetros del contenedor del artículo" key="false" length="8" name="ALTO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -1583,7 +1577,7 @@
       <column comment="Indica la prioridad de la unidad de manejo de recepción" key="false" length="10" name="PRIORIDAD" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="Indica la prioridad de la unidad de manejo de recepción"/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="CAMPO QUE REGISTRA LA FECHA DEL CAMBIO EN LA UNIDAD DE MANEJO" key="false" length="26" name="FECHACAMBIO" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -1595,7 +1589,7 @@
       <column comment="CAMPO QUE INDENTIFICA EL TIPO DE CAMBIO EN LA UNIDAD DE MANEJO" key="false" length="10" name="CODIGOTIPOCAMBIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value="CAMPO QUE INDENTIFICA EL TIPO DE CAMBIO EN LA UNIDAD DE MANEJO"/>
       </column>
-      <column comment="" defaultValue="NULL" key="false" length="1" name="PALLETIZADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="null" key="false" length="1" name="PALLETIZADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="" defaultValue="NULL" key="false" length="10" name="CODIGOPROCESO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -1813,8 +1807,6 @@
     <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Eg2V4Man6AickNI5mp8tRqW2qOS3rNOOPt5mFklIs+9947H5m1Y="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q - SCSADTARTIMP"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCSADTARTIMP&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
@@ -1867,10 +1859,10 @@
       <column comment="Estado que indica si un artículo tiene o no activo un impuesto&#13;&#10;Los valores permitidos son:&#13;&#10;[0] Inactivo&#13;&#10;[1] Activo" key="false" length="1" name="ESTADOARTICULOIMPUESTO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Estado que indica si un artículo tiene o no activo un impuesto&#13;&#10;Los valores permitidos son:&#13;&#10;[0] Inactivo&#13;&#10;[1] Activo"/>
       </column>
-      <column comment="Indica si el impuesto es para venta (true)" key="false" length="1" name="ESPARAVENTA" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si el impuesto es para venta (true)" key="false" length="1" name="ESPARAVENTA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si el impuesto es para venta (true)"/>
       </column>
-      <column comment="Indica si el impuesto es para la compra (true)" key="false" length="1" name="ESPARACOMPRA" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si el impuesto es para la compra (true)" key="false" length="1" name="ESPARACOMPRA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si el impuesto es para la compra (true)"/>
       </column>
       <column comment="Especifica el usuario que realiza el registro." key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1885,7 +1877,7 @@
       <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="Fecha en la que se realizó la última actualización."/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00019"/>
@@ -1937,10 +1929,10 @@
       <column comment="Estado que indica si un artículo tiene o no activo un impuesto&#13;&#10;Los valores permitidos son:&#13;&#10;[0] Inactivo&#13;&#10;[1] Activo" key="false" length="1" name="ESTADOARTICULOIMPUESTO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Estado que indica si un artículo tiene o no activo un impuesto&#13;&#10;Los valores permitidos son:&#13;&#10;[0] Inactivo&#13;&#10;[1] Activo"/>
       </column>
-      <column comment="Indica si el impuesto es para venta (true)" key="false" length="1" name="ESPARAVENTA" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si el impuesto es para venta (true)" key="false" length="1" name="ESPARAVENTA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si el impuesto es para venta (true)"/>
       </column>
-      <column comment="Indica si el impuesto es para la compra (true)" key="false" length="1" name="ESPARACOMPRA" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="Indica si el impuesto es para la compra (true)" key="false" length="1" name="ESPARACOMPRA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Indica si el impuesto es para la compra (true)"/>
       </column>
       <column comment="Especifica el usuario que realiza el registro." key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
@@ -1955,7 +1947,7 @@
       <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="Fecha en la que se realizó la última actualización."/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00019"/>
@@ -1975,8 +1967,6 @@
     <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:DFHR/CXGGsTAWjrtfeD8cbae2dYmQO2saHWasHGUj0Q3/qqu7vI="/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q - SCSADTARTETI"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCSADTARTETI&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
@@ -2048,7 +2038,7 @@
       <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="Fecha en la que se realizó la última actualización."/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="Código etiqueta" defaultValue="1" key="true" length="10" name="TAGCODE" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -2133,7 +2123,7 @@
       <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
         <additionalField key="Comment" value="Fecha en la que se realizó la última actualización."/>
       </column>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
       <column comment="Código etiqueta" defaultValue="1" key="true" length="10" name="TAGCODE" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -2219,13 +2209,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_6b3a28c1-ea67-4c8f-bab8-ae9338793889"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ZBLyloLrUDML7CWG0nH+bj3odSDbLvzFFB2y65KCC8BhTlebeJ46w7Z8AynjCPm95Os1I+Tz6jy5&#13;
-/hr8WBiIuQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_94d63f3d-9c21-47ee-8c54-b6ea400d258d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>zyiRzPXXOrMw2plI+/oEAjiuckGano/HC5x5Ue388hCBldf0aA7qPcm2L9zs72QFS7XUOowMdzyV&#13;
-jCVfq+sl/A==</DigestValue></Reference></SignedInfo><SignatureValue>GlJLSFg4pgaP9Q2MPci8YDUiFYY/n/BtXK+/3e+KVJPVnLowROFWkKkbORdQy3vn4YAfqXS7jnSD&#13;
-lYEdwSUT+LNK1FjME+eCAsrj4BjXaoZAbG+Q8mtMYYjIqDY6UyCUexhJKLaTEhRAxNzU8g82cZNq&#13;
-cOTB19c+ZPTZgK0smmwxucB2LO5ytSGjL/r7g0uUJXzubUXaYyqnM/CLZepJlpm1EX/4p0fShHyK&#13;
-1h/J3sDP3mxKYE/XkMNxCALfupF+WcF4saGgj9QXBjc/8YLgRW+2qASV/+/ZYyWl5pQmT5LSGk3a&#13;
-y2pA93etaPdgUZOYh55+ambWKmcFlZXg2wZ4vw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_172a2e4b-fa2b-49e9-9c0a-c94d8ad32940"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>rd3AumUXvYAas+nMDqjZ0rR9iom3zYjuNn1GofAaMhavoqSsOiLai3OzLH6GGTXhrNTM6AmcykXA&#13;
+XHnCsLTSUg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_424d252b-fa7c-4e16-8e3e-176cf976bbf1"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>JwKW6+buy0CkZRH7Cvc0Qnn/rzg1B/JzGSfKB96DYCgPIYuI7FZGWWoRfWlMG5NgB0G33MlwNx9K&#13;
+7N4G/rG8/w==</DigestValue></Reference></SignedInfo><SignatureValue>MTjQGC8VT22MzQwEc1UvLcA0Xjd2SU8B1iiltGLf+HJh+0FyK7T9XtH9DRiJVcg7am5CpfVLwKtQ&#13;
+P8vMwt89oaP0AYiIl8c/rqpiHBq+KXW8gdDCON0TU+e4w+LlOZJQxSG4kfwukPHP1dbg9wq3uvj7&#13;
+zYwey01UkqSuSrO4FYIKsDpORhJWzvR3UuaXouqKFscVJwyuALHRUSyW+0MnZEJUblrABkfnAUjh&#13;
+iqHpW5b8GFVGHMdXpi3mWJ6aund1zgflvZ3UPtzi5t//7OVCVj9KU8IHYrv+LGiTuAXA8m8ye+aR&#13;
+vzxYd0llHpNPBO+31vveV4pfdi/mDlT0O6j6Dw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2247,4 +2237,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_94d63f3d-9c21-47ee-8c54-b6ea400d258d" Target="#_6b3a28c1-ea67-4c8f-bab8-ae9338793889"><Timestamp>2023-07-21 22:01:50</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_424d252b-fa7c-4e16-8e3e-176cf976bbf1" Target="#_172a2e4b-fa2b-49e9-9c0a-c94d8ad32940"><Timestamp>2023-07-21 22:09:10</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
