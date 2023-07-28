@@ -143,7 +143,7 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
     <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;;&quot;"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
     <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="false"/>
     <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="DROP" value="true"/>
@@ -152,44 +152,112 @@
     <elementParameter field="TEXT" name="LABEL" value="SCSPETARTICULO0"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_1">
-      <column comment="Código de companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación" key="true" length="10" name="CODIGOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación padre, es decir, de la clasficación de la jerarquía superior en su árbol de registros" key="false" length="10" name="CODIGOCLASIFICACIONPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de tipo de clasificación. Los valores pueden ser: [01] DIVISION [02] DEPARTAMENTO [03] CLASE [04] SUBCLASE " key="false" length="10" name="CODIGOTIPOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de bodega" key="false" length="10" name="CODIGOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de comprador" key="false" length="10" name="CODIGOCOMPRADOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción de la clasificación" key="false" length="100" name="DESCRIPCIONCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Nivel de la clasificación" key="false" length="10" name="NIVELCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Estado de la clasificación, los valores pueden ser: [1] Activo, [0] Inactivo" key="false" length="1" name="ESTADOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código de la compania" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Código del artículo" key="true" length="20" name="CODIGOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Codigo de articulo padre para la relacion de articulos con jerarquia referencial, ejemplo las Gelatinas" key="false" length="20" name="CODIGOARTICULOPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código del tipo de artículo" key="false" length="10" name="CODIGOTIPOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código de clasificación, que se relaciona con la tabla de clasificaciones, con los registros de nivel 4, que se refieren a las subClasificaciones" key="false" length="10" name="CODIGOCLASIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código del proveedor" key="false" length="10" name="CODIGOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código de SubClasificación" key="false" length="10" name="CODIGOSUBCLASIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Descripción de artículo" key="false" length="300" name="DESCRIPCIONARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Leyenda del artículo que se la utiliza para tener una referencia mas clara del artículo" key="false" length="100" name="LEYENDAARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Tamaño del artículo" key="false" length="50" name="TAMANIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si el artículo aplica IVA, los valores pueden ser: - [1] SI APLICA - [0] NO APLICA " key="false" length="1" name="APLICAIVA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Precio del artículo sin IVA" key="false" length="12" name="PRECIOARTICULO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio de la caja, sin IVA" key="false" length="12" name="PRECIOCAJA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio de artículo, con IVA" key="false" length="12" name="PRECIOARTICULOIVA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio de caja, con IVA" key="false" length="12" name="PRECIOCAJAIVA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Peso aproximado del artículo" key="false" length="12" name="PESOAPROXIMADO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Unidad de manejo" key="false" length="7" name="UNIDADMANEJO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Unidad de manejo por caja" key="false" length="7" name="UNIDADMANEJOCAJA" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Estado del artículo, los valores pueden ser: - [1] ACTIVO - [0] INACTIVO " key="false" length="1" name="ESTADOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Lista de códigos de establecimientos para habilitar el precio por caja" key="false" length="4000" name="LISTACODESTPRECAJ" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Dias de entrega que tiene un producto cuando se lo vende por internet" key="false" length="10" name="DIASENTREGA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Estado de la publicación del artículo en internet" key="false" length="1" name="ESTADOPUBLICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Campo usado para agrupaciones en SMX X Art1 50 X Art2 60" key="false" length="3" name="MARCA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Precio sugerido por proveedor para aplicar en cambios de precio de articulo" key="false" length="12" name="PRECIOSUGERIDO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Iindica el tipo de artículo para el calculo del precio en el detalle de un pedido, sus valores pueden ser los siguientes: [0] NORMAL, [1] PAVOS, [2] OTRO PESO VARIABLE " key="false" length="1" name="TIPOARTCALPRECIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Campo que indica si un artículo tiene otros artículos relacionados como hijos, los posibles valores son:&#13;&#10;[1] TIENE RELACIONES&#13;&#10;[0] NO TIENE RELACIONES" key="false" length="1" name="TIENERELACIONES" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Contenido de la imagen del artículo." key="false" length="4194304" name="DATOIMAGEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica el código que maneja el proveedor para el artículo." key="false" length="20" name="CODIGOINTERNOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica la caracteristica de un artículo para ser ingresado en el detalle de una receta, sus valores pueden ser:&#13;&#10;[0] Puede ingresarse&#13;&#10;[1] No puede" key="false" length="1" name="ESTADOPERECIBLERECETA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica la clase de un articulo:&#13;&#10;R: Resurtible, O: Obsoleto, I: Especiales, L: Legumbres Ocacionales, T: Temporada, W: Canastos, Y: Solo de Compra, Z: Solo de Venta&#13;&#10;D: Pendiente a despachar, E: No obsoleto - No resurtible, S: Supersaldos" key="false" length="1" name="CLASEARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="El usuario que relizó la última actualización sobre el registro." key="false" length="32" name="USUARIOACTUALIZACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica el usuario que creó el registro" defaultValue="'FRM0'" key="false" length="32" name="USUARIOCREACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica la fecha en que fue creado el registro" defaultValue="'CURRENT_TIMESTAMP'" key="false" length="26" name="FECHACREACION" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que permite saber si los artículos contenidos en dicha clasificación son aplicables de registro sanitario. Los valores pueden ser: [0] aplica, [1] no aplica." defaultValue="'1'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Inicial con el tipo de bodega a la que pertenece la clasificación. [F] para Frios y [S] para Secos." key="false" length="1" name="TIPOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicador de publicación en internet, solo se usa a nivel de departamento" defaultValue="'0'" key="false" length="1" name="ESPUBLICADOINTERNET" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción para la publicación en internet" key="false" length="250" name="DESCRIPCIONPUBLICACIONINTERNET" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valor del tipo de deducible para la clasificación de artículos" key="false" length="3" name="VALORTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código del tipo de deducible para la clasificación de artículos" key="false" length="10" name="CODIGOTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Porcentaje de diferencia entre el precio de afiliado y no afiliado" defaultValue="5" key="false" length="5" name="PORCENTAJENOAFILIADO" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
-      <column comment="valor del tipo de distribución" defaultValue="'DIR'" key="false" length="3" name="VALORTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="código del tipo de distribución" defaultValue="209" key="false" length="10" name="CODIGOTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el tipo de la estructura comercial" defaultValue="418" key="false" length="10" name="CODIGOTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el valor de la estructura comercial" defaultValue="'ESC'" key="false" length="3" name="VALORTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el orden de la clasificación para la estructura comercial orientada al cliente" key="false" length="10" name="ORDEN" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica la dirección de información que se desea ver en la clasificación" key="false" length="10" name="CODIGOREFERENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="URL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica si una clasificación aplica para que sus artículos puedan tener compuestos transgénicos" defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="valor de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="codigo de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que indica si se debe o no igualar el costo de todos los proveedores que venden articulos de esta clasificacion" key="false" length="5" name="UNIFICARCOSTOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="REQUIEREUNIDADMANEJOEAN128" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOESTRUCTURA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="ALMACENA EL CODIGO DE CLASIFICACION DGI PARA FACTURACION" key="false" length="10" name="CODIGOFAMILIADGI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica el usuario que creó el artículo" defaultValue="'FRM0'" key="false" length="32" name="USUARIOCREACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica la fecha en que fue creado el artículo" defaultValue="'CURRENT_TIMESTAMP'" key="false" length="26" name="FECHACREACION" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Indica la marca del artículo" key="false" length="20" name="MARCAARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica el número de registro sanitario del artículo" key="false" length="64" name="REGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Precio del artículo sin IVA, NO AFILIADO" defaultValue="0" key="false" length="12" name="PRECIOARTICULONOAFILIADO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio del artículo con IVA, NO AFILIADO" defaultValue="0" key="false" length="12" name="PRECIOARTICULOIVANOAFILIADO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio de caja sin IVA, NO AFILIADO" defaultValue="0" key="false" length="12" name="PRECIOCAJANOAFILIADO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio de caja con IVA, NO AFILIADO" defaultValue="0" key="false" length="12" name="PRECIOCAJAIVANOAFILIADO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio del artículo, del proveedor" defaultValue="0" key="false" length="12" name="PRECIOARTICULOPROVEEDOR" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Precio del artículo con IVA, del proveedor" defaultValue="0" key="false" length="12" name="PRECIOARTICULOIVAPROVEEDOR" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si el artículo tiene la caracteristica de interproveedor en relación a su proveedor, puede tener los valores [1] SI APLICA, [0] NO APLICA" defaultValue="'0'" key="false" length="1" name="ESTADOINTERPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4194304" name="IMAGENCODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="El precio de mayoreo para el artículo" defaultValue="0" key="false" length="12" name="PRECIOMAYORISTA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="El precio de mayoreo con IVA para el artículo" defaultValue="0" key="false" length="12" name="PRECIOMAYORISTAIVA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="El precio de mayoreo de no afiliado para el artículo" defaultValue="0" key="false" length="12" name="PRECIOMAYORISTANOAFILIADO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="El precio de mayoreo de no afiliado con IVA para el artículo" defaultValue="0" key="false" length="12" name="PRECIOMAYORISTAIVANOAFILIADO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="La cantidad mínima para tomar en cuenta el precio de mayorista en un artículo." defaultValue="0" key="false" length="10" name="CANTIDADMINIMAMAYOREO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Imagen del registro sanitario" key="false" length="4194304" name="IMAGENREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Marca del articulo que tienen garantía" defaultValue="'0'" key="false" length="1" name="GARANTIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Tiempo que cubre la garantía" key="false" length="10" name="TIEMPOGARANTIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si al articulo aplica una extensión de garantía" defaultValue="'0'" key="false" length="1" name="EXTENSIONGARANTIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Tiempo maximo que puede cubrir una extensión de garantía" key="false" length="10" name="TIEMAXEXTGAR" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Tiempo maximo que el cliente puede comprar una extensión de garantía apartir de la fecha de compra" key="false" length="10" name="TIEMAXVENEXTGAR" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULOORIGINAL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="nuevo campo donde se almacena el costoBrutoArticulo." defaultValue="0" key="false" length="14" name="COSTOBRUTOARTICULO" nullable="false" pattern="" precision="4" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="nuevo campo donde se almacena el costoNetoArticulo." defaultValue="0" key="false" length="14" name="COSTONETOARTICULO" nullable="false" pattern="" precision="4" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Indicador para saber si un artículo debe tener registro sanitario" defaultValue="'0'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Bandera que indica si el artículo es comercializado por la corporación" defaultValue="'1'" key="false" length="1" name="ESCOMERCIALIZADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="El identificador del sistema que originó el registro" defaultValue="'MAX'" key="false" length="32" name="CODIGOSISTEMAORIGEN" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indicador del estado del artículo" defaultValue="'COD'" key="false" length="3" name="CODIGOESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Identificador del prototipo de alcance que representa un grupo de trabajo" key="false" length="10" name="CODIGOGRUPOALCANCE" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGORESPALDO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="'0'" key="false" length="1" name="PORPROCESAR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULOPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="CÓDIGO DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="null" key="false" length="10" name="CODIGOESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="VALOR DEL ESTADO DE LA CARACTERISTICA TRANSGENICO" defaultValue="null" key="false" length="3" name="VALORESTADOTRANSGENICO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Campo que almacena el total de registros sanitario activos; ayudando a determinar que existen multiples registros sanitario para un artículo. " defaultValue="1" key="false" length="10" name="CANTIDADREGISTROSANITARIO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si un artículo aplica para tener compuestos transgénicos " defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="valor de estado para verificar que una articulo posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="codigo de estado para verificar que una articulo posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Codigo de articulo base con el que se codifica un nuevo articulo" defaultValue="null" key="false" length="20" name="ARTICULOPLANTILLA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Almacena el codigo del establecimiento" key="false" length="10" name="IMPORTANCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="INDICA SI TIENE CONVENIO CON EL PROVEEDOR" defaultValue="'0'" key="false" length="1" name="INDICADORI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOCLIENTEIMPORTACION" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRASPOS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="CODIGOTIPOCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="CAMPO QUE INDENTIFICA AL REGISTRO DE ARTICULOS COMO VALIDO" defaultValue="'VAL'" key="false" length="3" name="VALORTIPOESTADOREGISTRO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="CAMPO QUE INDENTIFICA AL TIPO DE REGISTRO DE UN ARTICULO" defaultValue="313" key="false" length="10" name="CODIGOTIPOESTADOREGISTRO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="CAMPO QUE REGISTRA LA PRIMERA RECEPCION DEL ARTÍCULO" key="false" length="26" name="FECHAPRIMERAENTREGA" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Campo que muestra si un articulo puede ser ofertado por los proveedores" defaultValue="'0'" key="false" length="1" name="OFERTAPEDIDOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOTIEMPOVIDA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="TIENEBLOQUEOFLUX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="PORMAXINCOFE" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="PORMAXDECOFE" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="12" name="PRECIOOFEMAYORIALOCALES" nullable="true" pattern="" precision="4" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="PORCENTAJEOFEMAYORIALOCALES" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAINICIOOFEMAYORIALOCALES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAFINOFEMAYORIALOCALES" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="6" name="VALORESTUDIO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="'0'" key="false" length="1" name="ESNUEVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Campo para identificar si el artículo tiene un articulo relacionado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="EXIARTREL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Campo para identificar si el artículo tiene al menos un registro sanitario caducado, 1:tiene, 0:no tiene" defaultValue="'0'" key="false" length="1" name="REGSANCAD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Determina si un artículo tiene un cupón que entrará en vigencia" defaultValue="'0'" key="false" length="1" name="EXICUPFUT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Determina si un artículo se encuentra relacionado a un cupón vigente" defaultValue="'0'" key="false" length="1" name="EXICUPVIG" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial del innerpack al que pertenece" defaultValue="null" key="false" length="36" name="SECASOART" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Codigo de barras del innerpack al que representa este articulo" defaultValue="'-1'" key="false" length="20" name="IDENTIFICADORASOCIACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Campos de informacion de mayoria de ofertas, [1] Es definicion por la mayoria de alcances, [0] sin el minimo de la mitad de alcances" defaultValue="null" key="false" length="1" name="ESOFEMAYORIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Nombre para identificar la promoción que tuvo o tiene vigente un artículo." key="false" length="100" name="TIPOPROMOCIONRESUMEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indicador para determinar si la promoción que tuvo o tiene vigente un artículo, se repite en más de la mitad de locales que tiene alcance el artículo." defaultValue="0" key="false" length="5" name="ESPROMOCIONMAYORIALOCALES" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha de fin de la promoción que tuvo o tiene vigente un artículo." key="false" length="26" name="FECHAFINPROMOCIONRESUMEN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha de inicio de la promoción que tuvo o tiene vigente un artículo." key="false" length="26" name="FECHAINICIOPROMOCIONRESUMEN" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Identficador grupo rey" key="false" length="20" name="CODIGOUNICOSAP" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Descripción original del artículo" defaultValue="null" key="false" length="300" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="192">
@@ -214,7 +282,7 @@
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTUNIMANPRO/SCSADTARTUNIMANPRO0.csv&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTUNIMANPRO/SCSADTARTUNIMANPRO*.csv&quot;"/>
     <elementParameter field="TEXT" name="GS_FILE_HEADER" value="0"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -222,7 +290,7 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
     <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;;&quot;"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
     <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="false"/>
     <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="DROP" value="true"/>
@@ -232,43 +300,16 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_4">
       <column comment="Código de companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación" key="true" length="10" name="CODIGOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación padre, es decir, de la clasficación de la jerarquía superior en su árbol de registros" key="false" length="10" name="CODIGOCLASIFICACIONPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de tipo de clasificación. Los valores pueden ser: [01] DIVISION [02] DEPARTAMENTO [03] CLASE [04] SUBCLASE " key="false" length="10" name="CODIGOTIPOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de bodega" key="false" length="10" name="CODIGOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de comprador" key="false" length="10" name="CODIGOCOMPRADOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción de la clasificación" key="false" length="100" name="DESCRIPCIONCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Nivel de la clasificación" key="false" length="10" name="NIVELCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Estado de la clasificación, los valores pueden ser: [1] Activo, [0] Inactivo" key="false" length="1" name="ESTADOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="El usuario que relizó la última actualización sobre el registro." key="false" length="32" name="USUARIOACTUALIZACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica el usuario que creó el registro" defaultValue="'FRM0'" key="false" length="32" name="USUARIOCREACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica la fecha en que fue creado el registro" defaultValue="'CURRENT_TIMESTAMP'" key="false" length="26" name="FECHACREACION" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que permite saber si los artículos contenidos en dicha clasificación son aplicables de registro sanitario. Los valores pueden ser: [0] aplica, [1] no aplica." defaultValue="'1'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Inicial con el tipo de bodega a la que pertenece la clasificación. [F] para Frios y [S] para Secos." key="false" length="1" name="TIPOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicador de publicación en internet, solo se usa a nivel de departamento" defaultValue="'0'" key="false" length="1" name="ESPUBLICADOINTERNET" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción para la publicación en internet" key="false" length="250" name="DESCRIPCIONPUBLICACIONINTERNET" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valor del tipo de deducible para la clasificación de artículos" key="false" length="3" name="VALORTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código del tipo de deducible para la clasificación de artículos" key="false" length="10" name="CODIGOTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Porcentaje de diferencia entre el precio de afiliado y no afiliado" defaultValue="5" key="false" length="5" name="PORCENTAJENOAFILIADO" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
-      <column comment="valor del tipo de distribución" defaultValue="'DIR'" key="false" length="3" name="VALORTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="código del tipo de distribución" defaultValue="209" key="false" length="10" name="CODIGOTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el tipo de la estructura comercial" defaultValue="418" key="false" length="10" name="CODIGOTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el valor de la estructura comercial" defaultValue="'ESC'" key="false" length="3" name="VALORTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el orden de la clasificación para la estructura comercial orientada al cliente" key="false" length="10" name="ORDEN" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica la dirección de información que se desea ver en la clasificación" key="false" length="10" name="CODIGOREFERENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="URL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica si una clasificación aplica para que sus artículos puedan tener compuestos transgénicos" defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="valor de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="codigo de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que indica si se debe o no igualar el costo de todos los proveedores que venden articulos de esta clasificacion" key="false" length="5" name="UNIFICARCOSTOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="REQUIEREUNIDADMANEJOEAN128" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOESTRUCTURA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="ALMACENA EL CODIGO DE CLASIFICACION DGI PARA FACTURACION" key="false" length="10" name="CODIGOFAMILIADGI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial de unidad de manejo" key="true" length="12" name="CODIGOUNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Código del proveedor" key="true" length="10" name="CODIGOPROVEEDOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código de artículo" key="false" length="20" name="CODIGOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial de la equivalencia del porcentaje de descuento" key="false" length="10" name="CODIGOEQUIVALENCIADESCUENTO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial del tipo de descuento" key="false" length="5" name="CODIGOTIPODESCUENTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Estado del registro:&#13;&#10;1. ACTIVO&#13;&#10;0. INACTIVO" key="false" length="1" name="ESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el usuario que realiza el registro." key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realiza el registro" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Id del usuario que realizó la última actualización." key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="320">
@@ -293,7 +334,7 @@
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTUNIMAN/SCSADTARTUNIMAN0.csv&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTUNIMAN/SCSADTARTUNIMAN*.csv&quot;"/>
     <elementParameter field="TEXT" name="GS_FILE_HEADER" value="0"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -301,7 +342,7 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
     <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;;&quot;"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
     <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="false"/>
     <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="DROP" value="true"/>
@@ -310,44 +351,49 @@
     <elementParameter field="TEXT" name="LABEL" value="SCSADTARTUNIMAN0"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_7">
-      <column comment="Código de companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación" key="true" length="10" name="CODIGOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación padre, es decir, de la clasficación de la jerarquía superior en su árbol de registros" key="false" length="10" name="CODIGOCLASIFICACIONPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de tipo de clasificación. Los valores pueden ser: [01] DIVISION [02] DEPARTAMENTO [03] CLASE [04] SUBCLASE " key="false" length="10" name="CODIGOTIPOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de bodega" key="false" length="10" name="CODIGOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de comprador" key="false" length="10" name="CODIGOCOMPRADOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción de la clasificación" key="false" length="100" name="DESCRIPCIONCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Nivel de la clasificación" key="false" length="10" name="NIVELCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Estado de la clasificación, los valores pueden ser: [1] Activo, [0] Inactivo" key="false" length="1" name="ESTADOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="El usuario que relizó la última actualización sobre el registro." key="false" length="32" name="USUARIOACTUALIZACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica el usuario que creó el registro" defaultValue="'FRM0'" key="false" length="32" name="USUARIOCREACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica la fecha en que fue creado el registro" defaultValue="'CURRENT_TIMESTAMP'" key="false" length="26" name="FECHACREACION" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que permite saber si los artículos contenidos en dicha clasificación son aplicables de registro sanitario. Los valores pueden ser: [0] aplica, [1] no aplica." defaultValue="'1'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Inicial con el tipo de bodega a la que pertenece la clasificación. [F] para Frios y [S] para Secos." key="false" length="1" name="TIPOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicador de publicación en internet, solo se usa a nivel de departamento" defaultValue="'0'" key="false" length="1" name="ESPUBLICADOINTERNET" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción para la publicación en internet" key="false" length="250" name="DESCRIPCIONPUBLICACIONINTERNET" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valor del tipo de deducible para la clasificación de artículos" key="false" length="3" name="VALORTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código del tipo de deducible para la clasificación de artículos" key="false" length="10" name="CODIGOTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Porcentaje de diferencia entre el precio de afiliado y no afiliado" defaultValue="5" key="false" length="5" name="PORCENTAJENOAFILIADO" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
-      <column comment="valor del tipo de distribución" defaultValue="'DIR'" key="false" length="3" name="VALORTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="código del tipo de distribución" defaultValue="209" key="false" length="10" name="CODIGOTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el tipo de la estructura comercial" defaultValue="418" key="false" length="10" name="CODIGOTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el valor de la estructura comercial" defaultValue="'ESC'" key="false" length="3" name="VALORTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el orden de la clasificación para la estructura comercial orientada al cliente" key="false" length="10" name="ORDEN" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica la dirección de información que se desea ver en la clasificación" key="false" length="10" name="CODIGOREFERENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="URL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica si una clasificación aplica para que sus artículos puedan tener compuestos transgénicos" defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="valor de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="codigo de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que indica si se debe o no igualar el costo de todos los proveedores que venden articulos de esta clasificacion" key="false" length="5" name="UNIFICARCOSTOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="REQUIEREUNIDADMANEJOEAN128" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOESTRUCTURA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="ALMACENA EL CODIGO DE CLASIFICACION DGI PARA FACTURACION" key="false" length="10" name="CODIGOFAMILIADGI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Codigo de la companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Código de artículo, almacena el código secuencial de un artículo" key="true" length="20" name="CODIGOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial de unidad de manejo" key="true" length="12" name="CODIGOUNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="El identificador del tipo de código para el artículo" key="false" length="32" name="CODIGOTIPOCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Valor del código de barras del artículo por la unidad de manejo, que puede ser un EAN14 o EAN13" key="false" length="14" name="CODIGOBARRASUNIDADMANEJO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Referencia al tipo de unidad de manejo padre" key="false" length="12" name="CODIGOUNIDADMANEJOPADRE" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Estado de la Unidad de Manejo.&#13;&#10;Los valores permitidos son:&#13;&#10;[0] Inactivo&#13;&#10;[1] Activo" key="false" length="1" name="ESTADOUNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica la cifra para la unidad de manejo" key="false" length="10" name="VALORUNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Valor del tipo de unidad de empaque del catálogo" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código del tipo de unidad de empaque en el catálogo" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Descuento aplicado al precio de venta supermaxi" key="false" length="5" name="DESCUENTOVENTA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el usuario que realiza el registro." key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realiza el registro" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Id del usuario que realizó la última actualización." key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="DESCUENTOCOMPRA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Código del proveedor" key="false" length="10" name="CODIGOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial de la equivalencia del porcentaje de descuento" key="false" length="10" name="CODIGOEQUIVALENCIADESCUENTO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial del tipo de descuento" key="false" length="5" name="CODIGOTIPODESCUENTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si la unidad de manejo es principal para el artículo. 1: es principal, 0: no es principal" defaultValue="'0'" key="false" length="1" name="ESPRINCIPAL" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Alto en centimetros del contenedor del artículo" key="false" length="8" name="ALTO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Ancho en centimetros del contenedor del artículo" key="false" length="8" name="ANCHO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Profundidad en centimetros del contenedor del artículo" key="false" length="8" name="PROFUNDIDAD" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Peso en kilos del contenedor del artículo" key="false" length="8" name="PESO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Dimensiones del contenedor del artículo en cm3" key="false" length="11" name="CUBICAJE" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Indica la prioridad de la unidad de manejo de recepción" key="false" length="10" name="PRIORIDAD" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="CAMPO QUE REGISTRA LA FECHA DEL CAMBIO EN LA UNIDAD DE MANEJO" key="false" length="26" name="FECHACAMBIO" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="CAMPO QUE INDENTIFICA EL TIPO DE CAMBIO EN LA UNIDAD DE MANEJO" key="false" length="3" name="VALORTIPOCAMBIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="CAMPO QUE INDENTIFICA EL TIPO DE CAMBIO EN LA UNIDAD DE MANEJO" key="false" length="10" name="CODIGOTIPOCAMBIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="null" key="false" length="1" name="PALLETIZADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="null" key="false" length="10" name="CODIGOPROCESO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CANTIDADMAXIMAUBICACION" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOTIPOUNIDADDIMENSION" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADDIMENSION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOTIPOUNIDADPESO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADPESO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="6" name="IDCUBISCAN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="11" name="PESODIMENSIONAL" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FACTORDIMENSIONAL" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="UNIDADDIMENSIONAL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="CODIGO DEL CATALOGO DE TIPO DE UNIDAD DE MANEJO: 348" key="false" length="10" name="CODIGOTIPOUNIDADMANEJO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="CAMPOS CON VALORES DEL TIPO DE UNIDAD DE MANEJO, VALORES: EXP EXPORTACION." key="false" length="3" name="VALORTIPOUNIDADMANEJO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="448">
@@ -372,7 +418,7 @@
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTPROIMP/SCSADTARTPROIMP0.csv&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTPROIMP/SCSADTARTPROIMP*.csv&quot;"/>
     <elementParameter field="TEXT" name="GS_FILE_HEADER" value="0"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -380,7 +426,7 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
     <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;;&quot;"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
     <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="false"/>
     <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="DROP" value="true"/>
@@ -389,44 +435,20 @@
     <elementParameter field="TEXT" name="LABEL" value="SCSADTARTPROIMP0"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_12">
-      <column comment="Código de companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación" key="true" length="10" name="CODIGOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación padre, es decir, de la clasficación de la jerarquía superior en su árbol de registros" key="false" length="10" name="CODIGOCLASIFICACIONPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de tipo de clasificación. Los valores pueden ser: [01] DIVISION [02] DEPARTAMENTO [03] CLASE [04] SUBCLASE " key="false" length="10" name="CODIGOTIPOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de bodega" key="false" length="10" name="CODIGOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de comprador" key="false" length="10" name="CODIGOCOMPRADOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción de la clasificación" key="false" length="100" name="DESCRIPCIONCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Nivel de la clasificación" key="false" length="10" name="NIVELCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Estado de la clasificación, los valores pueden ser: [1] Activo, [0] Inactivo" key="false" length="1" name="ESTADOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="El usuario que relizó la última actualización sobre el registro." key="false" length="32" name="USUARIOACTUALIZACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica el usuario que creó el registro" defaultValue="'FRM0'" key="false" length="32" name="USUARIOCREACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica la fecha en que fue creado el registro" defaultValue="'CURRENT_TIMESTAMP'" key="false" length="26" name="FECHACREACION" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que permite saber si los artículos contenidos en dicha clasificación son aplicables de registro sanitario. Los valores pueden ser: [0] aplica, [1] no aplica." defaultValue="'1'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Inicial con el tipo de bodega a la que pertenece la clasificación. [F] para Frios y [S] para Secos." key="false" length="1" name="TIPOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicador de publicación en internet, solo se usa a nivel de departamento" defaultValue="'0'" key="false" length="1" name="ESPUBLICADOINTERNET" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción para la publicación en internet" key="false" length="250" name="DESCRIPCIONPUBLICACIONINTERNET" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valor del tipo de deducible para la clasificación de artículos" key="false" length="3" name="VALORTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código del tipo de deducible para la clasificación de artículos" key="false" length="10" name="CODIGOTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Porcentaje de diferencia entre el precio de afiliado y no afiliado" defaultValue="5" key="false" length="5" name="PORCENTAJENOAFILIADO" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
-      <column comment="valor del tipo de distribución" defaultValue="'DIR'" key="false" length="3" name="VALORTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="código del tipo de distribución" defaultValue="209" key="false" length="10" name="CODIGOTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el tipo de la estructura comercial" defaultValue="418" key="false" length="10" name="CODIGOTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el valor de la estructura comercial" defaultValue="'ESC'" key="false" length="3" name="VALORTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el orden de la clasificación para la estructura comercial orientada al cliente" key="false" length="10" name="ORDEN" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica la dirección de información que se desea ver en la clasificación" key="false" length="10" name="CODIGOREFERENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="URL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica si una clasificación aplica para que sus artículos puedan tener compuestos transgénicos" defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="valor de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="codigo de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que indica si se debe o no igualar el costo de todos los proveedores que venden articulos de esta clasificacion" key="false" length="5" name="UNIFICARCOSTOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="REQUIEREUNIDADMANEJOEAN128" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOESTRUCTURA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="ALMACENA EL CODIGO DE CLASIFICACION DGI PARA FACTURACION" key="false" length="10" name="CODIGOFAMILIADGI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Codigo de la companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Código de artículo, almacena el código secuencial de un artículo" key="true" length="20" name="CODIGOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código del proveedor" key="true" length="10" name="CODIGOPROVEEDOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica la referencia a la moneda de origen" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Indica el valor del costo" key="false" length="14" name="COSTOMONEDAORIGEN" nullable="false" pattern="" precision="4" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="Descripción de artículo importado" defaultValue="''" key="false" length="300" name="DESCRIPCIONARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el usuario que realiza el registro." key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realiza el registro" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Id del usuario que realizó la última actualización." key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="El porcentaje de comisión que cobra el proveedor en la importación" key="false" length="5" name="PORCENTAJECOMISION" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se debe aplicar el factor" key="false" length="26" name="FECHAAPLICACIONFACTOR" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Valor del factor en la importacion" key="false" length="8" name="VALORFACTOR" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="576">
@@ -441,7 +463,7 @@
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="DATASET" value="&quot;PRUEBAS_BI_SOLUTIONS&quot;"/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;SCSADTARTPROIMP&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="&quot;SCSADTARTIMP&quot;"/>
     <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
     <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="EMPTY"/>
     <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
@@ -451,7 +473,7 @@
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTIMP/SCSADTARTIMP0.csv&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTIMP/SCSADTARTIMP*.csv&quot;"/>
     <elementParameter field="TEXT" name="GS_FILE_HEADER" value="0"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -459,7 +481,7 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
     <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;;&quot;"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
     <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="false"/>
     <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="DROP" value="true"/>
@@ -468,123 +490,17 @@
     <elementParameter field="TEXT" name="LABEL" value="SCSADTARTIMP0"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_14">
-      <column comment="Código de companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación" key="true" length="10" name="CODIGOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación padre, es decir, de la clasficación de la jerarquía superior en su árbol de registros" key="false" length="10" name="CODIGOCLASIFICACIONPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de tipo de clasificación. Los valores pueden ser: [01] DIVISION [02] DEPARTAMENTO [03] CLASE [04] SUBCLASE " key="false" length="10" name="CODIGOTIPOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de bodega" key="false" length="10" name="CODIGOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de comprador" key="false" length="10" name="CODIGOCOMPRADOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción de la clasificación" key="false" length="100" name="DESCRIPCIONCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Nivel de la clasificación" key="false" length="10" name="NIVELCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Estado de la clasificación, los valores pueden ser: [1] Activo, [0] Inactivo" key="false" length="1" name="ESTADOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="El usuario que relizó la última actualización sobre el registro." key="false" length="32" name="USUARIOACTUALIZACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica el usuario que creó el registro" defaultValue="'FRM0'" key="false" length="32" name="USUARIOCREACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica la fecha en que fue creado el registro" defaultValue="'CURRENT_TIMESTAMP'" key="false" length="26" name="FECHACREACION" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que permite saber si los artículos contenidos en dicha clasificación son aplicables de registro sanitario. Los valores pueden ser: [0] aplica, [1] no aplica." defaultValue="'1'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Inicial con el tipo de bodega a la que pertenece la clasificación. [F] para Frios y [S] para Secos." key="false" length="1" name="TIPOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicador de publicación en internet, solo se usa a nivel de departamento" defaultValue="'0'" key="false" length="1" name="ESPUBLICADOINTERNET" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción para la publicación en internet" key="false" length="250" name="DESCRIPCIONPUBLICACIONINTERNET" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valor del tipo de deducible para la clasificación de artículos" key="false" length="3" name="VALORTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código del tipo de deducible para la clasificación de artículos" key="false" length="10" name="CODIGOTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Porcentaje de diferencia entre el precio de afiliado y no afiliado" defaultValue="5" key="false" length="5" name="PORCENTAJENOAFILIADO" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
-      <column comment="valor del tipo de distribución" defaultValue="'DIR'" key="false" length="3" name="VALORTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="código del tipo de distribución" defaultValue="209" key="false" length="10" name="CODIGOTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el tipo de la estructura comercial" defaultValue="418" key="false" length="10" name="CODIGOTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el valor de la estructura comercial" defaultValue="'ESC'" key="false" length="3" name="VALORTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el orden de la clasificación para la estructura comercial orientada al cliente" key="false" length="10" name="ORDEN" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica la dirección de información que se desea ver en la clasificación" key="false" length="10" name="CODIGOREFERENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="URL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica si una clasificación aplica para que sus artículos puedan tener compuestos transgénicos" defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="valor de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="codigo de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que indica si se debe o no igualar el costo de todos los proveedores que venden articulos de esta clasificacion" key="false" length="5" name="UNIFICARCOSTOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="REQUIEREUNIDADMANEJOEAN128" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOESTRUCTURA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="ALMACENA EL CODIGO DE CLASIFICACION DGI PARA FACTURACION" key="false" length="10" name="CODIGOFAMILIADGI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="704">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_18"/>
-    <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:tBb6LH1x9vqY6fUyaaRsR61Fu/KLpzQVf+Jc7k5k"/>
-    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
-    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:LY7hxlNh3Hvq/Ulr8P8DUDors/ADnxpRZMKEaNrm"/>
-    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
-    <elementParameter field="TEXT" name="DATASET" value="&quot;PRUEBAS_BI_SOLUTIONS&quot;"/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;SCSADTARTPROIMP&quot;"/>
-    <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="EMPTY"/>
-    <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="GS_SERVICE_ACCOUNT"/>
-    <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:L435cZXWuH9AUaatoF8FsflP/FSN6l8PGfD86Q5K"/>
-    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://pruebas_talend_bi_solutions/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SCSADTARTETI/SCSADTARTETI0.csv&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE_HEADER" value="0"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
-    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
-    <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;;&quot;"/>
-    <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="false"/>
-    <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="DROP" value="true"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
-    <elementParameter field="TEXT" name="LABEL" value="SCSADTARTETI0"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_18">
-      <column comment="Código de companía" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación" key="true" length="10" name="CODIGOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de la clasificación padre, es decir, de la clasficación de la jerarquía superior en su árbol de registros" key="false" length="10" name="CODIGOCLASIFICACIONPADRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de tipo de clasificación. Los valores pueden ser: [01] DIVISION [02] DEPARTAMENTO [03] CLASE [04] SUBCLASE " key="false" length="10" name="CODIGOTIPOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de bodega" key="false" length="10" name="CODIGOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código de comprador" key="false" length="10" name="CODIGOCOMPRADOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción de la clasificación" key="false" length="100" name="DESCRIPCIONCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Nivel de la clasificación" key="false" length="10" name="NIVELCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Estado de la clasificación, los valores pueden ser: [1] Activo, [0] Inactivo" key="false" length="1" name="ESTADOCLASIFICACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Fecha de última actualización del registro." key="false" length="26" name="FECHAULTIMAACTUALIZACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="El usuario que relizó la última actualización sobre el registro." key="false" length="32" name="USUARIOACTUALIZACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica el usuario que creó el registro" defaultValue="'FRM0'" key="false" length="32" name="USUARIOCREACION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica la fecha en que fue creado el registro" defaultValue="'CURRENT_TIMESTAMP'" key="false" length="26" name="FECHACREACION" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que permite saber si los artículos contenidos en dicha clasificación son aplicables de registro sanitario. Los valores pueden ser: [0] aplica, [1] no aplica." defaultValue="'1'" key="false" length="1" name="APLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Inicial con el tipo de bodega a la que pertenece la clasificación. [F] para Frios y [S] para Secos." key="false" length="1" name="TIPOBODEGA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indicador de publicación en internet, solo se usa a nivel de departamento" defaultValue="'0'" key="false" length="1" name="ESPUBLICADOINTERNET" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Descripción para la publicación en internet" key="false" length="250" name="DESCRIPCIONPUBLICACIONINTERNET" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Valor del tipo de deducible para la clasificación de artículos" key="false" length="3" name="VALORTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Código del tipo de deducible para la clasificación de artículos" key="false" length="10" name="CODIGOTIPODEDUCIBLE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Porcentaje de diferencia entre el precio de afiliado y no afiliado" defaultValue="5" key="false" length="5" name="PORCENTAJENOAFILIADO" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_String" usefulColumn="true"/>
-      <column comment="valor del tipo de distribución" defaultValue="'DIR'" key="false" length="3" name="VALORTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="código del tipo de distribución" defaultValue="209" key="false" length="10" name="CODIGOTIPODISTRIBUCION" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el tipo de la estructura comercial" defaultValue="418" key="false" length="10" name="CODIGOTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el valor de la estructura comercial" defaultValue="'ESC'" key="false" length="3" name="VALORTIPOESTRUCTURA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica el orden de la clasificación para la estructura comercial orientada al cliente" key="false" length="10" name="ORDEN" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Especifica la dirección de información que se desea ver en la clasificación" key="false" length="10" name="CODIGOREFERENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="500" name="URL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="Indica si una clasificación aplica para que sus artículos puedan tener compuestos transgénicos" defaultValue="'1'" key="false" length="1" name="APLICATRANSGENICO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
-      <column comment="valor de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="'NA'" key="false" length="3" name="VALORAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="codigo de estado para verificar que una clasificacion posea o no registro sanitario" defaultValue="272" key="false" length="10" name="CODIGOAPLICAREGISTROSANITARIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="Campo que indica si se debe o no igualar el costo de todos los proveedores que venden articulos de esta clasificacion" key="false" length="5" name="UNIFICARCOSTOPROVEEDOR" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="'0'" key="false" length="1" name="REQUIEREUNIDADMANEJOEAN128" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOESTRUCTURA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPORESISTENCIA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOCONTAMINANTE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="ALMACENA EL CODIGO DE CLASIFICACION DGI PARA FACTURACION" key="false" length="10" name="CODIGOFAMILIADGI" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Código de la compania" key="true" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Código del artículo" key="true" length="20" name="CODIGOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Secuencial del tipo de impuesto" key="true" length="10" name="CODIGOTIPOIMPUESTO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_String" usefulColumn="true"/>
+      <column comment="Estado que indica si un artículo tiene o no activo un impuesto&#13;&#10;Los valores permitidos son:&#13;&#10;[0] Inactivo&#13;&#10;[1] Activo" key="false" length="1" name="ESTADOARTICULOIMPUESTO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si el impuesto es para venta (true)" key="false" length="1" name="ESPARAVENTA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si el impuesto es para la compra (true)" key="false" length="1" name="ESPARACOMPRA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el usuario que realiza el registro." key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realiza el registro" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Id del usuario que realizó la última actualización." key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Fecha en la que se realizó la última actualización." key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="'0'" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <subjob>
@@ -612,18 +528,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_18"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
-  </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_8ebaa64d-2df6-4814-b34d-6310b3324e36"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>J9MZTvbk6ZZwfa/FpstnHXd3OfLUlmwTA/DvgZN1b4NYPb3P0ItcJiSnlCaLXWZRtVRtaLZjcF4a&#13;
-sv6MJ9dtvg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_eb55d9f1-6ec0-4a1f-813f-dbcb3105d9b8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>EsyFnQVCW4nvyepBF6xkFYgYbtQ6sZhVRGk785T+Zbm6ObLxT0CkY03amrcKvx+YbfQOCfkAXhR7&#13;
-JhjlLesTBg==</DigestValue></Reference></SignedInfo><SignatureValue>DqcDiGIl6OJppHVsGEmIilQDYpUsiyi3EyKfOQ4DBhs06po9lTZr1RCdzUg+QzT+/qVCCPV6E74t&#13;
-0++a8iXc6S2S/H+YKAS9otMXXPMXuMc06AMfuX8cPnQzPlaAuLF0g7eBQuZhBtHVMO7FIIFnwNNk&#13;
-ZJix6sAfIk9+ZEvmDKJZDqVR3NbsMBuCR+OJdIB2xc2dFGoPVasOZaLVBn9igGYxeuKV4Q+akpl1&#13;
-RCGyPCcfLxwKZWWlyMOcvB4EwLR8lGKmFew6TwXB2j74xtBPzXqjHYQIQ3wlbLIKLmHNHzSHjeu2&#13;
-H5ZGWtW+iRok9bbFmCJ8v/C5bSmJw8JZ2vbfLA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_22a3b554-b8c9-4eda-ba89-8270ec2150f7"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>a5r62I9WvVna6OYDTYJcFqwUom/OnzqO1Wvxw2AiaJHks6kL2TKNzbZMeBlKxIjkb5XHylJvr4Dt&#13;
+9RFubi5npA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ea5d6404-5c26-4402-8f36-07696855fcca"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>I/c7b9SA0T/wSwRQbMvPIlqkWViKmROd/yBMtbwn7VkOIyPpc25DrPL+jfrHSzAjWSYbGjiAYN+K&#13;
+xBTCtCMg7w==</DigestValue></Reference></SignedInfo><SignatureValue>a3rKgBI13RvzzoMOwyDNn4gYvCbDcejK+b8RRICXxZi5nkebCB6w4EVSdk3dYpcepEhswWCMispN&#13;
+fRspVm5/Gw3xWOUtVSH73+3UR5hRiLI1ewpOvfKgZ5YNgpvFw0ITC2nMHf25Q7IfsGOoFzKTOorz&#13;
+k/uqYVpfXpHWjBxsQWZTqBdpfn4cekcm8okIUkwYWKPu6wxBNevlIngLb8Lf6guh8dBBXmhb1vR7&#13;
+WnHSBvL73suxNupILklCHOS90GkNlXwEryYoodKf49+yPSQ9IASavShOSTQwRL18eUMUPMrOYbdb&#13;
+9p154Z/u0TVXqhzQ4XSU94mVOf8hEurd2ehNog==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -645,4 +556,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_eb55d9f1-6ec0-4a1f-813f-dbcb3105d9b8" Target="#_8ebaa64d-2df6-4814-b34d-6310b3324e36"><Timestamp>2023-07-24 16:15:42</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ea5d6404-5c26-4402-8f36-07696855fcca" Target="#_22a3b554-b8c9-4eda-ba89-8270ec2150f7"><Timestamp>2023-07-27 21:53:32</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
