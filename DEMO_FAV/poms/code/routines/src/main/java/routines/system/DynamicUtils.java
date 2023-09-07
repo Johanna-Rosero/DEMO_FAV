@@ -147,7 +147,9 @@ public class DynamicUtils {
     public static void writeHeaderToDelimitedFile(Dynamic column, java.io.Writer out, String fieldSeparator)
             throws java.io.IOException {
         for (int i = 0; i < column.getColumnCount(); i++) {
-            out.write(column.getColumnMetadata(i).getName());
+            if(column.getColumnMetadata(i).getName() != null) {
+                out.write(column.getColumnMetadata(i).getName());
+            }
             if (i != (column.getColumnCount() - 1)) {
                 out.write(fieldSeparator);
             }
@@ -307,12 +309,12 @@ public class DynamicUtils {
                 continue;
             }
             position++;
-            insertValueIntoPreparedStatement(dynamicMetadata.getType(), pstmt, fixedColumnCount + position, database, column.getColumnValue(dynamicMetadata.getName()));
+            insertValueIntoPreparedStatement(dynamicMetadata.getType(), dynamicMetadata.getDbType(), pstmt, fixedColumnCount + position, database, column.getColumnValue(dynamicMetadata.getName()));
         }
         return position;
     }
 
-    private static void insertValueIntoPreparedStatement(String type, PreparedStatement pstmt, int index,
+    private static void insertValueIntoPreparedStatement(String type, String dbType, PreparedStatement pstmt, int index,
             String database, Object value) throws Exception {
 
         if (value == null) {
@@ -372,7 +374,11 @@ public class DynamicUtils {
                 } else {
                     pstmt.setNull(index, java.sql.Types.NULL);
                 }
-            } else {
+            } else if (DBMSConstants.VERTICA.getDBmsId().equalsIgnoreCase(database)) {
+            	if ("Uuid".equals(dbType)) {
+            		pstmt.setObject(index, "00000000-0000-0000-0000-000000000000");
+            	}
+        	} else {
                 pstmt.setNull(index, java.sql.Types.NULL);
             }
         } else if ("id_Integer".equals(type)) {
@@ -438,7 +444,7 @@ public class DynamicUtils {
                 if (supportNull && column.getColumnMetadata(i).isNullable()) {
                     pstmt.setBoolean(index++, column.getColumnValue(i) == null);
                 }
-                insertValueIntoPreparedStatement(column.getColumnMetadata(i).getType(), pstmt, index++, database, column.getColumnValue(i));
+                insertValueIntoPreparedStatement(column.getColumnMetadata(i).getType(), column.getColumnMetadata(i).getDbType(), pstmt, index++, database, column.getColumnValue(i));
             }
         }
     }
