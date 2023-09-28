@@ -2,11 +2,11 @@
   <context confirmationNeeded="false" name="Default">
     <contextParameter comment="" internalId="_LflMwE27Ee6XW9A9Vo6VzA" name="fecha_Proceso_IniL" prompt="fecha_Proceso_IniL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
     <contextParameter comment="" internalId="_LflMwU27Ee6XW9A9Vo6VzA" name="fecha_Proceso_FinL" prompt="fecha_Proceso_FinL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
-    <contextParameter comment="" internalId="_LflMwk27Ee6XW9A9Vo6VzA" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Date" value=""/>
-    <contextParameter comment="" internalId="_LflMw027Ee6XW9A9Vo6VzA" name="fecha_Proceso_Llni_Mig" prompt="fecha_Proceso_Llni_Mig?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
-    <contextParameter comment="" internalId="_LflMxE27Ee6XW9A9Vo6VzA" name="bandera_Procesados" prompt="bandera_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value=""/>
-    <contextParameter comment="" internalId="_LflMxU27Ee6XW9A9Vo6VzA" name="bandera_No_Procesados" prompt="bandera_No_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value=""/>
-    <contextParameter comment="" internalId="_LflMxk27Ee6XW9A9Vo6VzA" name="bandera_Aux" prompt="bandera_Aux?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value=""/>
+    <contextParameter comment="" internalId="_LflMwk27Ee6XW9A9Vo6VzA" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
+    <contextParameter comment="" internalId="_LflMw027Ee6XW9A9Vo6VzA" name="fecha_Proceso_Llni_Mig" prompt="fecha_Proceso_Llni_Mig?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="&quot;'2021-04-30 00:00:00'&quot;"/>
+    <contextParameter comment="" internalId="_LflMxE27Ee6XW9A9Vo6VzA" name="bandera_Procesados" prompt="bandera_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0"/>
+    <contextParameter comment="" internalId="_LflMxU27Ee6XW9A9Vo6VzA" name="bandera_No_Procesados" prompt="bandera_No_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0"/>
+    <contextParameter comment="" internalId="_LflMxk27Ee6XW9A9Vo6VzA" name="bandera_Aux" prompt="bandera_Aux?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
@@ -121,40 +121,42 @@
     <routinesParameter id="_SM69YCZ9Ee6dLIv4Aep4-w" name="TalendStringUtil"/>
     <routinesParameter id="_SMrFwCZ9Ee6dLIv4Aep4-w" name="TalendString"/>
   </parameters>
-  <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="64" posY="96">
+  <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="64" posY="32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tRowGenerator" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="288" posY="96">
+  <node componentName="tRowGenerator" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="64" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRowGenerator_1"/>
     <elementParameter field="TEXT" name="NB_ROWS" show="false" value="1"/>
     <elementParameter field="TABLE" name="VALUES" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="Fecha_Proceso"/>
-      <elementValue elementRef="ARRAY" value="TalendDate.addDate(TalendDate.addDate(TalendDate.getCurrentDate(),-1,&quot;dd&quot;) ,Numeric.sequence(&quot;s1&quot;,0,1) ,&quot;dd&quot; )"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Fecha_Proceso_Inicial"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="fecha_Proceso"/>
       <elementValue elementRef="ARRAY" value="TalendDate.addDate(TalendDate.addDate(TalendDate.getCurrentDate(),-1,&quot;dd&quot;) ,Numeric.sequence(&quot;s1&quot;,0,1) ,&quot;dd&quot; )"/>
     </elementParameter>
     <elementParameter field="EXTERNAL" name="MAP" value=""/>
     <elementParameter field="TEXT" name="LABEL" value="FECHA_DIA_ANTERIOR"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRowGenerator_1">
-      <column comment="" key="false" length="-1" name="Fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="-1" sourceType="" type="id_Date" usefulColumn="true">
-        <additionalField key="FUNCTION_INFO" value="{&quot;NAME&quot;:&quot;addDate&quot;,&quot;PARAMETERS&quot;:[{&quot;PARAMETER_NAME&quot;:&quot;date&quot;,&quot;PARAMETER_VALUE&quot;:&quot;TalendDate.addDate(TalendDate.getCurrentDate(),-1,\&quot;dd\&quot;) &quot;},{&quot;PARAMETER_NAME&quot;:&quot;nb&quot;,&quot;PARAMETER_VALUE&quot;:&quot;Numeric.sequence(\&quot;s1\&quot;,0,1) &quot;},{&quot;PARAMETER_NAME&quot;:&quot;dateType&quot;,&quot;PARAMETER_VALUE&quot;:&quot;\&quot;dd\&quot; &quot;}],&quot;PARAMETER_CLASS_NAME&quot;:&quot;TalendDate&quot;}"/>
-      </column>
-      <column comment="" key="false" length="-1" name="Fecha_Proceso_Inicial" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="-1" sourceType="" type="id_Date" usefulColumn="true">
+      <column comment="" key="false" length="-1" name="fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="" type="id_Date" usefulColumn="true">
         <additionalField key="FUNCTION_INFO" value="{&quot;NAME&quot;:&quot;addDate&quot;,&quot;PARAMETERS&quot;:[{&quot;PARAMETER_NAME&quot;:&quot;date&quot;,&quot;PARAMETER_VALUE&quot;:&quot;TalendDate.addDate(TalendDate.getCurrentDate(),-1,\&quot;dd\&quot;) &quot;},{&quot;PARAMETER_NAME&quot;:&quot;nb&quot;,&quot;PARAMETER_VALUE&quot;:&quot;Numeric.sequence(\&quot;s1\&quot;,0,1) &quot;},{&quot;PARAMETER_NAME&quot;:&quot;dateType&quot;,&quot;PARAMETER_VALUE&quot;:&quot;\&quot;dd\&quot; &quot;}],&quot;PARAMETER_CLASS_NAME&quot;:&quot;TalendDate&quot;}"/>
       </column>
     </metadata>
   </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="416" posY="96">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="input_row.Fecha_Proceso_Inicial.setHours(0);&#10;&#10;input_row.Fecha_Proceso_Inicial.setMinutes(0);&#10;&#10;input_row.Fecha_Proceso_Inicial.setSeconds(0);&#10;&#10;&#10;&#10;// Fecha con hora de inicio a las 00:00&#10;&#10;java.util.Date fechaInicio = input_row.Fecha_Proceso_Inicial;&#10;&#10;&#10;// Establecer la hora a las 23:59&#10;&#10;input_row.Fecha_Proceso.setHours(23);&#10;&#10;input_row.Fecha_Proceso.setMinutes(59);&#10;&#10;input_row.Fecha_Proceso.setSeconds(59);&#10;&#10;&#10;// Fecha con hora de finalización a las 23:59&#10;&#10;java.util.Date fechaFin = input_row.Fecha_Proceso;&#10;&#10;&#10;// Formatear las fechas como cadenas en el formato deseado (por ejemplo, &quot;yyyy-MM-dd HH:mm:ss&quot;)&#10;&#10;SimpleDateFormat  dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);&#10;&#10;String fechaInicioFormateada = dateFormat.format(fechaInicio);&#10;&#10;String fechaFinFormateada = dateFormat.format(fechaFin);&#10;&#10;&#10;java.sql.Timestamp timestampInicio = java.sql.Timestamp.valueOf(fechaInicioFormateada);&#10;&#10;java.sql.Timestamp timestampFin = java.sql.Timestamp.valueOf(fechaFinFormateada);&#10;&#10;&#10;&#10;&#10;// Asignar las fechas formateadas a las salidas del componente&#10;&#10;//output_row.fechaInicio = fechaInicioFormateada;&#10;&#10;//output_row.fechaFin = fechaFinFormateada;&#10;&#10;context.fecha_Proceso = input_row.Fecha_Proceso_Inicial; //fecha de carga de las ventas por defecto anterior&#10;context.bandera_Procesados = 0;&#10;context.bandera_No_Procesados = 1;&#10;context.fecha_Proceso_IniL = fechaInicioFormateada;&#10;context.fecha_Proceso_FinL = fechaFinFormateada;&#10;context.fecha_Proceso_Llni_Mig = &quot;2021-04-30 00:00:00&quot;;&#10;&#10;&#10;System.out.println(&quot;Fecha de carga&quot;+context.fecha_Proceso );&#10;&#10;System.out.println(&quot;Busqueda de cambios en las ventas entre: &quot;+ context.fecha_Proceso_IniL +&quot; y &quot;+context.fecha_Proceso_FinL);&#10;"/>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="192">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_2"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="// Obtiene el valor de la variable de contexto &quot;fecha_original&quot;&#10;&#10;Date fechaOriginal = (Date) input_row.fecha_Proceso;&#10;&#10;SimpleDateFormat formatoSalida = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);&#10;&#10;// Formatea la fecha en el nuevo formato&#10;&#10;String fechaConvertidaStr = formatoSalida.format(fechaOriginal);&#10;&#10;&#10;context.fecha_Proceso = fechaConvertidaStr;&#10;  &#10;   &#10;&#10;context.bandera_Procesados = 0;&#10;context.bandera_No_Procesados = 1;&#10;&#13;&#10;context.fecha_Proceso_IniL = &quot;'&quot; +context.fecha_Proceso+ &quot; 00:00:00&quot;+&quot;'&quot;;&#10;&#10;context.fecha_Proceso_FinL = &quot;'&quot; +context.fecha_Proceso+ &quot; 23:59:59&quot;+&quot;'&quot;;   &#10;&#10;System.out.println(&quot;Fecha de carga&quot; + context.fecha_Proceso); &#10;&#10;System.out.println(&quot;&quot;);&#10;&#10;System.out.println(&quot;Busqueda de cambios en las ventas entre: &quot;+ context.fecha_Proceso_IniL +&quot; y &quot;+context.fecha_Proceso_FinL);&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJavaRow_1"/>
+    <metadata connector="FLOW" name="tJavaRow_2">
+      <column comment="" key="false" length="-1" name="fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true">
+        <additionalField key="FUNCTION_INFO" value="{&quot;NAME&quot;:&quot;addDate&quot;,&quot;PARAMETERS&quot;:[{&quot;PARAMETER_NAME&quot;:&quot;date&quot;,&quot;PARAMETER_VALUE&quot;:&quot;TalendDate.addDate(TalendDate.getCurrentDate(),-1,\&quot;dd\&quot;) &quot;},{&quot;PARAMETER_NAME&quot;:&quot;nb&quot;,&quot;PARAMETER_VALUE&quot;:&quot;Numeric.sequence(\&quot;s1\&quot;,0,1) &quot;},{&quot;PARAMETER_NAME&quot;:&quot;dateType&quot;,&quot;PARAMETER_VALUE&quot;:&quot;\&quot;dd\&quot; &quot;}],&quot;PARAMETER_CLASS_NAME&quot;:&quot;TalendDate&quot;}"/>
+      </column>
+      <column comment="" key="false" length="-1" name="fecha_Proceso_IniL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="fecha_Proceso_FinL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
   </node>
-  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="256" posY="224">
+  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryInput_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="bigquery_id"/>
     <elementParameter field="DYNAMIC_GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
@@ -166,7 +168,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CREATE TABLE BI_DSA.DSA_SCVENTARTCOBLOCDIA_1 AS (&#13;&#10;SELECT &#13;&#10;  CODIGO_COMPANIA  ,&#13;&#10;  CODIGO_ARTICULO_VENTA  ,&#13;&#10;  CODIGO_AREA_TRABAJO ,&#13;&#10;  CODIGO_ARTICULO ,&#13;&#10;  FECHA ,&#13;&#10;  CODIGO_BARRAS ,&#13;&#10;  CODIGO_CONTROL_COSTO ,&#13;&#10;  VALOR_CONTROL_COSTO ,&#13;&#10;  CODIGO_CONTROL_VENTA ,&#13;&#10;  VALOR_CONTROL_VENTA ,&#13;&#10;  CODIGO_PROVEEDOR ,&#13;&#10;  CODIGO_CLASIFICACION ,&#13;&#10;  CODIGO_SUBCLASIFICACION ,&#13;&#10;  CANTIDAD_AFILIADO ,&#13;&#10;  CANTIDAD_NO_AFILIADO ,&#13;&#10;  CANTIDAD_TOTAL ,&#13;&#10;  CANTIDAD_TOTAL_CHAROL ,&#13;&#10;  CANTIDAD_DESCUENTO ,&#13;&#10;  PESO_AFILIADO ,&#13;&#10;  PESO_NO_AFILIADO ,&#13;&#10;  PESO_TOTAL ,&#13;&#10;  PESO_DESCUENTO ,&#13;&#10;  VALOR_TOTAL ,&#13;&#10;  VALOR_TOTAL_IMPUESTO ,&#13;&#10;  VALOR_TOTAL_IMPUESTO_COSTO ,&#13;&#10;  VALOR_TOTAL_IMPUESTO_COBRO ,&#13;&#10;  VALOR_IMPUESTO_DESCUENTO ,&#13;&#10;  DESCUENTO ,&#13;&#10;  DESCUENTO_BRUTO ,&#13;&#10;  COSTO_NETO_UNITARIO ,&#13;&#10;  COSTO_NETO_CANTIDAD ,&#13;&#10;  COSTO_NETO_PESO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_UNITARIO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_CANTIDAD ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_PESO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_PESO_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_ACUMULADO ,&#13;&#10;  COSTO_NETO_ACUMULADO_COBRO ,&#13;&#10;  COSTO_NETO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_PESO_CON_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_UNITARIO ,&#13;&#10;  COSTO_BRUTO_CANTIDAD ,&#13;&#10;  COSTO_BRUTO_PESO ,&#13;&#10;  COSTO_BRUTO_ACUMULADO ,&#13;&#10;  COSTO_BRUTO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_PESO_CON_IMPUESTO ,&#13;&#10;  COSTO_PROMEDIO ,&#13;&#10;  COSTO_NETO_TOTAL ,&#13;&#10;  COSTO_NETO_TOTAL_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_TOTAL_NOTA_CREDITO ,&#13;&#10;  COSTO_NETO_TOTAL_NOT_CRE_CON_IMP ,&#13;&#10;  COSTO_BRUTO_TOTAL_SIN_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_TOTAL_CON_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_TOTAL_COBRO_SIN_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_TOTAL_COBRO_CON_IMPUESTO ,&#13;&#10;  VALOR_COBRO ,&#13;&#10;  VALOR_COBRO_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_TOTAL_COBRO ,&#13;&#10;  COSTO_NETO_TOTAL_COBRO_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_TOTAL_NOTA_CREDITO_COBRO ,&#13;&#10;  COSTO_NETO_TOTAL_NOT_CRE_COB_CON_IMP ,&#13;&#10;  COSTO_MARGEN_COBRO ,&#13;&#10;  COSTO_MARGEN_NOTA_CREDITO_COBRO ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO ,&#13;&#10;  PRECIO_POS_AFILIADO_TOTAL ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_TOTAL ,&#13;&#10;  PRECIO_POS_AFILIADO_TOTAL_CON_IMPUESTO ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_TOTAL_CON_IMPUESTO ,&#13;&#10;  PRECIO_POS_TOTAL_SIN_IMPUESTO ,&#13;&#10;  PRECIO_POS_TOTAL_CON_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_CANTIDAD_SIN_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_PESO_SIN_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_PESO_CON_IMPUESTO ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO_CIMP ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO_CIMP ,&#13;&#10;  PRECIO_POS_UNITARIO_SIN_IMP ,&#13;&#10;  PRECIO_POS_UNITARIO_CON_IMP ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO_SADES ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO_SADES ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO_CIMPSADES ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO_CIMPSADES ,&#13;&#10;  PRECIO_POS_UNITARIO_SIMPSADES ,&#13;&#10;  PRECIO_POS_UNITARIO_CIMPSADES ,&#13;&#10;  PRECIO_BASE_NO_AFILIADO ,&#13;&#10;  PRECIO_BASE_AFILIADO ,&#13;&#10;  PRECIO_BASE_NO_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_OFERTA_NO_AFILIADO ,&#13;&#10;  PRECIO_BASE_OFERTA_AFILIADO ,&#13;&#10;  PRECIO_BASE_OFERTA_NO_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_OFERTA_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_TIPO_CAUSAL ,&#13;&#10;  PRECIO_BASE_VALOR_CAUSAL ,&#13;&#10;  PORCENTAJE_IMPUESTO_IVA ,&#13;&#10;  PORCENTAJE_IMPUESTO_IVA_COSTO ,&#13;&#10;  ESTADO ,&#13;&#10;  ID_USUARIO_REGISTRO ,&#13;&#10;  FECHA_REGISTRO ,&#13;&#10;  ID_USUARIO_MODIFICACION ,&#13;&#10;  FECHA_MODIFICACION ,&#13;&#10;  ETL_STAMP&#13;&#10;  FROM `lafavorita-182519.BI_DSA.DSA_SCVENTARTCOBLOCDIA`&#13;&#10;WHERE FECHA_MODIFICACION &gt;= '2023-09-10 00:00:00'&#13;&#10;AND FECHA &gt;= '2023-09-10'&#13;&#10;AND FECHA &gt;= '2021-04-30 00:00:00'&#13;&#10;AND CODIGO_COMPANIA = 1)&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CREATE TABLE BI_DSA.DSA_SCVENTARTCOBLOCDIA_1 AS (&#13;&#10;SELECT &#13;&#10;  CODIGO_COMPANIA  ,&#13;&#10;  CODIGO_ARTICULO_VENTA  ,&#13;&#10;  CODIGO_AREA_TRABAJO ,&#13;&#10;  CODIGO_ARTICULO ,&#13;&#10;  FECHA ,&#13;&#10;  CODIGO_BARRAS ,&#13;&#10;  CODIGO_CONTROL_COSTO ,&#13;&#10;  VALOR_CONTROL_COSTO ,&#13;&#10;  CODIGO_CONTROL_VENTA ,&#13;&#10;  VALOR_CONTROL_VENTA ,&#13;&#10;  CODIGO_PROVEEDOR ,&#13;&#10;  CODIGO_CLASIFICACION ,&#13;&#10;  CODIGO_SUBCLASIFICACION ,&#13;&#10;  CANTIDAD_AFILIADO ,&#13;&#10;  CANTIDAD_NO_AFILIADO ,&#13;&#10;  CANTIDAD_TOTAL ,&#13;&#10;  CANTIDAD_TOTAL_CHAROL ,&#13;&#10;  CANTIDAD_DESCUENTO ,&#13;&#10;  PESO_AFILIADO ,&#13;&#10;  PESO_NO_AFILIADO ,&#13;&#10;  PESO_TOTAL ,&#13;&#10;  PESO_DESCUENTO ,&#13;&#10;  VALOR_TOTAL ,&#13;&#10;  VALOR_TOTAL_IMPUESTO ,&#13;&#10;  VALOR_TOTAL_IMPUESTO_COSTO ,&#13;&#10;  VALOR_TOTAL_IMPUESTO_COBRO ,&#13;&#10;  VALOR_IMPUESTO_DESCUENTO ,&#13;&#10;  DESCUENTO ,&#13;&#10;  DESCUENTO_BRUTO ,&#13;&#10;  COSTO_NETO_UNITARIO ,&#13;&#10;  COSTO_NETO_CANTIDAD ,&#13;&#10;  COSTO_NETO_PESO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_UNITARIO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_CANTIDAD ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_PESO ,&#13;&#10;  COSTO_NETO_NOTA_CREDITO_PESO_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_ACUMULADO ,&#13;&#10;  COSTO_NETO_ACUMULADO_COBRO ,&#13;&#10;  COSTO_NETO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_PESO_CON_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_UNITARIO ,&#13;&#10;  COSTO_BRUTO_CANTIDAD ,&#13;&#10;  COSTO_BRUTO_PESO ,&#13;&#10;  COSTO_BRUTO_ACUMULADO ,&#13;&#10;  COSTO_BRUTO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_PESO_CON_IMPUESTO ,&#13;&#10;  COSTO_PROMEDIO ,&#13;&#10;  COSTO_NETO_TOTAL ,&#13;&#10;  COSTO_NETO_TOTAL_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_TOTAL_NOTA_CREDITO ,&#13;&#10;  COSTO_NETO_TOTAL_NOT_CRE_CON_IMP ,&#13;&#10;  COSTO_BRUTO_TOTAL_SIN_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_TOTAL_CON_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_TOTAL_COBRO_SIN_IMPUESTO ,&#13;&#10;  COSTO_BRUTO_TOTAL_COBRO_CON_IMPUESTO ,&#13;&#10;  VALOR_COBRO ,&#13;&#10;  VALOR_COBRO_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_TOTAL_COBRO ,&#13;&#10;  COSTO_NETO_TOTAL_COBRO_CON_IMPUESTO ,&#13;&#10;  COSTO_NETO_TOTAL_NOTA_CREDITO_COBRO ,&#13;&#10;  COSTO_NETO_TOTAL_NOT_CRE_COB_CON_IMP ,&#13;&#10;  COSTO_MARGEN_COBRO ,&#13;&#10;  COSTO_MARGEN_NOTA_CREDITO_COBRO ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO ,&#13;&#10;  PRECIO_POS_AFILIADO_TOTAL ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_TOTAL ,&#13;&#10;  PRECIO_POS_AFILIADO_TOTAL_CON_IMPUESTO ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_TOTAL_CON_IMPUESTO ,&#13;&#10;  PRECIO_POS_TOTAL_SIN_IMPUESTO ,&#13;&#10;  PRECIO_POS_TOTAL_CON_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_CANTIDAD_SIN_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_CANTIDAD_CON_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_PESO_SIN_IMPUESTO ,&#13;&#10;  PRECIO_PROMEDIO_PESO_CON_IMPUESTO ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO_CIMP ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO_CIMP ,&#13;&#10;  PRECIO_POS_UNITARIO_SIN_IMP ,&#13;&#10;  PRECIO_POS_UNITARIO_CON_IMP ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO_SADES ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO_SADES ,&#13;&#10;  PRECIO_POS_AFILIADO_UNITARIO_CIMPSADES ,&#13;&#10;  PRECIO_POS_NO_AFILIADO_UNITARIO_CIMPSADES ,&#13;&#10;  PRECIO_POS_UNITARIO_SIMPSADES ,&#13;&#10;  PRECIO_POS_UNITARIO_CIMPSADES ,&#13;&#10;  PRECIO_BASE_NO_AFILIADO ,&#13;&#10;  PRECIO_BASE_AFILIADO ,&#13;&#10;  PRECIO_BASE_NO_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_OFERTA_NO_AFILIADO ,&#13;&#10;  PRECIO_BASE_OFERTA_AFILIADO ,&#13;&#10;  PRECIO_BASE_OFERTA_NO_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_OFERTA_AFILIADO_CIMP ,&#13;&#10;  PRECIO_BASE_TIPO_CAUSAL ,&#13;&#10;  PRECIO_BASE_VALOR_CAUSAL ,&#13;&#10;  PORCENTAJE_IMPUESTO_IVA ,&#13;&#10;  PORCENTAJE_IMPUESTO_IVA_COSTO ,&#13;&#10;  ESTADO ,&#13;&#10;  ID_USUARIO_REGISTRO ,&#13;&#10;  FECHA_REGISTRO ,&#13;&#10;  ID_USUARIO_MODIFICACION ,&#13;&#10;  FECHA_MODIFICACION ,&#13;&#10;  ETL_STAMP&#13;&#10;  FROM `lafavorita-182519.BI_DSA.DSA_SCVENTARTCOBLOCDIA`&#13;&#10;WHERE FECHA_MODIFICACION &gt;= '2023-09-10 00:00:00'&#13;&#10;AND FECHA &gt;= con&#13;&#10;AND FECHA &gt;= '2021-04-30 00:00:00'&#13;&#10;AND CODIGO_COMPANIA = 1)&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
@@ -287,347 +289,122 @@
       <column comment="" defaultValue="" key="false" length="-1" name="ETL_STAMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="416" posY="224">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLogRow_1"/>
-    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
-    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
-    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE" show="false" value="true"/>
-    <elementParameter field="RADIO" name="PRINT_LABEL" show="false" value="false"/>
-    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" show="false" value="false"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" show="false" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="PRINT_HEADER" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" show="false" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_COLNAMES" show="false" value="false"/>
-    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" show="false" value="false"/>
-    <elementParameter field="TABLE" name="LENGTHS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_COMPANIA"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_ARTICULO_VENTA"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_AREA_TRABAJO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_ARTICULO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FECHA"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_BARRAS"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_CONTROL_COSTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_CONTROL_COSTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_CONTROL_VENTA"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_CONTROL_VENTA"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_PROVEEDOR"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_CLASIFICACION"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGO_SUBCLASIFICACION"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDAD_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDAD_NO_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDAD_TOTAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDAD_TOTAL_CHAROL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDAD_DESCUENTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PESO_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PESO_NO_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PESO_TOTAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PESO_DESCUENTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_TOTAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_TOTAL_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_TOTAL_IMPUESTO_COSTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_TOTAL_IMPUESTO_COBRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_IMPUESTO_DESCUENTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DESCUENTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DESCUENTO_BRUTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_UNITARIO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_CANTIDAD"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_PESO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_NOTA_CREDITO_UNITARIO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_NOTA_CREDITO_CANTIDAD"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_NOTA_CREDITO_CANTIDAD_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_NOTA_CREDITO_PESO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_NOTA_CREDITO_PESO_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_ACUMULADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_ACUMULADO_COBRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_CANTIDAD_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_PESO_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_UNITARIO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_CANTIDAD"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_PESO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_ACUMULADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_CANTIDAD_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_PESO_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_PROMEDIO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL_NOTA_CREDITO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL_NOT_CRE_CON_IMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_TOTAL_SIN_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_TOTAL_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_TOTAL_COBRO_SIN_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_BRUTO_TOTAL_COBRO_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_COBRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR_COBRO_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL_COBRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL_COBRO_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL_NOTA_CREDITO_COBRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_NETO_TOTAL_NOT_CRE_COB_CON_IMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_MARGEN_COBRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COSTO_MARGEN_NOTA_CREDITO_COBRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_AFILIADO_UNITARIO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_NO_AFILIADO_UNITARIO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_AFILIADO_TOTAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_NO_AFILIADO_TOTAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_AFILIADO_TOTAL_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_NO_AFILIADO_TOTAL_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_TOTAL_SIN_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_TOTAL_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_PROMEDIO_CANTIDAD_SIN_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_PROMEDIO_CANTIDAD_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_PROMEDIO_PESO_SIN_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_PROMEDIO_PESO_CON_IMPUESTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_AFILIADO_UNITARIO_CIMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_NO_AFILIADO_UNITARIO_CIMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_UNITARIO_SIN_IMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_UNITARIO_CON_IMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_AFILIADO_UNITARIO_SADES"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_NO_AFILIADO_UNITARIO_SADES"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_AFILIADO_UNITARIO_CIMPSADES"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_NO_AFILIADO_UNITARIO_CIMPSADES"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_UNITARIO_SIMPSADES"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_POS_UNITARIO_CIMPSADES"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_NO_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_NO_AFILIADO_CIMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_AFILIADO_CIMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_OFERTA_NO_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_OFERTA_AFILIADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_OFERTA_NO_AFILIADO_CIMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_OFERTA_AFILIADO_CIMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_TIPO_CAUSAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PRECIO_BASE_VALOR_CAUSAL"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PORCENTAJE_IMPUESTO_IVA"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PORCENTAJE_IMPUESTO_IVA_COSTO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ID_USUARIO_REGISTRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FECHA_REGISTRO"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ID_USUARIO_MODIFICACION"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FECHA_MODIFICACION"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_STAMP"/>
-      <elementValue elementRef="LENGTH" value="10"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="100"/>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="96">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="input_row.Fecha_Proceso_Inicial.setHours(0);&#10;&#10;input_row.Fecha_Proceso_Inicial.setMinutes(0);&#10;&#10;input_row.Fecha_Proceso_Inicial.setSeconds(0);&#10;&#10;&#10;&#10;// Fecha con hora de inicio a las 00:00&#10;&#10;java.util.Date fechaInicio = input_row.Fecha_Proceso_Inicial;&#10;&#10;&#10;// Establecer la hora a las 23:59&#10;&#10;input_row.Fecha_Proceso.setHours(23);&#10;&#10;input_row.Fecha_Proceso.setMinutes(59);&#10;&#10;input_row.Fecha_Proceso.setSeconds(59);&#10;&#10;&#10;// Fecha con hora de finalización a las 23:59&#10;&#10;java.util.Date fechaFin = input_row.Fecha_Proceso;&#10;&#10;&#10;// Formatear las fechas como cadenas en el formato deseado (por ejemplo, &quot;yyyy-MM-dd HH:mm:ss&quot;)&#10;&#10;SimpleDateFormat  dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);&#10;&#10;String fechaInicioFormateada = dateFormat.format(fechaInicio);&#10;&#10;String fechaFinFormateada = dateFormat.format(fechaFin);&#10;&#10;&#10;java.sql.Timestamp timestampInicio = java.sql.Timestamp.valueOf(fechaInicioFormateada);&#10;&#10;java.sql.Timestamp timestampFin = java.sql.Timestamp.valueOf(fechaFinFormateada);&#10;&#10;&#10;&#10;&#10;// Asignar las fechas formateadas a las salidas del componente&#10;&#10;//output_row.fechaInicio = fechaInicioFormateada;&#10;&#10;//output_row.fechaFin = fechaFinFormateada;&#10;&#10;context.fecha_Proceso = input_row.Fecha_Proceso_Inicial; //fecha de carga de las ventas por defecto anterior&#10;context.bandera_Procesados = 0;&#10;context.bandera_No_Procesados = 1;&#10;context.fecha_Proceso_IniL = fechaInicioFormateada;&#10;context.fecha_Proceso_FinL = fechaFinFormateada;&#10;context.fecha_Proceso_Llni_Mig = &quot;2021-04-30 00:00:00&quot;;&#10;&#10;&#10;System.out.println(&quot;Fecha de carga&quot;+context.fecha_Proceso );&#10;&#10;System.out.println(&quot;Busqueda de cambios en las ventas entre: &quot;+ context.fecha_Proceso_IniL +&quot; y &quot;+context.fecha_Proceso_FinL);&#10;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tLogRow_1">
-      <column comment="" defaultValue="" key="false" length="-1" name="CODIGO_COMPANIA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CODIGO_ARTICULO_VENTA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CODIGO_AREA_TRABAJO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="CODIGO_ARTICULO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FECHA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="CODIGO_BARRAS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CODIGO_CONTROL_COSTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="VALOR_CONTROL_COSTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CODIGO_CONTROL_VENTA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="VALOR_CONTROL_VENTA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="CODIGO_PROVEEDOR" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="CODIGO_CLASIFICACION" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CODIGO_SUBCLASIFICACION" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CANTIDAD_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CANTIDAD_NO_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CANTIDAD_TOTAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CANTIDAD_TOTAL_CHAROL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="CANTIDAD_DESCUENTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PESO_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PESO_NO_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PESO_TOTAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PESO_DESCUENTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALOR_TOTAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALOR_TOTAL_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALOR_TOTAL_IMPUESTO_COSTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALOR_TOTAL_IMPUESTO_COBRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALOR_IMPUESTO_DESCUENTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DESCUENTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="DESCUENTO_BRUTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_UNITARIO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_CANTIDAD" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_PESO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_NOTA_CREDITO_UNITARIO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_NOTA_CREDITO_CANTIDAD" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_NOTA_CREDITO_CANTIDAD_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_NOTA_CREDITO_PESO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_NOTA_CREDITO_PESO_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_ACUMULADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_ACUMULADO_COBRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_CANTIDAD_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_PESO_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_UNITARIO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_CANTIDAD" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_PESO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_ACUMULADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_CANTIDAD_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_PESO_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_PROMEDIO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL_NOTA_CREDITO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL_NOT_CRE_CON_IMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_TOTAL_SIN_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_TOTAL_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_TOTAL_COBRO_SIN_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_BRUTO_TOTAL_COBRO_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALOR_COBRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALOR_COBRO_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL_COBRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL_COBRO_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL_NOTA_CREDITO_COBRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_NETO_TOTAL_NOT_CRE_COB_CON_IMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_MARGEN_COBRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="COSTO_MARGEN_NOTA_CREDITO_COBRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_AFILIADO_UNITARIO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_NO_AFILIADO_UNITARIO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_AFILIADO_TOTAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_NO_AFILIADO_TOTAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_AFILIADO_TOTAL_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_NO_AFILIADO_TOTAL_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_TOTAL_SIN_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_TOTAL_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_PROMEDIO_CANTIDAD_SIN_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_PROMEDIO_CANTIDAD_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_PROMEDIO_PESO_SIN_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_PROMEDIO_PESO_CON_IMPUESTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_AFILIADO_UNITARIO_CIMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_NO_AFILIADO_UNITARIO_CIMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_UNITARIO_SIN_IMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_UNITARIO_CON_IMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_AFILIADO_UNITARIO_SADES" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_NO_AFILIADO_UNITARIO_SADES" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_AFILIADO_UNITARIO_CIMPSADES" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_NO_AFILIADO_UNITARIO_CIMPSADES" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_UNITARIO_SIMPSADES" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_POS_UNITARIO_CIMPSADES" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_NO_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_NO_AFILIADO_CIMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_AFILIADO_CIMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_OFERTA_NO_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_OFERTA_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_OFERTA_NO_AFILIADO_CIMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_OFERTA_AFILIADO_CIMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_TIPO_CAUSAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="INT64" type="id_Long" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PRECIO_BASE_VALOR_CAUSAL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PORCENTAJE_IMPUESTO_IVA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="PORCENTAJE_IMPUESTO_IVA_COSTO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ESTADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ID_USUARIO_REGISTRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="FECHA_REGISTRO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ID_USUARIO_MODIFICACION" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="FECHA_MODIFICACION" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ETL_STAMP" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+    <metadata connector="FLOW" name="tJavaRow_1"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="64" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;**************** 1 INICIA BORRADO TABLA CONTROL FECHAS MENSUALIZADOS ***************&quot;);&#10;&#10;System.out.println(&quot;**************** 2 INICIA BORRADO TABLA TEMPORAL LOG ***************&quot;);&#10;System.out.println(&quot;&quot;);&#10;&#10;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="MSG_INICIO"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_1"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="352" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;&quot;);&#10;System.out.println(&quot;**************** 1  FINALIZA BORRADO TABLA CONTROL FECHAS MENSUALIZADOS ***************&quot;);&#10;&#10;System.out.println(&quot;**************** 2 FINALIZA BORRADO TABLA TEMPORAL LOG ***************&quot;);&#10;System.out.println(&quot;&quot;);&#10;&#10;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="MSG_FIN"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_2"/>
+  </node>
+  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="192" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryInput_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="bigquery_id"/>
+    <elementParameter field="DYNAMIC_GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:sd/TXmaOWeI9EB6S+u9HufvapwgRv4M/CdWZLusz"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:JQUBeFhlr+6tKJDFZIMbY5+vNZnK7GZ2Gq6UoxDI"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;DELETE FROM `lafavorita-182519.BI_DSA.DSA_FECHAS_PROCESO_VTA` WHERE TRUE&#13;&#10;&#13;&#10;&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="USE_CUSTOM_TEMPORARY_DATASET" show="false" value="false"/>
+    <elementParameter field="TEXT" name="TEMPORARY_DATASET_NAME" show="false" value="&quot;temp_dataset&quot;"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQueryInput_2">
+      <column comment="" key="false" length="-1" name="newColumn" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tFixedFlowInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="192">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFixedFlowInput_1"/>
+    <elementParameter field="TEXT" name="NB_ROWS" value="1"/>
+    <elementParameter field="RADIO" name="USE_SINGLEMODE" value="true"/>
+    <elementParameter field="TABLE" name="VALUES">
+      <elementValue elementRef="SCHEMA_COLUMN" value="fecha_Proceso_IniL"/>
+      <elementValue elementRef="VALUE" value="context.fecha_Proceso_IniL"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="fecha_Proceso"/>
+      <elementValue elementRef="VALUE" value="context.fecha_Proceso"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="fecha_Proceso_FinL"/>
+      <elementValue elementRef="VALUE" value="context.fecha_Proceso_FinL"/>
+    </elementParameter>
+    <elementParameter field="RADIO" name="USE_INTABLE" value="false"/>
+    <elementParameter field="TABLE" name="INTABLE" show="false"/>
+    <elementParameter field="RADIO" name="USE_INLINECONTENT" value="false"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" show="false" value="&quot;;&quot;"/>
+    <elementParameter field="MEMO" name="INLINECONTENT" show="false" value=""/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFixedFlowInput_1">
+      <column comment="" key="false" length="2000" name="fecha_Proceso_IniL" nullable="true" originalLength="2000" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="fecha_Proceso_FinL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tBufferOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="192">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBufferOutput_1"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBufferOutput_1">
+      <column comment="" key="false" length="2000" name="fecha_Proceso_IniL" nullable="true" originalLength="2000" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="fecha_Proceso_FinL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tRowGenerator_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
-  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tRowGenerator_1" offsetLabelX="0" offsetLabelY="0" source="tRowGenerator_1" target="tJavaRow_1">
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tRowGenerator_1" offsetLabelX="0" offsetLabelY="0" source="tRowGenerator_1" target="tJavaRow_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
-  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tLogRow_1">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_2" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_2" target="tFixedFlowInput_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tBigQueryInput_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryInput_2" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_2" target="tJava_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
+  </connection>
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tFixedFlowInput_1" offsetLabelX="0" offsetLabelY="0" source="tFixedFlowInput_1" target="tBufferOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="fecha_Proceso_FinL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
@@ -647,13 +424,38 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d7bfc9fc-d127-49f4-9151-5fc67be62baf"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fQyZWs+VV7uMzvQwL66ZHr21/XQnpSsT8uxmdBOpUTt9QUsLQBYG8rX7pX8ZPkpd13cnRQOvVG2f&#13;
-7guS1SoJtQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_bdead0c7-4153-45f3-a094-18f0f4f7bc8a"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>o34ZPBsYlBB4O5xtGvVjWP+ShVNknIIyNPXVajBUprHLH1RiKXMJ877hghuu1Uytyui1jqZxSgGV&#13;
-eeDLezcV1w==</DigestValue></Reference></SignedInfo><SignatureValue>HYh9xTPAZgaxBuS1Z5jGNl0h0KfyWl6OHM9DW2souqkXm5BCWzlfNERqsIVBJrZOUGawTK6TtObx&#13;
-UL2POis+LQqsUiHVxZlDVlutOYMDkoeliyOnHNEnqaw9Ty/2qbdzBdItDhMivkkGKBSSMaYF7uQy&#13;
-eyScicNPRnvH9kGkIOoFR5f1oN5prr6LGhqxNSV8mrtAe8zaaBQHdCRPpevkaolm0sSoqCjwESa0&#13;
-iDHp/uyOtrpuK8b00RIRnJ4B51X4x7fDHwU9Ne8h8tmZxBqgKUX8tuke4gZ4J0+5Zp3o3tcvw3ni&#13;
-ZB1nv/7xFG5Jnf3PpglH3S16CZ2tejIVouLxqg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryInput_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFixedFlowInput_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_432378db-7080-4ec1-a1ff-cd295f9e0400"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Rxh1+duie2LSA7Fm35En8xvtLjf7IBG7So7emWEQzhza686BCfOt/3RCYmxGaoOI/S3HNfH/WoZ6&#13;
+z6Y1Hvi+3g==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_70c2f529-be90-407c-bb7d-2f05cd6b4e36"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>UTyO7Yjte+VDwGKiTauqecTzfDcPgyBBAFXVzJz8gc/VwfPoWgGspD5bNuGZ1/JUb3jsWPSyBq+1&#13;
+oqOgVh6l1w==</DigestValue></Reference></SignedInfo><SignatureValue>e55baJFKlDlOomDLFolKq27aI4q0MHnIQS1dGo77cFn1dSJnh2bA1jzCqix+/MOLiUmjGojUs9b/&#13;
+OacGlyA3wcoVhMmWYuAoujFerGiKJadYt6n2OPk66iJ0s4WtYuVHBt7yrA+iTLFpWb9U7mTX4cEl&#13;
+OQkoVwP5DN9NjkPU1y+engdMi49mPevecRTaMaG7bUGtIA6KEy7oQUKnev888jDpGr4guzh58jnk&#13;
+2iWu5oiUDRoOSI7YM4W5Vcs4fvubcZlLWsC83dM2WGcn33nF7LGQudHMiEe55H/x3L0Sh/ATDX7a&#13;
+T+eHE/a5T8VgprURn1AkoEIxJWCKfZCZjWOSjA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -675,4 +477,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_bdead0c7-4153-45f3-a094-18f0f4f7bc8a" Target="#_d7bfc9fc-d127-49f4-9151-5fc67be62baf"><Timestamp>2023-09-11 16:31:20</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_70c2f529-be90-407c-bb7d-2f05cd6b4e36" Target="#_432378db-7080-4ec1-a1ff-cd295f9e0400"><Timestamp>2023-09-21 21:08:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
