@@ -2,7 +2,7 @@
   <context confirmationNeeded="false" name="Default">
     <contextParameter comment="" internalId="_LflMwE27Ee6XW9A9Vo6VzA" name="fecha_Proceso_IniL" prompt="fecha_Proceso_IniL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
     <contextParameter comment="" internalId="_LflMwU27Ee6XW9A9Vo6VzA" name="fecha_Proceso_FinL" prompt="fecha_Proceso_FinL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
-    <contextParameter comment="" internalId="_LflMwk27Ee6XW9A9Vo6VzA" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Date" value=""/>
+    <contextParameter comment="" internalId="_LflMwk27Ee6XW9A9Vo6VzA" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
     <contextParameter comment="" internalId="_LflMw027Ee6XW9A9Vo6VzA" name="fecha_Proceso_Llni_Mig" prompt="fecha_Proceso_Llni_Mig?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="&quot;'2021-04-30 00:00:00'&quot;"/>
     <contextParameter comment="" internalId="_LflMxE27Ee6XW9A9Vo6VzA" name="bandera_Procesados" prompt="bandera_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0"/>
     <contextParameter comment="" internalId="_LflMxU27Ee6XW9A9Vo6VzA" name="bandera_No_Procesados" prompt="bandera_No_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0"/>
@@ -11,7 +11,7 @@
   <context confirmationNeeded="false" name="Reprocesos">
     <contextParameter comment="" internalId="_LflMwE27Ee6XW9A9Vo6VzA" name="fecha_Proceso_IniL" prompt="fecha_Proceso_IniL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
     <contextParameter comment="" internalId="_LflMwU27Ee6XW9A9Vo6VzA" name="fecha_Proceso_FinL" prompt="fecha_Proceso_FinL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
-    <contextParameter comment="" internalId="_LflMwk27Ee6XW9A9Vo6VzA" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Date" value="2022-01-31"/>
+    <contextParameter comment="" internalId="_LflMwk27Ee6XW9A9Vo6VzA" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
     <contextParameter comment="" internalId="_LflMw027Ee6XW9A9Vo6VzA" name="fecha_Proceso_Llni_Mig" prompt="fecha_Proceso_Llni_Mig?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="&quot;'2021-04-30 00:00:00'&quot;"/>
     <contextParameter comment="" internalId="_LflMxE27Ee6XW9A9Vo6VzA" name="bandera_Procesados" prompt="bandera_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0"/>
     <contextParameter comment="" internalId="_LflMxU27Ee6XW9A9Vo6VzA" name="bandera_No_Procesados" prompt="bandera_No_Procesados?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0"/>
@@ -326,7 +326,6 @@
   </node>
   <node componentName="tFixedFlowInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFixedFlowInput_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="TEXT" name="NB_ROWS" value="1"/>
     <elementParameter field="RADIO" name="USE_SINGLEMODE" value="true"/>
     <elementParameter field="TABLE" name="VALUES">
@@ -349,6 +348,17 @@
     <elementParameter field="MEMO" name="INLINECONTENT" show="false" value=""/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFixedFlowInput_1">
+      <column comment="" key="false" length="2000" name="fecha_Proceso_IniL" nullable="true" originalLength="2000" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="fecha_Proceso_FinL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="bandera_Procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="bandera_No_Procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tBufferOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="192">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBufferOutput_1"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBufferOutput_1">
       <column comment="" key="false" length="2000" name="fecha_Proceso_IniL" nullable="true" originalLength="2000" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="fecha_Proceso_FinL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
@@ -387,17 +397,6 @@
       <column comment="" key="false" length="-1" name="bandera_No_Procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBufferOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="512" posY="192">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBufferOutput_1"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tBufferOutput_1">
-      <column comment="" key="false" length="2000" name="fecha_Proceso_IniL" nullable="true" originalLength="2000" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="fecha_Proceso" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="fecha_Proceso_FinL" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="bandera_Procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="bandera_No_Procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
-    </metadata>
-  </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tRowGenerator_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
@@ -420,7 +419,6 @@
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tRowGenerator_1" offsetLabelX="0" offsetLabelY="0" source="tRowGenerator_1" target="tJavaRow_2">
@@ -428,7 +426,6 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_2" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_2" target="tFixedFlowInput_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
   </connection>
   <subjob>
@@ -472,18 +469,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBufferOutput_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
-  </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_372ec0d9-d028-4438-8537-d9d91052b221"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>6NSwfmV5ULxfYC9Wm4ciRFaydRr3k+2QhDnNHdp1BccE36bCI7vwXEQt5qxw95fi0O4swpdF2im5&#13;
-wDTbFvqVEQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_bd65621b-aae0-4f58-b529-7d41ef07b652"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Lc3uzw2SjKAyq3sYjv8pIaM9841Em/msBqJdktT6oLZ57XRR2IjrXAsfVl3dtUteNIQSPR0RT9bm&#13;
-zBmgTyHDxg==</DigestValue></Reference></SignedInfo><SignatureValue>MtvkFUURz/CLoZUdx5S8mOQWuv9xoW2LMsmbTAiQ+hen558K4GxiQyz+tjpOD8NGJszvWffZ8itp&#13;
-sGGA61laHx1mOKBsGvLFdeFNrtsuSZVTCJDiVfFOX3i1XBBNsZGaIetrDezgMXgefWPScrPbfyC5&#13;
-QwftU32cznNpLAStBpKWVpaADgDfaF2JnKd6mfSA0slzrEILKwl7KkhVI8UFkKWtLw1A5djFQz5N&#13;
-bzERgx1nlAxU2eZwmGZQIKIESINcGCSISENVc0iE1Yxa3qySBcTjkNOPvqhCsfZQUVRH104mSl+1&#13;
-e7z0P6a7wVmnHrZzEXwcHxNNVLLXOM0bU1/3mw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_de400fa4-6123-41f5-8205-510e04d954f3"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>lh63fWWax1XZMsQCXZnszfl0Wj8vTQFgaP11BRl/ehhmhhL18S6g9xwbXqBumQ7IufMpn3RLv1R0&#13;
+v7x8A8ndew==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_70388eb5-b34a-4836-96ca-4d7ad7a9dd4e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>GrRCCqLB6qzD8mLK6ZocIFFSb0aYAlGnNngmEvuqItgF3ZRFezc4xIRudlbgKn6eBUD4p7XzA4SP&#13;
+rtE5qdlOAg==</DigestValue></Reference></SignedInfo><SignatureValue>i2absOxCuUtUSHMC9qjnGnmrCJx+ImKXrI4xX6m0UsPqrl4hy1eeLANjf+SFc/4JtVoTYkwV8qMx&#13;
++6cc8KgptfSfiUGlvIxXdUir7WGEET6NrtN2oVCtTJAZiq9Ux8w1Az56XHgdaLkc56DeuDgHXFiL&#13;
+mO6lHbsQdDJZhKk2+tzIkidjRa2ZTzSuH4qZNUQgKJmZhKACVLKeOi6Goo7rYNbzLXpv3aHqMZJH&#13;
+QG2ovf70BUIde0bgo2afY+7IFPHUH5qnWl7sxD2mkIE1RDo44Vv6Y5N6BBtusdFU3tvijJa0Jjcp&#13;
+cb0fmMbZMmzadnier9CIWbYpXkEMz7nN9FifUQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -505,4 +497,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_bd65621b-aae0-4f58-b529-7d41ef07b652" Target="#_372ec0d9-d028-4438-8537-d9d91052b221"><Timestamp>2023-09-29 22:00:07</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_70388eb5-b34a-4836-96ca-4d7ad7a9dd4e" Target="#_de400fa4-6123-41f5-8205-510e04d954f3"><Timestamp>2023-09-29 22:11:54</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
