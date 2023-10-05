@@ -209,7 +209,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="-64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;banderas&quot;+context.bandera_Procesados);&#10;&#10;&#10;System.out.println(&quot;Llegue al JOB &quot;);&#10;&#10;System.out.println(&quot;Tbandera inicial&quot;+context.bandera_Local_Ini);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;bandera Procesados&quot;+context.bandera_Procesados);&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
@@ -249,7 +249,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="736" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.bandera_Procesados = Integer.parseInt(input_row.ban_procesados);&#10;context.bandera_No_Procesados = Integer.parseInt(input_row.ban_no_procesados);&#10;&#10;&#10;&#10;if (context.bandera_Procesados != null &amp;&amp; context.bandera_Procesados &gt; 0) {&#10;&#10;&#9;&#9;context.bandera_Local_Ini = 55;&#10;&#9;&#9;&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;***************Existen locales generados, empieza a procesar Ventas: N &quot;+context.bandera_Procesados+&quot;***************&quot;);&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;Existen locales generados&quot;);&#10;&#9;&#9;&#10;&#9;&#9;globalMap.put(&quot;bandera_Procesados&quot;, context.bandera_Procesados);&#10;&#9;&#9;&#10;}&#10;&#9;&#9;&#10;else {&#10;    &#10;        context.bandera_Local_Ini = context.bandera_Local_Ini + 1;&#10;&#10;        System.out.println(&quot;*********************&quot;);&#10;&#10;        System.out.println(&quot;No existen locales generados, esperando a que se genere al menos 1 local para procesar Ventas: N°  &quot; + context.bandera_Procesados);&#10;&#10;        System.out.println(&quot;********************* INICIA ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        System.out.println(&quot;********************* FIN ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        try {&#10;&#10;            Thread.sleep(6000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#10;&#10;        } catch (InterruptedException e) {&#10;&#10;            // Manejar la excepción si es necesario&#10;    &#9;}&#10;    }&#10;&#10;&#13;&#10;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.bandera_Procesados = Integer.parseInt(input_row.ban_procesados);&#10;context.bandera_No_Procesados = Integer.parseInt(input_row.ban_no_procesados);&#10;&#10;&#10;&#10;if (context.bandera_Procesados != null &amp;&amp; context.bandera_Procesados &gt; 0) {&#10;&#10;&#9;&#9;context.bandera_Local_Ini = 55;&#10;&#9;&#9;&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;*************** Existen locales generados, empieza a procesar Ventas: N &quot;+context.bandera_Procesados+&quot; ***************&quot;);&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;Existen locales generados&quot;);&#10;&#9;&#9;&#10;&#9;&#9;globalMap.put(&quot;bandera_Procesados&quot;, context.bandera_Procesados);&#10;&#9;&#9;&#10;}&#10;&#9;&#9;&#10;else {&#10;    &#10;        context.bandera_Local_Ini = context.bandera_Local_Ini + 1;&#10;&#10;        System.out.println(&quot;*********************&quot;);&#10;&#10;        System.out.println(&quot;No existen locales generados, esperando a que se genere al menos 1 local para procesar Ventas: N°  &quot; + context.bandera_Procesados);&#10;&#10;        System.out.println(&quot;********************* INICIA ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        System.out.println(&quot;********************* FIN ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        try {&#10;&#10;            Thread.sleep(6000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#10;&#10;        } catch (InterruptedException e) {&#10;&#10;            // Manejar la excepción si es necesario&#10;    &#9;}&#10;    }&#10;&#10;&#13;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="Locales Procesados"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -272,6 +272,7 @@
     <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
     <elementParameter field="TEXT" name="FIELDSEPARATOR" show="false" value="&quot;;&quot;"/>
     <elementParameter field="MEMO" name="INLINECONTENT" show="false" value=""/>
+    <elementParameter field="TEXT" name="LABEL" value="Inicializa variables"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFixedFlowInput_1">
       <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
@@ -282,15 +283,6 @@
     <elementParameter field="TEXT" name="LABEL" value="Variables"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBufferOutput_1">
-      <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="960" posY="224">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_2"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;no procesados&quot;+input_row.ban_procesados);&#13;&#10;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJavaRow_2">
       <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
@@ -318,10 +310,6 @@
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tFixedFlowInput_1" offsetLabelX="0" offsetLabelY="0" source="tFixedFlowInput_1" target="tBufferOutput_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
-  </connection>
-  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tBufferOutput_1" offsetLabelX="0" offsetLabelY="0" source="tBufferOutput_1" target="tJavaRow_2">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLoop_1"/>
@@ -354,13 +342,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c7f32732-75e3-4ddf-922a-b3163951274e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>QxsolQ3ZnRi0/hQxJu5C6Lc4dl//r2Due3AuAys2jLoFSPwZQe9XeVQIBJudK01m052VG6hQU/Vb&#13;
-wLelVoDUAw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_c77340d9-1244-4c25-964c-abd57121bfba"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4DFrRkv0+L4Oq/EHGyKxljjEQArDWqw1GJylOxCANgVyvVxXCUWAZpgQF8dq1RMqKEN3G7vTmQr0&#13;
-Aid3S74VRQ==</DigestValue></Reference></SignedInfo><SignatureValue>IoO7tgelyuGA9PvdBvxuRFfLTe7yl5+vgIbETwCIe+0ul4uAeCzvle/+Ct7kZ47TlAfUAQVce3NL&#13;
-sBBslwA/rcXHO9KIzREDaE/v2W7hb7T2g5BvJ8si6dSYmXQHDX0e0MQ0MlRKitlrEYZPo/hSlDML&#13;
-3BG/1l7wX1uLF9Z0TVetWVIqbjGj2UFLRnVtbpOm0VFLRThSdvB2GkCuTXQVHXxWqBC1egSjYSig&#13;
-zvpGNQPhrmse4SX1EtW9zSSYcmzeDp3jIchlsgNT+XLtZSK8xiuQKNCx+8be/6q627fT1aP1U3Fs&#13;
-uETzXSD8HeI8ZAc7EkiVGu8tC3RRHFOhAOfWpA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_587c9d90-15a2-4338-a8cd-b0bddf942764"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>l1c1E8FDbT7uFiYV2mQ+XvG36KdyNE4u5F6bHtTyff7uYA85NSI6hhsehN7pd+IGEcc1DC/2v948&#13;
+IcVC40oaAw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_1343f9dd-2bc7-4ae0-a2cc-fe8d15ebc70d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>qU5aW7E7Q0DyJLruIDfLRKNVGlc39EWRAHMyX5QvBpEGrTpes4+pQQSj7lvFYFmkZvzjPL2jftVW&#13;
+YOdjM44jfg==</DigestValue></Reference></SignedInfo><SignatureValue>Rd6zJgpfxPDKnMeil+nB3zVQCkSPqcZosKDfmtzfZroB4xGK9LjiotjGlvOUNZHvbE17omsNileJ&#13;
+PNPaM7EnftBxiH9xDv69o25375MB119b5F9LsHqE+QIsobHi9xijM9TJbKeyTODMxQu8KgcjzhxV&#13;
+EEF2cfuVwFlUZl14F/oFjEByZPhVv2OtRlxdkqNomdsnHEAKM/0GMv7TRRBCJ6tQAoSqbD8yLVT1&#13;
+tKN4UrvmIE7fS+u0wis07OU1EnvtIpFVZCJVsqSA1lO7xCgusGcd95yNzrMsWm45VCvM1U/0KO1H&#13;
+02K6VSR6tBQp5cEueLnNodLR0ibuht1V+L7UQw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -382,4 +370,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_c77340d9-1244-4c25-964c-abd57121bfba" Target="#_c7f32732-75e3-4ddf-922a-b3163951274e"><Timestamp>2023-10-02 17:43:57</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_1343f9dd-2bc7-4ae0-a2cc-fe8d15ebc70d" Target="#_587c9d90-15a2-4338-a8cd-b0bddf942764"><Timestamp>2023-10-05 16:16:39</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
