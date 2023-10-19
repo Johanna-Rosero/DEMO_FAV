@@ -219,8 +219,9 @@
     <elementParameter field="TEXT" name="LABEL" value="START"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="64">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="672" posY="-64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:Fi9NFc91JYFZH7M3Z0p/WliY+hFvgxkgAnDZ8lQP"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -243,17 +244,6 @@
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_1">
-      <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ban_no_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="736" posY="64">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.bandera_Procesados = Integer.parseInt(input_row.ban_procesados);&#10;context.bandera_No_Procesados = Integer.parseInt(input_row.ban_no_procesados);&#10;&#10;&#10;&#10;if (context.bandera_Procesados != null &amp;&amp; context.bandera_Procesados &gt; 0) {&#10;&#10;&#9;&#9;context.bandera_Local_Ini = 55;&#10;&#9;&#9;&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;*************** Existen locales generados, empieza a procesar Ventas: N &quot;+context.bandera_Procesados+&quot; ***************&quot;);&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;Existen locales generados&quot;);&#10;&#9;&#9;&#10;&#9;&#9;globalMap.put(&quot;bandera_Procesados&quot;, context.bandera_Procesados);&#10;&#9;&#9;&#10;}&#10;&#9;&#9;&#10;else {&#10;    &#10;        context.bandera_Local_Ini = context.bandera_Local_Ini + 1;&#10;&#10;        System.out.println(&quot;*********************&quot;);&#10;&#10;        System.out.println(&quot;No existen locales generados, esperando a que se genere al menos 1 local para procesar Ventas: N°  &quot; + context.bandera_Procesados);&#10;&#10;        System.out.println(&quot;********************* INICIA ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        System.out.println(&quot;********************* FIN ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        try {&#10;&#10;            Thread.sleep(6000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#10;&#10;        } catch (InterruptedException e) {&#10;&#10;            // Manejar la excepción si es necesario&#10;    &#9;}&#10;    }&#10;&#10;&#13;&#10;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="LABEL" value="Locales Procesados"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJavaRow_1">
       <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ban_no_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
@@ -286,12 +276,61 @@
       <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="512" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="jt400-9.8.jar"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;B105FAB2&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:YMFaFVCg7xcGJQK2WAPWjBpst+keTVGgs+XTS/300agPek6yrHg="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;SELECT&#13;&#10;&#13;&#10;  (SELECT COUNT(*) FROM SMXSIC.SBVMXTSALLOCPROMAX_2) AS ban_procesados,&#13;&#10;&#13;&#10;  (SELECT COUNT(*) FROM SMXSIC.SBVMXTLOCNOPROMAX_2 ) AS ban_no_procesados&#13;&#10;&#13;&#10;FROM SYSIBM.SYSDUMMY1&#13;&#10;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="ban_procesados"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ban_no_procesados"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="PROCESADOS Y NO PROCESADOS"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_1">
+      <column comment="" key="false" length="10" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="ban_no_procesados" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="736" posY="64">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.bandera_Procesados = Integer.parseInt(input_row.ban_procesados);&#10;context.bandera_No_Procesados = Integer.parseInt(input_row.ban_no_procesados);&#10;&#10;&#10;&#10;if (context.bandera_Procesados != null &amp;&amp; context.bandera_Procesados &gt; 0) {&#10;&#10;&#9;&#9;context.bandera_Local_Ini = 55;&#10;&#9;&#9;&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;*************** Existen locales generados, empieza a procesar Ventas: N &quot;+context.bandera_Procesados+&quot; ***************&quot;);&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;Existen locales generados&quot;);&#10;&#9;&#9;&#10;&#9;&#9;globalMap.put(&quot;bandera_Procesados&quot;, context.bandera_Procesados);&#10;&#9;&#9;&#10;}&#10;&#9;&#9;&#10;else {&#10;    &#10;        context.bandera_Local_Ini = context.bandera_Local_Ini + 1;&#10;&#10;        System.out.println(&quot;*********************&quot;);&#10;&#10;        System.out.println(&quot;No existen locales generados, esperando a que se genere al menos 1 local para procesar Ventas: N°  &quot; + context.bandera_Procesados);&#10;&#10;        System.out.println(&quot;********************* INICIA ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        System.out.println(&quot;********************* FIN ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        try {&#10;&#10;            Thread.sleep(6000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#10;&#10;        } catch (InterruptedException e) {&#10;&#10;            // Manejar la excepción si es necesario&#10;    &#9;}&#10;    }&#10;&#10;&#13;&#10;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="Locales Procesados"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJavaRow_1">
+      <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ban_no_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tRunJob_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" show="false" value="2"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="iterate1"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tBigQuerySQLRow_1">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tDBInput_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tLoop_1">
@@ -300,18 +339,18 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tJava_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
-  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tJavaRow_1">
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tFixedFlowInput_1" offsetLabelX="0" offsetLabelY="0" source="tFixedFlowInput_1" target="tBufferOutput_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
+  </connection>
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tJavaRow_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_1" target="tFixedFlowInput_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
   </connection>
-  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tFixedFlowInput_1" offsetLabelX="0" offsetLabelY="0" source="tFixedFlowInput_1" target="tBufferOutput_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
-  </connection>
-  <note opaque="true" posX="416" posY="160" sizeHeight="64" sizeWidth="193" text="Cambiar por tablas en DB2"/>
+  <note opaque="true" posX="96" posY="192" sizeHeight="64" sizeWidth="193" text="Cambiar por tablas en DB2 creadas para las pruebas. "/>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLoop_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
@@ -343,13 +382,18 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_776f586c-28a3-42c1-bccd-86839316add4"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>QZS0Abmfcjm8ta/EymFSXmvzjdH35Q7OXYwCxhS/BUv//BNf3Ocy75uWe+ZCEIoxC0GnzYY9sNBx&#13;
-16TFRxY05g==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b225ac06-71a2-47d6-8a43-8531e4dab3eb"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>VBN4YIovmP1GTblHL3jzvpzRSQq9HtyV0f78sHG/vKa87dvZMOG2a2bRB987yopPwkSVFGx5/kpJ&#13;
-eg6wzNZBlw==</DigestValue></Reference></SignedInfo><SignatureValue>BjVV0jZegos0A+a0uP8sMy1nbMZJ34apzUx1TTlMM6SKN+sxiMb/MyuNT2cgZS/qdRrwDetNylHT&#13;
-JnDNdSG/xWDNxytDmvIYVnrEMbt5GIHvcmcaWrc662C12Wru3hqTfTM2ddE7+fO5HwZpnFt7lHBL&#13;
-Ua/8IXciC23f3S4kIHlCRL2Tq7AKtaAmWK+KiX8FGK7cBPi68PDkCdptwh0VXJ6Fg++iSoZMWiqt&#13;
-hRCKxC7AiKdDqQM69unza0pX4m6c4AqvkI3jv1JyhVZgicPxWnE5HaTeqwSr0ZOxKpd9pCdf40mt&#13;
-HzVrLIs5YWJ1hw89TPWI9b9q6IPCidX7GCFTWg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c179b45a-ddcd-49f0-a1b1-d4e7b180ef61"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>QfqgmTz/WLiLMf89b3XzLR7R/In1aifajjp4LCz0007rZfx2Mt4JYlI5i5Fa9hB6jUsX7BXG57H5&#13;
+tgjeHo1rCQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_3e588493-3f21-4b88-a6c6-e70a6b69fab1"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>mAdIMBDJiw5Ur1RdAEpHhEKcus0qaf+68wss0TvN0+gXOtsZ1wtJppS6glaPDHS5eAOLo+fFn8vK&#13;
+XsnGVHXX+A==</DigestValue></Reference></SignedInfo><SignatureValue>P3bOQJv8ZfEwiBp7AXaVi+U2YJx5oVy8XVtrSkc/jsPQqqdY5mELlT+d+3MJ8cftGvhuSuXEbd6q&#13;
+WZwGuc2VB35IZMYX4q0KBF4Uudpuml+YiwDPXM18RlQ6abVkTXrcAvUNHPE16cL0w72eIPGiyD30&#13;
+DJdcXHsic7nflgaSZ5ktC9YCCvZPS3lyKpB2rIenZIcqgsk6ghLhby9MWXVuujJQhMA0cxwAvM8e&#13;
+YMd+8jSeuDxJHZzkvjQyhJ/1V18UbPpdZnW19E6doczJ221/tjalUzmLJWuTD39P/XhI/mJGeMW+&#13;
+RmT9kTeCtixs8xFLhUiPTLFTO2JhC/SifNUeNQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -371,4 +415,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b225ac06-71a2-47d6-8a43-8531e4dab3eb" Target="#_776f586c-28a3-42c1-bccd-86839316add4"><Timestamp>2023-10-09 19:08:30</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_3e588493-3f21-4b88-a6c6-e70a6b69fab1" Target="#_c179b45a-ddcd-49f0-a1b1-d4e7b180ef61"><Timestamp>2023-10-19 04:25:32</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
