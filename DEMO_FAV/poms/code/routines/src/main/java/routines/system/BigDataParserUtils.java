@@ -258,6 +258,7 @@ public class BigDataParserUtils extends ParserUtils {
 
         return date;
     }
+
     public static java.util.Date parseTo_Date(Object o, String pattern) {
         return parseTo_Date(parseTo_String(o), pattern);
     }
