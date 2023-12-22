@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PushbackInputStream;
 import java.io.Reader;
+import java.nio.CharBuffer;
 
 public class UnicodeReader extends Reader {
     private static final int BOM_SIZE = 4;
@@ -70,5 +71,17 @@ public class UnicodeReader extends Reader {
 
     public void close() throws IOException {
         reader.close();
+    }
+    
+    public boolean ready() throws IOException {
+        return reader.ready();
+    }
+
+    public int read() throws IOException {
+        return reader.read();
+    }
+
+    public int read(CharBuffer target) throws IOException {
+        return reader.read(target);
     }
 }
