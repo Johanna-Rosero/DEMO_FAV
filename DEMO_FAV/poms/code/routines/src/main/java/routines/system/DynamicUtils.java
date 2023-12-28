@@ -377,9 +377,7 @@ public class DynamicUtils {
             } else if (DBMSConstants.VERTICA.getDBmsId().equalsIgnoreCase(database)) {
             	if ("Uuid".equals(dbType)) {
             		pstmt.setObject(index, "00000000-0000-0000-0000-000000000000");
-            	} else {
-                    pstmt.setNull(index, java.sql.Types.NULL);
-                }
+            	}
         	} else {
                 pstmt.setNull(index, java.sql.Types.NULL);
             }
