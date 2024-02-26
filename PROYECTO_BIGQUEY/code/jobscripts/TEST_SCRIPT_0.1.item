@@ -1,0 +1,31 @@
+#seteo de variables de carga
+$strFechaProceso = to_char(sysdate( )-1,'yyyy-mm-dd'); #fecha de carga de las ventas por defecto dia anterior
+$intBanderaProcesados = 0; #se asume que no se va a procesar ningun local
+$intBanderaNoProcesados = 1; #se asume que se debe procesar alguno que no cerro a tiempo
+$strFechaProcesoIniL = $strFechaProceso||' 00:00:00';#fecha de inicio de los modificados para el dia anterior
+$strFechaProcesoFinL = $strFechaProceso||' 23:59:59';#fecha de fin de los modificados para el dia anterior
+$strFechaProcesoLIniMig = '2021-04-30 00:00:00';#fecha de Inicio del cambio de SIC a MAX para no tomar modificaciones antes de esta fecha
+$intBanderaAux = 0;#cantidad de locales a procesar 
+$intBanderaSalida = 0;#bandera de espera si existen locales no procesados
+$intBanderaLocalIni = 0;#bandera de espera si existen al menos un local procesado 
+
+print('Fecha de carga: {$strFechaProceso}'); 
+
+print('Busqueda de cambios en las ventas entre: {$strFechaProcesoIniL} y {$strFechaProcesoFinL}'); 
+
+#Borra bandera para envio de mensajes.
+exec( '/bin/sh','-c "cd /boe/files/flag && rm sms_flag.txt"', 8);
+print('********** FIN Borra bandera para envio de mensajes**********');
+
+PRINT('******************* INICIA BORRADO TABLA CONTROL FECHAS MENSUALIZADOS *********************');
+sql('DS_DWH','DELETE FROM DSA.DSA_FECHAS_PROCESO_VTA;');
+PRINT('******************* FINALIZA BORRADO TABLA CONTROL FECHAS MENSUALIZADOS *********************');
+
+PRINT('******************* INICIA BORRADO TABLA TEMPORAL LOG *********************');
+sql('DS_DWH','DELETE FROM TEMPDB.FAC_VENTA_SMAX_TEMP;');
+PRINT('******************* FINALIZA BORRADO TABLA TEMPORAL LOG *********************');
+
+
+$V_G_ID_JOB_LOG=job_run_id();
+
+print('ID_JOB_LOG:[$V_G_ID_JOB_LOG]');
