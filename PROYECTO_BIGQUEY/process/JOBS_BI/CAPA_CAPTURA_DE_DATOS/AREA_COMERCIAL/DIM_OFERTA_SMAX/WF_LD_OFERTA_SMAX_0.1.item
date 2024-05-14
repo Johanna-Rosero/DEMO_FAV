@@ -111,37 +111,40 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;DDM&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;SMXUSER_TABLEAU&quot;"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:O4mnSAjqHdUwaTyzTdCJopkXE47cEP+ON3MDfdInY9sNVjYSvLslwA=="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;DIM_DOCUMENTO_MERMA&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;DIM_TIPO_COMPRA&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DDM.DIM_DOCUMENTO_MERMA.ID_FECHA,&#10;&#9;&#9;DDM.DIM_DOCUMENTO_MERMA.NUM_DOC,&#10;&#9;&#9;DDM.DIM_DOCUMENTO_MERMA.DESC_TIPO_MERMA,&#10;&#9;&#9;DDM.DIM_DOCUMENTO_MERMA.ETL_TSTAMP&#10;FROM&#9;DDM.DIM_DOCUMENTO_MERMA&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT DDM.DIM_TIPO_COMPRA.ID_TIPO_COMPRA,&#10;&#9;&#9;DDM.DIM_TIPO_COMPRA.DESCRIPCION,&#10;&#9;&#9;DDM.DIM_TIPO_COMPRA.ETL_TSTAMP,&#10;&#9;&#9;DDM.DIM_TIPO_COMPRA.COD_TIPO_COMPRA,&#10;&#9;&#9;DDM.DIM_TIPO_COMPRA.ORIGEN&#10;FROM&#9;DDM.DIM_TIPO_COMPRA&quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="teradata_id"/>
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;CHARSET=UTF8&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="true"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="ID_FECHA"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ID_TIPO_COMPRA"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NUM_DOC"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DESC_TIPO_MERMA"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DESCRIPCION"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TSTAMP"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COD_TIPO_COMPRA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ORIGEN"/>
       <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="QUERY_BAND" value="false"/>
     <elementParameter field="CHECK" name="ACTIVATE_QUERY_LOGGING" show="false" value="false"/>
     <elementParameter field="TABLE" name="QUERY_BAND_PARAMETERS" show="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="DIM_DOCUMENTO_MERMA"/>
+    <elementParameter field="TEXT" name="LABEL" value="DIM_TIPO_COMPRA"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_1">
-      <column comment="" defaultValue="" key="false" length="10" name="ID_FECHA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="13" name="NUM_DOC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="64" name="DESC_TIPO_MERMA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="ID_TIPO_COMPRA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" key="false" length="64" name="DESCRIPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="COD_TIPO_COMPRA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="ORIGEN" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
       <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
@@ -151,7 +154,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_1"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
-    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/LOAD TERADATA/LD_DIM_DOCUMENTO_MERMA/LD_DIM_DOCUMENTO_MERMA.csv&quot;"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/LOAD TERADATA/LD_DIM_TIPO_COMPRA/LD_DIM_TIPO_COMPRA.csv&quot;"/>
     <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
     <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" show="false" value="true"/>
     <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" show="false" value="&quot;\r\n&quot;"/>
@@ -176,13 +179,14 @@
     <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
     <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
-    <elementParameter field="TEXT" name="LABEL" value="DIM_DOCUMENTO_MERMA"/>
+    <elementParameter field="TEXT" name="LABEL" value="LD_DIM_TIPO_COMPRA"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFileOutputDelimited_1">
-      <column comment="" defaultValue="" key="false" length="10" name="ID_FECHA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="13" name="NUM_DOC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="64" name="DESC_TIPO_MERMA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="ID_TIPO_COMPRA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" key="false" length="64" name="DESCRIPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="COD_TIPO_COMPRA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="ORIGEN" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
       <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
@@ -209,22 +213,22 @@
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="BUCKET" value="&quot;bkt_dwh&quot;"/>
-    <elementParameter field="DIRECTORY" name="LOCALDIR" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/LOAD TERADATA/LD_DIM_DOCUMENTO_MERMA/&quot;"/>
-    <elementParameter field="TEXT" name="REMOTEDIR" value="&quot;teradata/LD_DIM_DOCUMENTO_MERMA&quot;"/>
+    <elementParameter field="DIRECTORY" name="LOCALDIR" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/LOAD TERADATA/LD_DIM_TIPO_COMPRA/&quot;"/>
+    <elementParameter field="TEXT" name="REMOTEDIR" value="&quot;teradata/LD_DIM_TIPO_COMPRA&quot;"/>
     <elementParameter field="CHECK" name="USE_FILES_LIST" value="false"/>
     <elementParameter field="TABLE" name="FILES" show="false"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" show="false" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
     <elementParameter field="TEXT" name="PART_SIZE" value="50"/>
-    <elementParameter field="TEXT" name="LABEL" value="LD_DIM_DOCUMENTO_MERMA"/>
+    <elementParameter field="TEXT" name="LABEL" value="LD_DIM_TIPO_COMPRA"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="736" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_1"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_Vms7AAd5Ee-r58Ix6C6cbw - metadata"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_rMpPEBFFEe-T05-TVy_ndg - metadata"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:IV74lGao8H/j/ei16NUrDp7YCNSK1K1Est2qJN8I"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -234,7 +238,7 @@
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="DATASET" value="&quot;EDWH&quot;"/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;LD_DIM_DOCUMENTO_MERMA&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="&quot;LD_DIM_TIPO_COMPRA&quot;"/>
     <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
     <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="TRUNCATE"/>
     <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
@@ -244,7 +248,7 @@
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://bkt_dwh/teradata/LD_DIM_DOCUMENTO_MERMA*.csv&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://bkt_dwh/teradata/LD_DIM_TIPO_COMPRA*.csv&quot;"/>
     <elementParameter field="TEXT" name="GS_FILE_HEADER" value="1"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -261,10 +265,11 @@
     <elementParameter field="TEXT" name="LABEL" value="LD_DIM_DOCUMENTO_MERMA"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_1">
-      <column comment="" defaultValue="" key="false" length="10" name="ID_FECHA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="13" name="NUM_DOC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="64" name="DESC_TIPO_MERMA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="ID_TIPO_COMPRA" nullable="false" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" key="false" length="64" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="COD_TIPO_COMPRA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="ORIGEN" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tGSConnection_1">
@@ -306,13 +311,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_8c566b65-ee4a-4383-836e-c034005440b9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>phcc2DpewPwR5jCFRIicbbZL9/HSOtf9lh6uSBt4YHJ+meNVDmA9qi7Z4kL0N3agfZ7anuGqmFwZ&#13;
-aaDwd0C1Lg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_6ce0aec3-d9ea-464f-a0b0-e5532c0280da"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>uWarf+evoPdfvVHgcP3vT7jOJsDhoEl9vV2iiiGh/7qRq1KQYwAOgtuxBZS3l5TSKv+DXwRb9Tts&#13;
-NGi6RoO63w==</DigestValue></Reference></SignedInfo><SignatureValue>mDZGxP025F4MbdWZ2/M/Ut6QsMWbWCwybb8VnZKfx1am3JjI0S3nC5nSf9bcy2WEK7yNYQ4yW11H&#13;
-ynJMFV8psQScVyEiU1Sodv8xlWCBLDdpI21XbqrVbyP5rlKwajCrvdquAPb8KAflGe+6U5xAu6SO&#13;
-rCdNOQyLC3iYEChyTVOeqTgjhVdOdkpoSI6knWc0b6mY3gVNw/cCEpRnYtgX8lJiri1S8kl7jT2t&#13;
-KQ5Z5jZcK4UHJEj9r2T8c34ynNrQcHhHG5L+SbBoV1eaFbQF2NK+0pGDHBH2ejh4HXLTcjglnz9O&#13;
-1Bhe0sWY0v20iH8UDQm5YEoZ3XxL303npppkGA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_622f8fd3-5a3d-4bcf-94c7-fcf6ad974fbd"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>GCkK5iKODtu1/vJGqeEXr/EUOfCQbaOwDCOINmr6b0dG3YLLDTmD/dQSAj0XSdKDPLlDx0b9ZBRq&#13;
+XsM2EkZz1Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_92ff60ba-be05-4e25-87a5-fbf3334b3234"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>hzeJRXRBgPqH61fwT4GksrG97/8bcbME5je75gbWfDf4MsitIbEfqMPI9T4AmnPdz4v04J6jzeLv&#13;
+TsZ18+Rrzw==</DigestValue></Reference></SignedInfo><SignatureValue>EgYVQklqFdvCGDvqyWNg7PlJRNzVeJUVjigcqM79wftun8xFpuKCwBHPpXwyy91Bj6PjBwMNY/hw&#13;
+LJz5FowWExIKxZxJpDf6z5OHlCxF3ZPGmVOYcwBil/cgvZh1YxPijwjBGcUcVDnukj5rmOQnaTTX&#13;
+p9u55HD4CJIVvenZbt/hv/VYwNYBceXbpEZOm5sAhrm5aU9uZi6aCg4TFgTWDrJiLQNDEuaEJnf8&#13;
+L/Vw/dvSJJC1FugtenHLPyRfwPTYDqOi446/G8mYz8juQcAe9hMMoQNcFH8SQkFteLi3SPWqYYWw&#13;
+T/byrodbRd974cGVQJkmMLGStPFauo9VDAL8AQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -334,4 +339,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_6ce0aec3-d9ea-464f-a0b0-e5532c0280da" Target="#_8c566b65-ee4a-4383-836e-c034005440b9"><Timestamp>2024-05-13 15:56:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_92ff60ba-be05-4e25-87a5-fbf3334b3234" Target="#_622f8fd3-5a3d-4bcf-94c7-fcf6ad974fbd"><Timestamp>2024-05-13 16:29:43</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
