@@ -139,6 +139,8 @@
       <elementValue elementRef="VALUE" value="row4.FECHA_CARGA"/>
       <elementValue elementRef="KEY" value="&quot;varBanderaIni&quot;"/>
       <elementValue elementRef="VALUE" value="0"/>
+      <elementValue elementRef="KEY" value="&quot;varBanActCount&quot;"/>
+      <elementValue elementRef="VALUE" value="1"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tSetGlobalVar_1">
@@ -147,7 +149,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="544" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="// Obtiene la fecha y hora actuales&#10;java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);&#10;&#10;System.out.println(formato.format(new java.util.Date())+&quot; **************** INICIO JOB_SMX_INVENTARIOS_BI  ******************&quot;);&#10;System.out.println(formato.format(new java.util.Date())+&quot; Fecha de Carga: &quot;+ (String)globalMap.get(&quot;varFechaCarga&quot;));&#10;System.out.println(formato.format(new java.util.Date())+&quot; BanderaIni: &quot;+ (int)globalMap.get(&quot;varBanderaIni&quot;));&#10;System.out.println(formato.format(new java.util.Date())+&quot; Trunca Tabla BI_DSA.INV_LOCPROMAX&quot;);&#10;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="// Obtiene la fecha y hora actuales&#10;java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);&#10;&#10;System.out.println(formato.format(new java.util.Date())+&quot; **************** INICIO JOB_SMX_INVENTARIOS_BI  ******************&quot;);&#10;System.out.println(formato.format(new java.util.Date())+&quot; Fecha de Carga: &quot;+ (String)globalMap.get(&quot;varFechaCarga&quot;));&#10;System.out.println(formato.format(new java.util.Date())+&quot; Bandera de Inicio: &quot;+ (int)globalMap.get(&quot;varBanderaIni&quot;));&#10;System.out.println(formato.format(new java.util.Date())+&quot; Conteo de Registros: (1.Activado 0.Desactivado):&quot;+ (int)globalMap.get(&quot;varBanActCount&quot;));&#10;System.out.println(formato.format(new java.util.Date())+&quot; Trunca Tabla BI_DSA.INV_LOCPROMAX&quot;);&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1">
@@ -191,13 +193,13 @@
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
     <elementParameter field="CHECK" name="INCREASE" show="false" value="true"/>
     <elementParameter field="TEXT" name="DECLARATION" value="globalMap.put(&quot;varBanderaIni&quot;,0)"/>
-    <elementParameter field="TEXT" name="CONDITION" value="(int)globalMap.get(&quot;varBanderaIni&quot;)&lt;1"/>
+    <elementParameter field="TEXT" name="CONDITION" value="(int)globalMap.get(&quot;varBanderaIni&quot;)&lt;54"/>
     <elementParameter field="TEXT" name="ITERATION" value=""/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="288" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="// Obtiene la fecha y hora actuales&#10;java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);&#10;&#10;System.out.println(formato.format(new java.util.Date())+&quot; ****************  INICIO DE BUCLE  ******************&quot;);&#10;System.out.println(formato.format(new java.util.Date())+&quot; BanderaIni: &quot;+ (int)globalMap.get(&quot;varBanderaIni&quot;));&#10;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="// Obtiene la fecha y hora actuales&#10;java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat(&quot;dd/MM/yyyy HH:mm:ss&quot;);&#10;&#10;System.out.println(formato.format(new java.util.Date())+&quot; **************** INICIO DEL BUCLE &quot;+(int)globalMap.get(&quot;varBanderaIni&quot;)+&quot; **************&quot;);&#10;//System.out.println(formato.format(new java.util.Date())+&quot; Bandera de Inicio: &quot;+ (int)globalMap.get(&quot;varBanderaIni&quot;));&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
@@ -219,6 +221,8 @@
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="(String)globalMap.get(&quot;varFechaCarga&quot;)"/>
       <elementValue elementRef="PARAM_NAME_COLUMN" value="ctxBanderaIni"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="(int)globalMap.get(&quot;varBanderaIni&quot;)"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="ctxBanActCount"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="(int)globalMap.get(&quot;varBanActCount&quot;)"/>
     </elementParameter>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
@@ -296,13 +300,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_1dc30fe8-4223-449d-b82a-2789c81301df"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4GqpV2T17xu2xLVBw89ea1R03aizt/7cHvg6BnyQQ+FSMFRSuH+SMJz394n9yzQJmnvYp/acGgn1&#13;
-zqsOUP02lw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_89d12187-ae64-4473-9179-2028b12fb099"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>wzZdUmEZSwjaahk58Q6i95feuxolYPH10sRqa1nfU7gJ0YHvW1qmk35fAWQYzfxD2+/9/nP/04Dl&#13;
-OAvWsghD9Q==</DigestValue></Reference></SignedInfo><SignatureValue>nxfG5BY657xEb+DWpQRnE71AWQ87cf4UiX+MuOdp30e/8yb9nV/Lo0c/O3xF/k1SLhbIkAwfUC/i&#13;
-QHZxwSsK9f+ufZqBYIgjBfDkUKZNRLxWUi8i31LkK5cBuurwFSz59XH0EkjgHzCtYtOAwpuRhuuX&#13;
-tm5yuohMALGsNCLXwBlKq1VhVZ5h0zzbxQ9lwtOTRPiLdHrYTa9TYBIYtVMy04flTBVTo3UvqcjF&#13;
-t5HOCYu/FmU/qyIFxUHhNpzxIdIA4W1AAIaommfav2lu3Rx/1nyc3NeGSIM9Z2ZQYKc7iW38Ckf4&#13;
-mNpfR7uScDV2kMePfNbWYnVQQ76Tlwr0qnG5eA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_88e86fb8-ad0a-4d2c-bb1b-aa64aee7e3fe"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>c2+X769oNwesiEf/RL/c/1l4BBAnsuc2wmbPymFEMSFtGZE4PT9eKUmnm5CYke7iJHs9yuDzf0v9&#13;
+6gq6u4G01w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_fb174f11-2ef6-4488-bcfa-e93adbd9ce5d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HdhicUmNYHx3GVkFZXmmb6WcxM/uw9qI9KUh36anlgqH402luTH0mA3e/MVgn3hTYU8yTVFwMEfT&#13;
+GZEp+kMvNQ==</DigestValue></Reference></SignedInfo><SignatureValue>LcbzYHvxlSt0Mu+e4irJJlAsPZCpCuCK4z6yFER29HHs359l3KuIEkTXz01A2qJfQqbRL/gPbot1&#13;
+nm7H5lFw5OZn/b1lgXsuwyJLfGSYy46dv7/YYTVKsWb8Px1op5cl2eWJOCCGHHvv3j810thHoCrL&#13;
+ne9sA/xAlBHa1fziC3JSwh46d1T/rk/xcMr90SiXmW3+eG/UlvUrB3VtXqyKOIAzP7mJr2UwwLyR&#13;
+QOz3rl4hULdi8vSgokBrz3f+9dCLx2Oyv3ZLjZaz3VL8VSbDsuejPqgX9jouSV8/rUIHa2+2TM27&#13;
+KDlbZ4nuNmqjT7ImqO9754ftCDuPO7BPm5LTjg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -324,4 +328,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_89d12187-ae64-4473-9179-2028b12fb099" Target="#_1dc30fe8-4223-449d-b82a-2789c81301df"><Timestamp>2024-05-10 11:09:41</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_fb174f11-2ef6-4488-bcfa-e93adbd9ce5d" Target="#_88e86fb8-ad0a-4d2c-bb1b-aa64aee7e3fe"><Timestamp>2024-06-05 12:15:57</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
