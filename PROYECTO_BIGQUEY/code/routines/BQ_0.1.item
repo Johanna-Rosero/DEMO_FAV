@@ -1,0 +1,50 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class BigQueryConnection {
+    public static void main(String[] args) {
+        // Parámetros de conexión
+        String url = "jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=lafavorita-182519;OAuthType=0;OAuthServiceAcctEmail=;OAuthPvtKeyPath=C:/Talend/lafavorita-182519-0d2bcbb1a0db.json";
+
+
+        // Conexión y ejecución de consulta
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Cargar el controlador JDBC
+            Class.forName("com.simba.googlebigquery.jdbc.Driver");
+
+            // Establecer la conexión
+            connection = DriverManager.getConnection(url);
+            System.out.println("Conexión establecida con éxito.");
+
+            // Crear un Statement y ejecutar una consulta
+            statement = connection.createStatement();
+            String query = "SELECT COUNT(*) FROM BI_DSA.INV_LOCPROMAX WHERE ESTADO=0 AND STATETYPEVALUE='GEN'";
+            resultSet = statement.executeQuery(query);
+
+            // Procesar los resultados
+            while (resultSet.next()) {
+                System.out.println("Columna 1: " + resultSet.getString(1));
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar los recursos
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
