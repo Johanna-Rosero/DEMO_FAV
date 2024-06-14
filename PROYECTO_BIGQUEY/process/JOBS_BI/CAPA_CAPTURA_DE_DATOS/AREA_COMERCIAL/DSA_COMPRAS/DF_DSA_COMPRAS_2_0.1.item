@@ -5,7 +5,7 @@
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" show="false" value="{&quot;JOB_RUN_VM_ARGUMENTS&quot;:[&quot;-Xms18432M&quot;,&quot;-Xmx24480M&quot;]}"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" show="false" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="96"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="128"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" show="false" value=""/>
@@ -23,7 +23,7 @@
     <elementParameter field="TEXT" name="OOZIE_END_POINT" show="false" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" show="false" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" show="false" value="true"/>
-    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="true"/>
     <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
     <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
     <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" show="false" value="false"/>
@@ -99,6 +99,16 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
+    <routinesParameter id="_ibHfIBExEe-PZuOZYM6uIQ" name="TalendDataGenerator"/>
+    <routinesParameter id="_ibkLEBExEe-PZuOZYM6uIQ" name="TalendString"/>
+    <routinesParameter id="_iasoYBExEe-PZuOZYM6uIQ" name="Relational"/>
+    <routinesParameter id="_ia3ngBExEe-PZuOZYM6uIQ" name="StringHandling"/>
+    <routinesParameter id="_ibvxQBExEe-PZuOZYM6uIQ" name="TalendStringUtil"/>
+    <routinesParameter id="_iZjY4BExEe-PZuOZYM6uIQ" name="SQLike"/>
+    <routinesParameter id="_ibUTcBExEe-PZuOZYM6uIQ" name="TalendDate"/>
+    <routinesParameter id="_iai3YBExEe-PZuOZYM6uIQ" name="Numeric"/>
+    <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
+    <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
   </parameters>
   <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="96">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
@@ -290,7 +300,7 @@
     <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
     <elementParameter field="CHECK" name="CREATE" value="true"/>
     <elementParameter field="CHECK" name="SPLIT" value="true"/>
-    <elementParameter field="TEXT" name="SPLIT_EVERY" value="600000"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="100000"/>
     <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
     <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
     <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
@@ -503,6 +513,1160 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
+  <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="jt400-9.8.jar"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;B105FAB2&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:3jzjBxAahrWs2NCp5NT5RkRabx5zTCesjfKS9lLDyJVvOdvVOkU="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#10;  SCORCTORDCOMDETEST.CODIGOCOMPANIA, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRAESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.NUMEROLINEA, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDA, &#10;  SCORCTORDCOMDETEST.CANTIDADPARCIAL, &#10;  SCORCTORDCOMDETEST.PESOPEDIDO, &#10;  SCORCTORDCOMDETEST.PESOPARCIAL, &#10;  SCORCTORDCOMDETEST.COSTONETO, &#10;  SCORCTORDCOMDETEST.COSTOBRUTO, &#10;  SCORCTORDCOMDETEST.VALORTOTAL, &#10;  SCORCTORDCOMDETEST.ESTADO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOREGISTRO, &#10;  SCORCTORDCOMDETEST.FECHAREGISTRO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOMODIFICACION, &#10;  SCORCTORDCOMDETEST.FECHAMODIFICACION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADA, &#10;  SCORCTORDCOMDETEST.PESOENTREGADO, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATVAL, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATTIP, &#10;  SCORCTORDCOMDETEST.EMCODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOMONEDAORIGEN, &#10;  SCORCTORDCOMDETEST.TASACAMBIO, &#10;  SCORCTORDCOMDETEST.CODIGOPROVEEDOR, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDARECEPCION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADARECEPCION, &#10;  SCORCTORDCOMDETEST.PESOPEDIDORECEPCION, &#10;  SCORCTORDCOMDETEST.PESOENTREGADORECEPCION, &#10;  SCORCTORDCOMDETEST.SECUENCIALORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.VALORUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.VALORTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.VALORTIPOCONTROLCOSTO, &#10;  SCORCTORDCOMDETEST.PESOAPROXIMADORECEPCION, &#10;  SCORCTORDCOMDETEST.CODIGOBARRAS, &#10;  SCORCTORDCOMDETEST.VALORTOTALSINIMPUESTOS, &#10;  SCORCTORDCOMDETEST.APLICADOFACTORIMPORTACION, &#10;  SCORCTORDCOMDETEST.PROCESOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.COSTONETOCALCULO, &#10;  SCORCTORDCOMDETEST.VALORTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.VALORORIGENCOSTOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOORIGENCOSTOGESTIONPRECIO&#10;FROM SCORCTORDCOMDETEST&#13;&#10;WHERE SCORCTORDCOMDETEST.ESTADO ='1'&#13;&#10;AND YEAR(SCORCTORDCOMDETEST.FECHAREGISTRO) IN (2014,2015,2016,2017)&#13;&#10;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOCOMPANIA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRAESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NUMEROLINEA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTOBRUTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATVAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATTIP"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="EMCODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOMONEDAORIGEN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TASACAMBIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOPROVEEDOR"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SECUENCIALORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOCONTROLCOSTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOAPROXIMADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOBARRAS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTALSINIMPUESTOS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="APLICADOFACTORIMPORTACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PROCESOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETOCALCULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_2">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_COMPRAS/SCORCTORDCOMDETEST/SCORCTORDCOMDETEST.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;{&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="true"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="100000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_2">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="672" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:GvpDLhyhHSTmGt6YXAmGQOb/8cHQmdHM75s/vD9q"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="BUCKET" value="&quot;bkt_dwh&quot;"/>
+    <elementParameter field="DIRECTORY" name="LOCALDIR" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_COMPRAS/SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="TEXT" name="REMOTEDIR" value="&quot;db2/compras/SCORCTORDCOMDETEST/SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="CHECK" name="USE_FILES_LIST" value="false"/>
+    <elementParameter field="TABLE" name="FILES" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" show="false" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
+    <elementParameter field="TEXT" name="PART_SIZE" value="50"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="896" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_Bt1xoAxEEe-r58Ix6C6cbw - metadata"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:lshXVX6ej1ezwyX6i+wxp2uXzECG9BRxxIhyqA2m"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:ywStL9/jR5hkuPdFXM7Ol1KfpMTLc7/Z0i62Wf2t"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="DATASET" value="&quot;BI_TMP&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="&quot;SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
+    <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="TRUNCATE"/>
+    <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="GS_SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:81f3jpECDXfipOl09WJ+PpXiCteb01n13shI7goW"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://bkt_dwh/db2/compras/SCORCTORDCOMDETEST/SCORCTORDCOMDETEST*.csv&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE_HEADER" value="1"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;{&quot;"/>
+    <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="true"/>
+    <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" value="null"/>
+    <elementParameter field="CHECK" name="DROP" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_2">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_2"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:NieaVbSApv2llzWkq2mue08ttyzTP+Q2Xb95quZp"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:anTFEetlvr0RxGfnNvERc1sfs4x1RLw9r9yyh39D"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;CALL `lafavorita-182519.BI_TMP.SP_SCORCTORDCOMDETEST`();&quot;"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Downloads/Talend-Studio-20230428_0423-V8.0.1/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SP_SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_2"/>
+  </node>
+  <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="jt400-9.8.jar"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;B105FAB2&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:VmzfrYiFqzZXt1bznY0r9W3Ix2EdjYAvd4+JFoOU07UA8kbtZyI="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#10;  SCORCTORDCOMDETEST.CODIGOCOMPANIA, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRAESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.NUMEROLINEA, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDA, &#10;  SCORCTORDCOMDETEST.CANTIDADPARCIAL, &#10;  SCORCTORDCOMDETEST.PESOPEDIDO, &#10;  SCORCTORDCOMDETEST.PESOPARCIAL, &#10;  SCORCTORDCOMDETEST.COSTONETO, &#10;  SCORCTORDCOMDETEST.COSTOBRUTO, &#10;  SCORCTORDCOMDETEST.VALORTOTAL, &#10;  SCORCTORDCOMDETEST.ESTADO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOREGISTRO, &#10;  SCORCTORDCOMDETEST.FECHAREGISTRO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOMODIFICACION, &#10;  SCORCTORDCOMDETEST.FECHAMODIFICACION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADA, &#10;  SCORCTORDCOMDETEST.PESOENTREGADO, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATVAL, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATTIP, &#10;  SCORCTORDCOMDETEST.EMCODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOMONEDAORIGEN, &#10;  SCORCTORDCOMDETEST.TASACAMBIO, &#10;  SCORCTORDCOMDETEST.CODIGOPROVEEDOR, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDARECEPCION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADARECEPCION, &#10;  SCORCTORDCOMDETEST.PESOPEDIDORECEPCION, &#10;  SCORCTORDCOMDETEST.PESOENTREGADORECEPCION, &#10;  SCORCTORDCOMDETEST.SECUENCIALORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.VALORUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.VALORTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.VALORTIPOCONTROLCOSTO, &#10;  SCORCTORDCOMDETEST.PESOAPROXIMADORECEPCION, &#10;  SCORCTORDCOMDETEST.CODIGOBARRAS, &#10;  SCORCTORDCOMDETEST.VALORTOTALSINIMPUESTOS, &#10;  SCORCTORDCOMDETEST.APLICADOFACTORIMPORTACION, &#10;  SCORCTORDCOMDETEST.PROCESOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.COSTONETOCALCULO, &#10;  SCORCTORDCOMDETEST.VALORTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.VALORORIGENCOSTOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOORIGENCOSTOGESTIONPRECIO&#10;FROM SCORCTORDCOMDETEST&#13;&#10;WHERE SCORCTORDCOMDETEST.ESTADO ='1'&#13;&#10;AND YEAR(SCORCTORDCOMDETEST.FECHAREGISTRO) IN (2018,2019,2020,2021)&#13;&#10;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOCOMPANIA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRAESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NUMEROLINEA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTOBRUTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATVAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATTIP"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="EMCODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOMONEDAORIGEN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TASACAMBIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOPROVEEDOR"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SECUENCIALORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOCONTROLCOSTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOAPROXIMADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOBARRAS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTALSINIMPUESTOS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="APLICADOFACTORIMPORTACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PROCESOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETOCALCULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_3">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="352">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_3"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_COMPRAS/SCORCTORDCOMDETEST/SCORCTORDCOMDETEST.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;{&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="true"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="100000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_3">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_4"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="jt400-9.8.jar"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;B105FAB2&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:JI17HwN/cwB7te3FL6uEifKfhZ/BYaTPAi6E3b0QWDTdgRULc3g="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#10;  SCORCTORDCOMDETEST.CODIGOCOMPANIA, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRAESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.NUMEROLINEA, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDA, &#10;  SCORCTORDCOMDETEST.CANTIDADPARCIAL, &#10;  SCORCTORDCOMDETEST.PESOPEDIDO, &#10;  SCORCTORDCOMDETEST.PESOPARCIAL, &#10;  SCORCTORDCOMDETEST.COSTONETO, &#10;  SCORCTORDCOMDETEST.COSTOBRUTO, &#10;  SCORCTORDCOMDETEST.VALORTOTAL, &#10;  SCORCTORDCOMDETEST.ESTADO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOREGISTRO, &#10;  SCORCTORDCOMDETEST.FECHAREGISTRO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOMODIFICACION, &#10;  SCORCTORDCOMDETEST.FECHAMODIFICACION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADA, &#10;  SCORCTORDCOMDETEST.PESOENTREGADO, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATVAL, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATTIP, &#10;  SCORCTORDCOMDETEST.EMCODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOMONEDAORIGEN, &#10;  SCORCTORDCOMDETEST.TASACAMBIO, &#10;  SCORCTORDCOMDETEST.CODIGOPROVEEDOR, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDARECEPCION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADARECEPCION, &#10;  SCORCTORDCOMDETEST.PESOPEDIDORECEPCION, &#10;  SCORCTORDCOMDETEST.PESOENTREGADORECEPCION, &#10;  SCORCTORDCOMDETEST.SECUENCIALORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.VALORUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.VALORTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.VALORTIPOCONTROLCOSTO, &#10;  SCORCTORDCOMDETEST.PESOAPROXIMADORECEPCION, &#10;  SCORCTORDCOMDETEST.CODIGOBARRAS, &#10;  SCORCTORDCOMDETEST.VALORTOTALSINIMPUESTOS, &#10;  SCORCTORDCOMDETEST.APLICADOFACTORIMPORTACION, &#10;  SCORCTORDCOMDETEST.PROCESOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.COSTONETOCALCULO, &#10;  SCORCTORDCOMDETEST.VALORTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.VALORORIGENCOSTOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOORIGENCOSTOGESTIONPRECIO&#10;FROM SCORCTORDCOMDETEST&#13;&#10;WHERE SCORCTORDCOMDETEST.ESTADO ='1'&#13;&#10;AND YEAR(SCORCTORDCOMDETEST.FECHAREGISTRO) IN (2022,2023,2024)&#13;&#10;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOCOMPANIA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRAESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NUMEROLINEA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTOBRUTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATVAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATTIP"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="EMCODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOMONEDAORIGEN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TASACAMBIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOPROVEEDOR"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SECUENCIALORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOCONTROLCOSTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOAPROXIMADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOBARRAS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTALSINIMPUESTOS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="APLICADOFACTORIMPORTACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PROCESOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETOCALCULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_4">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_4"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_COMPRAS/SCORCTORDCOMDETEST/SCORCTORDCOMDETEST.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;{&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="true"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="100000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_4">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="608">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_5"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_nM9MwBq4Ee6NsLMmA0Ek6Q"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="jt400-9.8.jar"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;B105FAB2&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:6Y6ohT4pt3FcnQ5iYG3NcZ2CbeOErViUCT56ufFW9o5i3TI/pgg="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#10;  SCORCTORDCOMDETEST.CODIGOCOMPANIA, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOORDENCOMPRAESTADO, &#10;  SCORCTORDCOMDETEST.CODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.NUMEROLINEA, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDA, &#10;  SCORCTORDCOMDETEST.CANTIDADPARCIAL, &#10;  SCORCTORDCOMDETEST.PESOPEDIDO, &#10;  SCORCTORDCOMDETEST.PESOPARCIAL, &#10;  SCORCTORDCOMDETEST.COSTONETO, &#10;  SCORCTORDCOMDETEST.COSTOBRUTO, &#10;  SCORCTORDCOMDETEST.VALORTOTAL, &#10;  SCORCTORDCOMDETEST.ESTADO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOREGISTRO, &#10;  SCORCTORDCOMDETEST.FECHAREGISTRO, &#10;  SCORCTORDCOMDETEST.IDUSUARIOMODIFICACION, &#10;  SCORCTORDCOMDETEST.FECHAMODIFICACION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADA, &#10;  SCORCTORDCOMDETEST.PESOENTREGADO, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATVAL, &#10;  SCORCTORDCOMDETEST.CODIGOESTADOARTICULOCATTIP, &#10;  SCORCTORDCOMDETEST.EMCODIGOARTICULO, &#10;  SCORCTORDCOMDETEST.CODIGOMONEDAORIGEN, &#10;  SCORCTORDCOMDETEST.TASACAMBIO, &#10;  SCORCTORDCOMDETEST.CODIGOPROVEEDOR, &#10;  SCORCTORDCOMDETEST.CANTIDADPEDIDARECEPCION, &#10;  SCORCTORDCOMDETEST.CANTIDADENTREGADARECEPCION, &#10;  SCORCTORDCOMDETEST.PESOPEDIDORECEPCION, &#10;  SCORCTORDCOMDETEST.PESOENTREGADORECEPCION, &#10;  SCORCTORDCOMDETEST.SECUENCIALORDENCOMPRADETALLEESTADO, &#10;  SCORCTORDCOMDETEST.VALORUNIDADMANEJO, &#10;  SCORCTORDCOMDETEST.VALORTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOUNIDADEMPAQUE, &#10;  SCORCTORDCOMDETEST.VALORTIPOCONTROLCOSTO, &#10;  SCORCTORDCOMDETEST.PESOAPROXIMADORECEPCION, &#10;  SCORCTORDCOMDETEST.CODIGOBARRAS, &#10;  SCORCTORDCOMDETEST.VALORTOTALSINIMPUESTOS, &#10;  SCORCTORDCOMDETEST.APLICADOFACTORIMPORTACION, &#10;  SCORCTORDCOMDETEST.PROCESOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.COSTONETOCALCULO, &#10;  SCORCTORDCOMDETEST.VALORTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOTIPOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.VALORORIGENCOSTOGESTIONPRECIO, &#10;  SCORCTORDCOMDETEST.CODIGOORIGENCOSTOGESTIONPRECIO&#10;FROM SCORCTORDCOMDETEST&#13;&#10;WHERE SCORCTORDCOMDETEST.ESTADO ='1'&#13;&#10;AND YEAR(SCORCTORDCOMDETEST.FECHAREGISTRO) &gt;=2025&#13;&#10;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOCOMPANIA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORDENCOMPRAESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NUMEROLINEA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPARCIAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTOBRUTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDUSUARIOMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATVAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOARTICULOCATTIP"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="EMCODIGOARTICULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOMONEDAORIGEN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TASACAMBIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOPROVEEDOR"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADPEDIDARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CANTIDADENTREGADARECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOPEDIDORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOENTREGADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SECUENCIALORDENCOMPRADETALLEESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORUNIDADMANEJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOUNIDADEMPAQUE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOCONTROLCOSTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESOAPROXIMADORECEPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOBARRAS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTALSINIMPUESTOS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="APLICADOFACTORIMPORTACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PROCESOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTONETOCALCULO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOORIGENCOSTOGESTIONPRECIO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_5">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="608">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_5"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_COMPRAS/SCORCTORDCOMDETEST/SCORCTORDCOMDETEST.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;{&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="true"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="100000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_5">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" originalLength="-1" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" originalLength="-1" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" originalLength="-1" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
   <connection connectorName="FLOW" label="row10" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
       <elementValue elementRef="TRACE_COLUMN" value="CODIGODESPACHOARTICULODATOSTAREA"/>
@@ -523,6 +1687,58 @@
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tGSConnection_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
+  </connection>
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tFileOutputDelimited_2">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="CODIGODESPACHOARTICULODATOSTAREA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_2" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_2" target="tGSPut_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_2" offsetLabelX="0" offsetLabelY="0" source="tGSPut_2" target="tBigQueryBulkExec_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk3"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryBulkExec_2" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_2" target="tBigQuerySQLRow_2">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk4"/>
+  </connection>
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tFileOutputDelimited_3">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="CODIGODESPACHOARTICULODATOSTAREA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
+  </connection>
+  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tDBInput_4" target="tFileOutputDelimited_4">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="CODIGODESPACHOARTICULODATOSTAREA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
+  </connection>
+  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tDBInput_5" offsetLabelX="0" offsetLabelY="0" source="tDBInput_5" target="tFileOutputDelimited_5">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="CODIGODESPACHOARTICULODATOSTAREA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
@@ -555,13 +1771,48 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_cbda3318-edc8-4c88-88d3-5bd7fb2ae3a9"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ksin9UjzYwSj6AMgugmBmcw0aFTzV4cU6LXKN+1Op2IueHmbynh3RpgffmFHr7+6GY9UvbXWYLUn&#13;
-9NDaAbUqHw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_281f8a5c-3c3e-4873-879d-9df11aa741f8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>OsGSIPKPYWT3xGVYfDmEeI/kfSHw6pQa046UknqwygOi0mwlHslbyaleIngCneYxIGxDCOrvXMV0&#13;
-13MvjxLSJg==</DigestValue></Reference></SignedInfo><SignatureValue>JO8CMOp10p5kzJUYZt1TIsZeioYwyjHIlrZVvWt3tpZPACWR0OFOxSznzcb0zeYKhZsGvCRrCd2q&#13;
-IpyMoHh7A++e52yoo7Fso/c19599UNKJoXuXf6BQM6I5H8khwLHP4HpqUgRUZOw3nvNW5y/jbhJY&#13;
-VilU6+iB2TroDDt2pHJpWXj3ZmKHEk3DeNp1mXBqdnfdnZDXGXiLfW59AngTFoSOW8ldvQ7AFsXN&#13;
-ybs5r5elsCyiIQsST4pSYhfsgbtSbr7/HaiIoo9Q4m6FBiH7JtJw0WxiSs+2POhp5BtsNaPfe0NN&#13;
-JoNi5TWfZXOCi8rzDVOm8xgUibFi3K92IYoZhQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_4"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_5"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_ce5820bc-83d1-4f15-94ad-322ac173e289"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RQYXAfMg/B/EdmuJRu0F1WIGN9vfWRuMgI/+kxCBfxklLbV8T+jArvWxCHKYn+juiGb41gyIJH6z&#13;
+4thxpAc5WQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_85d66319-0a97-43da-870b-855d141707d6"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>l4XvPRGuPC4gmHpIi4hMonh+Z90ltFyhLw2AU5F1Hn1TiKt1JpxnNz5i+M4Qk5j27PBkM7CFWth4&#13;
+E3lVQg5FSw==</DigestValue></Reference></SignedInfo><SignatureValue>LNoFB+Lji9U8M7DpV1kE3KwjA4i+rS9+jnvY9VYPYRt3xwVRL9hdRRBiwv6GJOdQzxTTwh/3thwV&#13;
+Q7RytccIbqEH/T3JkLuYzDTgxPxVa1uL4wDxUQGgC4fnaqfUsizDRTh4OyrOJP0UOJ30uHzXKZ/c&#13;
+U2AUhEvlM8ytnOGZ5/oSMWQD4M3Da7DSIhQ1HGWM7/dtx0cd7GffrK4pYwZv7s/q8LNewJRxWyof&#13;
+m2utKTsXzRp4KsOT/VvKIIWBgiZYahORfYP74o4I0dUiOvfMHBip0uayYICfzOYLZen1FB9c/N32&#13;
+QsSRxcXTLTnGhtthdQSYcopTIQ8toRRjOqzqfw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -583,4 +1834,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_281f8a5c-3c3e-4873-879d-9df11aa741f8" Target="#_cbda3318-edc8-4c88-88d3-5bd7fb2ae3a9"><Timestamp>2024-05-16 03:44:58</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_85d66319-0a97-43da-870b-855d141707d6" Target="#_ce5820bc-83d1-4f15-94ad-322ac173e289"><Timestamp>2024-06-13 21:44:50</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
