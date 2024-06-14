@@ -173,6 +173,7 @@
     <elementParameter field="CHECK" name="LOAD_CONTEXT_FROM_FILE" show="false" value="false"/>
     <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="USE_BASE64" value="false"/>
     <metadata connector="FLOW" name="tRunJob_1"/>
   </node>
   <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="448" posY="-64">
@@ -282,6 +283,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBufferOutput_1"/>
     <elementParameter field="TEXT" name="LABEL" value="Variables"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <elementParameter field="CHECK" name="USE_BASE64" value="false"/>
     <metadata connector="FLOW" name="tBufferOutput_1">
       <column comment="" key="false" length="-1" name="ban_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="ban_no_procesados" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_Integer" usefulColumn="true"/>
@@ -327,7 +329,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="736" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.bandera_Procesados = Integer.parseInt(input_row.ban_procesados);&#10;context.bandera_No_Procesados = Integer.parseInt(input_row.ban_no_procesados);&#10;&#10;&#10;&#10;if (context.bandera_Procesados != null &amp;&amp; context.bandera_Procesados &gt; 0) {&#10;&#10;&#9;&#9;context.bandera_Local_Ini = 55;&#10;&#9;&#9;&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;*************** Existen locales generados, empieza a procesar Ventas: N &quot;+context.bandera_Procesados+&quot; ***************&quot;);&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;Existen locales generados&quot;);&#10;&#9;&#9;&#10;&#9;&#9;globalMap.put(&quot;bandera_Procesados&quot;, context.bandera_Procesados);&#10;&#9;&#9;&#10;}&#10;&#9;&#9;&#10;else {&#10;    &#10;        context.bandera_Local_Ini = context.bandera_Local_Ini + 1;&#10;&#10;        System.out.println(&quot;*********************&quot;);&#10;&#10;        System.out.println(&quot;No existen locales generados, esperando a que se genere al menos 1 local para procesar Ventas: N°  &quot; + context.bandera_Procesados);&#10;&#10;        System.out.println(&quot;********************* INICIA ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        System.out.println(&quot;********************* FIN ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        try {&#10;&#10;            Thread.sleep(6000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#10;&#10;        } catch (InterruptedException e) {&#10;&#10;            // Manejar la excepción si es necesario&#10;    &#9;}&#10;    }&#10;&#10;&#13;&#10;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="context.bandera_Procesados = Integer.parseInt(input_row.ban_procesados);&#10;context.bandera_No_Procesados = Integer.parseInt(input_row.ban_no_procesados);&#10;&#10;&#10;&#10;if (context.bandera_Procesados != null &amp;&amp; context.bandera_Procesados &gt; 0) {&#10;&#10;&#9;&#9;context.bandera_Local_Ini = 55;&#10;&#9;&#9;&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;*************** Existen locales generados, empieza a procesar Ventas: N &quot;+context.bandera_Procesados+&quot; ***************&quot;);&#10;&#9;&#9;&#10;&#9;&#9;System.out.println(&quot;Existen locales generados&quot;);&#10;&#9;&#9;&#10;&#9;&#9;globalMap.put(&quot;bandera_Procesados&quot;, context.bandera_Procesados);&#10;&#9;&#9;&#10;}&#10;&#9;&#9;&#10;else {&#10;    &#10;        context.bandera_Local_Ini = context.bandera_Local_Ini + 1;&#10;&#10;        System.out.println(&quot;*********************&quot;);&#10;&#10;        System.out.println(&quot;No existen locales generados, esperando a que se genere al menos 1 local para procesar Ventas: N°  &quot; + context.bandera_Procesados);&#10;&#10;        System.out.println(&quot;********************* INICIA ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10;&#10;        System.out.println(&quot;********************* FIN ESPERA DE 10 MINUTOS CICLO : &quot; + context.bandera_Local_Ini + &quot;********************&quot;);&#10; &#10;        try {&#10;&#10;            Thread.sleep(1*60*10000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#10;&#10;        } catch (InterruptedException e) {&#10;&#10;            // Manejar la excepción si es necesario&#10;             e.printStackTrace();&#10;    &#9;}&#10;    }&#10;&#10;&#13;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="Locales Procesados"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -403,13 +405,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e6775961-f07f-4ff0-be71-281c8cbe1a31"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>zWkGf18QnFbKsAi+sRDB+/H4qLUHdeUseT+OV3wSWtS1Rp3GtcuxEaoYrt2Cwxc2R1Oa1P2rEILP&#13;
-od4sqxeQgg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_9169207a-852b-49fb-baba-bc73fca1c8de"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>8qPdz0ceB+bM0SV//BdFURDe0ytuZNsvdKwYS0/qk+Gn2yAtj5QCQaj1711pPT2cMUrRWHIO1cHW&#13;
-BtLCOwt5Ug==</DigestValue></Reference></SignedInfo><SignatureValue>Ayqr9uYDxwFP+Rmusk4Sdx4iW3Wk0BtfbHTrSqGjgp/ThmveRPIYm+P2G0QhEDWgYw1yqInw350C&#13;
-altQaj5jizJN3csDWN4GTjtNcgt/1NdVsE3GK+36aP6Bo1745ZfL10BKQYOfDYKC6Mxz+ORJdziy&#13;
-tD3pylH6a0zK06PtmPk1JBnN5wd+ZTiwgH6P7wUFBzX3pDAuumZjPixn1xMQZWv8Mb1zWnorASja&#13;
-DZ0jJSuSuCa17I7qDchyR9e0MofedERwEHwKsLyTEaRGId/4y6Zs+eY7o0DqxEgjBfP3vYK0KxmY&#13;
-MQGVc+ukIhzjBFRtAj9Rmk5rTe1ERfVxR2sEvg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_ecc45d67-e7f7-492a-b727-5035006d30ba"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>6s6gOcogeckv58gWH25kImFEAbA+d3rxsJk8tmdd3z9yHNqQm6xpzUdR1nPEihHZfxSpALm4at+b&#13;
+6J2MZWq8nA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_4cc98c5a-d676-4752-9b86-2598f27d739d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RlRkuBVBN+vQqyO01qzPb2sRo8ZGr217P8Pe9JIkEMVSuPzoEC1sGQ5xOd+ocPIIzYDxmuhrEIco&#13;
+LkrGzMztfQ==</DigestValue></Reference></SignedInfo><SignatureValue>pr8OTIIEqPdtuL0M8lmBpgn/W/cy6DnyTOe2E7AgvMIJ+JAFEKRrQxkwbHyyG8lgSrIFLe5iQQHV&#13;
++1/hXNFeJvHLm/jDANWtBq2nPDxNwFgwSc1rkGVxdk66oCpkLDCRoUXKGo+js6p7SK86FJclNniH&#13;
+xttrOLV2k47wCKqpLO5LxWw3eMJFO8SnBLEraLRLHl1LrS5zb6C1dPLZzZ0hrl64COx7gLJMLoNM&#13;
+2AC+jcAltlRtLYPfmuPCXf2YrsBENT3IJqukRGziaA9gHLIUs2EP3+HjiHDaMYSKNmyLl1+A/sER&#13;
+cNn6Ve1ss4dYuWxFGG/Jf55uKZemak2TQiJ6DA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -431,4 +433,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_9169207a-852b-49fb-baba-bc73fca1c8de" Target="#_e6775961-f07f-4ff0-be71-281c8cbe1a31"><Timestamp>2024-03-12 23:05:41</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_4cc98c5a-d676-4752-9b86-2598f27d739d" Target="#_ecc45d67-e7f7-492a-b727-5035006d30ba"><Timestamp>2024-06-14 04:10:09</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
