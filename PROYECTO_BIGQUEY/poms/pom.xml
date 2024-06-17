@@ -10,58 +10,57 @@
   <url>http://www.talend.org/</url>
   <properties>
     <talend.project.name>PROYECTO_BIGQUEY</talend.project.name>
-    <talend.docker.tag>${project.version}</talend.docker.tag>
     <slf4j-api.version>1.7.34</slf4j-api.version>
     <encoding>UTF-8</encoding>
-    <signer.version>8.0.10</signer.version>
-    <talend.docker.name>${talend.project.name.lowercase}/${talend.job.folder}%a</talend.docker.name>
     <maven.deploy.skip>true</maven.deploy.skip>
+    <signer.version>8.0.11</signer.version>
   </properties>
   <build>
     <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.6.1</version>
+          <version>3.11.0</version>
           <dependencies>
-            <dependency>
-              <groupId>org.apache.maven.shared</groupId>
-              <artifactId>maven-shared-utils</artifactId>
-              <version>3.3.3</version>
-            </dependency>
             <dependency>
               <groupId>org.eclipse.tycho</groupId>
               <artifactId>tycho-compiler-jdt</artifactId>
-              <version>1.6.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-utils</artifactId>
               <version>4.0.0</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>org.bouncycastle</groupId>
+                  <artifactId>bcpg-jdk15on</artifactId>
+                </exclusion>
+                <exclusion>
+                  <groupId>org.bouncycastle</groupId>
+                  <artifactId>bcprov-jdk15on</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
             <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-xml</artifactId>
-              <version>4.0.0</version>
+              <groupId>org.bouncycastle</groupId>
+              <artifactId>bcprov-jdk18on</artifactId>
+              <version>1.74</version>
             </dependency>
             <dependency>
-              <groupId>commons-io</groupId>
-              <artifactId>commons-io</artifactId>
-              <version>2.8.0</version>
+              <groupId>org.bouncycastle</groupId>
+              <artifactId>bcpg-jdk18on</artifactId>
+              <version>1.74</version>
             </dependency>
             <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-archiver</artifactId>
               <version>4.8.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven</groupId>
-              <artifactId>maven-compat</artifactId>
-              <version>3.8.8</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>commons-io</groupId>
+                  <artifactId>commons-io</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
             <dependency>
               <groupId>org.apache.commons</groupId>
@@ -69,14 +68,19 @@
               <version>1.26.0</version>
             </dependency>
             <dependency>
-              <groupId>org.apache.maven</groupId>
-              <artifactId>maven-core</artifactId>
-              <version>3.8.8</version>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+              <version>2.15.1</version>
             </dependency>
             <dependency>
-              <groupId>com.google.guava</groupId>
-              <artifactId>guava</artifactId>
-              <version>32.0.1-jre</version>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-lang3</artifactId>
+              <version>3.14.0</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-codec</groupId>
+              <artifactId>commons-codec</artifactId>
+              <version>1.16.1</version>
             </dependency>
           </dependencies>
           <configuration>
@@ -87,53 +91,22 @@
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-utils</artifactId>
-              <version>3.0.24</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven.shared</groupId>
-              <artifactId>maven-shared-utils</artifactId>
-              <version>3.3.3</version>
-            </dependency>
-            <dependency>
-              <groupId>commons-io</groupId>
-              <artifactId>commons-io</artifactId>
-              <version>2.8.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven</groupId>
-              <artifactId>maven-core</artifactId>
-              <version>3.8.8</version>
-            </dependency>
-            <dependency>
-              <groupId>com.google.guava</groupId>
-              <artifactId>guava</artifactId>
-              <version>32.0.1-jre</version>
-            </dependency>
-          </dependencies>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
+          <version>3.3.0</version>
           <dependencies>
             <dependency>
-              <groupId>org.apache.maven.shared</groupId>
-              <artifactId>maven-shared-utils</artifactId>
-              <version>3.3.3</version>
-            </dependency>
-            <dependency>
               <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-utils</artifactId>
-              <version>4.0.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-xml</artifactId>
-              <version>4.0.0</version>
+              <artifactId>plexus-archiver</artifactId>
+              <version>4.8.0</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>commons-io</groupId>
+                  <artifactId>commons-io</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
             <dependency>
               <groupId>org.apache.commons</groupId>
@@ -143,27 +116,17 @@
             <dependency>
               <groupId>commons-io</groupId>
               <artifactId>commons-io</artifactId>
-              <version>2.8.0</version>
+              <version>2.15.1</version>
             </dependency>
             <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-archiver</artifactId>
-              <version>4.8.0</version>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-lang3</artifactId>
+              <version>3.14.0</version>
             </dependency>
             <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-io</artifactId>
-              <version>3.4.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven</groupId>
-              <artifactId>maven-core</artifactId>
-              <version>3.8.8</version>
-            </dependency>
-            <dependency>
-              <groupId>com.google.guava</groupId>
-              <artifactId>guava</artifactId>
-              <version>32.0.1-jre</version>
+              <groupId>commons-codec</groupId>
+              <artifactId>commons-codec</artifactId>
+              <version>1.16.1</version>
             </dependency>
           </dependencies>
           <configuration>
@@ -177,19 +140,9 @@
           <version>3.6.0</version>
           <dependencies>
             <dependency>
-              <groupId>org.apache.maven.shared</groupId>
-              <artifactId>maven-shared-utils</artifactId>
-              <version>3.3.3</version>
-            </dependency>
-            <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-utils</artifactId>
               <version>4.0.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-io</artifactId>
-              <version>3.4.1</version>
             </dependency>
             <dependency>
               <groupId>org.codehaus.plexus</groupId>
@@ -197,29 +150,9 @@
               <version>4.0.0</version>
             </dependency>
             <dependency>
-              <groupId>commons-codec</groupId>
-              <artifactId>commons-codec</artifactId>
-              <version>1.16.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.commons</groupId>
-              <artifactId>commons-compress</artifactId>
-              <version>1.26.0</version>
-            </dependency>
-            <dependency>
-              <groupId>commons-io</groupId>
-              <artifactId>commons-io</artifactId>
-              <version>2.8.0</version>
-            </dependency>
-            <dependency>
               <groupId>org.codehaus.plexus</groupId>
               <artifactId>plexus-archiver</artifactId>
               <version>4.8.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven</groupId>
-              <artifactId>maven-compat</artifactId>
-              <version>3.8.8</version>
             </dependency>
             <dependency>
               <groupId>org.apache.maven</groupId>
@@ -230,6 +163,26 @@
               <groupId>com.google.guava</groupId>
               <artifactId>guava</artifactId>
               <version>32.0.1-jre</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-compress</artifactId>
+              <version>1.26.0</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+              <version>2.15.1</version>
+            </dependency>
+            <dependency>
+              <groupId>org.apache.commons</groupId>
+              <artifactId>commons-lang3</artifactId>
+              <version>3.14.0</version>
+            </dependency>
+            <dependency>
+              <groupId>commons-codec</groupId>
+              <artifactId>commons-codec</artifactId>
+              <version>1.16.1</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -243,8 +196,8 @@
               <version>1.3</version>
               <exclusions>
                 <exclusion>
-                  <artifactId>plexus-cipher</artifactId>
                   <groupId>org.sonatype.plexus</groupId>
+                  <artifactId>plexus-cipher</artifactId>
                 </exclusion>
               </exclusions>
             </dependency>
@@ -287,50 +240,11 @@
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-utils</artifactId>
-              <version>3.0.24</version>
-            </dependency>
-            <dependency>
-              <groupId>commons-codec</groupId>
-              <artifactId>commons-codec</artifactId>
-              <version>1.16.1</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven.shared</groupId>
-              <artifactId>maven-shared-utils</artifactId>
-              <version>3.3.3</version>
-            </dependency>
-            <dependency>
-              <groupId>commons-io</groupId>
-              <artifactId>commons-io</artifactId>
-              <version>2.8.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven</groupId>
-              <artifactId>maven-settings</artifactId>
-              <version>3.8.3</version>
-            </dependency>
-          </dependencies>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-utils</artifactId>
-              <version>3.0.24</version>
-            </dependency>
-            <dependency>
-              <groupId>org.apache.maven</groupId>
-              <artifactId>maven-settings</artifactId>
-              <version>3.8.3</version>
-            </dependency>
-          </dependencies>
+          <version>3.1.1</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -338,7 +252,7 @@
       <plugin>
         <groupId>org.talend.ci</groupId>
         <artifactId>builder-maven-plugin</artifactId>
-        <version>8.0.15</version>
+        <version>8.0.16</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -347,13 +261,6 @@
             </goals>
           </execution>
         </executions>
-        <dependencies>
-          <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.15</version>
-          </dependency>
-        </dependencies>
       </plugin>
     </plugins>
   </build>
@@ -365,7 +272,7 @@
           <plugin>
             <groupId>org.talend.ci</groupId>
             <artifactId>cloudpublisher-maven-plugin</artifactId>
-            <version>8.0.7</version>
+            <version>8.0.8</version>
             <executions>
               <execution>
                 <phase>deploy</phase>
@@ -389,480 +296,6 @@
       <properties>
         <maven.deploy.skip>false</maven.deploy.skip>
       </properties>
-    </profile>
-    <profile>
-      <id>docker</id>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.eclipse.jkube</groupId>
-              <artifactId>kubernetes-maven-plugin</artifactId>
-              <version>1.12.0</version>
-              <dependencies>
-                <dependency>
-                  <groupId>org.bouncycastle</groupId>
-                  <artifactId>bcpkix-jdk18on</artifactId>
-                  <version>1.74</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.google.cloud.tools</groupId>
-                  <artifactId>jib-core</artifactId>
-                  <version>0.22.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-utils</artifactId>
-                  <version>4.0.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-xml</artifactId>
-                  <version>4.0.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.httpcomponents</groupId>
-                  <artifactId>httpcore</artifactId>
-                  <version>4.4.13</version>
-                </dependency>
-                <dependency>
-                  <groupId>commons-logging</groupId>
-                  <artifactId>commons-logging</artifactId>
-                  <version>1.2</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.yaml</groupId>
-                  <artifactId>snakeyaml</artifactId>
-                  <version>2.2</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.google.code.gson</groupId>
-                  <artifactId>gson</artifactId>
-                  <version>2.9.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.fasterxml.jackson.core</groupId>
-                  <artifactId>jackson-annotations</artifactId>
-                  <version>2.16.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.fasterxml.jackson.core</groupId>
-                  <artifactId>jackson-core</artifactId>
-                  <version>2.16.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.fasterxml.jackson.core</groupId>
-                  <artifactId>jackson-databind</artifactId>
-                  <version>2.16.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.httpcomponents</groupId>
-                  <artifactId>httpclient</artifactId>
-                  <version>4.5.13</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.fasterxml.jackson.dataformat</groupId>
-                  <artifactId>jackson-dataformat-yaml</artifactId>
-                  <version>2.16.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.fasterxml.jackson.module</groupId>
-                  <artifactId>jackson-module-jaxb-annotations</artifactId>
-                  <version>2.16.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.fasterxml.jackson.dataformat</groupId>
-                  <artifactId>jackson-dataformat-cbor</artifactId>
-                  <version>2.16.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.fasterxml.jackson.datatype</groupId>
-                  <artifactId>jackson-datatype-jsr310</artifactId>
-                  <version>2.16.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.shared</groupId>
-                  <artifactId>maven-shared-utils</artifactId>
-                  <version>3.3.3</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>commons-io</artifactId>
-                      <groupId>commons-io</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>commons-io</groupId>
-                  <artifactId>commons-io</artifactId>
-                  <version>2.8.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.jackson</groupId>
-                  <artifactId>jackson-core-asl</artifactId>
-                  <version>1.9.16-TALEND</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.jackson</groupId>
-                  <artifactId>jackson-mapper-asl</artifactId>
-                  <version>1.9.16-TALEND</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.httpcomponents</groupId>
-                  <artifactId>httpclient</artifactId>
-                  <version>4.5.13</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>commons-codec</artifactId>
-                      <groupId>commons-codec</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>commons-codec</groupId>
-                  <artifactId>commons-codec</artifactId>
-                  <version>1.15</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.eclipse.jkube</groupId>
-                  <artifactId>jkube-kit-common-maven</artifactId>
-                  <version>1.12.0</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>plexus-archiver</artifactId>
-                      <groupId>org.codehaus.plexus</groupId>
-                    </exclusion>
-                    <exclusion>
-                      <artifactId>maven-core</artifactId>
-                      <groupId>org.apache.maven</groupId>
-                    </exclusion>
-                    <exclusion>
-                      <artifactId>jkube-kit-common</artifactId>
-                      <groupId>org.eclipse.jkube</groupId>
-                    </exclusion>
-                    <exclusion>
-                      <artifactId>org.eclipse.jgit</artifactId>
-                      <groupId>org.eclipse.jgit</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>org.eclipse.jgit</groupId>
-                  <artifactId>org.eclipse.jgit</artifactId>
-                  <version>6.8.0.202311291450-r</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.eclipse.jkube</groupId>
-                  <artifactId>jkube-kit-common</artifactId>
-                  <version>1.12.0</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>kubernetes-client</artifactId>
-                      <groupId>io.fabric8</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>org.eclipse.jkube</groupId>
-                  <artifactId>jkube-kit-remote-dev</artifactId>
-                  <version>1.12.0</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>jcl-over-slf4j</artifactId>
-                      <groupId>org.slf4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                      <artifactId>sshd-core</artifactId>
-                      <groupId>org.apache.sshd</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.sshd</groupId>
-                  <artifactId>sshd-core</artifactId>
-                  <version>2.10.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>jcl-over-slf4j</artifactId>
-                  <version>1.7.34</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.ow2.asm</groupId>
-                  <artifactId>asm</artifactId>
-                  <version>9.5</version>
-                </dependency>
-                <dependency>
-                  <groupId>io.fabric8</groupId>
-                  <artifactId>kubernetes-client</artifactId>
-                  <version>6.5.1</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>okhttp</artifactId>
-                      <groupId>com.squareup.okhttp3</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>com.squareup.okhttp3</groupId>
-                  <artifactId>okhttp</artifactId>
-                  <version>5.0.0-alpha.11</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>okio-jvm</artifactId>
-                      <groupId>com.squareup.okio</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>com.squareup.okio</groupId>
-                  <artifactId>okio-jvm</artifactId>
-                  <version>3.4.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-archiver</artifactId>
-                  <version>4.8.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.commons</groupId>
-                  <artifactId>commons-compress</artifactId>
-                  <version>1.26.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.resolver</groupId>
-                  <artifactId>maven-resolver-api</artifactId>
-                  <version>1.6.2</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.resolver</groupId>
-                  <artifactId>maven-resolver-impl</artifactId>
-                  <version>1.6.2</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.resolver</groupId>
-                  <artifactId>maven-resolver-spi</artifactId>
-                  <version>1.6.2</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.resolver</groupId>
-                  <artifactId>maven-resolver-util</artifactId>
-                  <version>1.6.2</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.sonatype.plexus</groupId>
-                  <artifactId>plexus-sec-dispatcher</artifactId>
-                  <version>1.4</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>plexus-cipher</artifactId>
-                      <groupId>org.sonatype.plexus</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-cipher</artifactId>
-                  <version>1.8</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.google.guava</groupId>
-                  <artifactId>guava</artifactId>
-                  <version>32.0.1-jre</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.commons</groupId>
-                  <artifactId>commons-text</artifactId>
-                  <version>1.10.0</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>commons-lang3</artifactId>
-                      <groupId>org.apache.commons</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>slf4j-api</artifactId>
-                  <version>1.7.34</version>
-                </dependency>
-              </dependencies>
-            </plugin>
-            <plugin>
-              <artifactId>maven-antrun-plugin</artifactId>
-              <version>3.0.0</version>
-              <dependencies>
-                <dependency>
-                  <groupId>org.apache.maven</groupId>
-                  <artifactId>maven-core</artifactId>
-                  <version>3.8.8</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>commons-io</artifactId>
-                      <groupId>commons-io</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.shared</groupId>
-                  <artifactId>maven-shared-utils</artifactId>
-                  <version>3.3.3</version>
-                  <exclusions>
-                    <exclusion>
-                      <artifactId>commons-io</artifactId>
-                      <groupId>commons-io</groupId>
-                    </exclusion>
-                  </exclusions>
-                </dependency>
-                <dependency>
-                  <groupId>commons-io</groupId>
-                  <artifactId>commons-io</artifactId>
-                  <version>2.8.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven</groupId>
-                  <artifactId>maven-plugin-api</artifactId>
-                  <version>3.8.8</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven</groupId>
-                  <artifactId>maven-artifact</artifactId>
-                  <version>3.8.8</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-component-annotations</artifactId>
-                  <version>2.1.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-utils</artifactId>
-                  <version>4.0.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-xml</artifactId>
-                  <version>4.0.0</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.ant</groupId>
-                  <artifactId>ant</artifactId>
-                  <version>1.10.11</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.ant</groupId>
-                  <artifactId>ant-launcher</artifactId>
-                  <version>1.10.11</version>
-                </dependency>
-                <dependency>
-                  <groupId>com.google.guava</groupId>
-                  <artifactId>guava</artifactId>
-                  <version>32.0.1-jre</version>
-                </dependency>
-              </dependencies>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-        <plugins>
-          <plugin>
-            <artifactId>maven-resources-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>copy-dockerfile</id>
-                <phase>install</phase>
-                <goals>
-                  <goal>copy-resources</goal>
-                </goals>
-                <configuration>
-                  <skip>${docker.skip}</skip>
-                  <outputDirectory>${project.build.directory}/docker-temp</outputDirectory>
-                  <overwrite>true</overwrite>
-                  <resources>
-                    <resource>
-                      <directory>${basedir}/temp</directory>
-                      <includes>
-                        <include>Dockerfile</include>
-                      </includes>
-                      <filtering>true</filtering>
-                    </resource>
-                  </resources>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <executions>
-              <execution>
-                <phase>install</phase>
-                <goals>
-                  <goal>run</goal>
-                </goals>
-                <configuration>
-                  <skip>${docker.skip}</skip>
-                  <target>
-                    <unzip src="${project.build.directory}/${talend.job.finalName}.zip" dest="${project.build.directory}/deploy/${talend.job.finalName}" />
-                  </target>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.eclipse.jkube</groupId>
-            <artifactId>kubernetes-maven-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>start</id>
-                <phase>install</phase>
-                <goals>
-                  <goal>build</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>push-image</id>
-                <phase>deploy</phase>
-                <goals>
-                  <goal>push</goal>
-                </goals>
-              </execution>
-            </executions>
-            <dependencies>
-              <dependency>
-                <groupId>org.bouncycastle</groupId>
-                <artifactId>bcpkix-jdk18on</artifactId>
-                <version>1.74</version>
-              </dependency>
-            </dependencies>
-            <configuration>
-              <skip>${docker.skip}</skip>
-              <autoPull>once</autoPull>
-              <images>
-                <image>
-                  <name>${talend.docker.name}</name>
-                  <build>
-                    <contextDir>${project.build.directory}/docker-context</contextDir>
-                    <dockerFile>${project.build.directory}/docker-temp/Dockerfile</dockerFile>
-                    <tags>
-                      <tag>${talend.docker.tag}</tag>
-                    </tags>
-                    <assembly>
-                      <layers>
-                        <layer>
-                          <fileSets>
-                            <fileSet>
-                              <directory>${project.build.directory}/deploy/${talend.job.finalName}</directory>
-                            </fileSet>
-                          </fileSets>
-                        </layer>
-                      </layers>
-                      <excludeFinalOutputArtifact>true</excludeFinalOutputArtifact>
-                    </assembly>
-                  </build>
-                </image>
-              </images>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
     </profile>
   </profiles>
 </project>
