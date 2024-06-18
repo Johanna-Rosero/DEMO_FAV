@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
-    <contextParameter comment="" internalId="_FxzK8BPGEe-767ACRbQAlw" name="path_local" prompt="path_local?" promptNeeded="false" repositoryContextId="_pZ6HwPh7Ee6TlePwj7Yqxw" type="id_String" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/&quot;"/>
-    <contextParameter comment="" internalId="_FxzK8RPGEe-767ACRbQAlw" name="service_account" prompt="service_account?" promptNeeded="false" repositoryContextId="_pZ6HwPh7Ee6TlePwj7Yqxw" type="id_String" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <contextParameter comment="" internalId="_FxzK8BPGEe-767ACRbQAlw" name="CtxPathLocal" prompt="CtxPathLocal?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/&quot;"/>
+    <contextParameter comment="" internalId="_FxzK8RPGEe-767ACRbQAlw" name="ctxServiceAccount" prompt="ctxServiceAccount?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
@@ -100,6 +100,16 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
+    <routinesParameter id="_iasoYBExEe-PZuOZYM6uIQ" name="Relational"/>
+    <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
+    <routinesParameter id="_ibvxQBExEe-PZuOZYM6uIQ" name="TalendStringUtil"/>
+    <routinesParameter id="_iai3YBExEe-PZuOZYM6uIQ" name="Numeric"/>
+    <routinesParameter id="_ibkLEBExEe-PZuOZYM6uIQ" name="TalendString"/>
+    <routinesParameter id="_ia3ngBExEe-PZuOZYM6uIQ" name="StringHandling"/>
+    <routinesParameter id="_ibHfIBExEe-PZuOZYM6uIQ" name="TalendDataGenerator"/>
+    <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
+    <routinesParameter id="_iZjY4BExEe-PZuOZYM6uIQ" name="SQLike"/>
+    <routinesParameter id="_ibUTcBExEe-PZuOZYM6uIQ" name="TalendDate"/>
   </parameters>
   <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
@@ -108,7 +118,7 @@
   <node componentName="tGSConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="32">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="context.service_account"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="context.ctxServiceAccount"/>
     <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:hVVe9aJPRn5le6m9VRSkMWt5Hj9vpNGUHlxUhzm+"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
@@ -342,7 +352,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_2"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
-    <elementParameter field="FILE" name="FILENAME" value="context.path_local+&quot;/RECURSOS_HUMANOS/TABLAS_SSPCOVEVENTOS/SSPCOVEVENTOS.csv&quot;"/>
+    <elementParameter field="FILE" name="FILENAME" value="context.CtxPathLocal+&quot;/RECURSOS_HUMANOS/TABLAS_SSPCOVEVENTOS/SSPCOVEVENTOS.csv&quot;"/>
     <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
     <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
     <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
@@ -428,7 +438,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
   <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" show="false" value="true"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="230;100;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;220;180"/>
@@ -458,13 +468,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e7c6cbb6-92a9-4fec-a27c-ad0b2697f446"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>G1wFrPKPM1M3AfnMGm4NVImTHUobkclqBMN2MI846mLVE5G6c6q9LLwYzg3FKIHLHDQDs4n7DlqI&#13;
-JtUJiA1AEA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_9d3943bf-9699-4acb-b2f2-6cff059049fc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>42QK3ZQooEn+7gV1/akqPTiCbU6pAdljWBgH9YtVxtPxZNm07Hi+ZAPmURbWqrvlYzW8bgmIb4qE&#13;
-kuyPlK6CRA==</DigestValue></Reference></SignedInfo><SignatureValue>N0ls7s43EuPdfNFJuqTSPjTjBdxNYXgRgB9ISSRe329j7yfMtnTA7bhA4BfMC7ZXYRMDpVnKwDC0&#13;
-O/LVdA0s4aHdvmAAwYSg0ioBrAM4VkL4NauwLLEB7FpTN3YseaPxDFtoLwAECvROvbnLgsBjngkk&#13;
-Km53VfVa5+4V7X8lBbV57OuJQPMNYT0a7dItrGK+c7unA72ZdmBcPfLIRydhqTG3NIzRV4kk/Hor&#13;
-flC8kRWwTruEPiwzlY3yyqOlAjd7y7KwPLRmVYXXQVtUhabfFxQSmbDdAUlb7e6v8pie0IQ1BFBS&#13;
-bBmnCKjALGU3KhBDx8ivGXYXdbFGAbkGTEuLOQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_9bed6dbb-8314-4b23-98ee-976263236c2b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>v/SNWlX4+gQfjmn+4VrNW3BbKkUkAuBNwbcdA4Au1JSpFntX5eKo52jFeThmad1j4VXToI26IJty&#13;
+FHRN/qaf6w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_301376f5-98df-4654-a71d-c88604cc1180"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>JXVYm6dZDKT6bR4YTbSkaKXU7qfVQstck75LafDg9igFU9EgwmHjwHqpZp68m86fL94Hle+/ZRqg&#13;
+q0s4Okz84g==</DigestValue></Reference></SignedInfo><SignatureValue>pNDg6tJmxvs6pB/6fARV1FA6ehbTPqoqI/DQ059BKsU079PHmigKbz+HqQsmuI8WBrWPx4rTesq8&#13;
+zlmnb4xigzxgvrIDHA/HKmp3nXUdUrunKKD48gdCX8CG+t/1s99HcdwHtUUkx8JD+FaZ9JwagpQo&#13;
+j7jceKS0VosZ2D0OzXoOtG7vDc2DRWq9X5RRqUYv06Y7sGGYMEog5Pucov9VAADxXqpMm3rJyCyE&#13;
+NCj3i91IKEJeK+OCer0FhZzPygiDPXYIeq9v5U1aEfcH10hAurU3SXf4V6dSEgTyFMo8baH1H85W&#13;
+FfI17aqBqN7DhkKQyQ66rZRHmH81H8hwy3DXGg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -486,4 +496,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_9d3943bf-9699-4acb-b2f2-6cff059049fc" Target="#_e7c6cbb6-92a9-4fec-a27c-ad0b2697f446"><Timestamp>2024-06-14 04:10:15</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_301376f5-98df-4654-a71d-c88604cc1180" Target="#_9bed6dbb-8314-4b23-98ee-976263236c2b"><Timestamp>2024-06-15 05:39:43</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
