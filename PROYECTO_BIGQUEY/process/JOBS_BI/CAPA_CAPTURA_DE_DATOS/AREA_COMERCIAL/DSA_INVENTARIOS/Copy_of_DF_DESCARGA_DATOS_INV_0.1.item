@@ -26,7 +26,8 @@
     <contextParameter comment="" internalId="_KkEzyQRHEe-BEY3ZM4e2Jw" name="ctxServiceAccount" prompt="ctxServiceAccount?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
   </context>
   <parameters>
-    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
+    <elementParameter field="CHECK" name="LOG4J_RUN_ACTIVATE" show="false" value="true"/>
+    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Trace"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="0"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
@@ -138,49 +139,6 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="64">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:P7g+g0PcDm0fxIuuWoKYbx+V7q4sW76mk2NLvuWe"/>
-    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
-    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:/Nz0LH8Ld+DVU6TWo1kTkNuxm+rawFN0du3y+C/U"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
-    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT CAST ( DATE(CURRENT_TIMESTAMP(), 'America/Guayaquil')-1 AS STRING) AS FECHA_CARGA&quot;"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
-    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
-    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="FECHA_CARGA"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tBigQuerySQLRow_1">
-      <column comment="" key="false" length="-1" name="FECHA_CARGA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="64">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_1"/>
-    <elementParameter field="TABLE" name="VARIABLES">
-      <elementValue elementRef="KEY" value="&quot;varFechaCarga&quot;"/>
-      <elementValue elementRef="VALUE" value="row1.FECHA_CARGA"/>
-      <elementValue elementRef="KEY" value="&quot;varBanderaIni&quot;"/>
-      <elementValue elementRef="VALUE" value="0"/>
-      <elementValue elementRef="KEY" value="&quot;varBanActCount&quot;"/>
-      <elementValue elementRef="VALUE" value="1"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tSetGlobalVar_1">
-      <column comment="" key="false" length="-1" name="FECHA_CARGA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
   <node componentName="tLoop" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tLoop_1"/>
     <elementParameter field="RADIO" name="FORLOOP" value="false"/>
@@ -190,7 +148,7 @@
     <elementParameter field="TEXT" name="STEP" show="false" value="1"/>
     <elementParameter field="CHECK" name="INCREASE" show="false" value="true"/>
     <elementParameter field="TEXT" name="DECLARATION" value="globalMap.put(&quot;varBanderaIni&quot;,0)"/>
-    <elementParameter field="TEXT" name="CONDITION" value="(int)globalMap.get(&quot;varBanderaIni&quot;)&lt;3"/>
+    <elementParameter field="TEXT" name="CONDITION" value="(int)globalMap.get(&quot;varBanderaIni&quot;)&lt;2"/>
     <elementParameter field="TEXT" name="ITERATION" value="globalMap.put(&quot;varBanderaIni&quot;,(int)globalMap.get(&quot;varBanderaIni&quot;)+1)"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
@@ -214,7 +172,7 @@
     <elementParameter field="TEXT" name="CONTEXT_NAME" show="false" value="Default"/>
     <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
-    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
     <elementParameter field="TABLE" name="CONTEXTPARAMS">
       <elementValue elementRef="PARAM_NAME_COLUMN" value="ctxBanActCount"/>
       <elementValue elementRef="PARAM_VALUE_COLUMN" value="(int)globalMap.get(&quot;varBanActCount&quot;)"/>
@@ -272,15 +230,21 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_3"/>
   </node>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tBigQuerySQLRow_1">
+  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="40">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_1"/>
+    <elementParameter field="TABLE" name="VARIABLES">
+      <elementValue elementRef="KEY" value="&quot;varBanderaIni&quot;"/>
+      <elementValue elementRef="VALUE" value="0"/>
+      <elementValue elementRef="KEY" value="&quot;varBanActCount&quot;"/>
+      <elementValue elementRef="VALUE" value="1"/>
+    </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tSetGlobalVar_1">
+      <column comment="" key="false" length="-1" name="FECHA_CARGA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tSetGlobalVar_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
-  </connection>
-  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tSetGlobalVar_1">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tSetGlobalVar_1" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_1" target="tJava_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
   </connection>
   <connection connectorName="ITERATE" label="Iterate" lineStyle="7" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_1">
     <elementParameter field="CHECK" name="ENABLE_PARALLEL" value="false"/>
@@ -300,15 +264,13 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tSetGlobalVar_1" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_1" target="tJava_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
+  </connection>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" show="false" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
@@ -321,13 +283,18 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_a261fe5f-1aff-4549-b043-6ffbd5ad4177"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>SJnRMp+6GSGza+alO8m2mnTUAzauRhOWKHd85f0VNU92sg6YCMQ+Vb95hrJ2jJTwWRNsvBHk3jGt&#13;
-OcGTsv/hjw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_c3cbce09-0252-4f8d-bf91-2ce2caf09c49"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>hEZ7N6gbxH74G7jPmsy2j0H0Bs3kIigY/QMWgZcu+06TS5a9VIQ0KgrpqDtAbjosTaIWkyn0ld4N&#13;
-hqVwQJOhqw==</DigestValue></Reference></SignedInfo><SignatureValue>gOIvu+akyBoltTUEn5/oVGez77F96T4RfT5uPmkWJqQfzFx/PY3ieVS615gFM2xbpht04+puydPR&#13;
-4veiAG05bzYXsenN9qaM8SuXtrrgdLGhoJgxXOykObdXOYNOVJYRG3oYPAMUR3xEPsgwJjbQlVix&#13;
-M0KdHH1lPzQ1j/Mc34+NbS/naG/+HR3xxsancm+PJ17h0WfdYE7X2wgmQFjsU5Aa3mcGyfwAbvI5&#13;
-fU4bkSi/BzU5TD0kv981VfHfunnNnzCUCHo0ghc0m1QNzpFCcQLvnuJ4XQHRkFXhV9bfsH6iRLwr&#13;
-o6XQSDcAC62DZcgmRuufBjt/8pmDuMesp/Fx2w==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_8b427789-22c4-4599-b691-cf1ddaff474a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>eb3dTe9XVk6uDDKo/u9AzqcspUkrc47N4go9FwpHZ1OlUFLJ4doSgySxUTB82rGGSaSQzFVj7KB5&#13;
+t2Bq6TI9Qw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_951bdaed-d243-4db9-a9c1-778840cec745"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>8pOaoNYDyKiFl1b/KHLuMjKwnaFdh2AASMSooX87MrjR4z5dJQB2aVjDBJ1S+mfb165qmWhsBsXY&#13;
+9dS0hVAe6g==</DigestValue></Reference></SignedInfo><SignatureValue>g3cnO9BxNoGVV5redI36BKcDArzb7rJN9Ok4U2aq1WnRowb+dHyIIKj8khgWXyDM3TJl/F2vIr9b&#13;
+62oXD18+MZG+35VLvPDE2cCfWgnzkN0D3pOyicspRjnfyg0WVYsdLMxEekeix8sapLGM59Pwf0Nj&#13;
+X7LY7XvYnnPv1Np07LMdA8HJSOSKdN8ctJIexL79Htn68FZe6Q+rJ9AqomRG9gwixrBXXvS3iOO8&#13;
+9U8hscOOsGqUk6DoGfYVF2tPSEMiWdQs3kvJfT8MMrNr/5v1fH4/lnuBpmpON0VvMRvUMn6qvNoe&#13;
+UQXflVf3mLGSTV8ed2NEEVHrqJfSC7X2a8t4Lg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -349,4 +316,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_c3cbce09-0252-4f8d-bf91-2ce2caf09c49" Target="#_a261fe5f-1aff-4549-b043-6ffbd5ad4177"><Timestamp>2024-06-18 04:24:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_951bdaed-d243-4db9-a9c1-778840cec745" Target="#_8b427789-22c4-4599-b691-cf1ddaff474a"><Timestamp>2024-06-18 16:06:55</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
