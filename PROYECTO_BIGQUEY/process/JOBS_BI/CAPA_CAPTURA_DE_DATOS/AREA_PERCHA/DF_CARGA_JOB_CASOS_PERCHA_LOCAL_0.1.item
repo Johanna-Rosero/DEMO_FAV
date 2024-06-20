@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
-    <contextParameter comment="" internalId="_0UVg0B3REe-XJLZgJMBblg" name="bkt_source" prompt="bkt_source?" promptNeeded="false" repositoryContextId="_pZ6HwPh7Ee6TlePwj7Yqxw" type="id_String" value=""/>
-    <contextParameter comment="" internalId="_0UVg0R3REe-XJLZgJMBblg" name="ds_dwh" prompt="ds_dwh?" promptNeeded="false" repositoryContextId="_pZ6HwPh7Ee6TlePwj7Yqxw" type="id_String" value=""/>
-    <contextParameter comment="" internalId="_0UVg0h3REe-XJLZgJMBblg" name="ds_stage" prompt="ds_stage?" promptNeeded="false" repositoryContextId="_pZ6HwPh7Ee6TlePwj7Yqxw" type="id_String" value=""/>
-    <contextParameter comment="" internalId="_0UVg0x3REe-XJLZgJMBblg" name="path_local" prompt="path_local?" promptNeeded="false" repositoryContextId="_pZ6HwPh7Ee6TlePwj7Yqxw" type="id_String" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/&quot;"/>
-    <contextParameter comment="" internalId="_0UVg1B3REe-XJLZgJMBblg" name="service_account" prompt="service_account?" promptNeeded="false" repositoryContextId="_pZ6HwPh7Ee6TlePwj7Yqxw" type="id_String" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <contextParameter comment="" internalId="_0UVg0B3REe-XJLZgJMBblg" name="ctxBucketTarget" prompt="ctxBucketTarget?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="db2_dbbinventarios_sficworare"/>
+    <contextParameter comment="" internalId="_0UVg0R3REe-XJLZgJMBblg" name="CtxDsTarget" prompt="CtxDsTarget?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="EDWH"/>
+    <contextParameter comment="" internalId="_0UVg0h3REe-XJLZgJMBblg" name="CtxDsStage" prompt="CtxDsStage?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="BI_DSA"/>
+    <contextParameter comment="" internalId="_0UVg0x3REe-XJLZgJMBblg" name="CtxPathLocal" prompt="CtxPathLocal?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/&quot;"/>
+    <contextParameter comment="" internalId="_0UVg1B3REe-XJLZgJMBblg" name="ctxServiceAccount" prompt="ctxServiceAccount?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
@@ -103,6 +103,16 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
+    <routinesParameter id="_iasoYBExEe-PZuOZYM6uIQ" name="Relational"/>
+    <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
+    <routinesParameter id="_ibvxQBExEe-PZuOZYM6uIQ" name="TalendStringUtil"/>
+    <routinesParameter id="_iai3YBExEe-PZuOZYM6uIQ" name="Numeric"/>
+    <routinesParameter id="_ibkLEBExEe-PZuOZYM6uIQ" name="TalendString"/>
+    <routinesParameter id="_ia3ngBExEe-PZuOZYM6uIQ" name="StringHandling"/>
+    <routinesParameter id="_ibHfIBExEe-PZuOZYM6uIQ" name="TalendDataGenerator"/>
+    <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
+    <routinesParameter id="_iZjY4BExEe-PZuOZYM6uIQ" name="SQLike"/>
+    <routinesParameter id="_ibUTcBExEe-PZuOZYM6uIQ" name="TalendDate"/>
   </parameters>
   <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="128" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
@@ -111,7 +121,7 @@
   <node componentName="tGSConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="context.service_account"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="context.ctxServiceAccount"/>
     <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:lFyDKkX1Ytq8kH6eJZgAGB4QxMJH3lWD0lSEfOkq"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
@@ -286,16 +296,6 @@
   </node>
   <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="416" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" show="false" value="tAS400Input"/>
-    <elementParameter field="TEXT" name="VERSION" show="false" value="0.102 (ALPHA)"/>
-    <elementParameter field="TEXT" name="FAMILY" show="false" value="Databases/DB Specifics/AS400"/>
-    <elementParameter field="CHECK" name="START" show="false" value="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" show="false" value="true"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" show="false" value="true"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" show="false" value="false"/>
-    <elementParameter field="TEXT" name="HELP" show="false" value="org.talend.help.tAS400Input"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" show="false" value=""/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" show="false" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -462,7 +462,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
   <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" show="false" value="true"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="230;100;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;220;180"/>
@@ -502,13 +502,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_4df2351d-9a72-4177-a28d-f472f4a29529"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>516q5AzKjqCNbWsvgSTjmMHPqsq3XmzHBwpK9lgLvx1b2gs42WLApTgqH8FXOsdgUBY1yIVU3WeW&#13;
-WiOgvEAIBw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f68f9adc-121b-4241-814e-cb90dfb8ff51"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>tp2sfjvGjQ/wbUUdmhu2hrtM+ayWJ6HflhUWKeNcZcIcCMristErxTTBWiOPEeV2RD37FQzDey6r&#13;
-vdX0wjAMoA==</DigestValue></Reference></SignedInfo><SignatureValue>hW6c3CPGnvgAQOtT51CEECHdIGKgVT8Pdl8L7dLVkCSU8otLlNna5+iQTUC3jNK73O3tqhj+ju0y&#13;
-fCF19CVDy2O/fleQD1+QRjp1VRgXH7Zn5ZvbR4Idb+nL0sr/ME7VtxnpJGeAkb5WY4+Ixq0d6cMI&#13;
-tqYGCLOFJwaJ9DZXTAY1zIqJ312swV0zf3DjTchCFk+EQSzoV49w4HZ4ppzAZv3hIC2cMndqPoDl&#13;
-JzjdUnmtkEGFGy71Mvh1OT0MlPFfrhYqPPEOV9cc7bPWzkFb6vLwKDiOinheYlKArC2a6mQotcix&#13;
-VH08Vk37ZDcCTYKpIefmNHznajRV3Wtx81FTuA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_db907d16-8970-4787-b7d1-357c97c520e3"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>3bw+gou8ckgXHfqFQ5AXUZ1EYjmTp4PYlZ4WMJ1xWiyAUuJxlsTltIMrABB5r9SvyPM0Kt072tyt&#13;
+pMrftRdTAA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b37829a7-c253-47c0-97ba-d51ea57dcfc5"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fJoExqTXvLo0sIJEV0CPpauMnHsncUr220+gdBbSrTx97wKCaSD0yFV+npKh6PrMSzyWvZJPihui&#13;
+qrEEXQAI0g==</DigestValue></Reference></SignedInfo><SignatureValue>faSi8oEJXtQYIBObbYFsYzShJQTB4A6kRWJZqNFh1d9PQR0s8cJz24I1J6OpUFtasmWKAwl9dYi+&#13;
+FPC7Y2J+Y2l76lTU/ZoGugXfIocxw6yyrD46FKV5Hm2ijcikKToiw5kFlL5vFg+S5/G9Ty8TJPnZ&#13;
+dZQDQy3dijMHyORHL3y0gqwyCQtsXeA+BeTN2ivqNAWThJ+WqdsZQ+cNBZkhwttNv9OSU+lJAIKB&#13;
+dVUADYXjKqYkyheCTGI0IyoE+tt6hgy5IhZBDrnfpek+oJTqiJQJHi7qSsbqEJha2SRiaXXz42w5&#13;
+G8w2Z5kjdb8Rct1He82BIGfMKQQG1FulpmFU6A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -530,4 +530,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f68f9adc-121b-4241-814e-cb90dfb8ff51" Target="#_4df2351d-9a72-4177-a28d-f472f4a29529"><Timestamp>2024-06-14 04:10:14</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b37829a7-c253-47c0-97ba-d51ea57dcfc5" Target="#_db907d16-8970-4787-b7d1-357c97c520e3"><Timestamp>2024-06-15 05:39:43</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
