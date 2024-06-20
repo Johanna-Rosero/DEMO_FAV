@@ -183,7 +183,6 @@
   </node>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="-50" offsetLabelY="0" posX="600" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="DF_CARGA_JOB_HORAS_TRABAJADAS_WEB"/>
@@ -333,7 +332,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1160" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_7"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:MCvfr+sm+C+ulHpYzCG2zLXUm1BHsVOfz+ilytn3"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -384,7 +382,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_8"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="440">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_9"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:4hxyqUVEx9Qah0cgm03t8eFuR+7cUIqCUNLP0YEj"/>
@@ -410,7 +408,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_9"/>
   </node>
-  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="200">
+  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="200" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_2"/>
     <elementParameter field="TABLE" name="VARIABLES">
       <elementValue elementRef="KEY" value="&quot;varFechaIni&quot;"/>
@@ -423,7 +421,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="360" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_6"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:wWR9YRACwT4t60vziPXkgh7nz3CFfx5Te7MV4rKk"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -476,6 +473,9 @@
     <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tBigQuerySQLRow_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk13"/>
+  </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tBigQuerySQLRow_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk3"/>
   </connection>
@@ -492,14 +492,12 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk8"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_9" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_9" target="tBigQuerySQLRow_7">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk9"/>
   </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tSetGlobalVar_2" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_2" target="tBigQuerySQLRow_2">
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tSetGlobalVar_2" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_2" target="tBigQuerySQLRow_6">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_6" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_6" target="tRunJob_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk6"/>
   </connection>
   <subjob>
@@ -569,13 +567,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_7bcffa58-0a37-45b5-9f03-62661e89a785"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>stZaQKx4HEvioBqKqhGzzt8n6YXuQCfTdAHzupJS1xmcGezdQq7I8+sD1Lk8zXN4bDaco/yh3+Eo&#13;
-FOfkbAaA4g==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_6e91425a-8245-407d-80e8-cc28616db816"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>ydb7iOqXh8G3bsL3YaifyzbXe0NecK4+9eeLvoUInAQUSbHBnCwRk1RM8WQDEJCW2v/xxszXkWeh&#13;
-cszw6gKDiA==</DigestValue></Reference></SignedInfo><SignatureValue>LJG19/T+j3Y+0BsYN/U1DtNdQfeYe42Ick1trP7IDwIZCLtszFa0H1Yi0SvzyF4v60F9zVMoqfry&#13;
-8smpzyhQ5fIb1jvXXVGFpGKG7btmm5TaCUUATykyuYQDmWq3Hz2Tlppkk1gzYupncuyV1nBODSL1&#13;
-Q8HWujVWiJQkHuOo9fM1SRRBvcR9l4KlLpM4vXRV5owMFYQY8bBzKEBxAcciirNXb5iPv8hl8gzw&#13;
-H9Q9KN4LIjla+m6Sb4c+Boac7VPZIS6GeeJo3QTIHhcHgo9ml8nOSS6m+Lvv6fHJeIEsIcebmQVY&#13;
-z+bU4xMcb4t9L35TBqGAtI87OycoFHJTOrTDhQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_1b8a9179-525c-48bf-b664-54f56b2fb54b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>TxBS5/vc/FkeetWgEUFZNrtueQM+rHsxLW0j1OUmnJgOZswM08euUZfyISR7+U/4ck8QPGly23jH&#13;
+VCJnuzdoQA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_8a66e518-91cb-4242-803c-c76958e31836"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>4lPLI3jFHL3eaoy5pDscTSd20RwxKL2YHc9m8Ze48URorcMxuMQ+pzNV52EPSyCyWgQOzRdfr43Q&#13;
+arbliSZ0pg==</DigestValue></Reference></SignedInfo><SignatureValue>RWQ+PI3dIPV7WiPK5CBWKUGimcEHcv1TWk3q+depscy+WojbpjYY/xKOGvB6d8nCejJ2KgUY20ai&#13;
+qLsJ9A77xuztgv0KW5xLgBrU48i5NyY7CfBkLVbaTah90FquaWA53NsgOE2ph0uajzek+KPiMlK3&#13;
+MBER4YfO+OUrgyFdrNMRThyG0vPNbQ7XZsB/ScSf9yjN8JHQYZyG7eVp1l1m/5oj8ZicjtIWoNRM&#13;
+Bhrk7TMFqkq4WkVxP7pVf89moMV32JrdRp8Qz1RhL5aH0PcGvn8QbO7JCszeXVjG4OFFOA4LXkCT&#13;
+W197i0WhMzTBr34icuNVfyEYBJjNeOLHsHCPHg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -597,4 +595,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_6e91425a-8245-407d-80e8-cc28616db816" Target="#_7bcffa58-0a37-45b5-9f03-62661e89a785"><Timestamp>2024-06-19 17:06:36</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_8a66e518-91cb-4242-803c-c76958e31836" Target="#_1b8a9179-525c-48bf-b664-54f56b2fb54b"><Timestamp>2024-06-20 16:21:01</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
