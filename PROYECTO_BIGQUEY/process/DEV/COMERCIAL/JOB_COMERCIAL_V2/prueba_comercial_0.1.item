@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultContext="Default" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Reprocesos">
     <contextParameter comment="" internalId="_zHXQUBxxEe-vW5u97NdKYA" name="fecha_Proceso_IniL" prompt="fecha_Proceso_IniL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
     <contextParameter comment="" internalId="_zHXQURxxEe-vW5u97NdKYA" name="fecha_Proceso_FinL" prompt="fecha_Proceso_FinL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value=""/>
@@ -153,31 +153,394 @@
     <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
     <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
   </parameters>
-  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="32">
+  <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" show="false" value="_ml6wYCTIEe6b4bJ_6WOHUA"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="jt400-9.8.jar"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;B105FAB2&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXCORP&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="AS400"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:RtkphUH/D1chcitlnEwUpPeRJMVBuwGJA9Cojg4TbycKXDDvVjo="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SSPCOTCATALOGOVALOR&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#10;  SSPCOTCATALOGOVALOR.CODIGOCATALOGOVALOR, &#10;  SSPCOTCATALOGOVALOR.CODIGOCATALOGOTIPO, &#10;  SSPCOTCATALOGOVALOR.NOMBRECATALOGOVALOR, &#10;  SSPCOTCATALOGOVALOR.VALORNUMERICO, &#10;  SSPCOTCATALOGOVALOR.ORDEN, &#10;  SSPCOTCATALOGOVALOR.ESTADO, &#10;  SSPCOTCATALOGOVALOR.CODIGOEXTERNO, &#10;  SSPCOTCATALOGOVALOR.ESVALORPORDEFECTO, &#10;  SSPCOTCATALOGOVALOR.COLOR, &#10;  SSPCOTCATALOGOVALOR.NOMBRECORTO, &#10;  SSPCOTCATALOGOVALOR.ESVISIBLE, &#10;  SSPCOTCATALOGOVALOR.NIVELVALIDACION, &#10;  SSPCOTCATALOGOVALOR.FECHAREGISTRO, &#10;  SSPCOTCATALOGOVALOR.USUARIOREGISTRO, &#10;  SSPCOTCATALOGOVALOR.FECHAMODIFICACION, &#10;  SSPCOTCATALOGOVALOR.USUARIOMODIFICACION, &#10;  SSPCOTCATALOGOVALOR.DESCRIPCION, &#10;  SSPCOTCATALOGOVALOR.TIPODATO&#10;FROM SSPCOTCATALOGOVALOR&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOCATALOGOVALOR"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOCATALOGOTIPO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NOMBRECATALOGOVALOR"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORNUMERICO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ORDEN"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOEXTERNO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESVALORPORDEFECTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COLOR"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NOMBRECORTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESVISIBLE"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NIVELVALIDACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="USUARIOREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="USUARIOMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DESCRIPCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TIPODATO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" show="false" value="30"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="SSPCOTCATALOGOVALOR" name="tDBInput_1">
+      <column comment="codigo asignado al valor del catalogo" key="true" length="3" name="CODIGOCATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="codigo asignado al valor del catalogo"/>
+      </column>
+      <column comment="codigo del tipo de catalogo" key="true" length="10" name="CODIGOCATALOGOTIPO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value="codigo del tipo de catalogo"/>
+      </column>
+      <column comment="nombre corto del valor del catalogo" key="false" length="256" name="NOMBRECATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="nombre corto del valor del catalogo"/>
+      </column>
+      <column comment="valor numerico que tiene el catalogo" key="false" length="10" name="VALORNUMERICO" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true">
+        <additionalField key="Comment" value="valor numerico que tiene el catalogo"/>
+      </column>
+      <column comment="orden en el cual se desea se desea se muestre el catalogo" defaultValue="'0'" key="false" length="64" name="ORDEN" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="orden en el cual se desea se desea se muestre el catalogo"/>
+      </column>
+      <column comment="indica si el valor del catalogo debe inactivarse o no 0: INACTIVO 1: ACTIVO" defaultValue="'1'" key="false" length="1" name="ESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="indica si el valor del catalogo debe inactivarse o no 0: INACTIVO 1: ACTIVO"/>
+      </column>
+      <column comment="código externo para el catálogo de valores" key="false" length="16" name="CODIGOEXTERNO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="código externo para el catálogo de valores"/>
+      </column>
+      <column comment="Indica si el valor del catÃ¡logo es el valor por defecto en el caso de que no se seleccione ningun valor." defaultValue="'0'" key="false" length="1" name="ESVALORPORDEFECTO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Indica si el valor del catÃ¡logo es el valor por defecto en el caso de que no se seleccione ningun valor."/>
+      </column>
+      <column comment="Especifica el color en formato exadecimal" key="false" length="7" name="COLOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el color en formato exadecimal"/>
+      </column>
+      <column comment="Especifica el nombre corto del catalogo" key="false" length="100" name="NOMBRECORTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el nombre corto del catalogo"/>
+      </column>
+      <column comment="" key="false" length="1" name="ESVISIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'1'" key="false" length="1" name="NIVELVALIDACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="Especifica la fecha de registro" key="false" length="26" name="FECHAREGISTRO" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica la fecha de registro"/>
+      </column>
+      <column comment="Especifica el id del usuario de registro" key="false" length="32" name="USUARIOREGISTRO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el id del usuario de registro"/>
+      </column>
+      <column comment="Especifica la fecha de modificacion del registro" key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica la fecha de modificacion del registro"/>
+      </column>
+      <column comment="Especifica el id del usuario de modificacion" key="false" length="32" name="USUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el id del usuario de modificacion"/>
+      </column>
+      <column comment="" key="false" length="500" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="12" name="TIPODATO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SSPCO00005"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXCORP"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXCORP"/>
+    </metadata>
+  </node>
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="256" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMap_1"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_ts7GsCfmEe6thcvOMHm1Hw-tMap_2-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
+    <elementParameter field="TEXT" name="JACCARD" show="false" value="0"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="out3">
+      <column comment="codigo asignado al valor del catalogo" key="true" length="3" name="CODIGOCATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="codigo asignado al valor del catalogo"/>
+      </column>
+      <column comment="codigo del tipo de catalogo" key="true" length="10" name="CODIGOCATALOGOTIPO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value="codigo del tipo de catalogo"/>
+      </column>
+      <column comment="nombre corto del valor del catalogo" key="false" length="256" name="NOMBRECATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="nombre corto del valor del catalogo"/>
+      </column>
+      <column comment="valor numerico que tiene el catalogo" key="false" length="10" name="VALORNUMERICO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_Double" usefulColumn="true">
+        <additionalField key="Comment" value="valor numerico que tiene el catalogo"/>
+      </column>
+      <column comment="orden en el cual se desea se desea se muestre el catalogo" defaultValue="'0'" key="false" length="64" name="ORDEN" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="orden en el cual se desea se desea se muestre el catalogo"/>
+      </column>
+      <column comment="indica si el valor del catalogo debe inactivarse o no 0: INACTIVO 1: ACTIVO" defaultValue="'1'" key="false" length="1" name="ESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="indica si el valor del catalogo debe inactivarse o no 0: INACTIVO 1: ACTIVO"/>
+      </column>
+      <column comment="código externo para el catálogo de valores" key="false" length="16" name="CODIGOEXTERNO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="código externo para el catálogo de valores"/>
+      </column>
+      <column comment="Indica si el valor del catÃ¡logo es el valor por defecto en el caso de que no se seleccione ningun valor." defaultValue="'0'" key="false" length="1" name="ESVALORPORDEFECTO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Indica si el valor del catÃ¡logo es el valor por defecto en el caso de que no se seleccione ningun valor."/>
+      </column>
+      <column comment="Especifica el color en formato exadecimal" key="false" length="7" name="COLOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el color en formato exadecimal"/>
+      </column>
+      <column comment="Especifica el nombre corto del catalogo" key="false" length="100" name="NOMBRECORTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el nombre corto del catalogo"/>
+      </column>
+      <column comment="" key="false" length="1" name="ESVISIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'1'" key="false" length="1" name="NIVELVALIDACION" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="Especifica la fecha de registro" key="false" length="26" name="FECHAREGISTRO" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica la fecha de registro"/>
+      </column>
+      <column comment="Especifica el id del usuario de registro" key="false" length="32" name="USUARIOREGISTRO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el id del usuario de registro"/>
+      </column>
+      <column comment="Especifica la fecha de modificacion del registro" key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica la fecha de modificacion del registro"/>
+      </column>
+      <column comment="Especifica el id del usuario de modificacion" key="false" length="32" name="USUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el id del usuario de modificacion"/>
+      </column>
+      <column comment="" key="false" length="500" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="12" name="TIPODATO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties/>
+      <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
+      <outputTables name="out3" sizeState="INTERMEDIATE">
+        <mapperTableEntries expression="StringHandling.CHANGE(row32.CODIGOCATALOGOVALOR,&quot;;&quot;,&quot;:&quot;) " name="CODIGOCATALOGOVALOR" type="id_String"/>
+        <mapperTableEntries expression="row32.CODIGOCATALOGOTIPO " name="CODIGOCATALOGOTIPO" type="id_Integer"/>
+        <mapperTableEntries expression="StringHandling.CHANGE(row32.NOMBRECATALOGOVALOR,&quot;;&quot;,&quot;:&quot;) " name="NOMBRECATALOGOVALOR" type="id_String"/>
+        <mapperTableEntries expression="row32.VALORNUMERICO " name="VALORNUMERICO" nullable="true" type="id_Double"/>
+        <mapperTableEntries expression="row32.ORDEN " name="ORDEN" type="id_String"/>
+        <mapperTableEntries expression="row32.ESTADO " name="ESTADO" type="id_String"/>
+        <mapperTableEntries expression="row32.CODIGOEXTERNO " name="CODIGOEXTERNO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.ESVALORPORDEFECTO " name="ESVALORPORDEFECTO" type="id_String"/>
+        <mapperTableEntries expression="row32.COLOR " name="COLOR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.NOMBRECORTO " name="NOMBRECORTO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.ESVISIBLE " name="ESVISIBLE" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.NIVELVALIDACION " name="NIVELVALIDACION" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.FECHAREGISTRO " name="FECHAREGISTRO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.USUARIOREGISTRO " name="USUARIOREGISTRO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.FECHAMODIFICACION " name="FECHAMODIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.USUARIOMODIFICACION " name="USUARIOMODIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="StringHandling.CHANGE(row32.DESCRIPCION,&quot;;&quot;,&quot;:&quot;) " name="DESCRIPCION" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row32.TIPODATO " name="TIPODATO" nullable="true" type="id_String"/>
+      </outputTables>
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row32" sizeState="INTERMEDIATE">
+        <mapperTableEntries name="CODIGOCATALOGOVALOR" type="id_String"/>
+        <mapperTableEntries name="CODIGOCATALOGOTIPO" type="id_Integer"/>
+        <mapperTableEntries name="NOMBRECATALOGOVALOR" type="id_String"/>
+        <mapperTableEntries name="VALORNUMERICO" nullable="true" type="id_Double"/>
+        <mapperTableEntries name="ORDEN" type="id_String"/>
+        <mapperTableEntries name="ESTADO" type="id_String"/>
+        <mapperTableEntries name="CODIGOEXTERNO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ESVALORPORDEFECTO" type="id_String"/>
+        <mapperTableEntries name="COLOR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOMBRECORTO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ESVISIBLE" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NIVELVALIDACION" nullable="true" type="id_String"/>
+        <mapperTableEntries name="FECHAREGISTRO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="USUARIOREGISTRO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="FECHAMODIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries name="USUARIOMODIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries name="DESCRIPCION" nullable="true" type="id_String"/>
+        <mapperTableEntries name="TIPODATO" nullable="true" type="id_String"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="384" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_1"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SSPCOTCATALOGOVALOR/SSPCOTCATALOGOVALOR.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="LF(&quot;\n&quot;)"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;;&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="true"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="true"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="100000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;windows-1252&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
+    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="SSPCOTCATALOGOVALOR"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_1">
+      <column comment="codigo asignado al valor del catalogo" key="true" length="3" name="CODIGOCATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="codigo asignado al valor del catalogo"/>
+      </column>
+      <column comment="codigo del tipo de catalogo" key="true" length="10" name="CODIGOCATALOGOTIPO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value="codigo del tipo de catalogo"/>
+      </column>
+      <column comment="nombre corto del valor del catalogo" key="false" length="256" name="NOMBRECATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="nombre corto del valor del catalogo"/>
+      </column>
+      <column comment="valor numerico que tiene el catalogo" key="false" length="10" name="VALORNUMERICO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_Double" usefulColumn="true">
+        <additionalField key="Comment" value="valor numerico que tiene el catalogo"/>
+      </column>
+      <column comment="orden en el cual se desea se desea se muestre el catalogo" defaultValue="'0'" key="false" length="64" name="ORDEN" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="orden en el cual se desea se desea se muestre el catalogo"/>
+      </column>
+      <column comment="indica si el valor del catalogo debe inactivarse o no 0: INACTIVO 1: ACTIVO" defaultValue="'1'" key="false" length="1" name="ESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="indica si el valor del catalogo debe inactivarse o no 0: INACTIVO 1: ACTIVO"/>
+      </column>
+      <column comment="código externo para el catálogo de valores" key="false" length="16" name="CODIGOEXTERNO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="código externo para el catálogo de valores"/>
+      </column>
+      <column comment="Indica si el valor del catÃ¡logo es el valor por defecto en el caso de que no se seleccione ningun valor." defaultValue="'0'" key="false" length="1" name="ESVALORPORDEFECTO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Indica si el valor del catÃ¡logo es el valor por defecto en el caso de que no se seleccione ningun valor."/>
+      </column>
+      <column comment="Especifica el color en formato exadecimal" key="false" length="7" name="COLOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el color en formato exadecimal"/>
+      </column>
+      <column comment="Especifica el nombre corto del catalogo" key="false" length="100" name="NOMBRECORTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el nombre corto del catalogo"/>
+      </column>
+      <column comment="" key="false" length="1" name="ESVISIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'1'" key="false" length="1" name="NIVELVALIDACION" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="Especifica la fecha de registro" key="false" length="26" name="FECHAREGISTRO" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica la fecha de registro"/>
+      </column>
+      <column comment="Especifica el id del usuario de registro" key="false" length="32" name="USUARIOREGISTRO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el id del usuario de registro"/>
+      </column>
+      <column comment="Especifica la fecha de modificacion del registro" key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica la fecha de modificacion del registro"/>
+      </column>
+      <column comment="Especifica el id del usuario de modificacion" key="false" length="32" name="USUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Especifica el id del usuario de modificacion"/>
+      </column>
+      <column comment="" key="false" length="500" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" key="false" length="12" name="TIPODATO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SSPCO00005"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXCORP"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXCORP"/>
+    </metadata>
+  </node>
+  <node componentName="tGSConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="560" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:3Y0JNGYQdnN52OCz2kYhvPXzx4nMhzf4GLQFy6Xl"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="680" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_1"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:ZHq1n+dFI3RpHHNEBsivzcVHsq7gXG8W7k3czruK"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="BUCKET" value="&quot;bkt_dwh&quot;"/>
+    <elementParameter field="DIRECTORY" name="LOCALDIR" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_ARTICULO/SSPCOTCATALOGOVALOR&quot;"/>
+    <elementParameter field="TEXT" name="REMOTEDIR" value="&quot;db2/articulo/SSPCOTCATALOGOVALOR&quot;"/>
+    <elementParameter field="CHECK" name="USE_FILES_LIST" value="false"/>
+    <elementParameter field="TABLE" name="FILES" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" show="false" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
+    <elementParameter field="TEXT" name="PART_SIZE" value="50"/>
+    <elementParameter field="TEXT" name="LABEL" value="SSPCOTCATALOGOVALOR"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_1"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_Bt1xoAxEEe-r58Ix6C6cbw - metadata"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_3wQYoFC-Ee6A56CzrkJdbw - metadata"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:QpEimYYTRzQ1s2/jWEOFIPbMpxI0bX9DV+rEgol8"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:0bAlf6xj4v62ZvpJ/41q2gz/bxUxd+STcW6NAgUz"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:jua1A/LEcUZR24595ISNmxkS8lWfLpCUWxoiewKD"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:FftSZ9xqjiqHUS++UtnNmoRZflhxVPACPTkLX69/"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="DATASET" value="&quot;BI_TMP&quot;"/>
-    <elementParameter field="TEXT" name="TABLE" value="&quot;SCORCTORDCOMDETEST&quot;"/>
+    <elementParameter field="TEXT" name="TABLE" value="&quot;SSPCOTCATALOGOVALOR_TRP&quot;"/>
     <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="TRUNCATE"/>
+    <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="EMPTY"/>
     <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="GS_SERVICE_ACCOUNT"/>
     <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:pZD8jxk/reeXBJ5sLNzaUWsWPj+gSg2KZi8u+FdK"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:etoSXAy1quUx5VUOeeUtkRptnfbvNP0SY8HKtIvg"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://bkt_dwh/db2/compras/SCORCTORDCOMDETEST/SCORCTORDCOMDETEST*.csv&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="&quot;gs://bkt_dwh/db2/articulo/SSPCOTCATALOGOVALOR/SSPCOTCATALOGOVALOR*.csv&quot;"/>
     <elementParameter field="TEXT" name="GS_FILE_HEADER" value="1"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -185,74 +548,48 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
     <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;{&quot;"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;;&quot;"/>
     <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="true"/>
     <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" value="null"/>
     <elementParameter field="CHECK" name="DROP" value="true"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="UTF-8"/>
-    <elementParameter field="TEXT" name="LABEL" value="SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="LABEL" value="SSPCOTCATALOGOVALOR"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_1">
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRADETALLEESTADO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORDENCOMPRAESTADO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="12" name="CODIGOUNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="NUMEROLINEA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPARCIAL" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="PESOPARCIAL" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="COSTONETO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="COSTOBRUTO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTAL" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="ESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="32" name="IDUSUARIOREGISTRO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="32" name="IDUSUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADO" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="CODIGOESTADOARTICULOCATVAL" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOESTADOARTICULOCATTIP" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="1" name="EMCODIGOARTICULO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOMONEDAORIGEN" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="12" name="TASACAMBIO" nullable="false" pattern="" precision="6" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CODIGOPROVEEDOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADPEDIDARECEPCION" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CANTIDADENTREGADARECEPCION" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="PESOPEDIDORECEPCION" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="PESOENTREGADORECEPCION" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="SECUENCIALORDENCOMPRADETALLEESTADO" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="VALORUNIDADMANEJO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOUNIDADEMPAQUE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOUNIDADEMPAQUE" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOCONTROLCOSTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="PESOAPROXIMADORECEPCION" nullable="true" pattern="" precision="3" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALSINIMPUESTOS" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="5" name="APLICADOFACTORIMPORTACION" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="PROCESOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="21" name="COSTONETOCALCULO" nullable="true" pattern="" precision="11" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORTIPOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOTIPOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="VALORORIGENCOSTOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="10" name="CODIGOORIGENCOSTOGESTIONPRECIO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="codigo asignado al valor del catalogo" key="true" length="3" name="CODIGOCATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="codigo del tipo de catalogo" key="true" length="10" name="CODIGOCATALOGOTIPO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="nombre corto del valor del catalogo" key="false" length="256" name="NOMBRECATALOGOVALOR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="valor numerico que tiene el catalogo" key="false" length="10" name="VALORNUMERICO" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_Double" usefulColumn="true"/>
+      <column comment="orden en el cual se desea se desea se muestre el catalogo" defaultValue="'0'" key="false" length="64" name="ORDEN" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="indica si el valor del catalogo debe inactivarse o no 0: INACTIVO 1: ACTIVO" defaultValue="'1'" key="false" length="1" name="ESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="código externo para el catálogo de valores" key="false" length="16" name="CODIGOEXTERNO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Indica si el valor del catÃ¡logo es el valor por defecto en el caso de que no se seleccione ningun valor." defaultValue="'0'" key="false" length="1" name="ESVALORPORDEFECTO" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el color en formato exadecimal" key="false" length="7" name="COLOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el nombre corto del catalogo" key="false" length="100" name="NOMBRECORTO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESVISIBLE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="'1'" key="false" length="1" name="NIVELVALIDACION" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica la fecha de registro" key="false" length="26" name="FECHAREGISTRO" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el id del usuario de registro" key="false" length="32" name="USUARIOREGISTRO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica la fecha de modificacion del registro" key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" usefulColumn="true"/>
+      <column comment="Especifica el id del usuario de modificacion" key="false" length="32" name="USUARIOMODIFICACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="500" name="DESCRIPCION" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="12" name="TIPODATO" nullable="true" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="32">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="200">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:MfLUHPZE0uQmVkdWU70E+O7Gi8AEL3g2f+YeK//w"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:n2FG4HTwgWy46szVqT1aNGeIclMGBld1rAFZ60Ak"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:yJ/4rwgAUc00N16Q8ug06G1B67VnYlHAbbJuHvAm"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:qaRWMWVHi2n3TbcynD3CLVT853rpc2pRLE13FSkX"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;CALL `lafavorita-182519.BI_TMP.SP_SCORCTORDCOMDETEST`();&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;CALL `lafavorita-182519.BI_TMP.SP_DSA_SSPCOTCATALOGOVALOR`();&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Downloads/Talend-Studio-20230428_0423-V8.0.1/token.properties&quot;"/>
@@ -263,30 +600,63 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="SP_SCORCTORDCOMDETEST"/>
+    <elementParameter field="TEXT" name="LABEL" value="SP_DSA_SSPCOTCATALOGOVALOR"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_1"/>
   </node>
+  <connection connectorName="FLOW" label="row32" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tMap_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row32"/>
+  </connection>
+  <connection connectorName="FLOW" label="out3" lineStyle="0" metaname="out3" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tFileOutputDelimited_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="out3"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_1" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_1" target="tGSConnection_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSConnection_1" offsetLabelX="0" offsetLabelY="0" source="tGSConnection_1" target="tGSPut_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_1" offsetLabelX="0" offsetLabelY="0" source="tGSPut_1" target="tBigQueryBulkExec_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk3"/>
+  </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryBulkExec_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_1" target="tBigQuerySQLRow_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk5"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk2"/>
   </connection>
   <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSConnection_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_42e48d10-20f2-4e9a-b5d8-c7bcc5be2e74"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5LPziklEnrJgkkNG7aRiso76Hp2fZfHlwaeM/SB7aCyacmXAuTPToKV95VCIufn+4d2ZAucKi087&#13;
-SFtzjTkZzQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_57c88059-2538-49f1-a476-73a899f8c3da"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>MZP42MV1wQjoeT0I2t8mk9aHiYtAhLPJS0s2ZkOSwMs/Qov02oJ9XxA59teDGioDOfE46aLCkMTT&#13;
-mXeop4dd8A==</DigestValue></Reference></SignedInfo><SignatureValue>WSgP82C7a4oqPLM2Sabh6TVD5rRKhavzEvsTvdGrKHMNavyXGXCecNF+7QEiXpRDhkzvuDQPbvJs&#13;
-G8fxMYg3KGm1Uu1/92n2zM/uEZ4aOOP4OUovPmZJgE2mzed0qZAfepPN0VdkXMKLGzD8SdzzwfOV&#13;
-qBg0WbzGRSnE/OQqb12+CYwBYBHOOZRI1boMfy/ODaEYewxoYECOeQDR024Zu+colB4kZa/WJ275&#13;
-MS5uKkZv7aCm/3b94/yrD4FjAKRBJDRYO43UnC0UFcNy7QMMvR2aFQAOAOGnDZiEZaCapCHxsh2N&#13;
-VMe8yoBIQAn4YMIG1XW45wWzVSNGGRaP8sfBaw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_44c3ab88-a8df-4b9c-9d97-929a70bbeba6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>1OVlwjnAit589BIpTbrvMsJWbA4xEHIZJnbe7c8b5ZKNdUNmewHUtRyKHlYafek5yG6RJlhR5Aqp&#13;
+wNDw20Taiw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ff3e2ac3-f76e-4e42-9e54-2bae7e6c00c0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>LZMEDTjn6TbuYDr+e1OxUk4Ny2dM3l7QATa3rudVctjcYXJRlVTuPJLmfQpe1v+WmYu6egORohdm&#13;
+9Zv1x/9m2A==</DigestValue></Reference></SignedInfo><SignatureValue>Ii3PlXWAk56CNzgjdfkBP//A0plrGIBTvAxVtHXFz6nnTgmaDm0jO+Y8rWCQaHdmr24bcJ/nxSyB&#13;
+seff10wg0RbgNPeCXiEckcIW3sL89ytRabpY69ohpXS+EQ2g0rNwOAi+sQEgGjMc1P2nZ35wfHT+&#13;
+yKHOrnSaEwXSw3AzCy48eIziyK7NbfYuI2AmCk7bOacTrF8OJmXWMfmvZmOTCHsOK4IrUPoVWYhB&#13;
+VIN/aiRGInb3dftJdzSnfVQybihs79QdRJ+FVYBo/4YyQ40++p0F42WWxtQs586hlw/qHKjiw+ex&#13;
+1RNeD8oCTfQ/odGgA0+y3qGIsSEZE2NP6wjWYg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -308,4 +678,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_57c88059-2538-49f1-a476-73a899f8c3da" Target="#_42e48d10-20f2-4e9a-b5d8-c7bcc5be2e74"><Timestamp>2024-07-18 16:05:14</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ff3e2ac3-f76e-4e42-9e54-2bae7e6c00c0" Target="#_44c3ab88-a8df-4b9c-9d97-929a70bbeba6"><Timestamp>2024-07-02 16:13:25</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
