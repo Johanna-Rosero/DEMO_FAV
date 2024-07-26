@@ -59,7 +59,7 @@
     <elementParameter field="TEXT" name="OOZIE_END_POINT" show="false" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" show="false" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" show="false" value="true"/>
-    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="true"/>
     <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
     <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
     <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" show="false" value="false"/>
@@ -149,7 +149,6 @@
   </parameters>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="WF_CARGA_SOT_01"/>
@@ -194,7 +193,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="240" posY="200">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:i+m1hUBq52p2ERrL7kKU9rVp53K0kyx4od35aOJf"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -221,7 +219,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="440" posY="200">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:mrH/D1+9RgHNVmNKTY2PLiOZ9/xEf5TvQb4TMPZX"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -246,9 +243,8 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_1"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="720" posY="200">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="240" posY="560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:Ght/L4TEt4xHhDvJBe/LuRkfeptYic6YcHQSPcv9"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -273,58 +269,394 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_3"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="720" posY="40">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_2"/>
-    <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
-    <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
-    <elementParameter field="PROCESS_TYPE" name="PROCESS" value="WF_CARGA_SOT_03"/>
-    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="Default"/>
-    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="PROYECTO_BIGQUEY:_fWuxoEkXEe-agLAgD7k1pA"/>
-    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
-    <elementParameter field="TEXT" name="CONTEXT_NAME" show="false" value="Default"/>
-    <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
-    <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
-    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
-    <elementParameter field="TABLE" name="CONTEXTPARAMS">
-      <elementValue elementRef="PARAM_NAME_COLUMN" value="Fecha_ini"/>
-      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.Fecha_ini"/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
-    <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
-    <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" show="false" value="true"/>
-    <elementParameter field="RADIO" name="USE_CHILD_JVM_SETTING" show="false" value="true"/>
-    <elementParameter field="RADIO" name="USE_CUSTOM_JVM_SETTING" show="false" value="false"/>
-    <elementParameter field="TABLE" name="JVM_ARGUMENTS" show="false"/>
-    <elementParameter field="CHECK" name="USE_DYNAMIC_CONTEXT" value="false"/>
-    <elementParameter field="TEXT" name="DYNAMIC_CONTEXT" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="USE_EXTRA_CLASSPATH" show="false" value="false"/>
-    <elementParameter field="TEXT" name="EXTRA_CLASSPATH" show="false" value="&quot;&quot;"/>
-    <elementParameter field="CHECK" name="LOAD_CONTEXT_FROM_FILE" show="false" value="false"/>
-    <elementParameter field="CHECK" name="USE_BASE64" value="true"/>
-    <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="680" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:Nk7Ik6wGgnTNqiLgJGQnkU6gi+/x+zby1lNtbmv5"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:VKCK028NnmpF8qdA8X6ebpykHqQdFj70VwSjNU7K"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SOTTASPLAB`('&quot;+context.Fecha_ini+&quot;');"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SOTTASPLAB_DSA "/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tRunJob_2"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_4"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="880" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_5"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:LrSpDQTVXHQ61hmA0X9+6cQEwzQ6FxDdhtAAedK7"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:lemOyU33o7JeFLt+gwi3xz7Un627Gy17uSmft1ty"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SOTTPROCESO`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SOTTPROCESO_DSA "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_5"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1080" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_6"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:lxfrgTJavNRPic/UKOvY/FA7qhtdtpoD7/R6LV1y"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:jW8U4+RxbpVGUIYTmMnL/DuOLISkX6tmAdMCWrE8"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SPROLTDISPONIBILIDAD`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SPROLTDISPONIBILIDAD_DSA "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_6"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1280" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_7"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:uK9ZfQGN2sKrLIUvRwf1HY4BYqASwe7yctpH3rg/"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:p9LrPI7n6MHXQj0b+qgbkilPVyz+DdQR0met7mdV"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SPROLTASPINFADI`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SPROLTASPINFADI_DSA "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_7"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1440" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_8"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:Hy/syQKZr27iXMJUeylm0lXbzNPBNlCmJ8uDdpXv"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:/ZXgM9HAqNMJzTDMpSkL6dxXHzDXbZAKbh1KUfch"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_DSA.SP_ASPIRANTE`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SP_ASPIRANTE "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_8"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="680" posY="440">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_9"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:ZWu4d+KuLxbrHE6LPFtBXrO67f1LaePYhjyU98tz"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:MbaBw2/zyVojUqYbNWtSF65EIKVqseFJpOVaHBjl"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SOTTPROCESO_1`('&quot;+context.Fecha_ini+&quot;');"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SOTTPROCESO_1_DSA "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_9"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="880" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_10"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:HWClsmOxzWH226GCdzGGVyTxF5JpAn127NYtXq/v"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:rR3RJlUKMm2nsuWJKhVXnjsiasMg5MeWqMdr5jQ4"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SOTTASPLAB_1`()"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SOTTASPLAB_1_DSA "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_10"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1080" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_11"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:zdUmJed2wWnqim1tnMY0m4V/EhmA+iqiSKEGSrFI"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:X67VsOkHN/lVA281f9Ajs0V4Jtyg9PQOOymyGH1p"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SPROLTDISPONIBILIDAD`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SPROLTDISPONIBILIDAD_DSA "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_11"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1280" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_12"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:OS/YYJhf7wVhuKiv8v6eTZRcjIjBEZ5kzDeP8HuH"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:tZNsuCALUv46WI6pKhH7ZEwk9at5xMnVy3qXpqBC"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SPROLTASPINFADI`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SPROLTASPINFADI_DSA "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_12"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1440" posY="563">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_13"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:UVX4ege9EM9De/Q8Uy00X+iRQmk4JI/sHqEISwcG"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:gPsuXjfQDegJ2ntEQvvLCYIbXpcgHpa4hNfwi6ri"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_DSA.SP_ASPIRANTE`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SP_ASPIRANTE "/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_13"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="240" posY="720">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_14"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:BKFkCtEeykh6FznnsUKHJ/pMRU1hWj9LeqM8rWbQ"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:KIHdZ1yRqzoCeD82zzxN6lxuLEet0xvlFV+agg33"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_TMP.SP_DSA_SOTTASPHISLAB`(FECHA_INI);"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SOTTASPHISLAB_DSA"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_14"/>
+  </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="440" posY="720">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_15"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:f1ACWOnmaAMo8IBwQaqTiDD7TZtQGxVxqGBstZej"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:IohQQruQ499Sxbz+sxZ1Pb2FOFlHqzXzZXavbvgb"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="CALL `lafavorita-182519.BI_DSA.SP_DIM_ASP_HISTORIAL_LABORAL`();"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="DIM_ASP_HISTORIAL_LABORAL"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_15"/>
+  </node>
+  <node componentName="tParallelize" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="400" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_1"/>
+    <elementParameter field="CLOSED_LIST" name="WAIT_FOR" value="All"/>
+    <elementParameter field="TEXT" name="SLEEPTIME" value="100"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tRunJob_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tJava_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tBigQuerySQLRow_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
   </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_3" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_3" target="tBigQuerySQLRow_14">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk15"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_4" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_4" target="tBigQuerySQLRow_5">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_5" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_5" target="tBigQuerySQLRow_6">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk5"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_6" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_6" target="tBigQuerySQLRow_7">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk6"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_7" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_7" target="tBigQuerySQLRow_8">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk7"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_8" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_8" target="tBigQuerySQLRow_9">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk12"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_9" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_9" target="tBigQuerySQLRow_10">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk8"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_10" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_10" target="tBigQuerySQLRow_11">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk9"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_11" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_11" target="tBigQuerySQLRow_12">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk10"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_12" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_12" target="tBigQuerySQLRow_13">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk11"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_14" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_14" target="tBigQuerySQLRow_15">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk14"/>
+  </connection>
+  <connection connectorName="SYNCHRONIZE" label="Synchronize" lineStyle="12" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" source="tParallelize_1" target="tBigQuerySQLRow_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Synchronize"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tParallelize_1" target="tBigQuerySQLRow_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_1" target="tBigQuerySQLRow_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
+  </connection>
+  <note opaque="false" posX="80" posY="680" sizeHeight="121" sizeWidth="441" text="WF_DIM_HISTORIAL ">
+    <elementParameter field="COLOR" name="NOTE_COLOR" value="166;193;152"/>
+    <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
+    <elementParameter field="RADIO" name="NOTETXT_CENTER" value="false"/>
+  </note>
   <note opaque="false" posX="80" posY="160" sizeHeight="121" sizeWidth="441" text="WF ESTADO">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="166;193;152"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
     <elementParameter field="RADIO" name="NOTETXT_CENTER" value="false"/>
   </note>
-  <note opaque="false" posX="560" posY="160" sizeHeight="121" sizeWidth="321" text="WF CATALOGO">
+  <note opaque="false" posX="80" posY="520" sizeHeight="121" sizeWidth="321" text="WF CATALOGO">
     <elementParameter field="COLOR" name="NOTE_COLOR" value="237;201;122"/>
     <elementParameter field="RADIO" name="NOTETXT_LEFT" value="true"/>
     <elementParameter field="RADIO" name="NOTETXT_CENTER" value="false"/>
+  </note>
+  <note opaque="true" posX="600" posY="240" sizeHeight="401" sizeWidth="961" text="WF_DIM_ASPIRANTE">
+    <elementParameter field="RADIO" name="NOTELABEL_CENTER" value="false"/>
+    <elementParameter field="RADIO" name="NOTETXT_TOP" value="true"/>
   </note>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
@@ -358,17 +690,77 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_2"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_93e67116-ee97-4b1a-b955-4abdfa928c3c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>g9X8N1ksikuNJOgPUDzmLoJmfKPc6MupFaULVCsHzPJgvWb1L7BDQZqZpE2PygSTFB7lIoUXbBx3&#13;
-xrWjMBCsMA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_24d29c10-0ef4-4d83-a105-014d138f41ab"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>16/UP6pLXExg5Ot/Eqd394yU0Omf1Z9b5909J9OdPlMPTUaQ0VkB9EuAp5WuQekvngyJL0Ti5llP&#13;
-ypYPfD2TAA==</DigestValue></Reference></SignedInfo><SignatureValue>Jbuia6bas8moIJsZccx3G8xd9sq18YN0BJm/740l/RLdKOc1uxuur0XFNIWRFcxWftVav000EWCG&#13;
-LD7Sc3LmwL+TgkiMNZ6bhQjQerVV2NTDdyiGF/Tt7faz2rdQW3PWNOBqhrlZVneke1Pse+i1VNtk&#13;
-zbS/RgQgK3+BDeDeOXP36GZiPnHqd4cL2JAkhYI6JkGTjEFb19ucBXAhptkImBB7p6U0vcnmqq+A&#13;
-7cSz2pbFYI9szdtjDeYpS2JHSnEC9i1yBZLbv0ZMoABs+1OWsjIWrKMbRq2kQGLMbQo7IWDBqae2&#13;
-di3At/VT8GlShr39rIE5SgOIetiklB29hSi/wA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_5"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_6"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_7"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_8"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_9"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_10"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_11"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_12"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_13"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_14"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_15"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b4cbaf56-01b3-4763-a266-883b70a07427"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>97oKt+CULRltrikkY3mypj+J1GbXs0p56kIMmB8pES66R39cWpVr4Krz/RNC4F80rhN7ti0aZ6V6&#13;
+I8eeb6wnsg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_af0e8b51-6bcb-403f-a012-796adebeb625"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>RoZLwIIB5AI4/V49sXx5M0U8Frv1BPjwcOkb0OmtYOCubMKqMM6WgoOQ8azxwO7WOh44Ym2fKl3V&#13;
+MoPU8umPEA==</DigestValue></Reference></SignedInfo><SignatureValue>KY7ItwTOq74tfNoHY6O+Atc1cfimr4knB56q0VFp8Bpzpoiaj8j4MU0aVuUW6R5e8ZI8028j3roJ&#13;
+fpPJKljCV9uHhF1psAI6Jq2RCqoWGFtyBN8NrvrjpFrZxpaGsZeVUuBX5zQGDiCtwd0Tw4Smzo7n&#13;
+kHd74AGsQEdJKlSSpx1TFHnWdrZ4y23zG9ybwXh8VDtk0OM9PkiMSWeEUOBaCPW7x6RSrtce2u74&#13;
+X8nRNazKXTVXXCjPTyEN7LU/1q4U417pKxD+PNO/5Vi0mo8lnax4AMod50p7xGPuvrDLvSu74nt/&#13;
+CLBX4LOUH2lALn0BAjg6eh8UwfkK+n3TppfWsw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -390,4 +782,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_24d29c10-0ef4-4d83-a105-014d138f41ab" Target="#_93e67116-ee97-4b1a-b955-4abdfa928c3c"><Timestamp>2024-07-23 21:15:01</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_af0e8b51-6bcb-403f-a012-796adebeb625" Target="#_b4cbaf56-01b3-4763-a266-883b70a07427"><Timestamp>2024-07-26 15:54:23</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
