@@ -164,11 +164,11 @@
     <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tPostjob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1080" posY="40">
+  <node componentName="tPostjob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1240" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPostjob_1"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tGSClose" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1480" posY="40">
+  <node componentName="tGSClose" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1640" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSClose_1"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -412,7 +412,7 @@
       <column comment="" key="false" length="512" name="NOMBREESTADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tAS400Close" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1240" posY="40">
+  <node componentName="tAS400Close" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1400" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBClose_1"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_3"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -436,7 +436,7 @@
     <elementParameter field="TEXT" name="LABEL" value="CNX_DB2_B105FAB2_SMXSIC"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tAS400Close" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1360" posY="40">
+  <node componentName="tAS400Close" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1520" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBClose_2"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_3"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -5946,7 +5946,7 @@
       <column comment="" key="false" length="1" name="APROBADOMANUAL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2680" posY="680">
+  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2640" posY="680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_19"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
@@ -6029,7 +6029,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_3"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2800" posY="680">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="2760" posY="680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:4I2FhuAi/8okk+FxPm1Zh3fBL9Idm12IKi0vUBsZ"/>
@@ -6063,8 +6063,19 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_21"/>
   </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1040" posY="40">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_22"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="java.util.Date fechaActual = new java.util.Date();&#10;java.util.Calendar calendar = java.util.Calendar.getInstance();&#10;calendar.setTime(fechaActual); // Establecer la fecha actual en el calendario&#10;calendar.add(java.util.Calendar.DAY_OF_MONTH, -32); // Restar 32 días&#10;java.util.Date fechaRes = calendar.getTime(); // Obtener la fecha resultante&#10;java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&quot;);&#10;String fechaForm = sdf.format(fechaRes);&#10;Bi.println(&quot;INICIA FECHA:&quot;+fechaForm);&#10;context.Fecha_ini = fechaForm;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="IMP_INICIO"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_22"/>
+  </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tJava_21">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSConnection_1" offsetLabelX="0" offsetLabelY="0" source="tGSConnection_1" target="tJava_22">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk61"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPostjob_1" offsetLabelX="0" offsetLabelY="0" source="tPostjob_1" target="tDBClose_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
@@ -6834,13 +6845,18 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_73848b74-5f45-45b4-8c0e-914014caf78f"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>KIpc/Z/kuEMWJlct3A/8PORYWg7dh1+4rQQ4WDf/GEH3gNQvBXdD+UJhgoiuj2vwYi1wRN4Ih1nS&#13;
-RJbGYMmasw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_a4bb5dc6-99d2-4a7c-a77e-f2e7ab3eecac"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>vVqfwN0J1gEb/kx+kWCBh1lq7ic6GFt9ZA20xI6iF8gQglY2nXv9sP1xO0gPWFf+PEZdvPyR+trK&#13;
-l3vCYaX94Q==</DigestValue></Reference></SignedInfo><SignatureValue>MtYfb8n2tQQ5z5i0svQp+3LoajEsyIWPEzsNtC+OQgalpAeGGP/z+zkJoUow0ST+CrD1h3m3a/xb&#13;
-wKi8SsOYQQDp+t3Uq2ne37gMVm70RU4QlMuqD7DkjM9DEFYL5bByDuwHXcMayQcdiIBHHvsLo88Z&#13;
-zQ7WeXgAO0ZwFeHSZMhwPZ2PdOa53BG8FDSMcwoCW6OWM6iLsJBGqu1E3gfkSUWQjJ7ILPWPA5GK&#13;
-TsrRT/FElH8yIWsHdUNgZTysYi/VFqc3qbPnnDBXjpVJAk5W/oSbV7RJ8Tz5qJ7bOVTLfjVPggCz&#13;
-DxFfcwOl3gCSsKa3sjupyEglvhI9wBjye+lHNw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_22"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_6aa21933-01cf-4638-957f-3a581d4d55e8"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>jJ3AYstQZWhabCD2+1qSLbEFuOnJOO9uCLHWztCLtb+uxUHKT1wx+4EVWq0oHc3s7IyLwdhK/Lsn&#13;
+AiitpR6IeQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_39db9d4c-d39b-4056-bae7-7a5e2fa840fe"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5t9u3Sb8tPSrKUKrm/69D83HEscMBPwtOrEv2Y0VhdkUUuZ6pNHCNgSp1obtZN76LC0hLRV99pKs&#13;
+M5VYA66S1A==</DigestValue></Reference></SignedInfo><SignatureValue>hsVnEzjvB/F+PQyDD7eUHhQNhdLl9h4ndpcSOgIXy6gpE6KmsFkot/+ZGWPU99mIIhULrXV9Aynd&#13;
+exupdj2pmhs/AeABUl03Ft3apP1CANaA+rEd1hTlLYLwa0OGC15Drsd5LRP2kG+FVKUHA1irxCOg&#13;
+A1MJVO6M8+ihVfrcEfgisVKQ10FDC3R7DvLJc5cJic7uoOel22DW5jMfRCeSa9f5XtNpqeIxDnPG&#13;
+GA5qhRvJh6bX71UE6lKwsltOmXCEfNwCH8ZXOz6tYmszJ2scb2UpEiQ4ahvCnlhJQbXte0EC203L&#13;
+y04vBelpLweWQFraJ0AK+xvSrMm6EJXFMIIkxw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -6862,4 +6878,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_a4bb5dc6-99d2-4a7c-a77e-f2e7ab3eecac" Target="#_73848b74-5f45-45b4-8c0e-914014caf78f"><Timestamp>2024-07-28 16:38:28</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_39db9d4c-d39b-4056-bae7-7a5e2fa840fe" Target="#_6aa21933-01cf-4638-957f-3a581d4d55e8"><Timestamp>2024-07-29 17:31:59</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
