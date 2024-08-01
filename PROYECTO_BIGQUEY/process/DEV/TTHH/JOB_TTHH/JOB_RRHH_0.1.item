@@ -58,7 +58,7 @@
     <elementParameter field="TEXT" name="OOZIE_END_POINT" show="false" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" show="false" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" show="false" value="true"/>
-    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="true"/>
     <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
     <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
     <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" show="false" value="false"/>
@@ -341,7 +341,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_INICIO_TALEND`('JOB_RRHH','CAPTURA JOB_RRHH');&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_INICIO_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'CAPTURA &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
@@ -367,7 +367,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_FIN_TALEND`('JOB_RRHH', 'CAPTURA JOB_RRHH');&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_INICIO_TALEND`('JOB_RRHH', 'TRANSFORMACION JOB_RRHH');&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_FIN_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'CAPTURA &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_INICIO_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'TRANSFORMACION &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
@@ -393,7 +393,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_FIN_TALEND`('JOB_RRHH', 'TRANSFORMACION JOB_RRHH');&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_FIN_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'TRANSFORMACION &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
@@ -444,7 +444,6 @@
   </node>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="WF_CARGA_DSA"/>
@@ -1916,7 +1915,12 @@
     <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
     <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
-    <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="FECHA_INI"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="(String)globalMap.get(&quot;FECHA_INI&quot;)"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="FECHA_FIN"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="(String)globalMap.get(&quot;FECHA_FIN&quot;)"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" show="false" value="true"/>
@@ -2007,7 +2011,6 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tRunJob_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tJava_2">
@@ -2020,7 +2023,6 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk6"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tRunJob_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk16"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tParallelize_1">
@@ -2599,13 +2601,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_f8daa150-d611-4f5e-b4a2-2bfeb86888f2"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>0i6MY6B/2fzhVHbsS88b8nKoE+QdZPLjkW5ReBrbI1s6proN2MCpMiVC61ja48K6tvPPWMmyKWaD&#13;
-fz0snVeb3Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_1eae0c2e-c9fe-4011-89e2-925637f73e34"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>T5/55FTbLPlBd0pwB5X+AczqYNQ8LRJhIf1WKsG2m0FLvarg7Y+Mm7uUCmMFVnyXoQtK+J1nt7Kn&#13;
-CSAi5PKH/g==</DigestValue></Reference></SignedInfo><SignatureValue>k6rzp1S3bztemt5sVE5/osxBrv0ZfBJrk8buDw3R61WuUZrxkGDLSrqN+dQuJCWep8UFZi7kYd/E&#13;
-pVY25n0t6U4FGeHh+qqqD8c8NqJrBMU7F0vCVWHOJIVjTdPw9n47CQ9ZQx/USp+SMGHyDGhO08w1&#13;
-X3JFdcn0IRPCGJj83cp4YOVgtxLBfuZBMfmsFtmwS+iZqYSrfTfFbC7JT2qfnLahABYnbcvU4CSy&#13;
-qZ2kkG3LAqo3Fjw5o3HAICnNP5n6kT9aYDG99EsL8xdWRMal/PzIBL03p0RzgO1n1p55vs/ugbBP&#13;
-pBuX4sE4f0QML7TPWKSCshzotN/eEuxPfqj9qA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_9502884b-5c39-4dd5-ad18-a57194e7c3b8"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>mzCZ3woYHYUSAy5JWkH+QyCu9zULzFXLW9PeVr4FKoWiVLXBQ/RUWfxUdfz217dCDLdLiDHjR1yv&#13;
+BKxgQHou8w==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_6bac8891-fb25-49b5-bf19-31542a0d8990"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>VO3MIvlndrlmeXyEfOwanm5Qk87SLmgGcxr7b+fgJKlo6kBaYelYMsihKzhudszgd4U6VNJ3vOpe&#13;
+KvKhbo2oug==</DigestValue></Reference></SignedInfo><SignatureValue>M7tdXJ8eLUFKJG8icUivNHDk2x89/Wa+aUdjbrCm0KM5hN/nz6X5b/0cpIbbWW3z1+1T71DsqFcx&#13;
+hUrC3NypnywJxkHyZ3muoCH/eJjrZVOUhuStQoB1RD1b0ynUd4YrHFSpMgQzCtSQUIOy+ragBXX+&#13;
+Hib3q47X4DbiFP5K+ZIGGgYzmr8F7Tn527FCtxxxCwrQCK74bhw8LmbxmqzLerU+zrUl/klwar12&#13;
+vSQa0kjoB/InyPuMJcn0b8zFI30eX0OGSgUwuCvmxJzwKH9zHjIgJt4+kOmhBWEtE6eG4Z5JJncn&#13;
+4sFk9WU1Nr2jbVvnPs/pFiwtY7NlQwHoDdIJ4A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2627,4 +2629,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_1eae0c2e-c9fe-4011-89e2-925637f73e34" Target="#_f8daa150-d611-4f5e-b4a2-2bfeb86888f2"><Timestamp>2024-08-01 17:11:58</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_6bac8891-fb25-49b5-bf19-31542a0d8990" Target="#_9502884b-5c39-4dd5-ad18-a57194e7c3b8"><Timestamp>2024-08-01 17:40:08</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
