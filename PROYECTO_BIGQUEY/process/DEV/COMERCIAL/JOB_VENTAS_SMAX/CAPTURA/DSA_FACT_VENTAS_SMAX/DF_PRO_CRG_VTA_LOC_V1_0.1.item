@@ -28,7 +28,7 @@
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="64"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="80"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" show="false" value=""/>
@@ -122,12 +122,7 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
-    <routinesParameter id="_SN7C8CZ9Ee6dLIv4Aep4-w" name="DQTechnical"/>
-    <routinesParameter id="_SNI_0CZ9Ee6dLIv4Aep4-w" name="DataMasking"/>
     <routinesParameter id="_SK6yQCZ9Ee6dLIv4Aep4-w" name="DataOperation"/>
-    <routinesParameter id="_SNkdoCZ9Ee6dLIv4Aep4-w" name="DataQualityDependencies"/>
-    <routinesParameter id="_SNWbMCZ9Ee6dLIv4Aep4-w" name="DataQuality"/>
-    <routinesParameter id="_SNx5ACZ9Ee6dLIv4Aep4-w" name="DqStringHandling"/>
     <routinesParameter id="_SLQwgCZ9Ee6dLIv4Aep4-w" name="Mathematical"/>
     <routinesParameter id="_SLmHsCZ9Ee6dLIv4Aep4-w" name="Numeric"/>
     <routinesParameter id="_SLwfwCZ9Ee6dLIv4Aep4-w" name="Relational"/>
@@ -155,7 +150,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT FECHAVENTA,ATR.CODIGOLOCAL, VENTACOMPLETA,CATH.VALORTIPOESTADO &#13;&#10;FROM SMXSIC.SCVENTVENCARARETRA CAT &#13;&#10;INNER JOIN SMXSIC.SCVENTVENCARARETRAHIS CATH &#13;&#10;ON CAT.CODIGOCOMPANIA = CATH.CODIGOCOMPANIA AND CAT.CODIGOCARGAVENTA = CATH.CODIGOCARGAVENTA&#13;&#10;INNER JOIN SMXSIC.SSPCOTAREATRABAJO ATR ON ATR.CODIGOCOMPANIA = CAT.CODIGOCOMPANIA &#13;&#10;AND ATR.CODIGOAREATRABAJO = CAT.CODIGOAREATRABAJO&#13;&#10;--WHERE CAT.FECHAVENTA='2024-03-11'&#13;&#10;WHERE CAT.FECHAVENTA = '&quot;+context.fecha_Proceso+&quot;'&#13;&#10;AND (CATH.CODIGOPROCESO = 611 &#13;&#10;OR (CATH.CODIGOPROCESO = 601 AND CAT.CODIGOAREATRABAJO=998) &#13;&#10;) &quot;&#13;&#10;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT FECHAVENTA,ATR.CODIGOLOCAL, VENTACOMPLETA,CATH.VALORTIPOESTADO &#13;&#10;FROM SMXSIC.SCVENTVENCARARETRA CAT &#13;&#10;INNER JOIN SMXSIC.SCVENTVENCARARETRAHIS CATH &#13;&#10;ON CAT.CODIGOCOMPANIA = CATH.CODIGOCOMPANIA AND CAT.CODIGOCARGAVENTA = CATH.CODIGOCARGAVENTA&#13;&#10;INNER JOIN SMXSIC.SSPCOTAREATRABAJO ATR ON ATR.CODIGOCOMPANIA = CAT.CODIGOCOMPANIA &#13;&#10;AND ATR.CODIGOAREATRABAJO = CAT.CODIGOAREATRABAJO&#13;&#10;--WHERE CAT.FECHAVENTA='2024-03-11'&#13;&#10;WHERE CAT.FECHAVENTA = '&quot;+context.fecha_Proceso+&quot;'&#13;&#10;AND (CATH.CODIGOPROCESO = 611 &#13;&#10;--OR (CATH.CODIGOPROCESO = 601 AND CAT.CODIGOAREATRABAJO=998) &#13;&#10;) &quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
@@ -933,73 +928,73 @@
     <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tGSPut_1" target="tBigQueryBulkExec_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tGSPut_1" target="tBigQueryBulkExec_2">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tGSPut_1" target="tBigQueryBulkExec_2">
     <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk5"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tGSPut_1" target="tBigQueryBulkExec_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
   </connection>
   <note opaque="false" posX="480" posY="384" sizeHeight="64" sizeWidth="96" text="Eliminar luego de los permisos de escritura del DB2 y apuntar a la nueva tabla creada, luego de más pruebas apuntar a la tabla de producción."/>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" show="false" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tPrejob_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="230;100;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="255;220;180"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSConnection_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_2"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_2"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryOutput_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_08cef72b-8d87-442b-8a05-f16d4fc7208c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>oHEAA0kyphTjRt30JSqFc/4KFyhOU8xDVq9jxGXr2enO5Ms2pYcE3ktV14xqZ7NZcIu1nOhe5sej&#13;
-1tHA5MOkRQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_003cb6c8-1937-4b25-8029-39fec990780d"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>NBIanvR64ksKiJuDyQXN59uLumQ3j9iNF/S61P282si/nDRdNtWpZTUZdUougvWf1kDCIFM81WAe&#13;
-JTTOQ6A5gQ==</DigestValue></Reference></SignedInfo><SignatureValue>XSnDShirNV/WF+xMwq5TK8qTCE6AxIMeDoT/dDULXx+WcHPTgq0yGAxFgdj5BOT+uOPB27Hj4v8o&#13;
-xM/OKKUcxATveYuOyzQddRV1ob7xPUrGWvph8WMYtJn+v5BpoU2Ye+fsVfo+8SN6Wo8ctgxxwJYY&#13;
-1ZRnSVCAyClI7hQUZqYDj1tA5GKGNOSWwtwQXcyP+T5gMCvLDXCwSJ+3g09zGbDy2Q+lXAz+sooF&#13;
-tCvs/kPlzfdgi4CCHSuXevy53128nxY32tHRm4D94UPaFc1EX2w58jcpvAQAh9Ye6ItEIFZ72cnt&#13;
-ej6cTW/x3S8PGLfxNtOeYef+brysm7m41py1Nw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b0fd3e9f-44b4-4088-9dcd-3cbd6b0ef84e"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>2esn14sjhV8IC/Y0bwxw8y1vL0VR8JlRa76D7xJhIYaibS0AOxqZomxH9Ntjgeis7YHfm53KjVx5&#13;
+gcDGLksCww==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ca0f71a7-04f0-4a55-b3ae-5e566310bc56"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>lq8B0t7F8fZxnETFiD3QlRO+dF+oGAWlIGgdLmNQ2JWIDz/yA1Mh1edh9MSfM2FZBsZRlMl7QDTd&#13;
+clG8ry46Og==</DigestValue></Reference></SignedInfo><SignatureValue>lxzq42r5l8XGD9c8IEFB4edatPkQ3OYPup5rjeQKXLLK9yvPLLUobRAsUqwUyqtg6qyZD48HjBYg&#13;
+4Hq+DwJjhTEMfFAyLTsNiPA/tiNpmBmuAP1tWDzy3IMQJw75qsoYT5N7C1+dCXLVFipbr9RaBqi+&#13;
+TV1ucGyP3aSFF89RmO3/nl4F/SwIoWYphRXJIiHQCL749IL8jrsgDwAPpvb57GdS0So1nYz5CJVv&#13;
+MkuFjB0LXtJed9tb3BGQnyXeJeUqMG2TEdzMJxDHIIQ6n8Ov0GzZA60CkybDvBB4c3gcX1djf/bX&#13;
+IAsadZZPR+rXE5hsKg/Y5ft3wXyyP/zonm7dDA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1021,4 +1016,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_003cb6c8-1937-4b25-8029-39fec990780d" Target="#_08cef72b-8d87-442b-8a05-f16d4fc7208c"><Timestamp>2024-06-25 21:45:30</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ca0f71a7-04f0-4a55-b3ae-5e566310bc56" Target="#_b0fd3e9f-44b4-4088-9dcd-3cbd6b0ef84e"><Timestamp>2024-08-20 20:00:40</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
