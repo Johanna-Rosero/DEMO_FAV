@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="Default" jobType="Standard" xmi:version="2.0">
-  <context confirmationNeeded="false" hide="false" name="Default"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="DEV" jobType="Standard" xmi:version="2.0">
+  <context confirmationNeeded="false" hide="false" name="DEV">
+    <contextParameter comment="" internalId="_Ydo7QGZVEe-Y17EZMbQqlA" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/DEV/&quot;"/>
+    <contextParameter comment="" internalId="_Ydo7QWZVEe-Y17EZMbQqlA" name="VG_ProjectID" prompt="VG_ProjectID?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;lafavorita-182519&quot;"/>
+    <contextParameter comment="" internalId="_Ydo7QmZVEe-Y17EZMbQqlA" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+  </context>
+  <context confirmationNeeded="false" hide="false" name="PRO">
+    <contextParameter comment="" internalId="_Ydo7Q2ZVEe-Y17EZMbQqlA" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/PRO/&quot;"/>
+    <contextParameter comment="" internalId="_Ydo7RGZVEe-Y17EZMbQqlA" name="VG_ProjectID" prompt="VG_ProjectID?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;lafavorita-182519&quot;"/>
+    <contextParameter comment="" internalId="_Ydo7RWZVEe-Y17EZMbQqlA" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+  </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
@@ -97,18 +106,28 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
+    <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
+    <routinesParameter id="_iai3YBExEe-PZuOZYM6uIQ" name="Numeric"/>
+    <routinesParameter id="_ibvxQBExEe-PZuOZYM6uIQ" name="TalendStringUtil"/>
+    <routinesParameter id="_ibkLEBExEe-PZuOZYM6uIQ" name="TalendString"/>
+    <routinesParameter id="_ibHfIBExEe-PZuOZYM6uIQ" name="TalendDataGenerator"/>
+    <routinesParameter id="_ibUTcBExEe-PZuOZYM6uIQ" name="TalendDate"/>
+    <routinesParameter id="_iasoYBExEe-PZuOZYM6uIQ" name="Relational"/>
+    <routinesParameter id="_iZjY4BExEe-PZuOZYM6uIQ" name="SQLike"/>
+    <routinesParameter id="_ia3ngBExEe-PZuOZYM6uIQ" name="StringHandling"/>
+    <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
   </parameters>
-  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="96" posY="32">
+  <node componentName="tBigQueryInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryInput_1"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="bigquery_id"/>
     <elementParameter field="DYNAMIC_GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:UGcPw5qHsRdqFvz7XIRgIH8OIL7qoEs/CECuOa68"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
     <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:LXv+7oSwx4G0M66WlHnqKVHHFC2EalXLKRHd76wF"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
     <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select &#13;&#10;FECHA_INI_STR,&#13;&#10;FECHA_FIN_STR,&#13;&#10; from BI_DSA.DSA_FECHAS_PROCESO_VTA&quot;"/>
@@ -130,7 +149,7 @@
       <column comment="" key="false" length="-1" name="FECHA_FIN_STR" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="32">
+  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="288" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_1"/>
     <elementParameter field="TABLE" name="VARIABLES">
       <elementValue elementRef="KEY" value="&quot;FECHA_INI&quot;"/>
@@ -146,15 +165,15 @@
       <column comment="" key="false" length="-1" name="FECHA_FIN_STR" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="416" posY="32">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:PjJqYj3p7FlEduFYIs0hW0JWKxJ3gqyIK8rpD6nn"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
     <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:8y5fyuAbS+7Q6dDG6YnRYZuiFrOnjfCHBNvPvQjS"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
     <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_INICIO_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'CAPTURA &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;&quot;"/>
@@ -172,15 +191,15 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_1"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="224" posY="160">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_2"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:2gDYJC8BbcsbshrTJRNsxOMSPSdqoZgRR48gFMbx"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
     <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:t24d+obf/KzHIhqxAqL61SR/d7TWjmp3gSOZPfKb"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
     <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_FIN_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'CAPTURA &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_INICIO_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'TRANSFORMACION &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;&quot;"/>
@@ -198,15 +217,15 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_2"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="672" posY="288">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="760" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_3"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:MThtQ2Ri5Ob1GTFeIlQJ+Frhm9SvH8z7fLPSXGpF"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Users/bisolutions/Downloads/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
     <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:1haVm0FDUggr+M6iH1sV4E3x8Rn0HY7pYRyAwYjb"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
     <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_CNT.ETL_FIN_TALEND`('&quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;', 'TRANSFORMACION &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)) + &quot;');&#13;&#10;&quot;"/>
@@ -224,7 +243,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_3"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="96">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="920" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
@@ -248,20 +267,20 @@
     <elementParameter field="CHECK" name="USE_EXTRA_CLASSPATH" show="false" value="false"/>
     <elementParameter field="TEXT" name="EXTRA_CLASSPATH" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="LOAD_CONTEXT_FROM_FILE" show="false" value="false"/>
+    <elementParameter field="CHECK" name="USE_BASE64" value="false"/>
     <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <elementParameter field="CHECK" name="USE_BASE64" value="false"/>
     <metadata connector="FLOW" name="tRunJob_1"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="352" posY="288">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="400" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:mOKqXMGYSLPUBUF8q0iWAEYHrUcyRacLtZd3CGMN"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
     <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:08lwU6n/dQPheDDmwFWVuxiai8KDI7Sql//aKLti"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
     <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_DSA.SP_FAC_CASOS_PERCHA_LOCAL`();&#13;&#10;&quot;"/>
@@ -279,15 +298,15 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_4"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="288">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="560" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_5"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:WnKmawoNaKiuTAqjnKYFtmfOdvvJGXUy6LXpv06w"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="&quot;C:/Talend/lafavorita-182519-0d2bcbb1a0db.json&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
     <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:4rBPj5/q6+uPD/6DYwTcuwG5ENbJcKuUoc+rabvB"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
     <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;CALL `lafavorita-182519.BI_DSA.SP_DIM_FECHA_HORA_CARGA_PERCHA`();&#13;&#10;&quot;"/>
@@ -305,21 +324,21 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_5"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="608" posY="32">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;INICIO: &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)));&#10;System.out.println(&quot;DESDE: &quot; + ((String)globalMap.get(&quot;FECHA_INI&quot;)));&#10;System.out.println(&quot;HASTA: &quot; + ((String)globalMap.get(&quot;FECHA_FIN&quot;)));&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="224" posY="288">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="240" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;TRANSFORMACION DE JOB: &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)));"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="864" posY="288">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_3"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="System.out.println(&quot;FIN JOB: &quot; + ((String)globalMap.get(&quot;JOBNAME&quot;)));"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -359,63 +378,63 @@
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryInput_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_2"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_3"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_5"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="CHECK" name="COLLAPSED" show="false" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="CHECK" name="COLLAPSED" show="false" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_3"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_346bda4f-968c-4a10-8bfa-a44b53cdc38a"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>B6574XAtDqdmIbQqlBMqDJX3IoxrfaZGWcetGMf5kFIVZWDAkBGkzoXA4QDSTjYu+KF8QwuNcKL5&#13;
-9oHEh3SCwA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_2595b405-4114-4568-9d3e-e8b6d912e143"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>mruVtpDO8VvkZWNgkyPmx59QlaIrwDH+lZV5yj/a0+jyygLCzrVgA3GrKuRIvxxgwN+/2EvW5Tzp&#13;
-dp4Ftdpj8Q==</DigestValue></Reference></SignedInfo><SignatureValue>HijQzmh34u38JLAX7wtCLImHA+TekW6vptpP8hxdDxbwF6j6wUInUAYt1Y+nzBVaPgKynsLPV9HQ&#13;
-+eEdKRR4D8QpXvH4hx3iK3zqHvrWypuC9Lu6KmxlV2G2q3W9nU/BzddysThyvi8GMsSBqV2E/yXC&#13;
-+aJhUso+a7APx61Qu+i89b87eRFlzXyDDXxGmmXyDLk0sSz1y+jzyGYXPovPaIRSA3uWCQDOQA8K&#13;
-qr2RXH7mIEM2qmg6RkylxHwWALzcCE5u2cUbFAp1OZmWlAwNOIQ7hqbSO/gVqxa8dYDWTlfXg4H2&#13;
-I4cA1ONQgezMpDvt/VOFSJaMI3ftU5QDIc8UIA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b7f6bb9a-5b90-40e0-b13c-89b11e957d97"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7AhAnFtfydQFUfgwSW1hzSFRwzYGTFow+tay5DO5h9WV1b17ox3IYpe455ZMDkugW12akGMgRGer&#13;
+zRk4Tz2wrw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_d3fece73-cb07-42a9-8a1f-8e0cc190dbb5"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>YhMbiS8lYipENgd/fZ2g4POCU8lPLzHEEzAmb/sCSx+ADjneH00ubZ/FpWvt8Mv5kLxsDcqD6kak&#13;
+M1pF3IGdSw==</DigestValue></Reference></SignedInfo><SignatureValue>M4R0fNv3eRpqiw51j7XHvYn1c3BK8Ao0ZS9T5PKzJUGg7trZAij9XSPbHhViqmPFIX4lNKVLGb9r&#13;
+Vl+dk3TgejbPq7lK4jVdNqPFUfwR+wOOgStgiNSrZErsqwdPvIRsElxS7p2C++FO7C9KF7vRnd9J&#13;
+LQyKP3dCZ8QxSGqxPNDeEEPM1vAGofJQeRRcAh+MvD174AEOOJCx4mHQ4B6bOPgFSll2jnLVpN5F&#13;
+mb65Y/UPhSacXRA0Ecp1xsG7loZnyZAR5crkHhJT0qDXddrMEHzky5+4jkqRi+InOoCo3duv4UgQ&#13;
+xBAkwLLSiqhazy5S9FNTJGyqb9OyIPlP3vPyFw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -437,4 +456,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_2595b405-4114-4568-9d3e-e8b6d912e143" Target="#_346bda4f-968c-4a10-8bfa-a44b53cdc38a"><Timestamp>2024-06-25 21:46:11</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_d3fece73-cb07-42a9-8a1f-8e0cc190dbb5" Target="#_b7f6bb9a-5b90-40e0-b13c-89b11e957d97"><Timestamp>2024-08-30 02:06:14</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
