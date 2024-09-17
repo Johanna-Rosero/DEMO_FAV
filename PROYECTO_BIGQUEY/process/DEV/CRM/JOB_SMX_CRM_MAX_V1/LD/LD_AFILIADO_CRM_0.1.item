@@ -141,6 +141,8 @@
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="FECHA_CADUCA"/>
       <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="AGRUPACION_ESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
     <elementParameter field="CHECK" name="QUERY_BAND" value="false"/>
     <elementParameter field="CHECK" name="ACTIVATE_QUERY_LOGGING" show="false" value="false"/>
@@ -151,6 +153,7 @@
       <column comment="" key="false" length="20" name="CEDULA_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHA_EMISION" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHA_CADUCA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="AGRUPACION_ESTADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
       <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
@@ -191,6 +194,7 @@
       <column comment="" key="false" length="20" name="CEDULA_AFILIADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHA_EMISION" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHA_CADUCA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="AGRUPACION_ESTADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
       <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
@@ -231,8 +235,6 @@
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="200">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_1"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_EoT-8G--Ee-eG7xEcptIOg - metadata"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:MMdUIYwBCiF5VRpovXmoc13TS87PlKy1aB7DFnVh"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
@@ -272,6 +274,7 @@
       <column comment="" key="false" length="20" name="CEDULA_AFILIADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHA_EMISION" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHA_CADUCA" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="AGRUPACION_ESTADO" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="40" posY="280">
@@ -1395,6 +1398,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="AGRUPACION_ESTADO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
@@ -1555,13 +1563,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_08e9bb93-7e2a-4787-a456-d7cd2c5c06ad"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>yqTTgCG9oOw4PjnrgxfC7CL/rFWVBmdeufnsAwra9O1QIRSp4VrlJH+VkA3lZ0DwgUUOo+pa/SGt&#13;
-a14UYrOBog==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_f70bc698-db5b-48f8-9371-666dc8ce7883"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>NESDil4JMyDrJ0RoYMx2E7UoSDGVmmudYrVpqEjXzVUbKaXeM+CMbrZMbF8M3ISPKtRa3HhPYgRw&#13;
-Z5Po3VHOYA==</DigestValue></Reference></SignedInfo><SignatureValue>fCvC+mzzy+HBKiFnyPV3D7so2UDy7IBe9wgDwxZuxsZONVXZaDxwC8yofPtEXeAqdN5YVVa8tkoS&#13;
-hUmS9JDwkXXhbw5Kimi8plh/DggoKh2Wli6bXmnHwI4hJd1Kl4NOIkg0S05wa0r2TlIN64KCydLX&#13;
-t7EoXi+pAMXzwZlqSkLmKahhY2fDyKwGxqS+xvbg69PKWtOvD/jeWjtCJlm8a5Kt+Mhu3e5HYMqi&#13;
-OL+bAJYn8nA5Y1Wageu1ktr9KX/gomw2vzZn6F3QE5pS65yBhQApHcENSbaKiw4OSAUHHt1m7wKI&#13;
-xu5ADOVIq8TuwpJVfoV6Ymzcgpqfiydy4gngzQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_c95612f8-4cd2-4fef-bd4a-4451ae451dee"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>yMkZzRAlUBuvZmXJ0DDlsA/XvQorfy7PkHUD1GsVEwG9ns3aEMvc1NuCMuWDsdOqVS3hGi/54Edf&#13;
+y/bz7gB66Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b1feec34-58e2-4753-b60e-76185be2480e"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>8dZ5eFmuE1ZA4udu6jQd74DVrWXHq3ZvQ/eEI29UsVOiOhVmoq161kr1zZbOVKNxCyAtnF3KyvmL&#13;
+XHOjyMXsDQ==</DigestValue></Reference></SignedInfo><SignatureValue>pQ6pSs33tVW2rnhJ86aiW6l22hjYwyTH98m7aa5z/FLmxMHSVDWp4B1Y2d86m4hvt/R+SvpvhTGA&#13;
+sFcyUDnc6VMmYxfywJuMiKHc4n2XBxbDOBzDYL/4yQ/hQ4BU9R3+5i1OA/MUThyYN7ZlzAz2xnXt&#13;
+hJ8imP563qdxnSb9+AbB811riU9AL8xa10ENCrAVcm7bKN8KBgLkFUwQSWNBuf2DFk1qI4xK7hSg&#13;
+ElRactfS8f2D1DCbH0Wj8NJdqZKXlPUfjaw9/1Vyr0YtnY5Cgm/MTqcaEDU1kW0IOMDy6Zk2ie3Z&#13;
+5ccdkCvF9gTieP31s2CseaOWvMUaOZLqvezzgQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1583,4 +1591,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_f70bc698-db5b-48f8-9371-666dc8ce7883" Target="#_08e9bb93-7e2a-4787-a456-d7cd2c5c06ad"><Timestamp>2024-09-11 16:26:49</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b1feec34-58e2-4753-b60e-76185be2480e" Target="#_c95612f8-4cd2-4fef-bd4a-4451ae451dee"><Timestamp>2024-09-12 22:36:45</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
