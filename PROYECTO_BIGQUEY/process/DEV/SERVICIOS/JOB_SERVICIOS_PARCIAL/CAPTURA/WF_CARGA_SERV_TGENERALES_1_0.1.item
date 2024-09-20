@@ -161,7 +161,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-160" posY="200">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;TABLAS&quot;;&#10;String T_DBname = &quot;CYCADTA&quot;;&#10;String n= &quot;1&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String path = context.VG_PathLocal;&#10;String job = context.VG_JobName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;*/&#10;&#10;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;TABLAS&quot;;&#10;String T_DBname = &quot;CYCADTA&quot;;&#10;String n= &quot;1&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String path = context.VG_PathLocal;&#10;String job = context.VG_JobName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;globalMap.put(&quot;GSTORESP_SP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;_SP`();&quot;);&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;*/&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="TABLAS"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -1116,6 +1116,50 @@
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
     </metadata>
   </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="200">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:lQFQiL5WbxyL+ZImDnHSuC9mOctaavcDmZhT2r/s"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:z4H9I8XheEZe/Ep0GKmQbiiPaNCsBd6xZ8wKIESp"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="((String)globalMap.get(&quot;GSTORESP_SP1&quot;))"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="CARGA_DSA"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="metadata" name="tBigQuerySQLRow_4">
+      <column comment="" defaultValue="" key="false" length="2" name="NCUSU" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="2" name="NCCOT" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="NCGRU" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="NCCOD" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="NCSEC" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="NCDES" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="19" name="NCABR" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="15" name="NCVAL" nullable="false" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="NCCIA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="NCCTA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="NCAUX" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="NCSTS" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="1" name="NCNIVA" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="NCUSER" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="NCFECR" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="NCFECA" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="NCTIME" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
+    </metadata>
+  </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBConnection_1" offsetLabelX="0" offsetLabelY="0" source="tDBConnection_1" target="tGSConnection_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
   </connection>
@@ -1130,6 +1174,9 @@
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQueryBulkExec_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_1" target="tBigQuerySQLRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk13"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tBigQuerySQLRow_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk15"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -1262,13 +1309,18 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_470454bf-7000-4db1-870a-7640f7ef513b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>pb4cXn4hBqt4Gqb/nhixXgoi2lnQKPqN7inTckOvSotcKvvp67Z7RZhA2aCmEHnvi7aF5Llp/Y09&#13;
-0GqeMSn5/A==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b6363365-b5bd-48f4-8846-18198d5de498"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>wdv1/7M7nzpnkj6JY7Bbat6ZYww42nw3f7c+EtfBnAHZOQg3dHlSaZwb+JQr7ZENWpyrVoytqbsZ&#13;
-oyvVCkNJIA==</DigestValue></Reference></SignedInfo><SignatureValue>d3oTjHV6EKhsdQLqa9eCWgewS1G8DCHDoABTYJL9MHETzGmtcw79MiK20DNiAnMxVTzf8V0pGwuG&#13;
-/Z76gWswda7qJU9vKy11MlEMC+OSX3Fzj3GAcfDbVg/O9sUq1gRN4TluRmBghEdhRDjjDAdtlP1u&#13;
-52k1m4VyhX0T2txJWeN2ns3GNYy61Dg2lSkRnQiiDjvm/5ogO3/gGszS0Z3tyKhmMjsC54aZEDyW&#13;
-JObC0COVE70eg7Nq6MoDH52I2eXGpHMPhtTFTcV+nLTXz63fjZfN/xwDHyE4SYH0RBA6wS6DzzZL&#13;
-p13rJMMxW2q3GyKQh0djAsthkbkv9pObu+1Ucg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_685573b1-e64a-47e6-ba7b-904437edcdbb"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>hhRy3nkz2Qzs10lVjOuFMXdN/wSi1VI4tzN9ex84FEsSvvDT3nYH+XctR985rIKAPOgYGdYxro/t&#13;
+HavGNZ+xBA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e7ea48de-3b20-4bca-89e4-b30bacff8fb8"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>DwL1cisiIjBt2IefiK/2WGNm3v9djixYh5nhYLGPKjL5Kb+qZqdsHJw9sAr+bRqzG75uOgupGiTM&#13;
++Oqhd2PVHA==</DigestValue></Reference></SignedInfo><SignatureValue>En+GR+YU653U9/eXtnUALwc0n2osbFPaoXkF3ANJQSLlxk1tMt4MSzp5RM1HTWD5atCtsbQ7S7F8&#13;
+Y1RjrGgV4h/w5n72/JpUH6262GpI3zZP5Jf+VwzX9579NhedcrbNXYTgXtKQ4BEsTmI764Ns36V3&#13;
+UPxc7CjPWWx4a/jMHm6Efyz+rHuwuT9ItO/BgXSvvNrDKF1V5Q14mEWZFOhxaDnV5Zb+5rrW/i55&#13;
+xM+CP4rSQZMvqUt6l1IlAwWmKWTNPskg3QEKsvIUOrMyu31ZnnNYUgfXEW5jZEJPghkTabrpKT77&#13;
+/VS/FhGi8TfvcVY1LW2o9fg5s7ww4fpefOjvOw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -1290,4 +1342,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b6363365-b5bd-48f4-8846-18198d5de498" Target="#_470454bf-7000-4db1-870a-7640f7ef513b"><Timestamp>2024-09-19 22:00:40</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e7ea48de-3b20-4bca-89e4-b30bacff8fb8" Target="#_685573b1-e64a-47e6-ba7b-904437edcdbb"><Timestamp>2024-09-20 21:48:49</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
