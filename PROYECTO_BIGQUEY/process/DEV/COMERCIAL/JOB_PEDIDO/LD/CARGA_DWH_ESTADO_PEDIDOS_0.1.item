@@ -134,21 +134,6 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
-    <elementParameter field="CHECK" name="UPDATE_COMPONENTS" value="false"/>
-    <elementParameter field="CHECK" name="STATS_DEFAULT_PROJECTSETTING" value="true"/>
-    <elementParameter field="PROPERTY_TYPE" name="PROPERTY_TYPE" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:PROPERTY_TYPE" value="BUILT_IN"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:REPOSITORY_PROPERTY_TYPE" value=""/>
-    <routinesParameter id="_ibUTcBExEe-PZuOZYM6uIQ" name="TalendDate"/>
-    <routinesParameter id="_ibvxQBExEe-PZuOZYM6uIQ" name="TalendStringUtil"/>
-    <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
-    <routinesParameter id="_iZjY4BExEe-PZuOZYM6uIQ" name="SQLike"/>
-    <routinesParameter id="_iai3YBExEe-PZuOZYM6uIQ" name="Numeric"/>
-    <routinesParameter id="_ia3ngBExEe-PZuOZYM6uIQ" name="StringHandling"/>
-    <routinesParameter id="_ibkLEBExEe-PZuOZYM6uIQ" name="TalendString"/>
-    <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
-    <routinesParameter id="_iasoYBExEe-PZuOZYM6uIQ" name="Relational"/>
-    <routinesParameter id="_ibHfIBExEe-PZuOZYM6uIQ" name="TalendDataGenerator"/>
     <routinesParameter id="_wyglMCnMEe-SnvlC8yQvFA" name="Bi"/>
   </parameters>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="160">
@@ -2947,6 +2932,367 @@
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
     </metadata>
   </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-40" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_9"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_SCPETESTPED_DSA&quot;;&#10;String T_DBname = &quot;dsa&quot;;&#10;String n= &quot;4&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;*/&#10;&#10;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCPETESTPED"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="TEMVAC" name="tJava_9">
+      <column comment="" defaultValue="0" key="false" length="2" name="VACUSU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="0" key="false" length="7" name="VACTOT" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="' '" key="false" length="3" name="VACLUG" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="' '" key="false" length="30" name="VACDES" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="' '" key="false" length="3" name="VACSLT" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="' '" key="false" length="30" name="VACDSL" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="0" key="false" length="3" name="VACOCU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="' '" key="false" length="40" name="VACDOC" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="' '" key="false" length="1" name="VACFOR" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="' '" key="false" length="1" name="VACCND" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
+      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
+    </metadata>
+  </node>
+  <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_10"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_2"/>
+    <elementParameter field="TEXT" name="TYPE" show="false" value="TERADATA"/>
+    <elementParameter field="TEXT" name="HOST" show="false" value="&quot;C33251997&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" show="false" value="&quot;DSA&quot;"/>
+    <elementParameter field="TEXT" name="USER" show="false" value="&quot;SMXUSER_TABLEAU&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:pltGE4HaSR+W/mbDTU+QqufhKj4aQOnpPGiewyGPhFnvGZ9PNlJhUw=="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SSPCOTPERSONA&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT *&#10;FROM DSA.Scspetestped_DSA&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="teradata_id"/>
+    <elementParameter field="TEXT" name="PROPERTIES" show="false" value="&quot;&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="true"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOCOMPANIA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOLOCAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SECUENCIALESTADOPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOTIPOPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOFORMAPAGO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="USERID"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IVAPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="DESCUENTOTOTALPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PORCENTAJETOTALDESCUENTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PORCENTAJESUBTOTALDESCUENTO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORCOSTOENTREGAPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SUBTOTALPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SUBTOTALAPLICAIVA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SUBTOTALNOAPLICAIVA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SUBTOTALNETOAPLICAIVAPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TOTALPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORTOTALABONOSPOS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADOVALIDACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="OBSERVACIONPEDIDO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAINICIALESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAFINALESTADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADOPRECIOSAFILIADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SECUENCIALACCIONPOS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADOCALCULOSIVA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="RESERVABODEGASIC"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORABONOINICIALMANUAL"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALORABONOINICIALSISTEMA"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOPAGO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TSTAMP"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAREGISTRO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAMODIFICACION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOAREATRABAJO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="LLAVECONTRATOPOS"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOESTADOPAGADO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="QUERY_BAND" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE_QUERY_LOGGING" show="false" value="false"/>
+    <elementParameter field="TABLE" name="QUERY_BAND_PARAMETERS" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SCPETESTPEDDSA"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBInput_10">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOLOCAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="SECUENCIALESTADOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOTIPOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOFORMAPAGO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="USERID" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="IVAPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="DESCUENTOTOTALPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PORCENTAJETOTALDESCUENTO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PORCENTAJESUBTOTALDESCUENTO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORCOSTOENTREGAPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALAPLICAIVA" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALNOAPLICAIVA" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALNETOAPLICAIVAPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="TOTALPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALABONOSPOS" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOVALIDACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4000" name="OBSERVACIONPEDIDO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAINICIALESTADO" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAFINALESTADO" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOPRECIOSAFILIADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="SECUENCIALACCIONPOS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOCALCULOSIVA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="RESERVABODEGASIC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORABONOINICIALMANUAL" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORABONOINICIALSISTEMA" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOPAGO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOAREATRABAJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="LLAVECONTRATOPOS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOPAGADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_10"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
+    <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV4&quot;))"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" show="false" value="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="true"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="600000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="true"/>
+    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
+    <elementParameter field="TEXT" name="LABEL" value="LD_SSPCOTPERSONA_DSA"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_10">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOLOCAL" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="SECUENCIALESTADOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOTIPOPEDIDO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOFORMAPAGO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="USERID" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="IVAPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="DESCUENTOTOTALPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PORCENTAJETOTALDESCUENTO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PORCENTAJESUBTOTALDESCUENTO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORCOSTOENTREGAPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALAPLICAIVA" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALNOAPLICAIVA" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALNETOAPLICAIVAPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="TOTALPEDIDO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALABONOSPOS" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOVALIDACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4000" name="OBSERVACIONPEDIDO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAINICIALESTADO" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAFINALESTADO" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOPRECIOSAFILIADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="SECUENCIALACCIONPOS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOCALCULOSIVA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="RESERVABODEGASIC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORABONOINICIALMANUAL" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORABONOINICIALSISTEMA" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOPAGO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOAREATRABAJO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="LLAVECONTRATOPOS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOPAGADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSAD00054"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
+    </metadata>
+  </node>
+  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="520" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_10"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_2"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:HtS0my4kKu+Kah0PCNvGrg/0r+FawDHsDlqbtcUg"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="BUCKET" value="context.VG_BucketName"/>
+    <elementParameter field="DIRECTORY" name="LOCALDIR" value="((String)globalMap.get(&quot;RUTA_DIR4&quot;))"/>
+    <elementParameter field="TEXT" name="REMOTEDIR" value="((String)globalMap.get(&quot;GSTOREDIR4&quot;))"/>
+    <elementParameter field="CHECK" name="USE_FILES_LIST" value="false"/>
+    <elementParameter field="TABLE" name="FILES" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" show="false" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
+    <elementParameter field="TEXT" name="PART_SIZE" value="50"/>
+    <elementParameter field="TEXT" name="LABEL" value="LD_SSPCOTPERSONA_DSA"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="720" posY="640">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_10"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
+    <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_14S60H9hEe-918VOEp-GGQ - metadata"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:XF7g2SpEMzbDSJYr+7WxVyBzGgi/aSqqZXk+970b"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:+URrkgFn8yDhmWVsDTrDGtauxJ/0R8ebgtxrO9nu"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="DATASET" value="context.VG_DST"/>
+    <elementParameter field="TEXT" name="TABLE" value="((String)globalMap.get(&quot;V_TablaName4&quot;))"/>
+    <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
+    <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="EMPTY"/>
+    <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="GS_SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:dp7nvLeGJOYGMbpSX6qRcqWi+n/qllI1lKAedtPC"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="GS_LOCAL_FILE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="BUCKET_NAME" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="GS_FILE" value="((String)globalMap.get(&quot;GSTORECSV4&quot;))"/>
+    <elementParameter field="TEXT" name="GS_FILE_HEADER" value="1"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
+    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
+    <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="true"/>
+    <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" value="null"/>
+    <elementParameter field="CHECK" name="DROP" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
+    <elementParameter field="TEXT" name="LABEL" value="LD_SSPCOTPERSONA_DSA"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_10">
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOCOMPANIA" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOLOCAL" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOPEDIDO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="SECUENCIALESTADOPEDIDO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOTIPOPEDIDO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="CODIGOFORMAPAGO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="32" name="USERID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="12" name="IVAPEDIDO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="DESCUENTOTOTALPEDIDO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PORCENTAJETOTALDESCUENTO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="PORCENTAJESUBTOTALDESCUENTO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORCOSTOENTREGAPEDIDO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALPEDIDO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALAPLICAIVA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALNOAPLICAIVA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="SUBTOTALNETOAPLICAIVAPEDIDO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="TOTALPEDIDO" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORTOTALABONOSPOS" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOVALIDACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="4000" name="OBSERVACIONPEDIDO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAINICIALESTADO" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAFINALESTADO" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOPRECIOSAFILIADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="SECUENCIALACCIONPOS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="ESTADOCALCULOSIVA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="RESERVABODEGASIC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORABONOINICIALMANUAL" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="14" name="VALORABONOINICIALSISTEMA" nullable="true" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOPAGO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAMODIFICACION" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="CODIGOAREATRABAJO" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="LLAVECONTRATOPOS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="CODIGOESTADOPAGADO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
@@ -3098,6 +3444,28 @@
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" source="tJava_8" target="tDBInput_9">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk21"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" source="tJava_9" target="tDBInput_10">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk30"/>
+  </connection>
+  <connection connectorName="FLOW" label="row10" lineStyle="0" metaname="tDBInput_10" offsetLabelX="0" offsetLabelY="0" source="tDBInput_10" target="tFileOutputDelimited_10">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="ID_PERSONA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row10"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_10" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_10" target="tGSPut_10">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk31"/>
+  </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_10" offsetLabelX="0" offsetLabelY="0" source="tGSPut_10" target="tBigQueryBulkExec_10">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk10"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
@@ -3305,13 +3673,33 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_88532ed0-c7ab-45e4-aff5-b9016cb94bf6"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>aIHbSgkKiwnkjq3mnR7S8Zc3eLz38kxhqIn8ofpjAZaOa48TUJ4IW0UWM4k8Yalymsv+2S5JI6h7&#13;
-Ji2M7TY/qA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_6bf38919-9635-436f-af80-ceb33bc473f4"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Eyf1CPxAc1nMUDAYfYvSl7a00wuu0g/I1RY9Y6XAGi4uig19c+DYsuum6q7Hq9ITyHSRJOXaoN06&#13;
-0sWO8m4K3A==</DigestValue></Reference></SignedInfo><SignatureValue>SosuKOCL+tQ76hb3JsBMR7ha83FMZYrRK1FwP3UApSIKTVZw0P+JaR3NwDL5xeLwJEKbrlOO0ABI&#13;
-jC8aVio6xrHoodWMZyba5Q292nEBNMwlRqJ40IxjaEbiqkiFgFnA4UnASZYCrPm9nQQWnm6+Y/Nx&#13;
-w8H4qA/yIFi89XCUSBdDwi3RetWgAyedSUXiuddyIYxRi4bRYzUa7Mv5LCydnFkLnTKSdc35D32p&#13;
-Qsnw2G6vO2HKmShqs3AW0DF4C5a4mVBO8FcVn8RI5BJ4P5TmD7BowK5Rk8YHVrl9A7Wa09LCU8a4&#13;
-IF72e7LDpb6xZx4GApvA1/CaZCqXdrblnNZ9hw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_9"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_10"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_10"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_10"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_79561c53-a5f3-49d1-a983-60d5ae4d946b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>Wl/X9BmO+YapXK7RxPbiEvJ9nKaljDUPx+X62kU9POvsPQXAvKuL1plFZ8q5ll/f2gFqfUh5euu+&#13;
+H8MCeXNYZQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_b65b47f6-d2de-4c45-bfd2-b113bfbdb463"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>hC43XUelk7Vo4dld2650bgSZUMLGFrY5/EURD+JanXVhEmAfRoM1w10iMa2N8Et2mBAtX4lsPTYK&#13;
+47avQPaUJQ==</DigestValue></Reference></SignedInfo><SignatureValue>IJt1hJuy4ezTmIoq1XoxByNNSijZMxWUcgXN9ImHMeDI/28X95z7Tw8qdxyVC99D+B+fWMDHEgLz&#13;
+HqfcXYQwppO620rnfrDWCe1vnsciWUoDtONdh5nhuSMoKViXPX8mkySCy9GNB7EXrL42V3NWLGyE&#13;
+RqrEUgqsS1acFH0QAsFCyO27n0Ahlogws0vkG9gjGRNXz5f8K1U6+aDCtFoFyJ/kWcnUIVX4OOHa&#13;
+sqXmtbIanqa7hg5BY0GqAQN/g79MajDCQGw282ow1IFhFO0eKqB7/1v/XaGTcyYubtphn0H62jlk&#13;
+VH+/1CGzxX5LZn4b1Lm1oAo7+mbfXZmGZADftQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -3333,4 +3721,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_6bf38919-9635-436f-af80-ceb33bc473f4" Target="#_88532ed0-c7ab-45e4-aff5-b9016cb94bf6"><Timestamp>2024-09-19 14:56:09</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_b65b47f6-d2de-4c45-bfd2-b113bfbdb463" Target="#_79561c53-a5f3-49d1-a983-60d5ae4d946b"><Timestamp>2024-09-30 19:55:59</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
