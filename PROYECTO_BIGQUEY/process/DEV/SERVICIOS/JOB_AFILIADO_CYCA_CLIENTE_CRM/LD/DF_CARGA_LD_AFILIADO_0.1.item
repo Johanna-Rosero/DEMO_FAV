@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:xmi="http://www.omg.org/XMI" defaultContext="DEV" framework="" jobType="Standard" xmi:version="2.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><talendfile:ProcessType xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" defaultContext="DEV" framework="" jobType="Standard" xmi:version="2.0">
   <context confirmationNeeded="false" hide="false" name="Default">
     <contextParameter comment="" internalId="_qNGgUHagEe-odugJbLpouw" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_wuRrIGCjEe-W1MvXmF1b5w" type="id_String" value="&quot;SERVICIOS&quot;"/>
     <contextParameter comment="" internalId="_qNGgUXagEe-odugJbLpouw" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="_wuRrIGCjEe-W1MvXmF1b5w" type="id_String" value="&quot;teradata&quot;"/>
@@ -134,16 +134,6 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
-    <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
-    <routinesParameter id="_iasoYBExEe-PZuOZYM6uIQ" name="Relational"/>
-    <routinesParameter id="_ia3ngBExEe-PZuOZYM6uIQ" name="StringHandling"/>
-    <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
-    <routinesParameter id="_iZjY4BExEe-PZuOZYM6uIQ" name="SQLike"/>
-    <routinesParameter id="_iai3YBExEe-PZuOZYM6uIQ" name="Numeric"/>
-    <routinesParameter id="_ibvxQBExEe-PZuOZYM6uIQ" name="TalendStringUtil"/>
-    <routinesParameter id="_ibHfIBExEe-PZuOZYM6uIQ" name="TalendDataGenerator"/>
-    <routinesParameter id="_ibUTcBExEe-PZuOZYM6uIQ" name="TalendDate"/>
-    <routinesParameter id="_ibkLEBExEe-PZuOZYM6uIQ" name="TalendString"/>
     <routinesParameter id="_wyglMCnMEe-SnvlC8yQvFA" name="Bi"/>
   </parameters>
   <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="80">
@@ -191,7 +181,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_DIM_BIN&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;1&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DWH+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;&#10;*/&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="DIM_BIN"/>
@@ -234,7 +223,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_Ug-tAGTXEe-TfvF-PeuDzQ - metadata"/>
@@ -293,7 +281,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -315,7 +302,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -375,7 +361,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV1&quot;))"/>
@@ -423,7 +408,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_FAC_ESTADOS_HIS&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;2&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DWH+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;&#10;*/&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="FAC_ESTADOS_HIS"/>
@@ -466,7 +450,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -535,7 +518,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV2&quot;))"/>
@@ -586,7 +568,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -608,7 +589,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="320">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_Ad_cAG7sEe-qhukXDvNa9w - metadata"/>
@@ -665,7 +645,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_DIM_ESTADO_AF&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;3&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DWH+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;&#10;*/&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="DIM_ESTADO_AF"/>
@@ -708,7 +687,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -753,7 +731,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV3&quot;))"/>
@@ -796,7 +773,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -818,7 +794,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_3"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_ehz_sG8SEe-qhukXDvNa9w - metadata"/>
@@ -867,7 +842,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="760">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_DIM_AFILIADO_CRM&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;5&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;&#10;*/&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="DIM_AFILIADO_CRM"/>
@@ -910,7 +884,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="600" posY="760">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -1150,7 +1123,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="760" posY="760">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV5&quot;))"/>
@@ -1258,7 +1230,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="760">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -1280,7 +1251,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="840">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_pLhDAHC3Ee-iCcHXZwtBSg - metadata"/>
@@ -1394,7 +1364,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_6"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_DIM_LOCALES_SERV&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;6&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DWH+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;&#10;*/&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="DIM_LOCALES_SERV"/>
@@ -1437,7 +1406,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_6"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -1536,7 +1504,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_6"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV6&quot;))"/>
@@ -1597,7 +1564,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_6"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -1619,7 +1585,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_6"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_fZD-IHE-Ee-iCcHXZwtBSg - metadata"/>
@@ -1686,7 +1651,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_7"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_DIM_AFILIADO_CRM&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;7&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String path = context.VG_PathLocal;&#10;String job = context.VG_JobName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;B&quot;+&quot;/&quot;+TName+&quot;B&quot;+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;B&quot;+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;_FM`();&quot;);&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;*/&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="DIM_AFILIADO_CRM"/>
@@ -1729,7 +1693,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="600" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_7"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -1969,7 +1932,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="760" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_7"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV7&quot;))"/>
@@ -2077,7 +2039,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_7"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -2099,7 +2060,6 @@
   </node>
   <node componentName="tParallelize" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="840">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_1"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="WAIT_FOR" value="All"/>
     <elementParameter field="TEXT" name="SLEEPTIME" value="100"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
@@ -2107,7 +2067,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="1000">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_DIM_AFILIADO&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;4&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DWH+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;&#10;*/&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="DIM_AFILIADO"/>
@@ -2150,7 +2109,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="600" posY="1000">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -2336,7 +2294,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="760" posY="1000">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV4&quot;))"/>
@@ -2426,7 +2383,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="1000">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -2448,7 +2404,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="1040">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_kdNiMHq6Ee-TIafNu50pjQ - metadata"/>
@@ -2544,7 +2499,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="1080">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_8"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_DIM_AFILIADO&quot;;&#10;String T_DBname = &quot;ddm&quot;;&#10;String n= &quot;8&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String path = context.VG_PathLocal;&#10;String job = context.VG_JobName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;System.out.println(TName +&quot; &quot;+ tName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;B&quot;+&quot;/&quot;+TName+&quot;B&quot;+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + job +&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;B&quot;+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;_FM`();&quot;);&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;*/&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="DIM_AFILIADO"/>
@@ -2587,7 +2541,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="1080">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_8"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -2609,7 +2562,6 @@
   </node>
   <node componentName="tParallelize" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="1040">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_2"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="WAIT_FOR" value="All"/>
     <elementParameter field="TEXT" name="SLEEPTIME" value="100"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
@@ -2617,7 +2569,6 @@
   </node>
   <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="600" posY="1080">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_8"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TEXT" name="TYPE" show="false" value="Teradata"/>
@@ -2803,7 +2754,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="760" posY="1080">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_8"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV8&quot;))"/>
@@ -2933,7 +2883,7 @@
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
     </metadata>
   </node>
-  <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="600">
+  <node componentName="tTeradataInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="240" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_9"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
@@ -3406,32 +3356,504 @@
       <column comment="" defaultValue="" key="false" length="10" name="APLICACREDITODIRECTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="600">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="360" posY="600">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tMap_1"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_JOg7EGSnEe-TfvF-PeuDzQ-tMap_1-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" show="false" value="true"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" show="false" value="0"/>
+    <elementParameter field="TEXT" name="JACCARD" show="false" value="0"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" show="false" value="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="row">
+      <column comment="" defaultValue="" key="false" length="19" name="ID_ITEM" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="19" name="COD_ITEM_SIC" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="19" name="COD_BARRAS" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_PROVEEDOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_CLASIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_SEC_ITEM" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="19" name="COD_ITEM_PADRE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_DEPTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="100" name="NOM_PROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="300" name="NOM_ITEM_PADRE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="120" name="NOM_DIVISION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="120" name="NOM_DEPTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="AGRUP_DEPTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="120" name="NOM_CLASIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="120" name="NOM_SUBCLASIFICA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="52" name="NOM_CLASIFICACION_AUX" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="52" name="NOM_SUBCLASIFICA_AUX" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_COMPRADOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_TIPO_ITEM" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="21" name="NOM_TIPO_CPRECIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="25" name="NOM_MARCA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="300" name="NOM_ITEM" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="101" name="NOM_ITEM_CONCAT" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="101" name="NOM_ITEM_ALT" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="21" name="NOM_TAMANIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_UND_COMP1" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_UND_COMP2" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_UND_COMP3" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_UND_COMP4" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_UND_VTA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_CALIFICACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_GARANTIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_PAIS_ORI" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="200" name="NOM_CLASE_MERC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="ID_BODEGA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="41" name="NOM_BODEGA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="ID_SUBBODEGA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="41" name="NOM_SUBBODEGA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="17" name="PRECIO_COSTO_ANT" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="17" name="PRECIO_COSTO_ACT" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_NORMAL_ANT" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_NORMAL_ACT" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_REBAJA_ANT" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_REBAJA_ACT" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_PROMOCION" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_PACTADO" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_PVP" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="13" name="PRECIO_SMX" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="17" name="PRECIO_COSTO_NETO" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_ALTA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_REC_INI" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_ASIG_COST" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_ASIG_NORM" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_ASIG_REBAJA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_INI_PROM_VTA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_FIN_PROM_VTA" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FEC_ULT_MODI" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_DCTO_VTA" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_DCTO_PROM" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_IVA_COST" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_IVA_VTA" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUM_DIA_VUTIL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="IMPORTANCIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUM_UNIDADES1" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUM_UNIDADES2" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUM_UNIDADES3" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUM_UNIDADES4" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="NUM_UNIDADES_VTA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="12" name="ORIGEN_COMPRA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="9" name="NOM_MODIFI_USU" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="65" name="NOM_AGRUPADOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="REFERENCIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="17" name="CTO_MONEDA_ORI" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PLAZO_PAGO_PRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="34" name="PORC_NOTACREDITO_PRO" nullable="true" originalLength="-1" pattern="" precision="6" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="IND_MODI" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="IND_MARCA_PRIVADA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="MARCA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="FLG_INTERPROV" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="IND_PROPIETARIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="42" name="NOM_IND_PROPIETARIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ACABADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="RUC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="NUM_TARJETA_AFI" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd hh:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="IMPRIME" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Short" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="19" name="COD_BARRAS_PADRE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="PESO_APROX" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="UNID_MEDIDA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="ABR_UNID_MEDIDA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="9" name="CANT_UNID_MEDIDA" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="9" name="UNID_MIN_CONVERSION" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="60" name="TIPOA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="80" name="SUBTIPOA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="60" name="CANASTAA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="80" name="TIPOB" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="60" name="CANASTAB" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="MARCA_REPORTE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="80" name="CANASTAC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="80" name="TIPOD" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="80" name="SUBTIPOD" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="80" name="TIPOE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="80" name="SUBTIPOE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_MARCA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_DESCUENTO1" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_DESCUENTO2" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_DESCUENTO3" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_DESCUENTO4" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_COSTO" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="4" name="PORC_UNC" nullable="true" originalLength="-1" pattern="" precision="4" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="PRIORIDAD_ACTUAL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="PRIORIDAD_ANTERIOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="BAND_ACT" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Short" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="MARCA_PROPIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_COMPRADOR" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="NUMREGSAN" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FECHA_CAD_REG" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="TRANSGEN" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="ORIGEN_REAL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_PROVEE_ALT" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="MARCA_ALT" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="19" name="ID_ITEM_ALT" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="19" name="NUM_PARTIDA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="MARCA_PROPIA_ALT" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Short" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="TIPO_ESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="256" name="NOM_ESTADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="TIPO_CAUSAL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="256" name="NOM_CAUSAL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FECHA_CAMBIO_ESTADO" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="ITEMSMART" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="60" name="CATEGORIA_PROVEEDOR" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="ESPECIAL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="19" name="COD_BARRAS_PRIMARIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="42" name="NOM_ITEM_PRIMARIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="21" name="NOM_TAMANIO_PRIMARIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="41" name="NOM_CLASE_PRIMARIO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="IND_NOVEDOSO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="PORCE_EXCE" nullable="true" originalLength="-1" pattern="" precision="2" sourceType="NUMERIC" type="id_BigDecimal" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="FECHA_ULT_RECEPCION" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="ALCANCE_MG" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="IND_PROM_VIGENTE" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="BAND_ACTUALIZADA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="ANALITIX" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="COD_CARACTERISTICA_ESPECIAL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="256" name="CARACTERISTICA_ESPECIAL" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="fecha_ini_temp" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="fecha_fin_temp" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="APLICACREDITODIRECTO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
+      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties shellMaximized="true"/>
+      <varTables minimized="true" name="Var" sizeState="INTERMEDIATE"/>
+      <outputTables name="row" sizeState="INTERMEDIATE">
+        <mapperTableEntries expression="row9.ID_ITEM" name="ID_ITEM" type="id_Long"/>
+        <mapperTableEntries expression="row9.COD_ITEM_SIC" name="COD_ITEM_SIC" type="id_Long"/>
+        <mapperTableEntries expression="row9.COD_BARRAS" name="COD_BARRAS" nullable="true" type="id_Long"/>
+        <mapperTableEntries expression="row9.COD_PROVEEDOR" name="COD_PROVEEDOR" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.COD_CLASIFICACION" name="COD_CLASIFICACION" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.COD_SEC_ITEM" name="COD_SEC_ITEM" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.COD_ITEM_PADRE" name="COD_ITEM_PADRE" nullable="true" type="id_Long"/>
+        <mapperTableEntries expression="row9.COD_DEPTO" name="COD_DEPTO" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.NOM_PROVEEDOR" name="NOM_PROVEEDOR" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_ITEM_PADRE" name="NOM_ITEM_PADRE" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_DIVISION" name="NOM_DIVISION" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_DEPTO" name="NOM_DEPTO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.AGRUP_DEPTO" name="AGRUP_DEPTO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_CLASIFICACION" name="NOM_CLASIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_SUBCLASIFICA" name="NOM_SUBCLASIFICA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_CLASIFICACION_AUX" name="NOM_CLASIFICACION_AUX" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_SUBCLASIFICA_AUX" name="NOM_SUBCLASIFICA_AUX" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_COMPRADOR" name="NOM_COMPRADOR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_TIPO_ITEM" name="NOM_TIPO_ITEM" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_TIPO_CPRECIO" name="NOM_TIPO_CPRECIO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_MARCA" name="NOM_MARCA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_ITEM" name="NOM_ITEM" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_ITEM_CONCAT" name="NOM_ITEM_CONCAT" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_ITEM_ALT" name="NOM_ITEM_ALT" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_TAMANIO" name="NOM_TAMANIO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_UND_COMP1" name="NOM_UND_COMP1" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_UND_COMP2" name="NOM_UND_COMP2" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_UND_COMP3" name="NOM_UND_COMP3" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_UND_COMP4" name="NOM_UND_COMP4" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_UND_VTA" name="NOM_UND_VTA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_CALIFICACION" name="NOM_CALIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_GARANTIA" name="NOM_GARANTIA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_PAIS_ORI" name="NOM_PAIS_ORI" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_CLASE_MERC" name="NOM_CLASE_MERC" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.ID_BODEGA" name="ID_BODEGA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.NOM_BODEGA" name="NOM_BODEGA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.ID_SUBBODEGA" name="ID_SUBBODEGA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.NOM_SUBBODEGA" name="NOM_SUBBODEGA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.PRECIO_COSTO_ANT" name="PRECIO_COSTO_ANT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_COSTO_ACT" name="PRECIO_COSTO_ACT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_NORMAL_ANT" name="PRECIO_NORMAL_ANT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_NORMAL_ACT" name="PRECIO_NORMAL_ACT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_REBAJA_ANT" name="PRECIO_REBAJA_ANT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_REBAJA_ACT" name="PRECIO_REBAJA_ACT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_PROMOCION" name="PRECIO_PROMOCION" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_PACTADO" name="PRECIO_PACTADO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_PVP" name="PRECIO_PVP" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_SMX" name="PRECIO_SMX" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRECIO_COSTO_NETO" name="PRECIO_COSTO_NETO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.FEC_ALTA" name="FEC_ALTA" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.FEC_REC_INI" name="FEC_REC_INI" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.FEC_ASIG_COST" name="FEC_ASIG_COST" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.FEC_ASIG_NORM" name="FEC_ASIG_NORM" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.FEC_ASIG_REBAJA" name="FEC_ASIG_REBAJA" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.FEC_INI_PROM_VTA" name="FEC_INI_PROM_VTA" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.FEC_FIN_PROM_VTA" name="FEC_FIN_PROM_VTA" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.FEC_ULT_MODI" name="FEC_ULT_MODI" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.PORC_DCTO_VTA" name="PORC_DCTO_VTA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_DCTO_PROM" name="PORC_DCTO_PROM" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_IVA_COST" name="PORC_IVA_COST" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_IVA_VTA" name="PORC_IVA_VTA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.NUM_DIA_VUTIL" name="NUM_DIA_VUTIL" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.IMPORTANCIA" name="IMPORTANCIA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NUM_UNIDADES1" name="NUM_UNIDADES1" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.NUM_UNIDADES2" name="NUM_UNIDADES2" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.NUM_UNIDADES3" name="NUM_UNIDADES3" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.NUM_UNIDADES4" name="NUM_UNIDADES4" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.NUM_UNIDADES_VTA" name="NUM_UNIDADES_VTA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.ORIGEN_COMPRA" name="ORIGEN_COMPRA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_MODIFI_USU" name="NOM_MODIFI_USU" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_AGRUPADOR" name="NOM_AGRUPADOR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.REFERENCIA" name="REFERENCIA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.CTO_MONEDA_ORI" name="CTO_MONEDA_ORI" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PLAZO_PAGO_PRO" name="PLAZO_PAGO_PRO" type="id_Integer"/>
+        <mapperTableEntries expression="row9.PORC_NOTACREDITO_PRO" name="PORC_NOTACREDITO_PRO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.IND_MODI" name="IND_MODI" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.IND_MARCA_PRIVADA" name="IND_MARCA_PRIVADA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.MARCA" name="MARCA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.FLG_INTERPROV" name="FLG_INTERPROV" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.IND_PROPIETARIO" name="IND_PROPIETARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_IND_PROPIETARIO" name="NOM_IND_PROPIETARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.ACABADO" name="ACABADO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.RUC" name="RUC" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NUM_TARJETA_AFI" name="NUM_TARJETA_AFI" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.ETL_TSTAMP" name="ETL_TSTAMP" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.IMPRIME" name="IMPRIME" nullable="true" type="id_Short"/>
+        <mapperTableEntries expression="row9.COD_BARRAS_PADRE" name="COD_BARRAS_PADRE" nullable="true" type="id_Long"/>
+        <mapperTableEntries expression="row9.PESO_APROX" name="PESO_APROX" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.UNID_MEDIDA" name="UNID_MEDIDA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.ABR_UNID_MEDIDA" name="ABR_UNID_MEDIDA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.CANT_UNID_MEDIDA" name="CANT_UNID_MEDIDA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.UNID_MIN_CONVERSION" name="UNID_MIN_CONVERSION" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.TIPOA" name="TIPOA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.SUBTIPOA" name="SUBTIPOA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.CANASTAA" name="CANASTAA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.TIPOB" name="TIPOB" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.CANASTAB" name="CANASTAB" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.MARCA_REPORTE" name="MARCA_REPORTE" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.CANASTAC" name="CANASTAC" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.TIPOD" name="TIPOD" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.SUBTIPOD" name="SUBTIPOD" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.TIPOE" name="TIPOE" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.SUBTIPOE" name="SUBTIPOE" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.COD_MARCA" name="COD_MARCA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.PORC_DESCUENTO1" name="PORC_DESCUENTO1" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_DESCUENTO2" name="PORC_DESCUENTO2" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_DESCUENTO3" name="PORC_DESCUENTO3" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_DESCUENTO4" name="PORC_DESCUENTO4" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_COSTO" name="PORC_COSTO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PORC_UNC" name="PORC_UNC" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.PRIORIDAD_ACTUAL" name="PRIORIDAD_ACTUAL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.PRIORIDAD_ANTERIOR" name="PRIORIDAD_ANTERIOR" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.BAND_ACT" name="BAND_ACT" nullable="true" type="id_Short"/>
+        <mapperTableEntries expression="row9.MARCA_PROPIA" name="MARCA_PROPIA" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.COD_COMPRADOR" name="COD_COMPRADOR" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="StringHandling.EREPLACE(row9.NUMREGSAN,&quot;[^a-zA-Z0-9 ,.-/&amp;+%&lt;&gt;*|]&quot;, &quot;&quot;) " name="NUMREGSAN" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.FECHA_CAD_REG" name="FECHA_CAD_REG" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.TRANSGEN" name="TRANSGEN" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.ORIGEN_REAL" name="ORIGEN_REAL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.COD_PROVEE_ALT" name="COD_PROVEE_ALT" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.MARCA_ALT" name="MARCA_ALT" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.ID_ITEM_ALT" name="ID_ITEM_ALT" nullable="true" type="id_Long"/>
+        <mapperTableEntries expression="row9.NUM_PARTIDA" name="NUM_PARTIDA" nullable="true" type="id_Long"/>
+        <mapperTableEntries expression="row9.MARCA_PROPIA_ALT" name="MARCA_PROPIA_ALT" nullable="true" type="id_Short"/>
+        <mapperTableEntries expression="row9.TIPO_ESTADO" name="TIPO_ESTADO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_ESTADO" name="NOM_ESTADO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.TIPO_CAUSAL" name="TIPO_CAUSAL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_CAUSAL" name="NOM_CAUSAL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.FECHA_CAMBIO_ESTADO" name="FECHA_CAMBIO_ESTADO" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.ITEMSMART" name="ITEMSMART" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.CATEGORIA_PROVEEDOR" name="CATEGORIA_PROVEEDOR" type="id_String"/>
+        <mapperTableEntries expression="row9.ESPECIAL" name="ESPECIAL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.COD_BARRAS_PRIMARIO" name="COD_BARRAS_PRIMARIO" nullable="true" type="id_Long"/>
+        <mapperTableEntries expression="row9.NOM_ITEM_PRIMARIO" name="NOM_ITEM_PRIMARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_TAMANIO_PRIMARIO" name="NOM_TAMANIO_PRIMARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.NOM_CLASE_PRIMARIO" name="NOM_CLASE_PRIMARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.IND_NOVEDOSO" name="IND_NOVEDOSO" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.PORCE_EXCE" name="PORCE_EXCE" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries expression="row9.FECHA_ULT_RECEPCION" name="FECHA_ULT_RECEPCION" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.ALCANCE_MG" name="ALCANCE_MG" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.IND_PROM_VIGENTE" name="IND_PROM_VIGENTE" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.BAND_ACTUALIZADA" name="BAND_ACTUALIZADA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.ANALITIX" name="ANALITIX" nullable="true" type="id_Integer"/>
+        <mapperTableEntries expression="row9.COD_CARACTERISTICA_ESPECIAL" name="COD_CARACTERISTICA_ESPECIAL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.CARACTERISTICA_ESPECIAL" name="CARACTERISTICA_ESPECIAL" nullable="true" type="id_String"/>
+        <mapperTableEntries expression="row9.fecha_ini_temp" name="fecha_ini_temp" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.fecha_fin_temp" name="fecha_fin_temp" nullable="true" type="id_Date"/>
+        <mapperTableEntries expression="row9.APLICACREDITODIRECTO" name="APLICACREDITODIRECTO" nullable="true" type="id_Integer"/>
+      </outputTables>
+      <inputTables lookupMode="LOAD_ONCE" matchingMode="UNIQUE_MATCH" name="row9" sizeState="INTERMEDIATE">
+        <mapperTableEntries name="ID_ITEM" type="id_Long"/>
+        <mapperTableEntries name="COD_ITEM_SIC" type="id_Long"/>
+        <mapperTableEntries name="COD_BARRAS" nullable="true" type="id_Long"/>
+        <mapperTableEntries name="COD_PROVEEDOR" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="COD_CLASIFICACION" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="COD_SEC_ITEM" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="COD_ITEM_PADRE" nullable="true" type="id_Long"/>
+        <mapperTableEntries name="COD_DEPTO" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NOM_PROVEEDOR" type="id_String"/>
+        <mapperTableEntries name="NOM_ITEM_PADRE" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_DIVISION" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_DEPTO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="AGRUP_DEPTO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_CLASIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_SUBCLASIFICA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_CLASIFICACION_AUX" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_SUBCLASIFICA_AUX" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_COMPRADOR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_TIPO_ITEM" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_TIPO_CPRECIO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_MARCA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_ITEM" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_ITEM_CONCAT" type="id_String"/>
+        <mapperTableEntries name="NOM_ITEM_ALT" type="id_String"/>
+        <mapperTableEntries name="NOM_TAMANIO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_UND_COMP1" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_UND_COMP2" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_UND_COMP3" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_UND_COMP4" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_UND_VTA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_CALIFICACION" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_GARANTIA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_PAIS_ORI" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_CLASE_MERC" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ID_BODEGA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NOM_BODEGA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ID_SUBBODEGA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NOM_SUBBODEGA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="PRECIO_COSTO_ANT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_COSTO_ACT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_NORMAL_ANT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_NORMAL_ACT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_REBAJA_ANT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_REBAJA_ACT" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_PROMOCION" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_PACTADO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_PVP" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_SMX" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRECIO_COSTO_NETO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="FEC_ALTA" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="FEC_REC_INI" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="FEC_ASIG_COST" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="FEC_ASIG_NORM" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="FEC_ASIG_REBAJA" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="FEC_INI_PROM_VTA" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="FEC_FIN_PROM_VTA" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="FEC_ULT_MODI" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="PORC_DCTO_VTA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_DCTO_PROM" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_IVA_COST" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_IVA_VTA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="NUM_DIA_VUTIL" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="IMPORTANCIA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NUM_UNIDADES1" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NUM_UNIDADES2" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NUM_UNIDADES3" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NUM_UNIDADES4" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NUM_UNIDADES_VTA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="ORIGEN_COMPRA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_MODIFI_USU" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_AGRUPADOR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="REFERENCIA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="CTO_MONEDA_ORI" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PLAZO_PAGO_PRO" type="id_Integer"/>
+        <mapperTableEntries name="PORC_NOTACREDITO_PRO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="IND_MODI" nullable="true" type="id_String"/>
+        <mapperTableEntries name="IND_MARCA_PRIVADA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="MARCA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="FLG_INTERPROV" nullable="true" type="id_String"/>
+        <mapperTableEntries name="IND_PROPIETARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_IND_PROPIETARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ACABADO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="RUC" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NUM_TARJETA_AFI" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ETL_TSTAMP" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="IMPRIME" nullable="true" type="id_Short"/>
+        <mapperTableEntries name="COD_BARRAS_PADRE" nullable="true" type="id_Long"/>
+        <mapperTableEntries name="PESO_APROX" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="UNID_MEDIDA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ABR_UNID_MEDIDA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="CANT_UNID_MEDIDA" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="UNID_MIN_CONVERSION" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="TIPOA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="SUBTIPOA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="CANASTAA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="TIPOB" nullable="true" type="id_String"/>
+        <mapperTableEntries name="CANASTAB" nullable="true" type="id_String"/>
+        <mapperTableEntries name="MARCA_REPORTE" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="CANASTAC" nullable="true" type="id_String"/>
+        <mapperTableEntries name="TIPOD" nullable="true" type="id_String"/>
+        <mapperTableEntries name="SUBTIPOD" nullable="true" type="id_String"/>
+        <mapperTableEntries name="TIPOE" nullable="true" type="id_String"/>
+        <mapperTableEntries name="SUBTIPOE" nullable="true" type="id_String"/>
+        <mapperTableEntries name="COD_MARCA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="PORC_DESCUENTO1" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_DESCUENTO2" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_DESCUENTO3" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_DESCUENTO4" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_COSTO" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PORC_UNC" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="PRIORIDAD_ACTUAL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="PRIORIDAD_ANTERIOR" nullable="true" type="id_String"/>
+        <mapperTableEntries name="BAND_ACT" nullable="true" type="id_Short"/>
+        <mapperTableEntries name="MARCA_PROPIA" nullable="true" type="id_String"/>
+        <mapperTableEntries name="COD_COMPRADOR" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="NUMREGSAN" nullable="true" type="id_String"/>
+        <mapperTableEntries name="FECHA_CAD_REG" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="TRANSGEN" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ORIGEN_REAL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="COD_PROVEE_ALT" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="MARCA_ALT" nullable="true" type="id_String"/>
+        <mapperTableEntries name="ID_ITEM_ALT" nullable="true" type="id_Long"/>
+        <mapperTableEntries name="NUM_PARTIDA" nullable="true" type="id_Long"/>
+        <mapperTableEntries name="MARCA_PROPIA_ALT" nullable="true" type="id_Short"/>
+        <mapperTableEntries name="TIPO_ESTADO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_ESTADO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="TIPO_CAUSAL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_CAUSAL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="FECHA_CAMBIO_ESTADO" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="ITEMSMART" nullable="true" type="id_String"/>
+        <mapperTableEntries name="CATEGORIA_PROVEEDOR" type="id_String"/>
+        <mapperTableEntries name="ESPECIAL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="COD_BARRAS_PRIMARIO" nullable="true" type="id_Long"/>
+        <mapperTableEntries name="NOM_ITEM_PRIMARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_TAMANIO_PRIMARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="NOM_CLASE_PRIMARIO" nullable="true" type="id_String"/>
+        <mapperTableEntries name="IND_NOVEDOSO" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="PORCE_EXCE" nullable="true" type="id_BigDecimal"/>
+        <mapperTableEntries name="FECHA_ULT_RECEPCION" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="ALCANCE_MG" nullable="true" type="id_String"/>
+        <mapperTableEntries name="IND_PROM_VIGENTE" nullable="true" type="id_String"/>
+        <mapperTableEntries name="BAND_ACTUALIZADA" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="ANALITIX" nullable="true" type="id_Integer"/>
+        <mapperTableEntries name="COD_CARACTERISTICA_ESPECIAL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="CARACTERISTICA_ESPECIAL" nullable="true" type="id_String"/>
+        <mapperTableEntries name="fecha_ini_temp" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="fecha_fin_temp" nullable="true" type="id_Date"/>
+        <mapperTableEntries name="APLICACREDITODIRECTO" nullable="true" type="id_Integer"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_9"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV9&quot;))"/>
-    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;"/>
-    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" show="false" value="true"/>
-    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" show="false" value="&quot;\r\n&quot;"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;}&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" show="false" value="&quot;\n&quot;"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
     <elementParameter field="CHECK" name="APPEND" value="false"/>
     <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
     <elementParameter field="CHECK" name="COMPRESS" show="false" value="false"/>
     <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
     <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
     <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
-    <elementParameter field="CHECK" name="CSV_OPTION" value="false"/>
-    <elementParameter field="TEXT" name="ESCAPE_CHAR" show="false" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" show="false" value="&quot;&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
     <elementParameter field="CHECK" name="CREATE" value="true"/>
     <elementParameter field="CHECK" name="SPLIT" value="true"/>
     <elementParameter field="TEXT" name="SPLIT_EVERY" value="600000"/>
     <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
     <elementParameter field="TEXT" name="FLUSHONROW_NUM" show="false" value="1"/>
     <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="true"/>
     <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" show="false" value="90"/>
@@ -3816,155 +4238,571 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk4"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tDBInput_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk5"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_1" offsetLabelX="0" offsetLabelY="0" source="tGSPut_1" target="tBigQueryBulkExec_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk7"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row2"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_1" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_1" target="tGSPut_1">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk6"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tDBInput_2">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk9"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tFileOutputDelimited_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_2" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_2" target="tGSPut_2">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk10"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_2" offsetLabelX="0" offsetLabelY="0" source="tGSPut_2" target="tBigQueryBulkExec_2">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk11"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" source="tJava_3" target="tDBInput_3">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk15"/>
   </connection>
   <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tFileOutputDelimited_3">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row3"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_3" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_3" target="tGSPut_3">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk16"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_3" offsetLabelX="0" offsetLabelY="0" source="tGSPut_3" target="tBigQueryBulkExec_3">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk17"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" source="tJava_5" target="tDBInput_5">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk21"/>
   </connection>
   <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tDBInput_5" offsetLabelX="0" offsetLabelY="0" source="tDBInput_5" target="tFileOutputDelimited_5">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row5"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_5" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_5" target="tGSPut_5">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk22"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_6" offsetLabelX="0" offsetLabelY="0" source="tJava_6" target="tDBInput_6">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk24"/>
   </connection>
   <connection connectorName="FLOW" label="row6" lineStyle="0" metaname="tDBInput_6" offsetLabelX="0" offsetLabelY="0" source="tDBInput_6" target="tFileOutputDelimited_6">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row6"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_6" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_6" target="tGSPut_6">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk25"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_6" offsetLabelX="0" offsetLabelY="0" source="tGSPut_6" target="tBigQueryBulkExec_6">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk26"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" source="tJava_7" target="tDBInput_7">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk27"/>
   </connection>
   <connection connectorName="FLOW" label="row7" lineStyle="0" metaname="tDBInput_7" offsetLabelX="0" offsetLabelY="0" source="tDBInput_7" target="tFileOutputDelimited_7">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row7"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_7" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_7" target="tGSPut_7">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk28"/>
   </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tParallelize_1" target="tJava_5">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_1" target="tJava_7">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
+  </connection>
   <connection connectorName="SYNCHRONIZE" label="Synchronize" lineStyle="12" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" source="tParallelize_1" target="tBigQueryBulkExec_5">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Synchronize"/>
   </connection>
-  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tParallelize_1" target="tJava_7">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
-  </connection>
-  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_1" target="tJava_5">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
-  </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tDBInput_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk29"/>
   </connection>
   <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tDBInput_4" target="tFileOutputDelimited_4">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_4" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_4" target="tGSPut_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk30"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" source="tJava_8" target="tDBInput_8">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk31"/>
   </connection>
-  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_2" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tParallelize_2" target="tJava_8">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
-  </connection>
-  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_2" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_2" target="tJava_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
-  </connection>
   <connection connectorName="SYNCHRONIZE" label="Synchronize" lineStyle="12" metaname="tParallelize_2" offsetLabelX="0" offsetLabelY="0" source="tParallelize_2" target="tBigQueryBulkExec_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Synchronize"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_2" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tParallelize_2" target="tJava_4">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_2" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_2" target="tJava_8">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
   </connection>
   <connection connectorName="FLOW" label="row8" lineStyle="0" metaname="tDBInput_8" offsetLabelX="0" offsetLabelY="0" source="tDBInput_8" target="tFileOutputDelimited_8">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row8"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_8" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_8" target="tGSPut_8">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk35"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" source="tJava_9" target="tDBInput_9">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk36"/>
   </connection>
-  <connection connectorName="FLOW" label="row9" lineStyle="0" metaname="tDBInput_9" offsetLabelX="0" offsetLabelY="0" source="tDBInput_9" target="tFileOutputDelimited_9">
+  <connection connectorName="FLOW" label="row9" lineStyle="0" metaname="tDBInput_9" offsetLabelX="0" offsetLabelY="0" source="tDBInput_9" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row9"/>
+  </connection>
+  <connection connectorName="FLOW" label="row" lineStyle="0" metaname="row" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tFileOutputDelimited_9">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_SUBBODEGA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_REBAJA_ANT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ID_ITEM_ALT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRIORIDAD_ACTUAL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_BARRAS"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUMREGSAN"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UNID_MIN_CONVERSION"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_DESCUENTO4"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_IVA_COST"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_DESCUENTO3"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_DESCUENTO2"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_DESCUENTO1"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TIPO_ESTADO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_COSTO_NETO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_UNIDADES1"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_BODEGA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="fecha_ini_temp"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_UNIDADES4"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_CLASIFICACION"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_UNIDADES3"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_UNIDADES2"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_COSTO_ANT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IMPRIME"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_CAUSAL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_GARANTIA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_FIN_PROM_VTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_CALIFICACION"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_COMPRADOR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_ULT_MODI"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_SMX"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IMPORTANCIA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PESO_APROX"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_NORMAL_ANT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="fecha_fin_temp"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_DCTO_VTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ANALITIX"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_CARACTERISTICA_ESPECIAL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_ASIG_REBAJA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FECHA_CAMBIO_ESTADO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IND_NOVEDOSO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MARCA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FECHA_CAD_REG"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ETL_TSTAMP"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_INI_PROM_VTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TIPO_CAUSAL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TIPOB"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_TAMANIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_COSTO_ACT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TIPOA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_UNC"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ID_BODEGA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TIPOD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TIPOE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_IVA_VTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="TRANSGEN"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ALCANCE_MG"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_IND_PROPIETARIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="RUC"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_PARTIDA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_ITEM_PADRE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_PACTADO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_ITEM_SIC"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CANASTAA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CANASTAB"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CANASTAC"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_MARCA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ESPECIAL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_DIVISION"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MARCA_ALT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_MODIFI_USU"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_PVP"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_ESTADO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_ITEM_PADRE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_COMPRADOR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_NORMAL_ACT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="REFERENCIA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MARCA_PROPIA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_ITEM_ALT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_UND_COMP4"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ORIGEN_COMPRA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_UND_COMP2"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PLAZO_PAGO_PRO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ORIGEN_REAL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_DEPTO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_UND_COMP3"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MARCA_PROPIA_ALT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_UND_COMP1"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ACABADO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRIORIDAD_ANTERIOR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_AGRUPADOR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="MARCA_REPORTE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_ALTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_ASIG_COST"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CTO_MONEDA_ORI"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_CLASE_PRIMARIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_DCTO_PROM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="BAND_ACTUALIZADA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_PROMOCION"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="SUBTIPOE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="SUBTIPOD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_PROVEE_ALT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_ITEM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CANT_UNID_MEDIDA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_SUBCLASIFICA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_TARJETA_AFI"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="SUBTIPOA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CATEGORIA_PROVEEDOR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PRECIO_REBAJA_ACT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ID_ITEM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ABR_UNID_MEDIDA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_REC_INI"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IND_MARCA_PRIVADA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_NOTACREDITO_PRO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_DEPTO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_MARCA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_PAIS_ORI"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="APLICACREDITODIRECTO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FECHA_ULT_RECEPCION"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_BARRAS_PRIMARIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_PROVEEDOR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_UND_VTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_TAMANIO_PRIMARIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FEC_ASIG_NORM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_SEC_ITEM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_CLASE_MERC"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_DIA_VUTIL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="UNID_MEDIDA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IND_MODI"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="CARACTERISTICA_ESPECIAL"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_CLASIFICACION_AUX"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IND_PROM_VIGENTE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_PROVEEDOR"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="BAND_ACT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="IND_PROPIETARIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_BARRAS_PADRE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="COD_CLASIFICACION"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_ITEM_CONCAT"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_ITEM_PRIMARIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORCE_EXCE"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ID_SUBBODEGA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FLG_INTERPROV"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="PORC_COSTO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NUM_UNIDADES_VTA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_TIPO_CPRECIO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="ITEMSMART"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_TIPO_ITEM"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="NOM_SUBCLASIFICA_AUX"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="AGRUP_DEPTO"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_9" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_9" target="tGSPut_9">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk37"/>
@@ -4184,13 +5022,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_b6c897af-dde8-48d0-a692-dd4b8c7d8512"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7MynlHcBbKhLBOfVvW2iku7C72VhAkn4dYZF5rNH3gH1qZKvGot7JyO7vo2Hper641S3jiJE4EIu&#13;
-nPfL0JH0jA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_85d8732c-1fe1-4a64-8161-39a9b5fc67f9"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>0Ft5jQcGF+oIyMH2nVX1QqO5khy0LJM3x2OBACTulYcL1AGEdl+mr42X8iG1d/aIZ02JIZ1+PrCl&#13;
-imGF0yFbzw==</DigestValue></Reference></SignedInfo><SignatureValue>BXOnZxRuIzfBUdZUzajyiVqrliNTNPBlI5dtjXQ7VhEkVbxsNt1IHz55BWiyQGNIJo/ZFTom9yad&#13;
-wKJKhvV4/7YbCWjtqkY+IUnyJ4phrUAWGveRimJYfdHcDaOXo+sLOLNnuLJBSwIv0zKm5zTh6FJw&#13;
-8rLge0az8sHQxp/JDKulDCIS+hQWMqy3u0Lgk/mnn2B5uH6DiWLE0BlTLisGC5X3H5N0tIZsbQAw&#13;
-/RGTnG2NdzOQ0JdwGcXWwj872ow8VtVgZ1mQ6iQ7OB5FUkB9+S6hQKUOIKDwFw3kOF5iwf67k8a8&#13;
-jnrOysDOgKz2xIgj31lKc5eDfF//rbmfyQ2Vjg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_d273d6c2-eac5-4d8e-8ebb-8bc48a6f3e70"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>F2vIsGQ4x2uxfrTYEYc3UolFrMMXb7bIgtz4LImhm64HjCTa+LEAb7O0BiywgAZJJBJf5SRpvK7z&#13;
+/SEMG4f5SA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_e2145fb7-6a57-479c-940f-298e51f65812"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>FsqLkiJxQaKSe4oVUV35P9zw68O0+5e0+1LsoC4ufANuq+p/7hwxbdhFCV9RRmtv7GdU+gUO0jai&#13;
+lalRK4dk+A==</DigestValue></Reference></SignedInfo><SignatureValue>DOTFwEflpSRBvTdZsFIddL36OKzqSEOn82Ms+p4uSHNDJZnLYQTMNaqBQmC5+bta1Zt8tWOKFCWO&#13;
+9N4c9oRWNld2xj0ibEqo0alexNJ19C1bcQV+Td1SF14nsjTOzbT4KD9/2W8PCQoJ0fXh08hm9OWw&#13;
+kl4XVZgM3/G7QFF5XMiHyiGPnxWH5lG+Czk4iv582LYNpBNVj14VvHr/gsJnuBwXm6ayUJHOwEe6&#13;
+JaRHLqqCf82D/Ch2VHbXy3djkFXoUmgO83REr/ylo88macGl+ZpmSssOKCXpKiW5pP0vXNLN2n6H&#13;
+77qEoyaaZgfweu2wJOHpCVgSM1FznprhIKU31A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -4212,4 +5050,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_85d8732c-1fe1-4a64-8161-39a9b5fc67f9" Target="#_b6c897af-dde8-48d0-a692-dd4b8c7d8512"><Timestamp>2024-09-27 20:19:28</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_e2145fb7-6a57-479c-940f-298e51f65812" Target="#_d273d6c2-eac5-4d8e-8ebb-8bc48a6f3e70"><Timestamp>2024-09-29 13:05:23</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
