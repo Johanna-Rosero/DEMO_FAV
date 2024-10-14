@@ -203,6 +203,8 @@
       <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
       <elementValue elementRef="KEY" value="&quot;V_CRITERIO&quot;"/>
       <elementValue elementRef="VALUE" value="104"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_CRI_BASE&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="JOB_VARIABLES"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -269,10 +271,8 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQueryInput_3">
       <column comment="" key="false" length="-1" name="L_V_FECHA_AUX" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA_FIN" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_FECHA_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_FECHA_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="600" posY="280">
@@ -282,10 +282,8 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_7">
       <column comment="" key="false" length="-1" name="L_V_FECHA_AUX" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA_FIN" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_FECHA_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_FECHA_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN_AS" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="80" posY="80">
@@ -450,7 +448,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT to_char( $L_V_FECHA,'YYYY-MM-DD'),&#13;&#10;&#9;&#9;&#9;&#9;&#9;BI_DSA.DAYS_FECHA('&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;') AS   L_V_ID_FECHA,&#9;&#13;&#10;                    BI_DSA.DAYS_FECHA('&quot;+globalMap.get(&quot;L_V_FECHA_FIN&quot;)+&quot;') AS  L_V_ID_FECHA_FIN ,&#13;&#10;&#9;&#9;&#9;&#9;&#9;FN_DAYS_FECHA(add_months( $L_V_FECHA_FIN,-12)),&#13;&#10;&#9;&#9;&#9;&#9;&#9;FN_DAYS_FECHA(add_months( $P_V_FECHA,-12) ),&#13;&#10;&#9;&#9;&#9;&#9;&#9; FN_DAYS_FECHA( FN_FECHA_INI( $P_V_FECHA,'YTD')),  &#13;&#10;&#9;&#9;&#9;&#9;&#9;FN_DAYS_FECHA( add_months( FN_FECHA_INI( $P_V_FECHA,'YTD'),-12)), &#13;&#10;&#9;&#9;&#9;&#9;&#9;FN_DAYS_FECHA( FN_FECHA_INI( $P_V_FECHA,'YTD')),&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT  FORMAT_DATE('%Y-%m-%d','&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;') AS FECHA,               &#13;&#10;                     BI_DSA.DAYS_FECHA('&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;') AS L_V_ID_FECHA,             &#13;&#10;&#9;&#9;&#9;&#9;&#9;BI_DSA.DAYS_FECHA('&quot;+globalMap.get(&quot;L_V_FECHA_FIN&quot;)+&quot;') AS L_V_ID_FECHA_FIN ,                                           &#13;&#10;&#9;&#9;&#9;&#9;&#9;BI_DSA.DAYS_FECHA(DATE_SUB( '&quot;+globalMap.get(&quot;L_V_FECHA_FIN&quot;)+&quot;', INTERVAL 12 MONTH)) AS L_V_ID_FECHA_FIN_1Y,                                          &#13;&#10;&#9;&#9;&#9;&#9;&#9;BI_DSA.DAYS_FECHA(DATE_SUB( '&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;',INTERVAL 12 MONTH) ) AS L_V_ID_FECHA_1Y,                                               &#13;&#10;&#9;&#9;&#9;&#9;&#9;BI_DSA.DAYS_FECHA(BI_DSA.FN_FECHA_INI( '&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;','YTD')) AS L_V_ID_FECHA_YTD,                                                &#13;&#10;&#9;&#9;&#9;&#9;&#9;BI_DSA.DAYS_FECHA( DATE_SUB( BI_DSA.FN_FECHA_INI( '&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;','YTD'),INTERVAL 12 MONTH)) AS L_V_ID_FECHA_YTD_1Y,                                          &#13;&#10;&#9;&#9;&#9;&#9;&#9;BI_DSA.DAYS_FECHA( BI_DSA.FN_FECHA_INI( '&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;','YTD')) AS  V_ID_FECHA_YTD1;&#13;&#10;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
@@ -465,12 +463,12 @@
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQueryInput_2">
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_FECHA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJavaRow_3"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;V_FECHA&quot;, row1.V_FECHA);&#10;globalMap.put(&quot;L_V_ID_FECHA&quot;, row5.L_V_FECHA_AUX);&#10;globalMap.put(&quot;L_V_ID_FECHA_FIN&quot;, row5.L_V_FECHA_AUX);&#10;globalMap.put(&quot;L_V_ID_FECHA_FIN_1Y&quot;, row1.L_V_ID_FECHA_FIN_1Y);&#10;globalMap.put(&quot;L_V_ID_FECHA_YTD&quot;, row1.L_V_ID_FECHA_YTD);&#10;globalMap.put(&quot;L_V_ID_FECHA_YTD_1Y&quot;, row1.L_V_ID_FECHA_YTD_1Y);&#10;globalMap.put(&quot;V_ID_FECHA_YTD1&quot;, row1.V_ID_FECHA_YTD1);&#10;&#10;&#10;&#10;&#10;&#10;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;V_FECHA&quot;, row1.V_FECHA);&#10;globalMap.put(&quot;L_V_ID_FECHA&quot;, row5.L_V_FECHA_AUX);&#10;globalMap.put(&quot;L_V_ID_FECHA_FIN&quot;, row5.L_V_FECHA_AUX);&#10;globalMap.put(&quot;L_V_ID_FECHA_FIN_1Y&quot;, row1.L_V_ID_FECHA_FIN_1Y);&#10;globalMap.put(&quot;L_V_ID_FECHA_1Y&quot;, row5.L_V_FECHA_AUX);&#10;globalMap.put(&quot;L_V_ID_FECHA_YTD&quot;, row1.L_V_ID_FECHA_YTD);&#10;globalMap.put(&quot;L_V_ID_FECHA_YTD_1Y&quot;, row1.L_V_ID_FECHA_YTD_1Y);&#10;globalMap.put(&quot;V_ID_FECHA_YTD1&quot;, row1.V_ID_FECHA_YTD1);&#10;&#10;&#10;&#10;&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_3"/>
@@ -698,13 +696,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_4f7f21dd-f6e7-4019-b9b4-f95953d32684"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>MyeWjzbL1fIZfHooV7sMTpi89vvxuHa8FemTmJA1yvzDHx74noLYjhmRmlservOe7nnHI5BefElj&#13;
-dm2rkPOotg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_27f99626-1737-4a6f-801f-270aca367efc"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>qKZjNyFWFc7SWeuvpTPRVotF6IwC7zq4hgc+H9AaZ4nBgn1omkz2v9L9F48ahdE7AEJeenxVrSBO&#13;
-U3owSqBfww==</DigestValue></Reference></SignedInfo><SignatureValue>M55oGY7cbUPcxwkg59QKiTyVZ/51QpBHhkLHLUE+py6HsIGI3yZQhOnrUFDMLCkz/W3k+VP6I4UY&#13;
-tHXrmHNtZ1FRmtInngUPcccIWMLRIRGpz3nLN2+qIkxpnHfJqCjACm4MEQluW+yZKMHLYJViTSEd&#13;
-TmqJXqYOHrJDMXzGPZhFTntnibkkt7z3KvdoH1PSvcdEmXp6dr2Me8hDJw0RsSYRqIH2+mCza1k9&#13;
-/krFBgnVQVMCOsg40sLalblMmRFChrfKAE7dTLTdZZs9a+NiCDG5RO7QggrDKzaUM3fKJXObVjJB&#13;
-5zvb3rc9ONFj5UZnhPmFM9sadIoSzTe9Uixbgg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_854333fd-77fd-4399-b401-1a938ce2b3cf"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fofXbf296hvtGgg3rgpLJhL6Qh1t3jgB5omrXmt4LdQVegtkKA4G2u3c4SUah/iJrNFRtakr/Xm9&#13;
+tsSGXi8yXw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_139ab949-328e-46eb-85e9-16949e90c681"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>q1NEDpu0x1Rbm93O3zdvxhuopCQzXfXZi6UzkAFQLtCyy2OQr9cCTG7nsUhYh+GU+7twqezx2Ahc&#13;
+0+MPR1MANQ==</DigestValue></Reference></SignedInfo><SignatureValue>e/7n3gWgF7s8qm1KkZLQswyCxC1rx66UTmOOOjFdnwSMnygq75vOdKPekGVkrwUhkdEsPJN1wTFO&#13;
+w7Z7KXjibHcf1gLQ9WM1bAH2837VCv1SedYoB4ph3d6nLVCzQiireiBKFHlJ2ICdYEeFvgP5dzT2&#13;
+TyWrtrlixOAbHHMpreR4iH61VbrxqXA9QVsZCSJegh7WBGOE/9lCTrA1rL2SPib0iOPBDSlNx8vf&#13;
+hBZn+M7cseupRoIlMA+j4XWQj1htYT7JyAqkiwK9FDAZcb/UYMTRf1lvIhjFu+FSnW3hNhFFsvLl&#13;
+RVjAKstYOBu7u0/vTWOE/Tj/NBr/vO7JzHjXiw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -726,4 +724,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_27f99626-1737-4a6f-801f-270aca367efc" Target="#_4f7f21dd-f6e7-4019-b9b4-f95953d32684"><Timestamp>2024-10-14 15:44:51</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_139ab949-328e-46eb-85e9-16949e90c681" Target="#_854333fd-77fd-4399-b401-1a938ce2b3cf"><Timestamp>2024-10-14 16:13:03</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
