@@ -43,7 +43,7 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="160"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="240"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="120"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
@@ -153,7 +153,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;IF ( &quot;+context.estado2+&quot;=1) THEN&#13;&#10; &#9;SELECT&#13;&#10;&#9;&#9;&#9;&#9;&#9;DATE_TRUNC(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')), MONTH) , &#13;&#10;&#9;&#9;&#9;&#9;&#9;DATE_TRUNC(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')), MONTH) &#13;&#10;&#9;FROM BI_CNT.CTRL_FECHA_CARGA &#13;&#10;&#9;WHERE MODULO='DEMANDA_UOPBSC_DF'; &#13;&#10;ELSE&#13;&#10;    SELECT&#13;&#10;&#9;&#9;&#9;&#9;&#9;FECHA_INI,&#13;&#10;&#9;&#9;&#9;&#9;&#9;FECHA_FIN,&#13;&#10;&#9;FROM BI_CNT.CTRL_FECHA_CARGA &#13;&#10;&#9;WHERE MODULO= 'DEMANDA_UOPBSC_DF';&#13;&#10;END IF&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;IF ( &quot;+context.estado2+&quot;=1) THEN&#13;&#10; &#9;SELECT&#13;&#10;&#9;&#9;&#9;&#9;&#9;DATE_TRUNC(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')), MONTH) , &#13;&#10;&#9;&#9;&#9;&#9;&#9;DATE_TRUNC(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')), MONTH),&#13;&#10;&#9;&#9;&#9;&#9;&#9;TIPO_CARGA &#13;&#10;&#9;FROM BI_CNT.CTRL_FECHA_CARGA_DEMANDA_UOPBSC_DF &#13;&#10;&#9;WHERE MODULO='DEMANDA_UOPBSC_DF'; &#13;&#10;ELSE&#13;&#10;    SELECT&#13;&#10;&#9;&#9;&#9;&#9;&#9;FECHA_INI,&#13;&#10;&#9;&#9;&#9;&#9;&#9;FECHA_FIN,&#13;&#10;&#9;&#9;&#9;&#9;&#9;TIPO_CARGA,&#13;&#10;&#9;FROM BI_CNT.CTRL_FECHA_CARGA_DEMANDA_UOPBSC_DF&#13;&#10;&#9;WHERE MODULO= 'DEMANDA_UOPBSC_DF';&#13;&#10;END IF&#13;&#10;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
@@ -170,47 +170,18 @@
     <metadata connector="FLOW" name="tBigQueryInput_1">
       <column comment="" key="false" length="-1" name="L_V_FECHA" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="L_V_FECHA_FIN" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_TIPO_CARGA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1040" posY="80">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_1"/>
-    <elementParameter field="TABLE" name="VARIABLES">
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA&quot;"/>
-      <elementValue elementRef="VALUE" value="row4.L_V_FECHA"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN&quot;"/>
-      <elementValue elementRef="VALUE" value="row4.L_V_FECHA_FIN"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AS&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN_AS&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AUX&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;V_FECHA&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN_1Y&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_1Y&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD_1Y&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_YTD1&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;V_CRITERIO&quot;"/>
-      <elementValue elementRef="VALUE" value="104"/>
-      <elementValue elementRef="KEY" value="&quot;V_ID_CRI_BASE&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="LABEL" value="JOB_VARIABLES"/>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1040" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_9"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;L_V_FECHA&quot;, row4.L_V_FECHA);&#10;globalMap.put(&quot;L_V_FECHA_FIN&quot;, row4.L_V_FECHA_FIN);&#10;globalMap.put(&quot;V_CRITERIO&quot;, row4.V_CRITERIO);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tSetGlobalVar_1">
+    <metadata connector="FLOW" name="tJava_9">
       <column comment="" key="false" length="-1" name="L_V_FECHA" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="L_V_FECHA_FIN" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_TIPO_CARGA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tLoop" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="360" posY="280">
@@ -234,7 +205,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_5"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="880" posY="760">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="800">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_2"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;L_V_FECHA&quot;, TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,TalendDate.addDate(TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;L_V_FECHA&quot;)), 1 ,&quot;MM&quot;)));&#10;Bi.println(&quot;INCREMENTA_FECHA&quot;);&#10;Bi.println(&quot;L_V_FECHA: &quot;+(globalMap.get(&quot;L_V_FECHA&quot;)));&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -335,7 +306,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1080" posY="760">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1320" posY="800">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_2"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
@@ -347,7 +318,12 @@
     <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
     <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
-    <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="L_V_FECHA"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;L_V_FECHA&quot;)"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_CRITERIO"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_CRITERIO&quot;)"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" show="false" value="true"/>
@@ -364,7 +340,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_2"/>
   </node>
-  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="2" offsetLabelY="3" posX="1080" posY="600">
+  <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="2" offsetLabelY="3" posX="1320" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_3"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
@@ -376,7 +352,14 @@
     <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
     <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
-    <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_CRITERIO"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_CRITERIO&quot;)"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="L_V_ID_FECHA"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;L_V_ID_FECHA&quot;)"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="L_V_ID_FECHA_1Y"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;L_V_ID_FECHA_1Y&quot;)"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" show="false" value="true"/>
@@ -393,11 +376,11 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_3"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="720" posY="440">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_4"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;******** INICIA BACKUP SCORECARD_UOP_V2 ***********&quot;);&#10;&#10;&#10;&#10;&#10;&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="LABEL" value="MENSAJE"/>
+    <elementParameter field="TEXT" name="LABEL" value="REPROCESO"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_4"/>
   </node>
@@ -464,6 +447,13 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQueryInput_2">
       <column comment="" key="false" length="-1" name="V_FECHA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_ID_FECHA_FIN" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_ID_FECHA_FIN_1Y" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_ID_FECHA_1Y" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_ID_FECHA_YTD" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_ID_FECHA_YTD_1Y" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_YTD1" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="600">
@@ -473,7 +463,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_3"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="600">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="880" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_6"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;******** NO BACKUP PORQUE NO ES REPROCESO ***********&quot;);&#10;&#10;&#10;&#10;&#10;&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -481,7 +471,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_6"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="880" posY="440">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_3"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:gHfjmFb0wlXoPhMgrczj/Mz74XpVebJwO8lFWAbe"/>
@@ -492,7 +482,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;CALL  BI_DSA.SP_BACKUP_DEMANDA_UOPBSC_DF('&quot;+globalMap.get(&quot;V_CRITERIO&quot;)+&quot;',  '&quot;+globalMap.get(&quot;L_V_ID_FECHA&quot;)+&quot;' );&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;INSERT INTO BI_DSA.SCORECARD_UOP_V2_LOG&#13;&#10;SELECT &#13;&#10;&#9;&#9;&#9;&#9;ID_FECHA,&#13;&#10;&#9;&#9;&#9;&#9;ID_CRITERIO,&#13;&#10;&#9;&#9;&#9;&#9;ID_UOP,&#13;&#10;&#9;&#9;&#9;&#9;FORMATO,&#13;&#10;&#9;&#9;&#9;&#9;ZONA,&#13;&#10;&#9;&#9;&#9;&#9;GERENTE_REGIONAL,&#13;&#10;&#9;&#9;&#9;&#9;FORMATO_ALT_1,&#13;&#10;&#9;&#9;&#9;&#9;FORMATO_ALT_2,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_YTD,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_YTD_1,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_MTH,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_MTH_1Y,&#13;&#10;&#9;&#9;&#9;&#9;POSICION_YTD,&#13;&#10;&#9;&#9;&#9;&#9;CALIFICACION_YTD,&#13;&#10;&#9;&#9;&#9;&#9;POSICION_MTH,&#13;&#10;&#9;&#9;&#9;&#9;CALIFICACION_MTH,&#13;&#10;&#9;&#9;&#9;&#9;BECHMARK,&#13;&#10;&#9;&#9;&#9;&#9;PONDERACION,&#13;&#10;&#9;&#9;&#9;&#9;POND_ALT,&#13;&#10;&#9;&#9;&#9;&#9;PONDERACION_MEJORA,&#13;&#10;&#9;&#9;&#9;&#9;POND_ALT_MEJORA,&#13;&#10;&#9;&#9;&#9;&#9;ACTIVO,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_YTD_V2,&#13;&#10;&#9;&#9;&#9;&#9;[$ID_JOB] ID_JOB,&#13;&#10;&#9;&#9;&#9;&#9;'0000' AS LOG_VALIDACION&#13;&#10;&#9;&#9;&#9;&#9;ETL_TSTAMP,&#13;&#10;FROM BI_DSA.SCORECARD_UOP_V2&#13;&#10;WHERE ID_FECHA=&quot;+globalMap.get(&quot;L_V_ID_FECHA&quot;)+&quot;; &#13;&#10;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
@@ -503,7 +493,7 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="BACKUP"/>
+    <elementParameter field="TEXT" name="LABEL" value="BACKUP_SCORECARD_UOP_V2"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_3"/>
   </node>
@@ -541,19 +531,79 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tSetGlobalVar_1">
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="V_G_ZONAS"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="V_G_LOCAL"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1080" posY="440">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:Puict2gHLr3uvJa3gAQz/sxZ8x1bmzWnZKiyuOPR"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" show="false" value="enc:system.encryption.key.v1:3RiXKSQfWL6SehDnSGL6SggZcw8BgYPr0RB5VEBZ"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;INSERT INTO BI_DSA.FAC_SCORECARD_UOP_V2_LOG&#13;&#10;SELECT &#13;&#10;&#9;&#9;&#9;&#9;ID_FECHA,&#13;&#10;&#9;&#9;&#9;&#9;ID_CRITERIO,&#13;&#10;&#9;&#9;&#9;&#9;ID_UOP,&#13;&#10;&#9;&#9;&#9;&#9;ID_FORMATO,&#13;&#10;&#9;&#9;&#9;&#9;ID_ZONA,&#13;&#10;&#9;&#9;&#9;&#9;ID_GER_REG,&#13;&#10;&#9;&#9;&#9;&#9;FORMATO_ALT_1,&#13;&#10;&#9;&#9;&#9;&#9;FORMATO_ALT_2,&#9;&#9;&#9;&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_YTD,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_YTD_1,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_MTH,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_MTH_1Y,&#13;&#10;&#9;&#9;&#9;&#9;POSICION_YTD,&#13;&#10;&#9;&#9;&#9;&#9;CALIFICACION_YTD,&#13;&#10;&#9;&#9;&#9;&#9;POSICION_MTH,&#13;&#10;&#9;&#9;&#9;&#9;CALIFICACION_MTH,&#9;&#13;&#10;&#9;&#9;&#9;&#9;BENCHMARK_MTH,&#13;&#10;&#9;&#9;&#9;&#9;BENCHMARK_YTD,&#13;&#10;&#9;&#9;&#9;&#9;BENCHMARK_ALT_MTH,&#13;&#10;&#9;&#9;&#9;&#9;BENCHMARK_ALT_YTD,&#13;&#10;&#9;&#9;&#9;&#9;PONDERACION,&#13;&#10;&#9;&#9;&#9;&#9;POND_ALT,&#13;&#10;&#9;&#9;&#9;&#9;BENCH_MTH_1Y,&#13;&#10;&#9;&#9;&#9;&#9;BENCH_YTD_1,&#13;&#10;&#9;&#9;&#9;&#9;BENCH_ALT_MTH_1Y,&#13;&#10;&#9;&#9;&#9;&#9;BENCH_ALT_YTD_1,&#13;&#10;&#9;&#9;&#9;&#9;RESULTADO_YTD_V2,&#13;&#10;&#9;&#9;&#9;&#9;[$ID_JOB] ID_JOB,&#13;&#10;&#9;&#9;&#9;&#9;'00000000' LOG_VALIDACION,&#13;&#10;&#9;&#9;&#9;&#9;ETL_TSTAMP&#9;&#13;&#10;FROM  EDWH.FAC_SCORECARD_UOP_V2&#13;&#10;WHERE ID_FECHA=&quot;+globalMap.get(&quot;L_V_ID_FECHA&quot;)+&quot;;  &#13;&#10; &quot;"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" show="false" value="&quot;,&quot;"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" show="false" value="&quot;.&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" show="false" value="AUTO"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="BACKUP_FAC_SCORECARD_UOP_V2"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_4"/>
+  </node>
+  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-200" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_2"/>
+    <elementParameter field="TABLE" name="VARIABLES">
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_TIPO_CARGA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AS&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN_AS&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AUX&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_FECHA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN_1Y&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_1Y&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD_1Y&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_YTD1&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_CRITERIO&quot;"/>
+      <elementValue elementRef="VALUE" value="104"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="JOB_VARIABLES"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tSetGlobalVar_2">
+      <column comment="" key="false" length="-1" name="L_V_FECHA" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_TIPO_CARGA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tJava_9">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tSetGlobalVar_1" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_1" target="tJava_1">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" source="tJava_9" target="tJava_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_3">
@@ -598,21 +648,44 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk10"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tBigQueryInput_2" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_2" target="tJavaRow_3">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA_YTD1"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA_YTD"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA_YTD_1Y"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA_1Y"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA_FIN_1Y"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA_FIN"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row1"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_3" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJavaRow_3" target="tJava_6">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="&quot;A&quot;.equals(context.estado)"/>
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="&quot;1&quot;.equals(globalMap.get(&quot;V_TIPO_CARGO&quot;).toString())"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="If1"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_3" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJavaRow_3" target="tJava_4">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="&quot;R&quot;.equals(context.estado)"/>
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="&quot;99&quot;.equals(globalMap.get(&quot;V_TIPO_CARGO&quot;).toString())"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="If2"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_6" offsetLabelX="0" offsetLabelY="0" source="tJava_6" target="tRunJob_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk7"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_3" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_3" target="tRunJob_3">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_3" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_3" target="tBigQuerySQLRow_4">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk12"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tBigQueryInput_1">
@@ -620,6 +693,12 @@
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tBigQueryInput_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk3"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_4" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_4" target="tRunJob_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk18"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tSetGlobalVar_2" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_2" target="tRunJob_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk19"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryInput_1"/>
@@ -696,13 +775,23 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_854333fd-77fd-4399-b401-1a938ce2b3cf"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fofXbf296hvtGgg3rgpLJhL6Qh1t3jgB5omrXmt4LdQVegtkKA4G2u3c4SUah/iJrNFRtakr/Xm9&#13;
-tsSGXi8yXw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_139ab949-328e-46eb-85e9-16949e90c681"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>q1NEDpu0x1Rbm93O3zdvxhuopCQzXfXZi6UzkAFQLtCyy2OQr9cCTG7nsUhYh+GU+7twqezx2Ahc&#13;
-0+MPR1MANQ==</DigestValue></Reference></SignedInfo><SignatureValue>e/7n3gWgF7s8qm1KkZLQswyCxC1rx66UTmOOOjFdnwSMnygq75vOdKPekGVkrwUhkdEsPJN1wTFO&#13;
-w7Z7KXjibHcf1gLQ9WM1bAH2837VCv1SedYoB4ph3d6nLVCzQiireiBKFHlJ2ICdYEeFvgP5dzT2&#13;
-TyWrtrlixOAbHHMpreR4iH61VbrxqXA9QVsZCSJegh7WBGOE/9lCTrA1rL2SPib0iOPBDSlNx8vf&#13;
-hBZn+M7cseupRoIlMA+j4XWQj1htYT7JyAqkiwK9FDAZcb/UYMTRf1lvIhjFu+FSnW3hNhFFsvLl&#13;
-RVjAKstYOBu7u0/vTWOE/Tj/NBr/vO7JzHjXiw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_09661293-160c-486e-b16e-7ea3486de6c3"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>owMMXt6dkjYwtYDMbrR2GgVrEO0wcBfG4DJMJYyXQWtFeJPT1XtFrtk2LXZnG/knoYbma8I14Ijr&#13;
+/EbI1FFzgQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_9f3d5152-c986-4f95-8ea2-471ce377d041"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>DKdwVG6ULKC+iREFcBMCAxkGKiE36g9p0uCkcUwj2Ot42ru3c22iIMBtZesdHTL+CBupssoK5xYQ&#13;
+HR7YfYrrIw==</DigestValue></Reference></SignedInfo><SignatureValue>fizl5Zblf48qLqnPIPzndoWeZ0wmR5bNpbfEDKP5BToDy0Ji42t4eieGGRRbOb+tmQdvA8nLrp3Z&#13;
+ABALzKnp+Csgegy7DPr78lE9XSh9xCEGg6+BYKoS0ZP7ibZRoQQCjL/YS/BDjo+NAQgY1piO3JkD&#13;
+NTPXXt+Z4GzNONxjpm4Y9PX5ZqXc6xLL5BR//PFGlmypyyNCbvpG7pebK9JVykKo1lJGqBtiLJSA&#13;
+eMBC62bsbf6h0aPeqsNLgpvJErCzklaUrLK6/giorTP2us53xjE7yg1NVB/jU0H0OWu4XqV1HzXl&#13;
+0mDhStZ8ymjr2XRhEKCq+NvewTfB7ipDUHFibA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -724,4 +813,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_139ab949-328e-46eb-85e9-16949e90c681" Target="#_854333fd-77fd-4399-b401-1a938ce2b3cf"><Timestamp>2024-10-14 16:13:03</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_9f3d5152-c986-4f95-8ea2-471ce377d041" Target="#_09661293-160c-486e-b16e-7ea3486de6c3"><Timestamp>2024-10-15 22:16:27</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
