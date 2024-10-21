@@ -43,7 +43,7 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" show="false" value="Info"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="160"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="240"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="120"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
@@ -173,43 +173,12 @@
       <column comment="" key="false" length="-1" name="V_TIPO_CARGA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1040" posY="80">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_1"/>
-    <elementParameter field="TABLE" name="VARIABLES">
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA&quot;"/>
-      <elementValue elementRef="VALUE" value="row4.L_V_FECHA"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN&quot;"/>
-      <elementValue elementRef="VALUE" value="row4.L_V_FECHA_FIN"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AS&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN_AS&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AUX&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;V_FECHA&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN_1Y&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_1Y&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD_1Y&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_YTD1&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
-      <elementValue elementRef="KEY" value="&quot;V_CRITERIO&quot;"/>
-      <elementValue elementRef="VALUE" value="104"/>
-      <elementValue elementRef="KEY" value="&quot;V_TIPO_CARGA&quot;"/>
-      <elementValue elementRef="VALUE" value="row4.V_TIPO_CARGA"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="LABEL" value="JOB_VARIABLES"/>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1040" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_9"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;L_V_FECHA&quot;, row4.L_V_FECHA);&#10;globalMap.put(&quot;L_V_FECHA_FIN&quot;, row4.L_V_FECHA_FIN);&#10;globalMap.put(&quot;V_CRITERIO&quot;, row4.V_CRITERIO);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tSetGlobalVar_1">
+    <metadata connector="FLOW" name="tJava_9">
       <column comment="" key="false" length="-1" name="L_V_FECHA" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="L_V_FECHA_FIN" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="V_TIPO_CARGA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
@@ -588,22 +557,53 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_4"/>
   </node>
-  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tSetGlobalVar_1">
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="V_G_ZONAS"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="V_G_LOCAL"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="V_TIPO_CARGA"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+  <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-200" posY="80">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_2"/>
+    <elementParameter field="TABLE" name="VARIABLES">
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_TIPO_CARGA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AS&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN_AS&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_AUX&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_FECHA&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_FIN_1Y&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_1Y&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD_1Y&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA_YTD&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_YTD1&quot;"/>
+      <elementValue elementRef="VALUE" value="&quot;myValue&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;V_CRITERIO&quot;"/>
+      <elementValue elementRef="VALUE" value="104"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="LABEL" value="JOB_VARIABLES"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tSetGlobalVar_2">
+      <column comment="" key="false" length="-1" name="L_V_FECHA" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN" nullable="true" originalLength="-1" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="DATE" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_TIPO_CARGA" nullable="true" originalLength="-1" pattern="" precision="-1" sourceType="STRING" type="id_Integer" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tJava_9">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tSetGlobalVar_1" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_1" target="tJava_1">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" source="tJava_9" target="tJava_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_3">
@@ -697,6 +697,9 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_4" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_4" target="tRunJob_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk18"/>
   </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tSetGlobalVar_2" offsetLabelX="0" offsetLabelY="0" source="tSetGlobalVar_2" target="tRunJob_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk19"/>
+  </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryInput_1"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
@@ -777,13 +780,18 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_ef37b944-b016-4be1-9855-9f5717ac76e8"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>fxLUB2dtHW0WkpVMrfxODJPOKD0F4R3JIkand2gomtWmgcYevwscAtZmZJ8zm8Ey1QucyHY/CWxG&#13;
-Hq4KJYg5Ww==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_4b6c0894-2055-4664-a1d3-fbacce52b5bb"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>XDy8b1Y7YndwVNJyYE3uz09dk+UiIl/2ym6h5/Z0ayKHVN9xicZ0zw4r9t8aHT07l7mgQxEZ93J5&#13;
-heFx1BbnVA==</DigestValue></Reference></SignedInfo><SignatureValue>cYHQ8mWi6MQFm4NKYIW4EZ72Dz2ONpSMvVq9HsvY1QBjqIiZtsAnyCvP1EyZgxEiH9skJjQbjc6H&#13;
-HQDiCahXGyn6MQfDDwkf6ZUNrj5Nx+oslbtmL2Gk1cd/DIQU6pxRh8Gf/UOEafGhPLl+Da9oSrUV&#13;
-qZoJ/xzhafGi1A+DJb6yy2TtdAbMsoweIAVbVsa12RPHu0neujm3JdC2hFu8cuwYNekJOzzIU96D&#13;
-9LWXLeYvUHARbtccTB6LHiy/8+MNwi6Y+eW/4oCTrNR7n3GFo2EJShzLqSC1FPUUUuo3re034UYC&#13;
-WIllkuEM4hcoIbMS9yMhdkCRKCD+fnu8WHuBtg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tSetGlobalVar_2"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_09661293-160c-486e-b16e-7ea3486de6c3"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>owMMXt6dkjYwtYDMbrR2GgVrEO0wcBfG4DJMJYyXQWtFeJPT1XtFrtk2LXZnG/knoYbma8I14Ijr&#13;
+/EbI1FFzgQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_9f3d5152-c986-4f95-8ea2-471ce377d041"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>DKdwVG6ULKC+iREFcBMCAxkGKiE36g9p0uCkcUwj2Ot42ru3c22iIMBtZesdHTL+CBupssoK5xYQ&#13;
+HR7YfYrrIw==</DigestValue></Reference></SignedInfo><SignatureValue>fizl5Zblf48qLqnPIPzndoWeZ0wmR5bNpbfEDKP5BToDy0Ji42t4eieGGRRbOb+tmQdvA8nLrp3Z&#13;
+ABALzKnp+Csgegy7DPr78lE9XSh9xCEGg6+BYKoS0ZP7ibZRoQQCjL/YS/BDjo+NAQgY1piO3JkD&#13;
+NTPXXt+Z4GzNONxjpm4Y9PX5ZqXc6xLL5BR//PFGlmypyyNCbvpG7pebK9JVykKo1lJGqBtiLJSA&#13;
+eMBC62bsbf6h0aPeqsNLgpvJErCzklaUrLK6/giorTP2us53xjE7yg1NVB/jU0H0OWu4XqV1HzXl&#13;
+0mDhStZ8ymjr2XRhEKCq+NvewTfB7ipDUHFibA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -805,4 +813,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_4b6c0894-2055-4664-a1d3-fbacce52b5bb" Target="#_ef37b944-b016-4be1-9855-9f5717ac76e8"><Timestamp>2024-10-15 15:41:55</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_9f3d5152-c986-4f95-8ea2-471ce377d041" Target="#_09661293-160c-486e-b16e-7ea3486de6c3"><Timestamp>2024-10-15 22:16:27</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
