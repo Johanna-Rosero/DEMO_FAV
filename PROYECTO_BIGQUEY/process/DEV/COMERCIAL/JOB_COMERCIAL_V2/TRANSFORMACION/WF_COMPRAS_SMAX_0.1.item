@@ -5,7 +5,7 @@
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" show="false" value="{&quot;JOB_RUN_VM_ARGUMENTS&quot;:[&quot;-Xms18432M&quot;,&quot;-Xmx24480M&quot;]}"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" show="false" value="true"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" show="false" value="0"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="128"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" show="false" value="120"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" show="false" value=""/>
     <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" show="false" value=""/>
@@ -99,24 +99,10 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_CODE" show="false" value=""/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" show="false" value=""/>
-    <elementParameter field="CHECK" name="UPDATE_COMPONENTS" value="false"/>
-    <elementParameter field="CHECK" name="STATS_DEFAULT_PROJECTSETTING" value="true"/>
-    <elementParameter field="PROPERTY_TYPE" name="PROPERTY_TYPE" value=""/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:PROPERTY_TYPE" value="BUILT_IN"/>
-    <elementParameter field="TECHNICAL" name="PROPERTY_TYPE:REPOSITORY_PROPERTY_TYPE" value=""/>
-    <routinesParameter id="_ibHfIBExEe-PZuOZYM6uIQ" name="TalendDataGenerator"/>
-    <routinesParameter id="_ibkLEBExEe-PZuOZYM6uIQ" name="TalendString"/>
-    <routinesParameter id="_iasoYBExEe-PZuOZYM6uIQ" name="Relational"/>
-    <routinesParameter id="_ia3ngBExEe-PZuOZYM6uIQ" name="StringHandling"/>
-    <routinesParameter id="_ibvxQBExEe-PZuOZYM6uIQ" name="TalendStringUtil"/>
-    <routinesParameter id="_iZjY4BExEe-PZuOZYM6uIQ" name="SQLike"/>
-    <routinesParameter id="_ibUTcBExEe-PZuOZYM6uIQ" name="TalendDate"/>
-    <routinesParameter id="_iai3YBExEe-PZuOZYM6uIQ" name="Numeric"/>
-    <routinesParameter id="_iaLrABExEe-PZuOZYM6uIQ" name="DataOperation"/>
-    <routinesParameter id="_iaXRMBExEe-PZuOZYM6uIQ" name="Mathematical"/>
   </parameters>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="64">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" show="false" value=""/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="WF_COMPRAS"/>
@@ -139,6 +125,7 @@
     <elementParameter field="CHECK" name="USE_EXTRA_CLASSPATH" show="false" value="false"/>
     <elementParameter field="TEXT" name="EXTRA_CLASSPATH" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="LOAD_CONTEXT_FROM_FILE" show="false" value="false"/>
+    <elementParameter field="CHECK" name="USE_BASE64" value="true"/>
     <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_1"/>
@@ -154,7 +141,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;TRUNCATE TABLE EDWH.MQT_COMPRA_B2B_V2;&#13;&#10;INSERT INTO EDWH.MQT_COMPRA_B2B_V2&#13;&#10;WITH REC AS ( &#13;&#10;&#9;SELECT I.COD_BARRAS ID_ITEM,  &#13;&#10;&#9;A.ID_UOP, &#13;&#10;&#9;A.NUM_UNIDADES, &#13;&#10;&#9;A.NUM_ORDCOMPRA, &#13;&#10;&#9;SUM(A.CANTIDAD_RECIBIDA) AS CANTIDAD_RECIBIDA,&#13;&#10;&#9;SUM(A.CANTIDAD_RECIBIDA_NETA) AS CANTIDAD_RECIBIDA_NETA,&#13;&#10;&#9;SUM(A.TOTAL_COSTO_NETO)TOTAL_RECIBIDO&#13;&#10;&#9;FROM EDWH.FAC_COMPRA_SMAX A &#13;&#10;&#9;INNER JOIN EDWH.DIM_ESTADO_COM_SMAX D ON (A.NUM_ORDCOMPRA=D.NUM_ORDCOMPRA) &#13;&#10;&#9;INNER JOIN EDWH.DIM_ARTICULO_V3 I ON (A.ID_ITEM=I.ID_ITEM)&#13;&#10;&#9;WHERE D.ID_ESTADO_COM NOT IN (9,8)  AND D.FECHA_CANCELA &gt;=(CURRENT_DATE('America/Guayaquil')) &#13;&#10;&#9;GROUP BY I.COD_BARRAS,A.NUM_UNIDADES,A.NUM_ORDCOMPRA,A.ID_UOP), &#13;&#10;PED AS( &#13;&#10;&#9;SELECT &#9;&#13;&#10;&#9;I.COD_BARRAS ID_ITEM, &#13;&#10;&#9;P.ID_UOP, &#13;&#10;&#9;P.NUM_UNIDADES, &#13;&#10;&#9;P.NUM_ORDCOMPRA, &#13;&#10;&#9;P.ID_PROVEEDOR,&#13;&#10;&#9;SUM(P.CANTIDAD_PEDIDA) AS CANTIDAD_PEDIDA,&#13;&#10;&#9;SUM(CASE WHEN TIPO_CONTROL_COSTO IN (1,3) THEN P.CANTIDAD_PEDIDA&#13;&#10;&#9;&#9;     WHEN TIPO_CONTROL_COSTO = 2 THEN (P.CANTIDAD_PEDIDA*NUM_UNIDADES)&#13;&#10;&#9;&#9;     WHEN TIPO_CONTROL_COSTO = 4 THEN  CASE WHEN P.PESO_APROX &lt;&gt; 0 &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; THEN (P.CANTIDAD_PEDIDA*NUM_UNIDADES*P.PESO_APROX)&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;  ELSE (P.CANTIDAD_PEDIDA*NUM_UNIDADES) END&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;  ELSE CASE WHEN PESO_PEDIDO &gt; 0 THEN P.CANTIDAD_PEDIDA&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; ELSE (P.CANTIDAD_PEDIDA*NUM_UNIDADES) END&#13;&#10;&#9;&#9;&#9;    END)&#9;CANTIDAD_PEDIDA_NETA,&#13;&#10;&#9;SUM(P.TOTAL_COSTO_NETO) TOTAL_PEDIDO&#13;&#10;&#9;FROM EDWH.FAC_COMPRA_PED_SMAX P &#13;&#10;&#9;INNER JOIN EDWH.DIM_ESTADO_COM_SMAX D ON (P.NUM_ORDCOMPRA=D.NUM_ORDCOMPRA) &#13;&#10;    INNER JOIN EDWH.DIM_ARTICULO_V3 I ON(P.ID_ITEM=I.ID_ITEM)&#13;&#10;&#9;WHERE D.ID_ESTADO_COM NOT IN (9,8)   AND D.FECHA_CANCELA &gt;=(CURRENT_DATE('America/Guayaquil')) &#13;&#10;&#9;GROUP BY I.COD_BARRAS,P.NUM_UNIDADES,P.NUM_ORDCOMPRA,P.ID_UOP,P.ID_PROVEEDOR),&#13;&#10;ITEM AS (SELECT COD_BARRAS,MAX(ID_ITEM)ID_ITEM&#13;&#10;           FROM EDWH.DIM_ARTICULO_V3&#13;&#10;           GROUP BY COD_BARRAS)&#13;&#10;&#13;&#10;SELECT ITEM.ID_ITEM,&#13;&#10;&#9;PED.ID_UOP,&#13;&#10;&#9;PED.NUM_ORDCOMPRA, &#13;&#10;&#9;PED.NUM_UNIDADES AS NUM_UNIDADES, &#13;&#10;&#9;PED.CANTIDAD_PEDIDA AS CANTIDAD_PEDIDA, &#13;&#10;&#9;COALESCE(REC.CANTIDAD_RECIBIDA,0) AS CANTIDAD_RECIBIDA,&#13;&#10;&#9;COALESCE(REC.CANTIDAD_RECIBIDA_NETA,0) AS CANTIDAD_RECIBIDA_NETA,&#13;&#10;    PED.CANTIDAD_PEDIDA_NETA,&#13;&#10;&#9;PED.ID_PROVEEDOR,&#13;&#10;&#9;COALESCE(REC.TOTAL_RECIBIDO,0)TOTAL_RECIBIDO,&#13;&#10;&#9;PED.TOTAL_PEDIDO ,&#13;&#10;&#9; TIMESTAMP(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))&#13;&#10;FROM PED &#13;&#10;LEFT OUTER JOIN REC ON (REC.ID_ITEM=PED.ID_ITEM AND REC.NUM_UNIDADES=PED.NUM_UNIDADES &#13;&#10;&#9;AND REC.NUM_ORDCOMPRA=PED.NUM_ORDCOMPRA AND PED.ID_UOP=REC.ID_UOP) &#13;&#10;LEFT OUTER JOIN ITEM ON(PED.ID_ITEM=ITEM.COD_BARRAS);&#13;&#10;&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;TRUNCATE TABLE EDWH.MQT_COMPRA_B2B_V2;&#13;&#10;INSERT INTO EDWH.MQT_COMPRA_B2B_V2&#13;&#10;WITH REC AS ( &#13;&#10;&#9;SELECT I.COD_BARRAS ID_ITEM,  &#13;&#10;&#9;A.ID_UOP, &#13;&#10;&#9;A.NUM_UNIDADES, &#13;&#10;&#9;A.NUM_ORDCOMPRA, &#13;&#10;&#9;SUM(A.CANTIDAD_RECIBIDA) AS CANTIDAD_RECIBIDA,&#13;&#10;&#9;SUM(A.CANTIDAD_RECIBIDA_NETA) AS CANTIDAD_RECIBIDA_NETA,&#13;&#10;&#9;SUM(A.TOTAL_COSTO_NETO)TOTAL_RECIBIDO &#13;&#10;&#9;FROM EDWH.FAC_COMPRA_SMAX A &#13;&#10;&#9;INNER JOIN EDWH.DIM_ESTADO_COM_SMAX D ON (A.NUM_ORDCOMPRA=D.NUM_ORDCOMPRA) &#13;&#10;&#9;INNER JOIN EDWH.DIM_ARTICULO_V3 I ON (A.ID_ITEM=I.ID_ITEM)&#13;&#10;&#9;WHERE D.ID_ESTADO_COM NOT IN (9,8)  AND D.FECHA_CANCELA &gt;=(CURRENT_DATE('America/Guayaquil')) &#13;&#10;&#9;GROUP BY I.COD_BARRAS,A.NUM_UNIDADES,A.NUM_ORDCOMPRA,A.ID_UOP), &#13;&#10;PED AS( &#13;&#10;&#9;SELECT &#9;&#13;&#10;&#9;I.COD_BARRAS ID_ITEM, &#13;&#10;&#9;P.ID_UOP, &#13;&#10;  P.COD_REF,&#13;&#10;&#9;P.NUM_UNIDADES, &#13;&#10;&#9;P.NUM_ORDCOMPRA, &#13;&#10;&#9;P.ID_PROVEEDOR,&#13;&#10;&#9;SUM(P.CANTIDAD_PEDIDA) AS CANTIDAD_PEDIDA,&#13;&#10;&#9;SUM(CASE WHEN TIPO_CONTROL_COSTO IN (1,3) THEN P.CANTIDAD_PEDIDA&#13;&#10;&#9;&#9;     WHEN TIPO_CONTROL_COSTO = 2 THEN (P.CANTIDAD_PEDIDA*NUM_UNIDADES)&#13;&#10;&#9;&#9;     WHEN TIPO_CONTROL_COSTO = 4 THEN  CASE WHEN P.PESO_APROX &lt;&gt; 0 &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; THEN (P.CANTIDAD_PEDIDA*NUM_UNIDADES*P.PESO_APROX)&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;  ELSE (P.CANTIDAD_PEDIDA*NUM_UNIDADES) END&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;  ELSE CASE WHEN PESO_PEDIDO &gt; 0 THEN P.CANTIDAD_PEDIDA&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9; ELSE (P.CANTIDAD_PEDIDA*NUM_UNIDADES) END&#13;&#10;&#9;&#9;&#9;    END)&#9;CANTIDAD_PEDIDA_NETA,&#13;&#10;&#9;SUM(P.TOTAL_COSTO_NETO) TOTAL_PEDIDO&#13;&#10;&#9;FROM EDWH.FAC_COMPRA_PED_SMAX P &#13;&#10;&#9;INNER JOIN EDWH.DIM_ESTADO_COM_SMAX D ON (P.NUM_ORDCOMPRA=D.NUM_ORDCOMPRA) &#13;&#10;    INNER JOIN EDWH.DIM_ARTICULO_V3 I ON(P.ID_ITEM=I.ID_ITEM)&#13;&#10;&#9;WHERE D.ID_ESTADO_COM NOT IN (9,8)   AND D.FECHA_CANCELA &gt;=(CURRENT_DATE('America/Guayaquil')) &#13;&#10;&#9;GROUP BY I.COD_BARRAS,P.NUM_UNIDADES,P.NUM_ORDCOMPRA,P.ID_UOP,P.COD_REF,P.ID_PROVEEDOR),&#13;&#10;ITEM AS (SELECT COD_BARRAS,MAX(ID_ITEM)ID_ITEM&#13;&#10;           FROM EDWH.DIM_ARTICULO_V3&#13;&#10;           GROUP BY COD_BARRAS)&#13;&#10;&#13;&#10;SELECT ITEM.ID_ITEM,&#13;&#10;ITEM_ACTUAL.ID_ITEM_ACTUAL,&#13;&#10;&#9;PED.ID_UOP,&#13;&#10;  PED.COD_REF,&#13;&#10;&#9;PED.NUM_ORDCOMPRA, &#13;&#10;&#9;PED.NUM_UNIDADES AS NUM_UNIDADES, &#13;&#10;&#9;PED.CANTIDAD_PEDIDA AS CANTIDAD_PEDIDA, &#13;&#10;&#9;COALESCE(REC.CANTIDAD_RECIBIDA,0) AS CANTIDAD_RECIBIDA,&#13;&#10;&#9;COALESCE(REC.CANTIDAD_RECIBIDA_NETA,0) AS CANTIDAD_RECIBIDA_NETA,&#13;&#10;    PED.CANTIDAD_PEDIDA_NETA,&#13;&#10;&#9;PED.ID_PROVEEDOR,&#13;&#10;&#9;COALESCE(REC.TOTAL_RECIBIDO,0)TOTAL_RECIBIDO,&#13;&#10;&#9;PED.TOTAL_PEDIDO ,&#13;&#10;&#9; TIMESTAMP(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))&#13;&#10;FROM PED &#13;&#10;LEFT OUTER JOIN REC ON (REC.ID_ITEM=PED.ID_ITEM AND REC.NUM_UNIDADES=PED.NUM_UNIDADES &#13;&#10;&#9;AND REC.NUM_ORDCOMPRA=PED.NUM_ORDCOMPRA AND PED.ID_UOP=REC.ID_UOP) &#13;&#10;LEFT OUTER JOIN ITEM ON(PED.ID_ITEM=ITEM.COD_BARRAS) &#13;&#10;LEFT OUTER JOIN EDWH.DIM_ARTICULO ITEM_ACTUAL ON (ITEM.COD_BARRAS = ITEM_ACTUAL.COD_BARRAS)&#13;&#10;;&#13;&#10;&#13;&#10;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
@@ -181,7 +168,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;&#13;&#10;--CARGA PRESUPUESTOS MG MAX &#13;&#10;--PARA REPORTE PRESUESTOS MERCANCIAS GENERALES DE LA CARPETA PUBLICA MERCANCIAS GENERALES&#13;&#10;&#13;&#10; CALL `lafavorita-182519.BI_DSA.SP_PRESUPUESTO_MG_SMAX`();&#13;&#10;&#13;&#10;--CARGA DDM.MQT_ABASTECIMIENTO_V2  &#13;&#10;-- PARA REPORTES Y SCORECARD DE PROVEEDORES &#13;&#10; &#13;&#10; CALL `lafavorita-182519.BI_DSA.SP_MQT_ABASV3`();&#13;&#10;&#13;&#10;&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;--ESTA SECCION SE COMENTA POR QUE PARA PROYECTO BIGQUERY &#13;&#10;--DIM PROVEEDOR NO APLICA PARA BIGQUERY&#13;&#10;/*UPDATE EDWH.DIM_PROVEEDOR A &#13;&#10;SET FECHA_INICIO_RECEP=&#13;&#10;coalesce((SELECT MIN(FECHA_RECEP) &#13;&#10;          FROM EDWH.FAC_COMPRA_SMAX B&#13;&#10;          WHERE B.ID_PROVEEDOR=A.ID_PROVEEDOR AND CANTIDAD_RECIBIDA&gt;0),DATE('1900-01-01'))&#13;&#10;WHERE TRUE;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;--Inicia actualizacion de Ultima fecha de Recepcion&#13;&#10;UPDATE EDWH.DIM_PROVEEDOR A &#13;&#10;SET ULTIMA_FECHA_RECEP=&#13;&#10;coalesce((SELECT MAX(FECHA_RECEP) &#13;&#10;FROM EDWH.FAC_COMPRA_SMAX B &#13;&#10;WHERE B.ID_PROVEEDOR=A.ID_PROVEEDOR AND CANTIDAD_RECIBIDA&gt;0),DATE('1900-01-01'))&#13;&#10;WHERE TRUE&#13;&#10;;*/&#13;&#10;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
@@ -208,7 +195,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;-- Actualizar datos del proveedor en base a corporativo - mail y telefono&#13;&#10;-- Incluye fecha de primera y Ultima pedido de mercaderia&#13;&#10;&#13;&#10; CALL `lafavorita-182519.BI_DSA.SP_SP_ACT_PROV_CORP`();&#13;&#10;&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#13;&#10;-- Actualizar datos del proveedor en base a corporativo - mail y telefono&#13;&#10;-- Incluye fecha de primera y Ultima pedido de mercaderia&#13;&#10;&#13;&#10; CALL `lafavorita-182519.BI_DSA.SP_ACT_PROV_CORP`();&#13;&#10;&#13;&#10;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" show="false" value="&quot;https://bigquery.googleapis.com&quot;"/>
     <elementParameter field="FILE" name="TOKEN_NAME" show="false" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;"/>
@@ -248,6 +235,7 @@
     <elementParameter field="CHECK" name="USE_EXTRA_CLASSPATH" show="false" value="false"/>
     <elementParameter field="TEXT" name="EXTRA_CLASSPATH" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="LOAD_CONTEXT_FROM_FILE" show="false" value="false"/>
+    <elementParameter field="CHECK" name="USE_BASE64" value="true"/>
     <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_2"/>
@@ -302,6 +290,7 @@
     <elementParameter field="CHECK" name="USE_EXTRA_CLASSPATH" show="false" value="false"/>
     <elementParameter field="TEXT" name="EXTRA_CLASSPATH" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="LOAD_CONTEXT_FROM_FILE" show="false" value="false"/>
+    <elementParameter field="CHECK" name="USE_BASE64" value="true"/>
     <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_3"/>
@@ -330,14 +319,17 @@
     <elementParameter field="CHECK" name="USE_EXTRA_CLASSPATH" show="false" value="false"/>
     <elementParameter field="TEXT" name="EXTRA_CLASSPATH" show="false" value="&quot;&quot;"/>
     <elementParameter field="CHECK" name="LOAD_CONTEXT_FROM_FILE" show="false" value="false"/>
+    <elementParameter field="CHECK" name="USE_BASE64" value="true"/>
     <elementParameter field="TEXT" name="LABEL" value="__PROCESS__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_4"/>
   </node>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tBigQuerySQLRow_1">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk1"/>
   </connection>
   <connection connectorName="SUBJOB_ERROR" label="OnSubjobError" lineStyle="4" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tRunJob_3">
+    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobError1"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tBigQuerySQLRow_5">
@@ -355,51 +347,51 @@
   </note>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_3"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_4"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_2"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_5"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_3"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tRunJob_4"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="92;131;150"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_762890c9-93d7-4651-b123-6179541edb69"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>7OUlqEiCpG3K6Co1nNRFwBqts6vcltc480KHDfENFzycvvAunL0GK72dNgXCgCNETS5T6fmgz12T&#13;
-Cy9zBHdNOg==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_dd9c3ad5-db8c-4710-8a0a-51016dd2418f"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>IAH35wT2lXgyHkWrq2xEcjGx26x1ce2/UEvYClWu92ohLf7rm4Yx5dTMMMGPjQ/BgJFvEBxXIMoA&#13;
-jmUs0nniLg==</DigestValue></Reference></SignedInfo><SignatureValue>XqSHBG5OdZkUp3PaxqNDf1dXEV4HqP1NLpr5y8a9iqqBzOuT9uU+Lansc/VT3TYDikStCb1BVKpO&#13;
-rzkkYlJ7fN0dnc6tw424ZBhQiS1GmL1D97JXiKwuw3U9t5tWlm0b0K+hX0RYq+wAQz/pr2GoHEn0&#13;
-OSaMtm4gR1HUJIGn0kedcLBTo7o5m9/VexqmlULE+gtlEXTnPvPKNWxqEXzT55TLje2BeTO1Qles&#13;
-0ExF/Un46NKHLdhl/lFo/ixtec2oZSuI57KjTXX3EcXE7R0Um67S9AOybOjFJqob1AEai3lD1FWx&#13;
-xL2Kj9/l5KWYevD2wUlr6d3tACVtfqaajK1ZLg==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_e1441f84-573b-490b-b6ee-ce4cbefab68c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>8KN0D78vI0j2rQQOCtK65FWP3Vxg12g+VZgf12e9ttz0rZrMB2xBJ2gc8WLTOGs3oO0MHqeOEK/F&#13;
+XdpHDWPqmw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_58363758-5dbf-43ee-8420-fd52cb262627"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HCfAHuCKQCRnN69Bg1UqQoF63bU548A6sMaa4WoiEzsmX0rNxcWrM+ZEySZU2+IQJ0EBHNn/70KX&#13;
+N5w6O4SnNA==</DigestValue></Reference></SignedInfo><SignatureValue>TpGMlQg74Dvb2xJIJJe0ymQj3XKjvtmei0F7KczF4VOhpmcdIFCXQegy9Mb+Zl8TmUwZIv/NGIjF&#13;
+SA8lWHOROfsKsj1fUGs/PK0VL9jvcpe0aZpIFNYomIA0O0MyYMvJQbximxoDWMpq40eUlhZt2zuP&#13;
+VMHrrKnH9qlQQwoX2CHhhi5gfAVUpiDSIoMtvcGp9Y3eYxzV1/fbeJUmlKeWYZuC95knXiCOQEF/&#13;
+slOQBHiTRQ2xt7qHmKciEzVW2wVch3lLseLy/cj8sZ7q/VB7H2wZdv5MBRniiqCrUFadATC2w75C&#13;
+Km3tX68hCc+rtV2Ss56oaieks65HAqXwiU6shA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -421,4 +413,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_dd9c3ad5-db8c-4710-8a0a-51016dd2418f" Target="#_762890c9-93d7-4651-b123-6179541edb69"><Timestamp>2024-09-19 15:31:48</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_58363758-5dbf-43ee-8420-fd52cb262627" Target="#_e1441f84-573b-490b-b6ee-ce4cbefab68c"><Timestamp>2024-10-29 15:29:34</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
