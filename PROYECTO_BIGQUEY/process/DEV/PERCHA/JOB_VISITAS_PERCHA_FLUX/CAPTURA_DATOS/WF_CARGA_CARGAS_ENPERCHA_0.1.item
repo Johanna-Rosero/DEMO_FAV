@@ -722,7 +722,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT *&#13;&#10; FROM SCSEPTALEARC&#13;&#10;WHERE SCSEPTALEARC.FECHAREGISTRO &gt;= '&quot;+context.FECHA_INI+&quot;' AND SCSEPTALEARC.FECHAREGISTRO  &lt;= '&quot;+context.FECHA_FIN+&quot;'&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT *&#13;&#10; FROM SCSEPTALEARC&#13;&#10;WHERE CAST(SCSEPTALEARC.FECHAREGISTRO AS DATE) &gt;= DATE( '&quot;+context.FECHA_INI+&quot;') &#13;&#10;AND CAST(SCSEPTALEARC.FECHAREGISTRO AS DATE)  &lt;= DATE('&quot;+context.FECHA_FIN+&quot;')&#13;&#10;&quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="as400_id"/>
     <elementParameter field="TEXT" name="PROPERTIES" show="false" value="&quot;prompt=false&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
@@ -1118,7 +1118,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="720">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_7"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;SCSEPVVISALE&quot;;&#10;String T_DBname = &quot;SMXSIC&quot;;&#10;String n= &quot;4&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;Bi.println(&quot;Inicia Carga: &quot;+TName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;*/&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="SCSEPVVISALE"/>
@@ -1161,7 +1160,6 @@
   </node>
   <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="720">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" show="false" value="REPOSITORY"/>
@@ -1269,7 +1267,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="720">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV4&quot;))"/>
@@ -1331,7 +1328,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="720">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -1353,7 +1349,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="720">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_4"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="__eszcJcSEe-CY6jPHrC-cA - metadata"/>
@@ -1421,7 +1416,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="960" posY="720">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_8"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;Fin Carga: &quot;+((String)globalMap.get(&quot;V_TablaName4&quot;)));&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="IMP_FIN_CARGA"/>
@@ -1464,7 +1458,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_9"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;SCSPETARTICULO&quot;;&#10;String T_DBname = &quot;SMXSIC&quot;;&#10;String n= &quot;5&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.VG_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;String dbname = T_DBname;&#10;&#10;Bi.println(&quot;Inicia Carga: &quot;+TName);&#10;&#10;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;RUTA_DIR&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#10;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST+&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#10;&#10;/*&#10;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#10;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#10;*/&#10;&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="SCSPETARTICULO"/>
@@ -1507,7 +1500,6 @@
   </node>
   <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="320" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tDBInput_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" show="false" value="REPOSITORY"/>
@@ -1852,7 +1844,6 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileOutputDelimited_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" show="false" value="outputStream"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV5&quot;))"/>
@@ -1993,7 +1984,6 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="640" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSPut_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" show="false" value="SERVICE_ACCOUNT"/>
@@ -2015,7 +2005,6 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="800" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQueryBulkExec_5"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" show="false" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" show="false" value="_3knm4JcUEe-CY6jPHrC-cA - metadata"/>
@@ -2162,7 +2151,6 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="960" posY="880">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_10"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;Fin Carga: &quot;+((String)globalMap.get(&quot;V_TablaName5&quot;)));&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="IMP_FIN_CARGA"/>
@@ -2264,45 +2252,35 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk32"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_7" offsetLabelX="0" offsetLabelY="0" source="tJava_7" target="tDBInput_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk33"/>
   </connection>
   <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tDBInput_4" target="tFileOutputDelimited_4">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row4"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_4" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_4" target="tGSPut_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk34"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_4" offsetLabelX="0" offsetLabelY="0" source="tGSPut_4" target="tBigQueryBulkExec_4">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk9"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQueryBulkExec_4" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_4" target="tJava_8">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk35"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_9" offsetLabelX="0" offsetLabelY="0" source="tJava_9" target="tDBInput_5">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk36"/>
   </connection>
   <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tDBInput_5" offsetLabelX="0" offsetLabelY="0" source="tDBInput_5" target="tFileOutputDelimited_5">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="row5"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_5" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_5" target="tGSPut_5">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk37"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_5" offsetLabelX="0" offsetLabelY="0" source="tGSPut_5" target="tBigQueryBulkExec_5">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnSubjobOk10"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQueryBulkExec_5" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_5" target="tJava_10">
-    <elementParameter field="CHECK" name="ACTIVATE" show="false" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk38"/>
   </connection>
   <subjob>
@@ -2462,13 +2440,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_723e335b-a683-4014-8f96-c1faecd034b0"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>bDJN6Q9BesZ/U7gpvuZou2J4APUtbHGXPS+0GUEP/EVIfF8+UZcqX/hYnpzgMTL5yteHRT9trcSf&#13;
-7fovfYljFA==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_ecbdd91b-df26-441e-a3e3-7dd6b4b55077"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>5oEIdBejCaryOEIl6DTQE7QuPqv3REeFrwdEsa10uA6+cdkwNk4xktxhtDrT0T6Nm0OJzFqbjREQ&#13;
-EFtNVgXD1w==</DigestValue></Reference></SignedInfo><SignatureValue>pXi2Y52D8c1+07qG96tm1wBRFYAbWBYOsnxRMZNAcIjOM8bFSAsU5RG7ZOcB3opNad0rcVLLNsCo&#13;
-Yt89vgPiYY6qfRDN5Kk5hPX/D70xNHiVEzXtIrN5lX2CbXL0y0pouph646l14kd079/z2QmmXGRE&#13;
-VIJDa9c0ZXjHxIbSvmzUDfXWPyZE4yCVhTf7Of2nfOvJJnhjbRvX99v94rL0TmMlSo4iA551q+vc&#13;
-2NeNc4BSSoK8VkuCGhEzR5E2hPXOPiCLBcpBh155/nreKFWpfD3fBlargBtK7UDN0C5gJUTxswqM&#13;
-OYwdbM+C44aXNctx3R93O5Qi11olHZvmwMxKbw==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_14974663-4993-4be9-a1e9-d3d56a04510d"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>TbqN67rCsl2f6whIt2TUlF9jXg+1bCQrwaA9uoCDVRBUJa6Sc8c5/Fy9/uPHLcXHz3znkE9aacTQ&#13;
+3TuSSGxT8g==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_48e6132c-7a20-4852-b0c5-2828f8e22438"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>+UL8/BFVZvP8KEvyChlXRHiJ28mQ74VqYwpC7eVsQEz8ez9AlkzWyyDIJaAQtIrrVB96F8WAHMd5&#13;
+r43sPi/V7A==</DigestValue></Reference></SignedInfo><SignatureValue>HPt4dsDQH+wOs9aHJjdT/hzmSayPrHUlp+MhpIu2insKPucTRZ2665dDc9/Cf2wyHfU9eU1d5sud&#13;
+p7/TaZgHeALL2c7OrG3xCHakqHkKCd7VSo1uVKSuPHkBDQsuYuP6OTC3S2dertM0pkSAn+F0LhAJ&#13;
+i/pyOQa6MC3V1olXkoguW/ziDPJdgHZZ+eKr/1jRv/iDDZsArJZYYmBEhmRFMlh6Udw78YkI3c2l&#13;
+6voZcAn7hm/oRGEkDvO9PwLsQbv3uQ0Xk4b3FXcosRgVmaaods93jrtj+V6EA0imX+nEo5CszGdH&#13;
+5H5p/wtCTnoT+u3BBN8hxmfNGR2ROf+WRL/xxQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2490,4 +2468,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_ecbdd91b-df26-441e-a3e3-7dd6b4b55077" Target="#_723e335b-a683-4014-8f96-c1faecd034b0"><Timestamp>2024-11-07 15:56:32</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_48e6132c-7a20-4852-b0c5-2828f8e22438" Target="#_14974663-4993-4be9-a1e9-d3d56a04510d"><Timestamp>2024-11-15 21:18:52</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
