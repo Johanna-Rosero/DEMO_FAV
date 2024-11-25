@@ -1474,9 +1474,9 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="240" posY="800">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tJava_11"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_JERARQUIA&quot;;&#10;String n= &quot;3&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.V_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;&#10;&#10;Bi.println(&quot;Inicia Carga: &quot;+TName);&#10;&#10;//globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName +&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+TName+&quot;.csv&quot;);&#10;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#10;String TName = &quot;LD_EDUCACION&quot;;&#10;String n= &quot;3&quot;;&#10;&#10;String tName = TName.toLowerCase();&#10;String gs_db_dir = context.V_BucketDirectory;&#10;String gs_bucket = context.VG_BucketName;&#10;String area = context.VG_Area;&#10;&#10;&#10;Bi.println(&quot;Inicia Carga: &quot;+TName);&#10;&#10;//globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#10;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#10;globalMap.put(&quot;RUTACSV&quot;+n, context.VG_PathLocal + area+&quot;/&quot; + context.VG_JobName +&quot;/&quot;+TName+&quot;.csv&quot;);&#10;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+TName+&quot;.csv&quot;);&#10;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="LABEL" value="JERARQUIA"/>
+    <elementParameter field="TEXT" name="LABEL" value="LD_EDUCACION"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="TEMVAC" name="tJava_11">
       <column comment="" defaultValue="0" key="false" length="2" name="VACUSU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
@@ -1525,25 +1525,33 @@
     <elementParameter field="TEXT" name="DBNAME" show="false" value="&quot;SMXCNT&quot;"/>
     <elementParameter field="TEXT" name="USER" show="false" value="&quot;SMXUSER_CRM&quot;"/>
     <elementParameter field="PASSWORD" name="PASS" show="false" value="enc:system.encryption.key.v1:DnnQHijlaKM/z2hw3XlNKNgKJ5a4wzIo0RTmpCTIl2C2beJwU/CVR9Y="/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;JERARQUIA&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;EDUCACION&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" show="false" value=""/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT *&#13;&#10;FROM JERARQUIA&#13;&#10;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT *&#13;&#10;FROM EDUCACION&#13;&#10;&quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" show="false" value="teradata_id"/>
     <elementParameter field="TEXT" name="PROPERTIES" show="false" value="&quot;&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" show="false" value="&quot;ISO-8859-15&quot;"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="ID_JERARQUIA"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ID_REGISTRO"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="COD_ZONA"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD_JERARQUIA"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COD_EMPLEADO"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NOM_JERARQUIA"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COD_TIPO"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COD_SEC"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NOM_INSTITUCION"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CIUDAD"/>
+      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TITULO"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ETL_OPERACION"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -1556,10 +1564,14 @@
     <elementParameter field="TEXT" name="LABEL" value="CNX_TERADATA_DDM"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_6">
-      <column comment="" defaultValue="" key="false" length="10" name="ID_JERARQUIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="ID_REGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="COD_ZONA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="COD_JERARQUIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="35" name="NOM_JERARQUIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_EMPLEADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_TIPO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_SEC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="45" name="NOM_INSTITUCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="CIUDAD" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="35" name="TITULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="ETL_OPERACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
@@ -1616,10 +1628,14 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQueryOutput_6">
-      <column comment="" defaultValue="" key="false" length="10" name="ID_JERARQUIA" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="ID_REGISTRO" nullable="false" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="COD_ZONA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="COD_JERARQUIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="35" name="NOM_JERARQUIA" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_EMPLEADO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_TIPO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="COD_SEC" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="45" name="NOM_INSTITUCION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="CIUDAD" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="35" name="TITULO" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1" name="ETL_OPERACION" nullable="true" originalLength="-1" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TSTAMP" nullable="true" originalLength="-1" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
@@ -1986,13 +2002,13 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_a282feca-681f-4a6b-90f9-4075d81f911c"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>WCUF5cw22Ej099OAjWHHZd7q5VkD3mcaVllqmyUmIr0Y2q582J6dYcTag9aIW/kaUSzxgDcV2UT5&#13;
-sHbqPE/l/Q==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_2eaaa75b-f4c2-404b-bc33-e65de090c0c1"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>TSEkt0GTfJpl1cOVUUb64idM879mY8W+LIlK1q6/EHm2FcitjOnId7fh86G4uiV2i+YwehCT2cqa&#13;
-/p1RGumoFw==</DigestValue></Reference></SignedInfo><SignatureValue>Mtd9jX2IScF+AgUT+v5V7pD4BMbiISt17tmYKKzK+X1UGk0BUQW55BWS6NmA0NEWy+C79rmQm5FV&#13;
-tr50EQsQ11sIK3jmhDv0slYQEk5VHetWTt/dlHqt+G9XHjO5+97TmUg8Uioal551IICoMdvGBBQT&#13;
-c1V8OEdCP9t9xGKoaej+id/EczqO4Ea5c1Ci6IzOqF/DJuMcvHQ9zLtDrq8hhvrPM582ELBAsn+d&#13;
-5YHo9ZZcTVZjSJ37fgmdtdzDwiwV0bGde8UujJlmvzaLbJP3FyPp6hoPTk+KuCPPr/kfi8ui8tGs&#13;
-bogWnflG70Us/GcNidIIYlpvR67CvqQk8eRgVA==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_020c28b3-cf1d-49c5-9e43-ab378f423d45"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HrxuRY8AFQGM8XiL5+JcYn9CF6MCBYCjMaVN+5SSjGMU54pfxxpXEymXrrN6bGaJ3J5llnN/0TaR&#13;
+dXc9p31HTQ==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_990d0bf5-5cc5-463d-9c26-9d38555f16a6"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>su1Eq8wl55yJ5rkPTybsSxFbzZPk6IMXAL3YO3yRkTkN9KkkqCsH4aVi27TiDx1ri4XX6oEnS+t3&#13;
+6ePoxbbV/w==</DigestValue></Reference></SignedInfo><SignatureValue>JSgq0M3KcRWHz/3qKZPuaHlui0EisdLs8NQlHp0/FSqisIYuKob0EQIVJaFA5LdIyr3TEex+4WZs&#13;
+g+B5L5MWjvY9P0LtTlbDNold/PJA/JW7iqa3KkoDnR6cV2F+ry5W73CgVbzSxR0i3WSiTYk6SO8N&#13;
+KFeVrGvRLGDcB3K6zKuP1xaqjJU7u95ppQs+/40/DbFOtEqWu0k6dWIqhGIaWk30cJPCgJH+oZ+9&#13;
+WuvWxR35U8GPGGxlm8JQyJSPUhBySdZ4VEuZrQLBXDlFb0g16txzg7eGPAq9j0jxp63ibEXNaRTN&#13;
+a2TPgBrFtX8bHQI5Ns13h3JZTUI3jP1u2SeMww==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -2014,4 +2030,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_2eaaa75b-f4c2-404b-bc33-e65de090c0c1" Target="#_a282feca-681f-4a6b-90f9-4075d81f911c"><Timestamp>2024-11-20 16:40:46</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_990d0bf5-5cc5-463d-9c26-9d38555f16a6" Target="#_020c28b3-cf1d-49c5-9e43-ab378f423d45"><Timestamp>2024-11-25 14:16:42</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
