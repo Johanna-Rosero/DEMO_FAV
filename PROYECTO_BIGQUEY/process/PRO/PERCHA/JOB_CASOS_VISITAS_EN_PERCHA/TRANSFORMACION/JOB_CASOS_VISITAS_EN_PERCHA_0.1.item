@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="DEV" jobType="Standard">
+<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="PRO" jobType="Standard">
   <context confirmationNeeded="false" hide="false" name="Default">
     <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_xoSNMDvAEe-N-773uKOzRQ" type="id_String" value="&quot;PERCHA&quot;" internalId="_FNsDcGsJEe-kCLrQn7hTJQ"/>
     <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="_xoSNMDvAEe-N-773uKOzRQ" type="id_String" value="&quot;JOB_CASOS_VISITAS_EN_PERCHA/db2&quot;" internalId="_FNsDcWsJEe-kCLrQn7hTJQ"/>
@@ -226,8 +226,8 @@
   <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="-80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSetGlobalVar_1" show="false"/>
     <elementParameter field="TABLE" name="VARIABLES">
-      <elementValue elementRef="KEY" value="&quot;JOBNAME&quot;"/>
-      <elementValue elementRef="VALUE" value="&quot;JOB_CASOS_VISITAS_EN_PERCHA&quot;"/>
+      <elementValue elementRef="KEY" value="&quot;JOBNAME&quot;" id="0"/>
+      <elementValue elementRef="VALUE" value="&quot;JOB_CASOS_VISITAS_EN_PERCHA&quot;" id="1"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tSetGlobalVar_1">
@@ -240,7 +240,7 @@
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="DF_CARGA_JOB_CASOS_VISITAS_EN_PERCHA"/>
-    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="DEV"/>
+    <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_CONTEXT" value="PRO"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_PROCESS" value="PROYECTO_BIGQUEY:_qzd8wB68Ee-XJLZgJMBblg"/>
     <elementParameter field="TECHNICAL" name="PROCESS:PROCESS_TYPE_VERSION" value="Latest"/>
     <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
@@ -504,10 +504,10 @@
   <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="-80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSetGlobalVar_2" show="false"/>
     <elementParameter field="TABLE" name="VARIABLES">
-      <elementValue elementRef="KEY" value="&quot;FECHA_INI&quot;"/>
-      <elementValue elementRef="VALUE" value="row1.FECHA_INI"/>
-      <elementValue elementRef="KEY" value="&quot;FECHA_FIN&quot;"/>
-      <elementValue elementRef="VALUE" value="row1.FECHA_FIN"/>
+      <elementValue elementRef="KEY" value="&quot;FECHA_INI&quot;" id="0"/>
+      <elementValue elementRef="VALUE" value="row1.FECHA_INI" id="1"/>
+      <elementValue elementRef="KEY" value="&quot;FECHA_FIN&quot;" id="2"/>
+      <elementValue elementRef="VALUE" value="row1.FECHA_FIN" id="3"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tSetGlobalVar_2">
@@ -575,9 +575,9 @@
     <elementParameter field="TEXT" name="DELIMITER" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="DEL_IN_LIST_BUCKETS" value="true"/>
     <elementParameter field="TABLE" name="BUCKETS">
-      <elementValue elementRef="BUCKET_NAME" value="context.VG_BucketName"/>
-      <elementValue elementRef="OBJECT_PREFIX" value="context.VG_JobName"/>
-      <elementValue elementRef="OBJECT_DELIMITER" value="&quot;&quot;"/>
+      <elementValue elementRef="BUCKET_NAME" value="context.VG_BucketName" id="0"/>
+      <elementValue elementRef="OBJECT_PREFIX" value="context.VG_JobName" id="1"/>
+      <elementValue elementRef="OBJECT_DELIMITER" value="&quot;&quot;" id="2"/>
     </elementParameter>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -636,12 +636,12 @@
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tBigQuerySQLRow_3" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_3" target="tSetGlobalVar_2">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="FECHA_INI"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-      <elementValue elementRef="TRACE_COLUMN" value="FECHA_FIN"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="FECHA_INI" id="0"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+      <elementValue elementRef="TRACE_COLUMN" value="FECHA_FIN" id="3"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="4"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="5"/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
