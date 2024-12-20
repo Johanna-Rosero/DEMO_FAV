@@ -129,6 +129,7 @@
   </parameters>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_2" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="WF_BSCUOP"/>
@@ -163,7 +164,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="280">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println('************************************** No se procesa ventas aborta la carga *********************');&#xA;Bi.println('************************************** Enviar manualmente cuando termine ventas MAX *********************');"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;************************************** No se procesa ventas aborta la carga *********************&quot;);&#xA;Bi.println(&quot;************************************** Enviar manualmente cuando termine ventas MAX *********************&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
@@ -218,7 +219,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="200">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.print(&quot;BANDERA PROCESADOS VEANTAS:&quot;+row1.Bandera_Procesados);&#xA;Bi.print(&quot;BANDERA PROCESADOS INVENTARIO:&quot;+row1.Bandera_Procesados_Inv);&#xA;&#xA;context.Bandera_Procesados = Integer.parseInt(row1.Bandera_Procesados);&#xA;context.Bandera_Procesados_Inv = Integer.parseInt(row1.Bandera_Procesados_Inv);"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;BANDERA PROCESADOS VEANTAS:&quot;+row1.Bandera_Procesados);&#xA;Bi.println(&quot;BANDERA PROCESADOS INVENTARIO:&quot;+row1.Bandera_Procesados_Inv);&#xA;&#xA;context.Bandera_Procesados = Integer.parseInt(row1.Bandera_Procesados);&#xA;context.Bandera_Procesados_Inv = Integer.parseInt(row1.Bandera_Procesados_Inv);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1"/>
@@ -241,11 +242,12 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJavaRow_1" target="tRunJob_2">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJavaRow_1" target="tRunJob_2">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Bandera_Procesados >= 1"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJavaRow_1" target="tJava_2">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJavaRow_1" target="tJava_2">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Bandera_Procesados == 0"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
   </connection>
