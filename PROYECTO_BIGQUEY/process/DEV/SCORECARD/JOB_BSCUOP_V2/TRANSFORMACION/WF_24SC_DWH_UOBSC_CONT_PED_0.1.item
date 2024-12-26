@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
-  <context confirmationNeeded="false" hide="false" name="Default"/>
+<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="DEV" jobType="Standard">
+  <context confirmationNeeded="false" hide="false" name="DEV">
+    <contextParameter comment="" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/DEV/&quot;" internalId="_rH-ZkMPCEe-2no5q-gsiyA"/>
+    <contextParameter comment="" name="VG_ProjectID" prompt="VG_ProjectID?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;lafavorita-182519&quot;" internalId="_rH-ZkcPCEe-2no5q-gsiyA"/>
+    <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_rH-ZksPCEe-2no5q-gsiyA"/>
+  </context>
+  <context confirmationNeeded="false" hide="false" name="PRO">
+    <contextParameter comment="" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/PRO/&quot;" internalId="_rH-Zk8PCEe-2no5q-gsiyA"/>
+    <contextParameter comment="" name="VG_ProjectID" prompt="VG_ProjectID?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;lafavorita-182519&quot;" internalId="_rH-ZlMPCEe-2no5q-gsiyA"/>
+    <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_rH-ZlcPCEe-2no5q-gsiyA"/>
+  </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="320" show="false"/>
@@ -162,7 +171,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_DSA_SLPEATPEDARETRAINF`();&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_DSA_SLPEATPEDARETRAINF`('&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;','&quot;+globalMap.get(&quot;L_V_FECHA_FIN&quot;)+&quot;');&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
@@ -188,7 +197,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_DSA_SLPEATPEDARETRAEST`();&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_DSA_SLPEATPEDARETRAEST`('&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;','&quot;+globalMap.get(&quot;L_V_FECHA_FIN&quot;)+&quot;');&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
@@ -216,7 +225,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DECLARE L_V_FECHA_AS INT64;&#xD;&#xA;DECLARE L_V_FECHA DATE;&#xD;&#xA;DECLARE L_V_FECHA_FIN DATE;&#xD;&#xA;DECLARE L_V_SIGLO INT64;&#xD;&#xA;DECLARE L_V_ANIO INT64;&#xD;&#xA;DECLARE L_V_MES INT64;&#xD;&#xA;DECLARE L_V_DIA INT64;&#xD;&#xA;DECLARE L_V_ID_FECHA INT64;&#xD;&#xA;DECLARE L_V_ID_FECHA_FIN INT64;&#xD;&#xA;&#xD;&#xA;SET L_V_FECHA_AS= (SELECT FECHA_AS FROM `BI_CNT.ETL_FECHA_CARGA_BSC_UOP`);&#xD;&#xA;SET L_V_FECHA=(SELECT FECHA FROM `BI_CNT.ETL_FECHA_CARGA_BSC_UOP`);&#xD;&#xA;SET L_V_FECHA_FIN = (SELECT FECHA_FIN FROM `BI_CNT.ETL_FECHA_CARGA_BSC_UOP`);&#xD;&#xA;SET L_V_SIGLO=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),1,2) AS INT64); &#xD;&#xA;SET L_V_ANIO=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),3,2) AS INT64);&#xD;&#xA;SET L_V_MES=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),5,2) AS INT64);&#xD;&#xA;SET L_V_DIA=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),7,2) AS INT64);&#xD;&#xA;&#xD;&#xA;--VARIABLES ID_FECHA&#xD;&#xA;SET L_V_ID_FECHA= `BI_DSA.DAYS_FECHA`(L_V_FECHA);&#xD;&#xA;SET L_V_ID_FECHA_FIN= `BI_DSA.DAYS_FECHA`(L_V_FECHA_FIN);&#xD;&#xA;&#xD;&#xA;SELECT L_V_FECHA_AS, L_V_FECHA,L_V_FECHA_FIN,L_V_SIGLO,L_V_ANIO,L_V_MES,L_V_DIA,L_V_ID_FECHA,L_V_ID_FECHA_FIN;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DECLARE L_V_FECHA_AS INT64;&#xD;&#xA;DECLARE L_V_FECHA DATE;&#xD;&#xA;DECLARE L_V_FECHA_FIN DATE;&#xD;&#xA;DECLARE L_V_SIGLO INT64;&#xD;&#xA;DECLARE L_V_ANIO INT64;&#xD;&#xA;DECLARE L_V_MES INT64;&#xD;&#xA;DECLARE L_V_DIA INT64;&#xD;&#xA;DECLARE L_V_ID_FECHA INT64;&#xD;&#xA;DECLARE L_V_ID_FECHA_FIN INT64;&#xD;&#xA;&#xD;&#xA;SET L_V_FECHA_AS= (SELECT FECHA_AS FROM `BI_CNT.ETL_FECHA_CARGA_BSC_UOP`);&#xD;&#xA;SET L_V_FECHA=(SELECT FECHA FROM `BI_CNT.ETL_FECHA_CARGA_BSC_UOP`);&#xD;&#xA;SET L_V_FECHA_FIN = (SELECT FECHA_FIN FROM `BI_CNT.ETL_FECHA_CARGA_BSC_UOP`);&#xD;&#xA;SET L_V_SIGLO=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),1,2) AS INT64); &#xD;&#xA;SET L_V_ANIO=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),3,2) AS INT64);&#xD;&#xA;SET L_V_MES=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),5,2) AS INT64);&#xD;&#xA;SET L_V_DIA=CAST(SUBSTR(CAST(L_V_FECHA_AS AS STRING),7,2) AS INT64);&#xD;&#xA;&#xD;&#xA;SET L_V_ID_FECHA= `BI_DSA.DAYS_FECHA`(L_V_FECHA);&#xD;&#xA;SET L_V_ID_FECHA_FIN= `BI_DSA.DAYS_FECHA`(L_V_FECHA_FIN);&#xD;&#xA;&#xD;&#xA;SELECT L_V_FECHA_AS, L_V_FECHA,L_V_FECHA_FIN,L_V_SIGLO,L_V_ANIO,L_V_MES,L_V_DIA,L_V_ID_FECHA,L_V_ID_FECHA_FIN;&#xD;&#xA;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
