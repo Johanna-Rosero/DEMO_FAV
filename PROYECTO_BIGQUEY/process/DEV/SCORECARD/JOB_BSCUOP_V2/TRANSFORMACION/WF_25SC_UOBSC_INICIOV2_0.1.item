@@ -122,7 +122,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;DECLARE L_V_FECHA DATE;&#xD;&#xA;DECLARE L_V_FECHA_FIN DATE;&#xD;&#xA;&#xD;&#xA;SET L_V_FECHA= (SELECT FECHA FROM BI_CNT.ETL_FECHA_CARGA_BSC_UOP);&#xD;&#xA;SET L_V_FECHA_FIN= (SELECT FECHA_FIN FROM BI_CNT.ETL_FECHA_CARGA_BSC_UOP);&#xD;&#xA;&#xD;&#xA;SELECT L_V_FECHA,L_V_FECHA_FIN;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;DECLARE V_FECHA DATE;&#xD;&#xA;DECLARE V_FECHA_FIN DATE;&#xD;&#xA;&#xD;&#xA;SET V_FECHA= (SELECT FECHA FROM BI_CNT.ETL_FECHA_CARGA_BSC_UOP);&#xD;&#xA;SET V_FECHA_FIN= (SELECT FECHA_FIN FROM BI_CNT.ETL_FECHA_CARGA_BSC_UOP);&#xD;&#xA;&#xD;&#xA;SELECT V_FECHA,V_FECHA_FIN;&#xD;&#xA;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
@@ -137,32 +137,28 @@
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQueryInput_1">
-      <column comment="" key="false" length="-1" name="L_V_FECHA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="V_FECHA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="80" sizeX="41" sizeY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSetGlobalVar_1" show="false"/>
     <elementParameter field="TABLE" name="VARIABLES">
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA&quot;" id="0"/>
-      <elementValue elementRef="VALUE" value="row1.L_V_FECHA" id="1"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_FECHA_FIN&quot;" id="2"/>
-      <elementValue elementRef="VALUE" value="row1.L_V_FECHA_FIN" id="3"/>
+      <elementValue elementRef="KEY" value="&quot;V_FECHA&quot;" id="0"/>
+      <elementValue elementRef="VALUE" value="row1.V_FECHA" id="1"/>
+      <elementValue elementRef="KEY" value="&quot;V_FECHA_FIN&quot;" id="2"/>
+      <elementValue elementRef="VALUE" value="row1.V_FECHA_FIN" id="3"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="JOB_VARIABLES"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tSetGlobalVar_1">
-      <column comment="" key="false" length="-1" name="L_V_FECHA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="V_FECHA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value=" &#xA;Bi.println(&quot;Variables&quot;);&#xA;Bi.println(&quot;L_V_FECHA:&quot; + (globalMap.get(&quot;L_V_FECHA&quot;)));&#xA;Bi.println(&quot;L_V_FECHA_FIN: &quot; + (globalMap.get(&quot;L_V_FECHA_FIN&quot;)));&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value=" &#xA;Bi.println(&quot;Variables&quot;);&#xA;Bi.println(&quot;V_FECHA:&quot; + (globalMap.get(&quot;V_FECHA&quot;)));&#xA;Bi.println(&quot;V_FECHA_FIN: &quot; + (globalMap.get(&quot;V_FECHA_FIN&quot;)));&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1"/>
@@ -176,7 +172,7 @@
     <elementParameter field="TEXT" name="STEP" value="" show="false"/>
     <elementParameter field="CHECK" name="INCREASE" value="true" show="false"/>
     <elementParameter field="TEXT" name="DECLARATION" value=""/>
-    <elementParameter field="TEXT" name="CONDITION" value="TalendDate.compareDate( TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;L_V_FECHA&quot;)), TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;L_V_FECHA_FIN&quot;))) &lt;= 0"/>
+    <elementParameter field="TEXT" name="CONDITION" value="TalendDate.compareDate( TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;V_FECHA&quot;)), TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;V_FECHA_FIN&quot;))) &lt;= 0"/>
     <elementParameter field="TEXT" name="ITERATION" value=""/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
@@ -193,7 +189,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;DECLARE V_FECHA DATE;&#xD;&#xA;DECLARE L_V_ID_FECHA INT64;&#xD;&#xA;&#xD;&#xA;SET V_FECHA= '&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;';&#xD;&#xA;&#xD;&#xA;SET L_V_ID_FECHA=BI_DSA.DAYS_FECHA('&quot;+globalMap.get(&quot;L_V_FECHA&quot;)+&quot;');&#xD;&#xA;&#xD;&#xA;SELECT V_FECHA,L_V_ID_FECHA;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DECLARE V_FECHA_FIN DATE;&#xD;&#xA;DECLARE V_ID_FECHA INT64;&#xD;&#xA;DECLARE V_ID_FECHA_FIN INT64;&#xD;&#xA;DECLARE V_ID_CRI_BASE INT64;&#xD;&#xA;DECLARE V_ID_FECHA_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_FIN_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD_2Y INT64;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;SET V_ID_FECHA=`BI_DSA.DAYS_FECHA`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;');&#xD;&#xA;SET V_FECHA_FIN=DATE_ADD('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;',INTERVAL 1 MONTH)-1;&#xD;&#xA;SET V_ID_FECHA_FIN=`BI_DSA.DAYS_FECHA`(V_FECHA_FIN);&#xD;&#xA;SET V_ID_CRI_BASE= (SELECT CAST(ID_CRITERIO_BASE AS INT64) FROM `BI_DSA.PAR_SC_GEN_UOP`);&#xD;&#xA;SET V_ID_FECHA_1Y = `BI_DSA.DAYS_FECHA`(DATE_SUB('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;', INTERVAL 12 MONTH) );&#xD;&#xA;SET V_ID_FECHA_FIN_1Y=`BI_DSA.DAYS_FECHA`(DATE_SUB(V_FECHA_FIN, INTERVAL 12 MONTH));&#xD;&#xA;SET V_ID_FECHA_YTD= `BI_DSA.DAYS_FECHA`(`BI_DSA.FN_FECHA_INI`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;','YTD')); &#xD;&#xA;SET V_ID_FECHA_YTD_1Y= `BI_DSA.DAYS_FECHA`(DATE_SUB(`BI_DSA.FN_FECHA_INI`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;','YTD'),INTERVAL 12 MONTH));&#xD;&#xA;SET V_ID_FECHA_YTD_2Y = `BI_DSA.DAYS_FECHA`( `BI_DSA.FN_FECHA_INI`( DATE_SUB( '&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;',INTERVAL 24 MONTH),'YTD'));&#xD;&#xA;&#xD;&#xA;SELECT V_ID_FECHA,V_FECHA_FIN,V_ID_FECHA_FIN,V_ID_CRI_BASE,V_ID_FECHA_1Y,V_ID_FECHA_FIN_1Y,V_ID_FECHA_YTD,V_ID_FECHA_YTD_1Y,V_ID_FECHA_YTD_2Y;&#xD;&#xA;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
@@ -208,35 +204,63 @@
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQueryInput_2">
-      <column comment="" key="false" length="-1" name="V_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_CRI_BASE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_1Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_FIN_1Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_YTD" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_YTD_1Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_YTD_2Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tSetGlobalVar" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="840" posY="80" sizeX="41" sizeY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSetGlobalVar_2" show="false"/>
     <elementParameter field="TABLE" name="VARIABLES">
-      <elementValue elementRef="KEY" value="&quot;V_FECHA&quot;" id="0"/>
-      <elementValue elementRef="VALUE" value="row4.V_FECHA" id="1"/>
-      <elementValue elementRef="KEY" value="&quot;L_V_ID_FECHA&quot;" id="2"/>
-      <elementValue elementRef="VALUE" value="row4.L_V_ID_FECHA" id="3"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA&quot;" id="0"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_FECHA" id="1"/>
+      <elementValue elementRef="KEY" value="&quot;V_FECHA_FIN&quot;" id="2"/>
+      <elementValue elementRef="VALUE" value="row4.V_FECHA_FIN" id="3"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_FIN&quot;" id="4"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_FECHA_FIN" id="5"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_CRI_BASE&quot;" id="6"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_CRI_BASE" id="7"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_1Y&quot;" id="8"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_FECHA_1Y" id="9"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_FIN_1Y&quot;" id="10"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_FECHA_FIN_1Y" id="11"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_YTD&quot;" id="12"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_FECHA_YTD" id="13"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_YTD_1Y&quot;" id="14"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_FECHA_YTD_1Y" id="15"/>
+      <elementValue elementRef="KEY" value="&quot;V_ID_FECHA_YTD_2Y&quot;" id="16"/>
+      <elementValue elementRef="VALUE" value="row4.V_ID_FECHA_YTD_2Y" id="17"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="JOB_VARIABLES"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tSetGlobalVar_2">
-      <column comment="" key="false" length="-1" name="V_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="L_V_ID_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_CRI_BASE" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_1Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_FIN_1Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_YTD" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_YTD_1Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_YTD_2Y" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value=" &#xA;Bi.println(&quot;Variables&quot;);&#xA;Bi.println(&quot;V_FECHA: &quot; + (globalMap.get(&quot;V_FECHA&quot;)));&#xA;Bi.println(&quot;L_V_ID_FECHA: &quot; + (globalMap.get(&quot;L_V_ID_FECHA&quot;)));&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value=" &#xA;Bi.println(&quot;Variables&quot;);&#xA;Bi.println(&quot;V_FECHA_FIN: &quot; + (globalMap.get(&quot;V_FECHA_FIN&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA: &quot; + (globalMap.get(&quot;V_ID_FECHA&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA_FIN: &quot; + (globalMap.get(&quot;V_ID_FECHA_FIN&quot;)));&#xA;Bi.println(&quot;V_ID_CRI_BASE: &quot; + (globalMap.get(&quot;V_ID_CRI_BASE&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA_1Y: &quot; + (globalMap.get(&quot;V_ID_FECHA_1Y&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA_FIN_1Y: &quot; + (globalMap.get(&quot;V_ID_FECHA_FIN_1Y&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA_YTD: &quot; + (globalMap.get(&quot;V_ID_FECHA_YTD&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA_YTD_1Y: &quot; + (globalMap.get(&quot;V_ID_FECHA_YTD_1Y&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA_YTD_2Y: &quot; + (globalMap.get(&quot;V_ID_FECHA_YTD_2Y&quot;)));&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_2"/>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="840" posY="280">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;L_V_FECHA&quot;, TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,TalendDate.addDate(TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;L_V_FECHA&quot;)), 1 ,&quot;MM&quot;)));&#xA;Bi.println(&quot;INCREMENTA_FECHA&quot;);&#xA;Bi.println(&quot;L_V_FECHA: &quot;+(globalMap.get(&quot;L_V_FECHA&quot;)));&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;V_FECHA&quot;, TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,TalendDate.addDate(TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;V_FECHA&quot;)), 1 ,&quot;MM&quot;)));&#xA;Bi.println(&quot;INCREMENTA_FECHA&quot;);&#xA;Bi.println(&quot;V_FECHA: &quot;+(globalMap.get(&quot;V_FECHA&quot;)));&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="AUMENTO_FECHA"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -276,6 +300,9 @@
       <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA" id="0"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_FECHA_FIN" id="3"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="4"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="5"/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
@@ -357,9 +384,33 @@
       <elementValue elementRef="TRACE_COLUMN" value="L_V_ID_FECHA" id="60"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="61"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="62"/>
-      <elementValue elementRef="TRACE_COLUMN" value="V_FECHA" id="63"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA" id="63"/>
       <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="64"/>
       <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="65"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA_FIN" id="66"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="67"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="68"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_CRI_BASE" id="69"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="70"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="71"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_FECHA_FIN" id="72"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="73"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="74"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA_1Y" id="75"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="76"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="77"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA_YTD" id="78"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="79"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="80"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA_YTD_1Y" id="81"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="82"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="83"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA_FIN_1Y" id="84"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="85"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="86"/>
+      <elementValue elementRef="TRACE_COLUMN" value="V_ID_FECHA_YTD_2Y" id="87"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="88"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="89"/>
     </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
