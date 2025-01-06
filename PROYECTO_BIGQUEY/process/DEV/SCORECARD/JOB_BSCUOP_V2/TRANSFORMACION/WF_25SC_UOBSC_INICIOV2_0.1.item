@@ -189,7 +189,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;DECLARE V_FECHA_FIN DATE;&#xD;&#xA;DECLARE V_ID_FECHA INT64;&#xD;&#xA;DECLARE V_ID_FECHA_FIN INT64;&#xD;&#xA;DECLARE V_ID_CRI_BASE INT64;&#xD;&#xA;DECLARE V_ID_FECHA_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_FIN_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD_2Y INT64;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;SET V_ID_FECHA=`BI_DSA.DAYS_FECHA`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;');&#xD;&#xA;SET V_FECHA_FIN=DATE_ADD('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;',INTERVAL 1 MONTH)-1;&#xD;&#xA;SET V_ID_FECHA_FIN=`BI_DSA.DAYS_FECHA`(V_FECHA_FIN);&#xD;&#xA;SET V_ID_CRI_BASE= (SELECT CAST(ID_CRITERIO_BASE AS INT64) FROM `BI_DSA.PAR_SC_GEN_UOP`);&#xD;&#xA;SET V_ID_FECHA_1Y = `BI_DSA.DAYS_FECHA`(DATE_SUB('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;', INTERVAL 12 MONTH) );&#xD;&#xA;SET V_ID_FECHA_FIN_1Y=`BI_DSA.DAYS_FECHA`(DATE_SUB(V_FECHA_FIN, INTERVAL 12 MONTH));&#xD;&#xA;SET V_ID_FECHA_YTD= `BI_DSA.DAYS_FECHA`(`BI_DSA.FN_FECHA_INI`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;','YTD')); &#xD;&#xA;SET V_ID_FECHA_YTD_1Y= `BI_DSA.DAYS_FECHA`(DATE_SUB(`BI_DSA.FN_FECHA_INI`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;','YTD'),INTERVAL 12 MONTH));&#xD;&#xA;SET V_ID_FECHA_YTD_2Y = `BI_DSA.DAYS_FECHA`( `BI_DSA.FN_FECHA_INI`( DATE_SUB( '&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;',INTERVAL 24 MONTH),'YTD'));&#xD;&#xA;&#xD;&#xA;SELECT V_ID_FECHA,V_FECHA_FIN,V_ID_FECHA_FIN,V_ID_CRI_BASE,V_ID_FECHA_1Y,V_ID_FECHA_FIN_1Y,V_ID_FECHA_YTD,V_ID_FECHA_YTD_1Y,V_ID_FECHA_YTD_2Y;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;DECLARE V_FECHA_FIN DATE;&#xD;&#xA;DECLARE V_ID_FECHA INT64;&#xD;&#xA;DECLARE V_ID_FECHA_FIN INT64;&#xD;&#xA;DECLARE V_ID_CRI_BASE INT64;&#xD;&#xA;DECLARE V_ID_FECHA_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_FIN_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD_1Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_YTD_2Y INT64;&#xD;&#xA;DECLARE V_ID_FECHA_1 INT64;&#xD;&#xA;DECLARE V_ID_FECHA_2 INT64;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;SET V_ID_FECHA=`BI_DSA.DAYS_FECHA`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;');&#xD;&#xA;SET V_FECHA_FIN=DATE_ADD('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;',INTERVAL 1 MONTH)-1;&#xD;&#xA;SET V_ID_FECHA_FIN=`BI_DSA.DAYS_FECHA`(V_FECHA_FIN);&#xD;&#xA;SET V_ID_CRI_BASE= (SELECT CAST(ID_CRITERIO_BASE AS INT64) FROM `BI_DSA.PAR_SC_GEN_UOP`);&#xD;&#xA;SET V_ID_FECHA_1Y = `BI_DSA.DAYS_FECHA`(DATE_SUB('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;', INTERVAL 12 MONTH) );&#xD;&#xA;SET V_ID_FECHA_FIN_1Y=`BI_DSA.DAYS_FECHA`(DATE_SUB(V_FECHA_FIN, INTERVAL 12 MONTH));&#xD;&#xA;SET V_ID_FECHA_YTD= `BI_DSA.DAYS_FECHA`(`BI_DSA.FN_FECHA_INI`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;','YTD')); &#xD;&#xA;SET V_ID_FECHA_YTD_1Y= `BI_DSA.DAYS_FECHA`(DATE_SUB(`BI_DSA.FN_FECHA_INI`('&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;','YTD'),INTERVAL 12 MONTH));&#xD;&#xA;SET V_ID_FECHA_YTD_2Y = `BI_DSA.DAYS_FECHA`( `BI_DSA.FN_FECHA_INI`( DATE_SUB( '&quot;+globalMap.get(&quot;V_FECHA&quot;)+&quot;',INTERVAL 24 MONTH),'YTD'));&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;SELECT V_ID_FECHA,V_FECHA_FIN,V_ID_FECHA_FIN,V_ID_CRI_BASE,V_ID_FECHA_1Y,V_ID_FECHA_FIN_1Y,V_ID_FECHA_YTD,V_ID_FECHA_YTD_1Y,V_ID_FECHA_YTD_2Y;&#xD;&#xA;&quot;"/>
     <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="SMALL"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
@@ -277,8 +277,27 @@
     <elementParameter field="TEXT" name="CONTEXT_NAME" value="Default" show="false"/>
     <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
-    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
-    <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
+    <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="true"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_FECHA" id="0"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_FECHA&quot;)" id="1"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_FECHA_FIN" id="2"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_FECHA_FIN&quot;)" id="3"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_FECHA_FIN" id="4"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_FECHA_FIN&quot;)" id="5"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_FECHA_1Y" id="6"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_FECHA_1Y&quot;)" id="7"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_FECHA_FIN_1Y" id="8"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_FECHA_FIN_1Y&quot;)" id="9"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_FECHA_YTD_1Y" id="10"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_FECHA_YTD_1Y&quot;)" id="11"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_FECHA_YTD_2Y" id="12"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_FECHA_YTD_2Y&quot;)" id="13"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_CRI_BASE" id="14"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_CRI_BASE&quot;)" id="15"/>
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_ID_FECHA_YTD" id="16"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="globalMap.get(&quot;V_ID_FECHA_YTD&quot;)" id="17"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
