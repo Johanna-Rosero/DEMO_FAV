@@ -288,7 +288,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;String TName = &quot;OPERACIONES_TABLERO_BSC&quot;;&#xA;String T_DBname = &quot;ftp&quot;;&#xA;String n= &quot;1&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#xA;&#xA;/*&#xA;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#xA;*/&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="&#xA;String TName = &quot;ALERTA_TABLEROS&quot;;&#xA;String T_DBname = &quot;ftp&quot;;&#xA;String n= &quot;1&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#xA;&#xA;/*&#xA;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#xA;*/&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="OPERACIONES_TABLERO_BSC"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -411,34 +411,8 @@
     <elementParameter field="TEXT" name="NB_RANDOM" value="10" show="false"/>
     <elementParameter field="CHECK" name="TRIMALL" value="false"/>
     <elementParameter field="TABLE" name="TRIMSELECT">
-      <elementValue elementRef="SCHEMA_COLUMN" value="FORMATO" id="0"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FACTOR" id="0"/>
       <elementValue elementRef="TRIM" value="false" id="1"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ANIO" id="2"/>
-      <elementValue elementRef="TRIM" value="false" id="3"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ID" id="4"/>
-      <elementValue elementRef="TRIM" value="false" id="5"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD" id="6"/>
-      <elementValue elementRef="TRIM" value="false" id="7"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DESCRIPCION_CALIF" id="8"/>
-      <elementValue elementRef="TRIM" value="false" id="9"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="OPERACION" id="10"/>
-      <elementValue elementRef="TRIM" value="false" id="11"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TIPO_OPERACION" id="12"/>
-      <elementValue elementRef="TRIM" value="false" id="13"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD_AUX" id="14"/>
-      <elementValue elementRef="TRIM" value="false" id="15"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COLUMNA" id="16"/>
-      <elementValue elementRef="TRIM" value="false" id="17"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PESO" id="18"/>
-      <elementValue elementRef="TRIM" value="false" id="19"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FACTOR" id="20"/>
-      <elementValue elementRef="TRIM" value="false" id="21"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UNIDAD" id="22"/>
-      <elementValue elementRef="TRIM" value="false" id="23"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="BANDERA" id="24"/>
-      <elementValue elementRef="TRIM" value="false" id="25"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TIPO" id="26"/>
-      <elementValue elementRef="TRIM" value="false" id="27"/>
     </elementParameter>
     <elementParameter field="CHECK" name="CHECK_FIELDS_NUM" value="false"/>
     <elementParameter field="CHECK" name="CHECK_DATE" value="false"/>
@@ -447,34 +421,8 @@
     <elementParameter field="CHECK" name="SPLITRECORD" value="false"/>
     <elementParameter field="CHECK" name="ENABLE_DECODE" value="false"/>
     <elementParameter field="TABLE" name="DECODE_COLS" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="FORMATO" id="0"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FACTOR" id="0"/>
       <elementValue elementRef="DECODE" value="false" id="1"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ANIO" id="2"/>
-      <elementValue elementRef="DECODE" value="false" id="3"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ID" id="4"/>
-      <elementValue elementRef="DECODE" value="false" id="5"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD" id="6"/>
-      <elementValue elementRef="DECODE" value="false" id="7"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="DESCRIPCION_CALIF" id="8"/>
-      <elementValue elementRef="DECODE" value="false" id="9"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="OPERACION" id="10"/>
-      <elementValue elementRef="DECODE" value="false" id="11"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TIPO_OPERACION" id="12"/>
-      <elementValue elementRef="DECODE" value="false" id="13"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD_AUX" id="14"/>
-      <elementValue elementRef="DECODE" value="false" id="15"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COLUMNA" id="16"/>
-      <elementValue elementRef="DECODE" value="false" id="17"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="PESO" id="18"/>
-      <elementValue elementRef="DECODE" value="false" id="19"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FACTOR" id="20"/>
-      <elementValue elementRef="DECODE" value="false" id="21"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="UNIDAD" id="22"/>
-      <elementValue elementRef="DECODE" value="false" id="23"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="BANDERA" id="24"/>
-      <elementValue elementRef="DECODE" value="false" id="25"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="TIPO" id="26"/>
-      <elementValue elementRef="DECODE" value="false" id="27"/>
     </elementParameter>
     <elementParameter field="TEXT" name="DESTINATION" value="" show="false"/>
     <elementParameter field="CHECK" name="USE_HEADER_AS_IS" value="false"/>
@@ -482,36 +430,10 @@
     <elementParameter field="TEXT" name="LABEL" value="ARCHIVO TXT"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFileInputDelimited_4">
-      <column comment="" key="false" length="-1" name="FORMATO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ANIO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ID" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="DESCRIPCION_CALIF" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO_OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_AUX" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COLUMNA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="PESO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="FACTOR" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="UNIDAD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="BANDERA" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <metadata connector="REJECT" name="REJECT">
-      <column comment="" key="false" length="-1" name="FORMATO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ANIO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ID" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="DESCRIPCION_CALIF" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO_OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_AUX" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COLUMNA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="PESO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="FACTOR" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="UNIDAD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="BANDERA" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
@@ -530,56 +452,41 @@
     <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
     <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="ouput">
-      <column comment="" key="false" length="-1" name="FORMATO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ANIO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ID" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="DESCRIPCION_CALIF" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO_OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_AUX" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COLUMNA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="PESO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FACTOR" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="UNIDAD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="BANDERA" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    <metadata connector="FLOW" name="output">
+      <column comment="" key="false" length="-1" name="Medidores" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min0" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max0" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min1" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max1" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min2" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max2" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min3" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max3" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min4" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max4" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min5" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max5" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
       <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
-      <outputTables sizeState="INTERMEDIATE" name="ouput">
-        <mapperTableEntries name="FORMATO" expression="row1.FORMATO" type="id_String" nullable="true"/>
-        <mapperTableEntries name="ANIO" expression="row1.ANIO" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="ID" expression="row1.ID" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="COD" expression="row1.COD" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="DESCRIPCION_CALIF" expression="row1.DESCRIPCION_CALIF" type="id_String" nullable="true"/>
-        <mapperTableEntries name="OPERACION" expression="row1.OPERACION" type="id_String" nullable="true"/>
-        <mapperTableEntries name="TIPO_OPERACION" expression="row1.TIPO_OPERACION" type="id_String" nullable="true"/>
-        <mapperTableEntries name="COD_AUX" expression="row1.COD_AUX" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="COLUMNA" expression="row1.COLUMNA" type="id_String" nullable="true"/>
-        <mapperTableEntries name="PESO" expression="row1.PESO" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="FACTOR" expression="Double.parseDouble(StringHandling.EREPLACE(row1.FACTOR,&quot;,&quot;,&quot;.&quot;)) " type="id_Double" nullable="true"/>
-        <mapperTableEntries name="UNIDAD" expression="row1.UNIDAD" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="BANDERA" expression="row1.BANDERA" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="TIPO" expression="row1.TIPO" type="id_String" nullable="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="output">
+        <mapperTableEntries name="Medidores" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Min0" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Max0" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Min1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Max1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Min2" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Max2" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Min3" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Max3" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Min4" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Max4" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Min5" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Max5" type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row1" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
-        <mapperTableEntries name="FORMATO" type="id_String" nullable="true"/>
-        <mapperTableEntries name="ANIO" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="ID" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="COD" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="DESCRIPCION_CALIF" type="id_String" nullable="true"/>
-        <mapperTableEntries name="OPERACION" type="id_String" nullable="true"/>
-        <mapperTableEntries name="TIPO_OPERACION" type="id_String" nullable="true"/>
-        <mapperTableEntries name="COD_AUX" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="COLUMNA" type="id_String" nullable="true"/>
-        <mapperTableEntries name="PESO" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="FACTOR" type="id_String" nullable="true"/>
-        <mapperTableEntries name="UNIDAD" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="BANDERA" type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="TIPO" type="id_String" nullable="true"/>
       </inputTables>
     </nodeData>
   </node>
@@ -612,23 +519,22 @@
     <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="false"/>
     <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="false"/>
     <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90" show="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="ARCHIVO CSV CF"/>
+    <elementParameter field="TEXT" name="LABEL" value="ARCHIVO CSV"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFileOutputDelimited_2">
-      <column comment="" key="false" length="-1" name="FORMATO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ANIO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ID" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="DESCRIPCION_CALIF" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO_OPERACION" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_AUX" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COLUMNA" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="PESO" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FACTOR" nullable="true" pattern="" precision="-1" sourceType="" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="UNIDAD" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="BANDERA" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TIPO" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Medidores" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min0" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max0" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min1" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max1" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min2" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max2" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min3" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max3" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min4" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max4" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Min5" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="Max5" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFTPConnection_1" offsetLabelX="0" offsetLabelY="0" source="tFTPConnection_1" target="tGSConnection_1">
@@ -656,12 +562,17 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk6" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tFileInputDelimited_4" offsetLabelX="0" offsetLabelY="0" source="tFileInputDelimited_4" target="tMap_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="FACTOR" id="0"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
-  <connection connectorName="FLOW" label="ouput" lineStyle="0" metaname="ouput" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tFileOutputDelimited_2">
+  <connection connectorName="FLOW" label="output" lineStyle="0" metaname="output" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tFileOutputDelimited_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="ouput" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="output" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_2" offsetLabelX="-50" offsetLabelY="8" source="tFileOutputDelimited_2" target="tGSPut_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk6" show="false"/>
