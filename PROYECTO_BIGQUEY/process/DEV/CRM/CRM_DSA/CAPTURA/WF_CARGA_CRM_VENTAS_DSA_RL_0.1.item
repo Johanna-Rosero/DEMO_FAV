@@ -371,6 +371,7 @@
       <column comment="" key="false" length="6" name="CODIGOEMPLEADOAUTORIZO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="20" name="NOMBREEMPLEADOAUTORIZO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="14" name="RUCSOLICITANC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="25" name="NUMEROIDENTIFICACIONCLIENTEREAL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="400">
@@ -458,7 +459,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `DOCUMENTO`.`HEADERID`, &#xA;  `DOCUMENTO`.`CODIGOTIPODOCUMENTO`, &#xA;  `DOCUMENTO`.`CODIGOTIPOMONEDA`, &#xA;  `DOCUMENTO`.`CODIGOESTABLECIMIENTO`, &#xA;  `DOCUMENTO`.`CODIGOPUNTOEMISION`, &#xA;  `DOCUMENTO`.`SECUENCIAL`, &#xA;  `DOCUMENTO`.`CODIGOEMPLEADO`, &#xA;  `DOCUMENTO`.`NUMERODOCUMENTOFISCAL`, &#xA;  `DOCUMENTO`.`FECHAEMISION`, &#xA;  `DOCUMENTO`.`NUMEROIDENTIFICACIONCLIENTE`, &#xA;  `DOCUMENTO`.`TIPOIDENTIFICACIONCLIENTE`, &#xA;  `DOCUMENTO`.`RAZONSOCIALCLIENTE`, &#xA;  `DOCUMENTO`.`TERMINAL`, &#xA;  `DOCUMENTO`.`TIPOTRANSACCIONCAJERO`, &#xA;  `DOCUMENTO`.`VALORDESCUENTOTOTALSIMP`, &#xA;  `DOCUMENTO`.`VALORTOTALSINIMPUESTOS`, &#xA;  `DOCUMENTO`.`VALORSUBTOTALNETO`, &#xA;  `DOCUMENTO`.`VALORTOTAL`, &#xA;  `DOCUMENTO`.`DESCRIPCIONMONEDA`, &#xA;  `DOCUMENTO`.`CLAVEACCESOSRI`, &#xA;  `DOCUMENTO`.`MOTIVODEVOLUCION`, &#xA;  `DOCUMENTO`.`CODIGOAREATRABAJO`, &#xA;  `DOCUMENTO`.`AFILIADO`, &#xA;  `DOCUMENTO`.`HORAMINUTO`, &#xA;  `DOCUMENTO`.`TARJETAAFILIACION`, &#xA;  `DOCUMENTO`.`TARJETAAFILIACIONBENEFICIOS`, &#xA;  `DOCUMENTO`.`VALORAHORROTOTAL`, &#xA;  `DOCUMENTO`.`VALORAHORROPORAFILIACION`, &#xA;  `DOCUMENTO`.`NUMDOCRELACIONADO`, &#xA;  `DOCUMENTO`.`FECHADOCRELACIONADO`, &#xA;  `DOCUMENTO`.`FECHAEMISIONHORA`, &#xA;  `DOCUMENTO`.`FECHAREGISTRO`, &#xA;  `DOCUMENTO`.`NUMEROSKUTLOG`, &#xA;  `DOCUMENTO`.`NUMEROSKUCALCULADO`, &#xA;  `DOCUMENTO`.`BASEIMPONIBLECERO`, &#xA;  `DOCUMENTO`.`BASEIMPONIBLEDOCE`, &#xA;  `DOCUMENTO`.`DESCUENTOBASECERO`, &#xA;  `DOCUMENTO`.`DESCUENTOBASEDOCE`, &#xA;  `DOCUMENTO`.`VALORIMPUESTOIVA`, &#xA;  `DOCUMENTO`.`PORCENTAJEIVA`, &#xA;  `DOCUMENTO`.`VALORDESCUENTOTOTALCIMP`, &#xA;  `DOCUMENTO`.`PRECIOTOTALCIMPSDES`, &#xA;  `DOCUMENTO`.`PRECIOTOTALSIMPSADES`, &#xA;  `DOCUMENTO`.`NUMERONOTA`, &#xA;  `DOCUMENTO`.`NUMERODOCUMENTO`, &#xA;  `DOCUMENTO`.`REIMPRESION`, &#xA;  `DOCUMENTO`.`VENTASISPE`, &#xA;  `DOCUMENTO`.`NUMERORESERVA`, &#xA;  `DOCUMENTO`.`TIPOSISPE`, &#xA;  `DOCUMENTO`.`VENTACREDITODIRECTO`, &#xA;  Now() as ETL_TIMESTAMP, &#xA;  `DOCUMENTO`.`CODIGOEMPLEADOAUTORIZO`, &#xA;  `DOCUMENTO`.`NOMBREEMPLEADOAUTORIZO`, &#xA;  `DOCUMENTO`.`RUCSOLICITANC`&#xA; FROM `DOCUMENTO`&#xD;&#xA;WHERE &#xD;&#xA;CAST(FECHAEMISION AS DATE)>= '&quot; + context.V_FechaInicio + &quot;' AND CAST(FECHAEMISION AS DATE)&lt;= '&quot; + context.V_FechaFin + &quot;'&#xD;&#xA;AND CODIGOAREATRABAJO IN (&quot; + context.V_IDUOP + &quot;)&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `DOCUMENTO`.`HEADERID`, &#xA;  `DOCUMENTO`.`CODIGOTIPODOCUMENTO`, &#xA;  `DOCUMENTO`.`CODIGOTIPOMONEDA`, &#xA;  `DOCUMENTO`.`CODIGOESTABLECIMIENTO`, &#xA;  `DOCUMENTO`.`CODIGOPUNTOEMISION`, &#xA;  `DOCUMENTO`.`SECUENCIAL`, &#xA;  `DOCUMENTO`.`CODIGOEMPLEADO`, &#xA;  `DOCUMENTO`.`NUMERODOCUMENTOFISCAL`, &#xA;  `DOCUMENTO`.`FECHAEMISION`, &#xA;  `DOCUMENTO`.`NUMEROIDENTIFICACIONCLIENTE`, &#xA;  `DOCUMENTO`.`TIPOIDENTIFICACIONCLIENTE`, &#xA;  `DOCUMENTO`.`RAZONSOCIALCLIENTE`, &#xA;  `DOCUMENTO`.`TERMINAL`, &#xA;  `DOCUMENTO`.`TIPOTRANSACCIONCAJERO`, &#xA;  `DOCUMENTO`.`VALORDESCUENTOTOTALSIMP`, &#xA;  `DOCUMENTO`.`VALORTOTALSINIMPUESTOS`, &#xA;  `DOCUMENTO`.`VALORSUBTOTALNETO`, &#xA;  `DOCUMENTO`.`VALORTOTAL`, &#xA;  `DOCUMENTO`.`DESCRIPCIONMONEDA`, &#xA;  `DOCUMENTO`.`CLAVEACCESOSRI`, &#xA;  `DOCUMENTO`.`MOTIVODEVOLUCION`, &#xA;  `DOCUMENTO`.`CODIGOAREATRABAJO`, &#xA;  `DOCUMENTO`.`AFILIADO`, &#xA;  `DOCUMENTO`.`HORAMINUTO`, &#xA;  `DOCUMENTO`.`TARJETAAFILIACION`, &#xA;  `DOCUMENTO`.`TARJETAAFILIACIONBENEFICIOS`, &#xA;  `DOCUMENTO`.`VALORAHORROTOTAL`, &#xA;  `DOCUMENTO`.`VALORAHORROPORAFILIACION`, &#xA;  `DOCUMENTO`.`NUMDOCRELACIONADO`, &#xA;  `DOCUMENTO`.`FECHADOCRELACIONADO`, &#xA;  `DOCUMENTO`.`FECHAEMISIONHORA`, &#xA;  `DOCUMENTO`.`FECHAREGISTRO`, &#xA;  `DOCUMENTO`.`NUMEROSKUTLOG`, &#xA;  `DOCUMENTO`.`NUMEROSKUCALCULADO`, &#xA;  `DOCUMENTO`.`BASEIMPONIBLECERO`, &#xA;  `DOCUMENTO`.`BASEIMPONIBLEDOCE`, &#xA;  `DOCUMENTO`.`DESCUENTOBASECERO`, &#xA;  `DOCUMENTO`.`DESCUENTOBASEDOCE`, &#xA;  `DOCUMENTO`.`VALORIMPUESTOIVA`, &#xA;  `DOCUMENTO`.`PORCENTAJEIVA`, &#xA;  `DOCUMENTO`.`VALORDESCUENTOTOTALCIMP`, &#xA;  `DOCUMENTO`.`PRECIOTOTALCIMPSDES`, &#xA;  `DOCUMENTO`.`PRECIOTOTALSIMPSADES`, &#xA;  `DOCUMENTO`.`NUMERONOTA`, &#xA;  `DOCUMENTO`.`NUMERODOCUMENTO`, &#xA;  `DOCUMENTO`.`REIMPRESION`, &#xA;  `DOCUMENTO`.`VENTASISPE`, &#xA;  `DOCUMENTO`.`NUMERORESERVA`, &#xA;  `DOCUMENTO`.`TIPOSISPE`, &#xA;  `DOCUMENTO`.`VENTACREDITODIRECTO`, &#xA;  Now() as ETL_TIMESTAMP, &#xA;  `DOCUMENTO`.`CODIGOEMPLEADOAUTORIZO`, &#xA;  `DOCUMENTO`.`NOMBREEMPLEADOAUTORIZO`, &#xA;  `DOCUMENTO`.`RUCSOLICITANC`,&#xD;&#xA;`DOCUMENTO`.`NUMEROIDENTIFICACIONCLIENTEREAL`&#xA; FROM `DOCUMENTO`&#xD;&#xA;WHERE &#xD;&#xA;CAST(FECHAEMISION AS DATE)>= '&quot; + context.V_FechaInicio + &quot;' AND CAST(FECHAEMISION AS DATE)&lt;= '&quot; + context.V_FechaFin + &quot;'&#xD;&#xA;AND CODIGOAREATRABAJO IN (&quot; + context.V_IDUOP + &quot;)&#xD;&#xA;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
@@ -577,6 +578,8 @@
       <elementValue elementRef="TRIM" value="false" id="105"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="RUCSOLICITANC" id="106"/>
       <elementValue elementRef="TRIM" value="false" id="107"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NUMEROIDENTIFICACIONCLIENTEREAL" id="108"/>
+      <elementValue elementRef="TRIM" value="false" id="109"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_1">
@@ -634,6 +637,7 @@
       <column comment="" key="false" length="6" name="CODIGOEMPLEADOAUTORIZO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="20" name="NOMBREEMPLEADOAUTORIZO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="14" name="RUCSOLICITANC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="25" name="NUMEROIDENTIFICACIONCLIENTEREAL" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="25" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="400">
@@ -722,6 +726,7 @@
       <column comment="" key="false" length="6" name="CODIGOEMPLEADOAUTORIZO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="20" name="NOMBREEMPLEADOAUTORIZO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="14" name="RUCSOLICITANC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="25" name="NUMEROIDENTIFICACIONCLIENTEREAL" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="25" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
       <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
@@ -758,6 +763,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk33" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="NUMEROIDENTIFICACIONCLIENTEREAL" id="0"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
