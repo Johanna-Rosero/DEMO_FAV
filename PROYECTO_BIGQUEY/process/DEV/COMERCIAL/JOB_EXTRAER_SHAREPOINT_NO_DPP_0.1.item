@@ -99,18 +99,21 @@
     <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
   </parameters>
-  <node componentName="tFileFetch" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="280">
+  <node componentName="tFileFetch" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileFetch_1" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="PROTO" value="http"/>
+    <elementParameter field="CLOSED_LIST" name="PROTO" value="https"/>
     <elementParameter field="CHECK" name="POST" value="false"/>
-    <elementParameter field="TEXT" name="URI" value="&quot;https://supermaxi.sharepoint.com/gestionAuditoria/gestion/Documentos%20compartidos/Forms/AllItems.aspx?RootFolder=%2FgestionAuditoria%2Fgestion%2FDocumentos%20compartidos%2F02%2E%20ALERTAS%2F2023%2F2%2E3%20BASE%20NOVIGENTES&amp;FolderCTID=0x01200098A5EC7FDE426A40BB56C2A9E69FABB9&amp;View=%7BACBC0732%2DC346%2D4F1E%2DAF62%2D40B2C193965B%7D&quot;"/>
+    <elementParameter field="TEXT" name="URI" value=" &quot;https://supermaxi.sharepoint.com/gestionAuditoria/gestion/Documentos%20compartidos/Forms/AllItems.aspx?RootFolder=%2FgestionAuditoria%2Fgestion%2FDocumentos%20compartidos%2F02%2E%20ALERTAS%2F2023%2F2%2E3%20BASE%20NOVIGENTES&amp;FolderCTID=0x01200098A5EC7FDE426A40BB56C2A9E69FABB9&amp;View=%7BACBC0732%2DC346%2D4F1E%2DAF62%2D40B2C193965B%7D&quot;"/>
     <elementParameter field="CHECK" name="USE_CACHE" value="false"/>
     <elementParameter field="TEXT" name="SMB_URI" value="&quot;smb://host/dir/remoteFileName.txt&quot;" show="false"/>
     <elementParameter field="DIRECTORY" name="DIRECTORY" value="&quot;C:/Users/soporte1acda/Desktop/JOB_EXTRAER_SHAREPOINT&quot;"/>
     <elementParameter field="CHECK" name="MAKEDIRS" value="false"/>
     <elementParameter field="TEXT" name="FILENAME" value="&quot;testshare.pdf&quot;"/>
-    <elementParameter field="CHECK" name="ADD_HEADER" value="false"/>
-    <elementParameter field="TABLE" name="HEADERS" show="false"/>
+    <elementParameter field="CHECK" name="ADD_HEADER" value="true"/>
+    <elementParameter field="TABLE" name="HEADERS">
+      <elementValue elementRef="HEADER_NAME" value="&quot;authority&quot;" id="0"/>
+      <elementValue elementRef="HEADER_VALUE" value="&quot;supermaxi.sharepoint.com&quot;" id="1"/>
+    </elementParameter>
     <elementParameter field="TEXT" name="SMB_DOMAIN" value="&quot;domain&quot;" show="false"/>
     <elementParameter field="TEXT" name="SMB_USERNAME" value="&quot;username&quot;" show="false"/>
     <elementParameter field="PASSWORD" name="SMB_PASSWORD" value="enc:system.encryption.key.v1:abTLcCN0zL016XwSmxQ38ePxWYDN+4avNVvKZ0oxKmlEM+2CW2w=" show="false"/>
@@ -123,15 +126,15 @@
     <elementParameter field="CHECK" name="SINGLE_COOKIE" value="false" show="false"/>
     <elementParameter field="CHECK" name="ENCODE_URI" value="false"/>
     <elementParameter field="OPENED_LIST" name="COMMON_PARAMS_CHARSET" value="&quot;UTF-8&quot;" show="false"/>
-    <elementParameter field="CHECK" name="PRINT" value="false"/>
-    <elementParameter field="TEXT" name="TIMEOUT" value="10000"/>
+    <elementParameter field="CHECK" name="PRINT" value="true"/>
+    <elementParameter field="TEXT" name="TIMEOUT" value="3600"/>
     <elementParameter field="CHECK" name="UPLOAD" value="false" show="false"/>
     <elementParameter field="TABLE" name="FILE_PARAMS" show="false"/>
     <elementParameter field="CHECK" name="USE_PROXY" value="true"/>
     <elementParameter field="TEXT" name="PROXY_HOST" value="&quot;pxy12&quot;"/>
     <elementParameter field="TEXT" name="PROXY_PORT" value="&quot;8080&quot;"/>
-    <elementParameter field="TEXT" name="PROXY_USERNAME" value="&quot;usr_alteryx@favorita.com&quot;"/>
-    <elementParameter field="PASSWORD" name="PROXY_PASSWORD" value="enc:system.encryption.key.v1:Mf97QCXlnUSCZcPqHlZyrYetlqeo8MB/loFb/fnQnk75+g1R/LAw26MGsYQ0"/>
+    <elementParameter field="TEXT" name="PROXY_USERNAME" value="&quot;soporte1acda&quot;"/>
+    <elementParameter field="PASSWORD" name="PROXY_PASSWORD" value="enc:system.encryption.key.v1:bx7RKFRVvDNmSlDL91OhRWmRZxam61bp1zO8EW0/OxZhpptVVkLbQw=="/>
     <elementParameter field="CHECK" name="PROXY_NTLM" value="false"/>
     <elementParameter field="TEXT" name="PROXY_DOMAIN" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="NEED_AUTH" value="true"/>
@@ -139,7 +142,7 @@
     <elementParameter field="PASSWORD" name="AUTH_PASSWORD" value="enc:system.encryption.key.v1:TMI3R+BheEiwXQQffdoSWuKJlX0wfuErmnCWIhkoFQZuAbFYbwv6YF4PCAan"/>
     <elementParameter field="CHECK" name="REDIRECT" value="true"/>
     <elementParameter field="CHECK" name="REDIRECT_302_AS_303" value="true"/>
-    <elementParameter field="CHECK" name="TRUST_ALL_SERVER" value="true" show="false"/>
+    <elementParameter field="CHECK" name="TRUST_ALL_SERVER" value="true"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFileFetch_1"/>
   </node>
@@ -388,7 +391,7 @@
       <column defaultValue="" key="false" length="0" name="ResponseContent" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="600" posY="280">
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="440">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_3" show="false"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="RADIO" name="BASIC_MODE" value="true"/>
