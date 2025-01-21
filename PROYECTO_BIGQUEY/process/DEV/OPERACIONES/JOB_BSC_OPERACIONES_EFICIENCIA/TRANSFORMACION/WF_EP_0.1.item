@@ -5,12 +5,14 @@
     <contextParameter comment="" name="VG_ProjectID" prompt="VG_ProjectID?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;lafavorita-182519&quot;" internalId="_1aJssdQYEe-zE_fzwUVfCQ"/>
     <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_1aJsstQYEe-zE_fzwUVfCQ"/>
     <contextParameter comment="" name="V_FECHA" prompt="V_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_3zrI0NQYEe-zE_fzwUVfCQ"/>
+    <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_oWY_gNgKEe-zE_fzwUVfCQ"/>
   </context>
   <context confirmationNeeded="false" hide="false" name="PRO">
     <contextParameter comment="" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/PRO/&quot;" internalId="_1aJss9QYEe-zE_fzwUVfCQ"/>
     <contextParameter comment="" name="VG_ProjectID" prompt="VG_ProjectID?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;lafavorita-182519&quot;" internalId="_1aJstNQYEe-zE_fzwUVfCQ"/>
     <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_1aJstdQYEe-zE_fzwUVfCQ"/>
     <contextParameter comment="" name="V_FECHA" prompt="V_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_3zrI0dQYEe-zE_fzwUVfCQ"/>
+    <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_oWY_gdgKEe-zE_fzwUVfCQ"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -122,7 +124,10 @@
     <elementParameter field="CHECK" name="USE_INDEPENDENT_PROCESS" value="false"/>
     <elementParameter field="CHECK" name="DIE_ON_CHILD_ERROR" value="true"/>
     <elementParameter field="CHECK" name="TRANSMIT_WHOLE_CONTEXT" value="false"/>
-    <elementParameter field="TABLE" name="CONTEXTPARAMS"/>
+    <elementParameter field="TABLE" name="CONTEXTPARAMS">
+      <elementValue elementRef="PARAM_NAME_COLUMN" value="V_FECHA" id="0"/>
+      <elementValue elementRef="PARAM_VALUE_COLUMN" value="context.V_FECHA" id="1"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="PROPAGATE_CHILD_RESULT" value="false"/>
     <elementParameter field="CHECK" name="PRINT_PARAMETER" value="false"/>
     <elementParameter field="CHECK" name="TRANSMIT_ORIGINAL_CONTEXT" value="true" show="false"/>
@@ -150,7 +155,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_ESTANDARES_PROCESOS_D`(&quot;+context.V_FECHA+&quot;);&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_ESTANDARES_PROCESOS_D`(&quot;+context.V_ID_FECHA+&quot;);&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
