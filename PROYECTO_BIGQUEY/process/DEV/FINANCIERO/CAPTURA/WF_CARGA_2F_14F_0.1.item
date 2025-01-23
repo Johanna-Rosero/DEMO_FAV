@@ -5469,6 +5469,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="80" posY="1560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_13" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="String TName = &quot;F0911&quot;;&#xA;String T_DBname = &quot;PRODDTA&quot;;&#xA;String n= &quot;12&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#xA;&#xA;/*&#xA;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#xA;&#xA;*/"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="F0911"/>
@@ -5511,6 +5512,7 @@
   </node>
   <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="240" posY="1560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_12" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY" show="false"/>
@@ -5526,52 +5528,133 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT *&#xA; FROM PRODDTA.F0911&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;select &#xD;&#xA;&#x9;GLKCO,&#xD;&#xA;      GLDCT,&#xD;&#xA;      GLDOC,&#xD;&#xA;      GLDGJ,&#xD;&#xA;      GLJELN,&#xD;&#xA;      GLEXTL,&#xD;&#xA;      GLLT,&#xD;&#xA;      GLPOST,&#xD;&#xA;      GLICU,&#xD;&#xA;      GLICUT,&#xD;&#xA;      GLDICJ,&#xD;&#xA;      GLCO,&#xD;&#xA;      GLAID,&#xD;&#xA;      GLMCU,&#xD;&#xA;      GLOBJ,&#xD;&#xA;      GLSUB,&#xD;&#xA;      GLSBL,&#xD;&#xA;      GLSBLT,&#xD;&#xA;      GLPN,&#xD;&#xA;      GLCTRY,&#xD;&#xA;      GLFY,&#xD;&#xA;      GLCRCD,&#xD;&#xA;      GLAA,&#xD;&#xA;      GLGLC,&#xD;&#xA;      GLRE,&#xD;&#xA;     GLEXA,&#xD;&#xA;     GLEXR ,&#xD;&#xA;      GLBRE,&#xD;&#xA;      GLALT3,&#xD;&#xA;      GLSFX,&#xD;&#xA;      GLAN8,&#xD;&#xA;      GLDSYJ,&#xD;&#xA;      GLODOC,&#xD;&#xA;      GLODCT,&#xD;&#xA;      GLOSFX,&#xD;&#xA;      GLVINV,&#xD;&#xA;      GLUSER,&#xD;&#xA;      GLU&#xD;&#xA;      from PRODDTA.F0911 A,BI.DWHFECHA_FI B &#xD;&#xA;WHERE B.FECHA=A.GLDGJ and A.GLAA&lt;> 0 and A.GLKCO='00001'&quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" value="as400_id" show="false"/>
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;" show="false"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="true"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN" show="false">
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVANIO" id="0"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLKCO" id="0"/>
       <elementValue elementRef="TRIM" value="false" id="1"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVPROV" id="2"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLDCT" id="2"/>
       <elementValue elementRef="TRIM" value="false" id="3"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVNOMB" id="4"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLDOC" id="4"/>
       <elementValue elementRef="TRIM" value="false" id="5"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVCOMP" id="6"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLDGJ" id="6"/>
       <elementValue elementRef="TRIM" value="false" id="7"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVPERI" id="8"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLJELN" id="8"/>
       <elementValue elementRef="TRIM" value="false" id="9"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVSECU" id="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLEXTL" id="10"/>
       <elementValue elementRef="TRIM" value="false" id="11"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVCREC" id="12"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLLT" id="12"/>
       <elementValue elementRef="TRIM" value="false" id="13"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVVALO" id="14"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLPOST" id="14"/>
       <elementValue elementRef="TRIM" value="false" id="15"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVUSUA" id="16"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLICU" id="16"/>
       <elementValue elementRef="TRIM" value="false" id="17"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVFECH" id="18"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLICUT" id="18"/>
       <elementValue elementRef="TRIM" value="false" id="19"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="CVHORA" id="20"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLDICJ" id="20"/>
       <elementValue elementRef="TRIM" value="false" id="21"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLCO" id="22"/>
+      <elementValue elementRef="TRIM" value="false" id="23"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLAID" id="24"/>
+      <elementValue elementRef="TRIM" value="false" id="25"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLMCU" id="26"/>
+      <elementValue elementRef="TRIM" value="false" id="27"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLOBJ" id="28"/>
+      <elementValue elementRef="TRIM" value="false" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLSUB" id="30"/>
+      <elementValue elementRef="TRIM" value="false" id="31"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLSBL" id="32"/>
+      <elementValue elementRef="TRIM" value="false" id="33"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLSBLT" id="34"/>
+      <elementValue elementRef="TRIM" value="false" id="35"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLPN" id="36"/>
+      <elementValue elementRef="TRIM" value="false" id="37"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLCTRY" id="38"/>
+      <elementValue elementRef="TRIM" value="false" id="39"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLFY" id="40"/>
+      <elementValue elementRef="TRIM" value="false" id="41"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLCRCD" id="42"/>
+      <elementValue elementRef="TRIM" value="false" id="43"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLAA" id="44"/>
+      <elementValue elementRef="TRIM" value="false" id="45"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLGLC" id="46"/>
+      <elementValue elementRef="TRIM" value="false" id="47"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLRE" id="48"/>
+      <elementValue elementRef="TRIM" value="false" id="49"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLEXA" id="50"/>
+      <elementValue elementRef="TRIM" value="false" id="51"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLEXR" id="52"/>
+      <elementValue elementRef="TRIM" value="false" id="53"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLBRE" id="54"/>
+      <elementValue elementRef="TRIM" value="false" id="55"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLALT3" id="56"/>
+      <elementValue elementRef="TRIM" value="false" id="57"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLSFX" id="58"/>
+      <elementValue elementRef="TRIM" value="false" id="59"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLAN8" id="60"/>
+      <elementValue elementRef="TRIM" value="false" id="61"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLDSYJ" id="62"/>
+      <elementValue elementRef="TRIM" value="false" id="63"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLODOC" id="64"/>
+      <elementValue elementRef="TRIM" value="false" id="65"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLODCT" id="66"/>
+      <elementValue elementRef="TRIM" value="false" id="67"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLOSFX" id="68"/>
+      <elementValue elementRef="TRIM" value="false" id="69"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLVINV" id="70"/>
+      <elementValue elementRef="TRIM" value="false" id="71"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLUSER" id="72"/>
+      <elementValue elementRef="TRIM" value="false" id="73"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GLU" id="74"/>
+      <elementValue elementRef="TRIM" value="false" id="75"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
     <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_12">
-      <column comment="" defaultValue="" key="false" length="4" name="CVANIO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="5" name="CVPROV" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="40" name="CVNOMB" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="2" name="CVCOMP" nullable="false" pattern="" precision="0" sourceType="NUMERIC" type="id_Float" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="CVPERI" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="2" name="CVSECU" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="9" name="CVCREC" nullable="false" pattern="" precision="2" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="9" name="CVVALO" nullable="false" pattern="" precision="2" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CVUSUA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="8" name="CVFECH" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="6" name="CVHORA" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="GLKCO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLDCT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLDOC" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="GLDGJ" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="7" name="GLJELN" nullable="true" pattern="" precision="1" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLEXTL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLLT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLPOST" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLICU" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLICUT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="GLDICJ" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="GLCO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="GLAID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="12" name="GLMCU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="6" name="GLOBJ" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="GLSUB" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="GLSBL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLSBLT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="2" name="GLPN" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="2" name="GLCTRY" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="2" name="GLFY" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="GLCRCD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="15" name="GLAA" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="GLGLC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="GLEXA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="GLEXR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLBRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLALT3" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="GLSFX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLAN8" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="GLDSYJ" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLODOC" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLODCT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="GLOSFX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="25" name="GLVINV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="GLUSER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="15" name="GLU" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
       <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
@@ -5579,6 +5662,7 @@
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="400" posY="1560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_12" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" value="outputStream" show="false"/>
     <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV11&quot;))"/>
@@ -5609,17 +5693,44 @@
     <elementParameter field="TEXT" name="LABEL" value="TMP_CARGA_CSV"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFileOutputDelimited_12">
-      <column comment="" defaultValue="" key="false" length="4" name="CVANIO" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="5" name="CVPROV" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="40" name="CVNOMB" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="2" name="CVCOMP" nullable="false" pattern="" precision="0" sourceType="NUMERIC" type="id_Float" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="3" name="CVPERI" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="2" name="CVSECU" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="9" name="CVCREC" nullable="false" pattern="" precision="2" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="9" name="CVVALO" nullable="false" pattern="" precision="2" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="CVUSUA" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="8" name="CVFECH" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="6" name="CVHORA" nullable="false" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="GLKCO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLDCT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLDOC" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="GLDGJ" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="7" name="GLJELN" nullable="true" pattern="" precision="1" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLEXTL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLLT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLPOST" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLICU" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLICUT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="GLDICJ" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="5" name="GLCO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="GLAID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="12" name="GLMCU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="6" name="GLOBJ" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="GLSUB" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="GLSBL" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLSBLT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="2" name="GLPN" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="2" name="GLCTRY" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="2" name="GLFY" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="GLCRCD" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="15" name="GLAA" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="4" name="GLGLC" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="GLEXA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="GLEXR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLBRE" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="GLALT3" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="GLSFX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLAN8" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="6" name="GLDSYJ" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="8" name="GLODOC" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_Double" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="GLODCT" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="3" name="GLOSFX" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="25" name="GLVINV" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="GLUSER" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="15" name="GLU" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
       <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
@@ -5627,6 +5738,7 @@
   </node>
   <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="520" posY="1560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_12" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT" show="false"/>
@@ -5648,6 +5760,7 @@
   </node>
   <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="680" posY="1560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_12" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY" show="false"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_2dMZUNOwEe-ZGNftkGFMsA - metadata" show="false"/>
@@ -5702,6 +5815,7 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="1560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_13" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:HszdRUxv3ksuKTSZOQSI9kqQyRu6jmzhK++He6f5" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
@@ -5921,19 +6035,24 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk13" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_13" offsetLabelX="0" offsetLabelY="0" source="tJava_13" target="tDBInput_12">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk43" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row12" lineStyle="0" metaname="tDBInput_12" offsetLabelX="0" offsetLabelY="0" source="tDBInput_12" target="tFileOutputDelimited_12">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row12" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_12" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_12" target="tGSPut_12">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk14" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_12" offsetLabelX="0" offsetLabelY="0" source="tGSPut_12" target="tBigQueryBulkExec_12">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk44" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQueryBulkExec_12" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_12" target="tBigQuerySQLRow_13">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk15" show="false"/>
   </connection>
   <subjob>
