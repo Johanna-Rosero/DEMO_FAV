@@ -232,12 +232,12 @@
     <elementParameter field="TEXT" name="TYPE" value="MySQL" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:HiTo7g3xUat9FYf1xG7KOPNoITxHAIUM+zVphFYa" show="false"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SSTLGTAUTORIZACIONTABLET&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;VW_SSTLGTAUTORIZACIONTABLET&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `SSTLGTAUTORIZACIONTABLET`.`HEADERID`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`HEADERID_OLD`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`OFFSETY`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`OFFSETX`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`COD_SUPERVISOR`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`MOTIVO`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`VALOR`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`ORIGEN`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`HORA`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`TIEMPO_RESPUESTA`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`ESTADOHEADERID`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`ETL_TIMESTAMP`&#xA; FROM `SSTLGTAUTORIZACIONTABLET`&#xD;&#xA;WHERE&#xD;&#xA; `SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` >= '&quot;+context.V_FechaInicio+&quot;' AND&#xD;&#xA;`SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` &lt;= '&quot;+context.V_FechaFin+&quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;*&#xA; FROM `VW_SSTLGTAUTORIZACIONTABLET`&#xD;&#xA;WHERE&#xD;&#xA;`VW_SSTLGTAUTORIZACIONTABLET`.`ESTADOHEADERID` = 1 AND &#xD;&#xA;`VW_SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` >= '&quot;+context.V_FechaInicio+&quot;' AND&#xD;&#xA;`VW_SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` &lt;= '&quot;+context.V_FechaFin+&quot;'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
@@ -274,13 +274,21 @@
       <elementValue elementRef="TRIM" value="false" id="23"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TIMESTAMP" id="24"/>
       <elementValue elementRef="TRIM" value="false" id="25"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="HORA_AU" id="26"/>
+      <elementValue elementRef="TRIM" value="false" id="27"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="MIM_AU" id="28"/>
+      <elementValue elementRef="TRIM" value="false" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SEG_AU" id="30"/>
+      <elementValue elementRef="TRIM" value="false" id="31"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="LOCAL" id="32"/>
+      <elementValue elementRef="TRIM" value="false" id="33"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="CNX_SINGLE_STORE_SMXTLOG"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_1">
       <column comment="" key="false" length="30" name="HEADERID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="HEADERID_OLD" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="5" name="OFFSETX" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="COD_SUPERVISOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="6" name="MOTIVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -290,7 +298,11 @@
       <column comment="" key="false" length="6" name="TIEMPO_RESPUESTA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="ESTADOHEADERID" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd hh:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATETIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="HORA_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="MIM_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="SEG_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="LOCAL" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="400">
@@ -327,7 +339,7 @@
     <metadata connector="FLOW" name="tFileOutputDelimited_1">
       <column comment="" key="false" length="30" name="HEADERID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="HEADERID_OLD" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="5" name="OFFSETX" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="COD_SUPERVISOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="6" name="MOTIVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -337,7 +349,11 @@
       <column comment="" key="false" length="6" name="TIEMPO_RESPUESTA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="ESTADOHEADERID" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd hh:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATETIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="HORA_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="MIM_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="SEG_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="LOCAL" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
       <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
@@ -493,7 +509,7 @@
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
     </metadata>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="200" posY="520">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="200" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3" show="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="String TName = &quot;SSTLGTLLAMADOASISTENTE&quot;;&#xA;String T_DBname = &quot;smxtlog&quot;;&#xA;String n= &quot;2&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;Bi.println(&quot;Inicia Carga: &quot;+TName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST+&quot;.SP_&quot;+TName+&quot;_DSA&quot;+&quot;`();&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -535,7 +551,7 @@
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
     </metadata>
   </node>
-  <node componentName="tMysqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="440" posY="520">
+  <node componentName="tMysqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="440" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_2" show="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="MYSQL_8" show="false"/>
@@ -552,7 +568,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID_OLD`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`OFFSETX`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`NUMEROTRANSA`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDGRUPOASIS`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDASISTENTE`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`STATUSFINAL`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`TIPOATENCION`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ESTADOHEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ETL_TIMESTAMP`&#xA; FROM `SSTLGTLLAMADOASISTENTE`&#xD;&#xA;WHERE &#xD;&#xA;`SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`>= '&quot; + context.V_FechaInicio + &quot;' AND `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`&lt;= '&quot; + context.V_FechaFin + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID_OLD`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`OFFSETX`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`NUMEROTRANSA`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDGRUPOASIS`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDASISTENTE`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`STATUSFINAL`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`TIPOATENCION`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ESTADOHEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ETL_TIMESTAMP`&#xA; FROM `SSTLGTLLAMADOASISTENTE`&#xD;&#xA;WHERE &#xD;&#xA;`SSTLGTLLAMADOASISTENTE`.`ESTADOHEADERID`=1&#xD;&#xA;`SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`>= '&quot; + context.V_FechaInicio + &quot;' AND `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`&lt;= '&quot; + context.V_FechaFin + &quot;'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
@@ -602,7 +618,7 @@
       <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd hh:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="520">
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_2" show="false"/>
     <elementParameter field="CHECK" name="USESTREAM" value="false"/>
     <elementParameter field="TEXT" name="STREAMNAME" value="outputStream" show="false"/>
@@ -650,7 +666,7 @@
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
     </metadata>
   </node>
-  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="520">
+  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_2" show="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
@@ -671,7 +687,7 @@
     <elementParameter field="TEXT" name="LABEL" value="CARGA_BKT"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="520">
+  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_2" show="false"/>
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY" show="false"/>
@@ -725,7 +741,7 @@
       <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd hh:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1160" posY="520">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1160" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:yxdt+W4Yq5thqS82aIO7FUYFu3j5ELfF03xbl9zx" show="false"/>
@@ -751,593 +767,13 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_2"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1320" posY="520">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1320" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_4" show="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;Fin Carga: &quot;+((String)globalMap.get(&quot;V_TablaName2&quot;)));&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="IMP_FIN_CARGA"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="TEMVAC" name="tJava_4">
-      <column comment="" defaultValue="0" key="false" length="2" name="VACUSU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="7" name="VACTOT" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACLUG" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDES" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACSLT" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDSL" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="3" name="VACOCU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="40" name="VACDOC" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACFOR" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACCND" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
-      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
-      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
-    </metadata>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="200" posY="680">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String TName = &quot;SSTLGTENCUESTATABLET&quot;;&#xA;String T_DBname = &quot;smxtlog&quot;;&#xA;String n= &quot;3&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;Bi.println(&quot;Inicia Carga: &quot;+TName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST+&quot;.SP_&quot;+TName+&quot;_DSA&quot;+&quot;`();&quot;);"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="LABEL" value="SSTLGTENCUESTATABLET&quot;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="TEMVAC" name="tJava_5">
-      <column comment="" defaultValue="0" key="false" length="2" name="VACUSU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="7" name="VACTOT" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACLUG" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDES" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACSLT" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDSL" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="3" name="VACOCU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="40" name="VACDOC" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACFOR" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACCND" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
-      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
-      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
-    </metadata>
-  </node>
-  <node componentName="tMysqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="440" posY="680">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_3" show="false"/>
-    <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="MYSQL_8" show="false"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
-    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;" show="false"/>
-    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="TYPE" value="MySQL" show="false"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:qXW6aAJfQEhLq9Xq8onPJF1vRd7Qg2bIKLBgmykk" show="false"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SSTLGTENCUESTATABLET&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;*&#xA; FROM `SSTLGTENCUESTATABLET`&#xD;&#xA;WHERE &#xD;&#xA;`SSTLGTENCUESTATABLET`.`FECHATRANSACCIOND`>= '&quot; + context.V_FechaInicio + &quot;' &#xD;&#xA;AND `SSTLGTENCUESTATABLET`.`FECHATRANSACCIOND`&lt;= '&quot; + context.V_FechaFin + &quot;'&#xD;&#xA;AND `SSTLGTENCUESTATABLET`.`ESTADOHEADERID` =1&#xD;&#xA;&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="mysql_id" show="false"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;noDatetimeStringSync=true&quot;" show="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="ENABLE_STREAM" value="false"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="HEADERID" id="0"/>
-      <elementValue elementRef="TRIM" value="false" id="1"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="HEADERID_OLD" id="2"/>
-      <elementValue elementRef="TRIM" value="false" id="3"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="OFFSETY" id="4"/>
-      <elementValue elementRef="TRIM" value="false" id="5"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="OFFSETX" id="6"/>
-      <elementValue elementRef="TRIM" value="false" id="7"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD_PREGUNTA" id="8"/>
-      <elementValue elementRef="TRIM" value="false" id="9"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD_RESPUESTA" id="10"/>
-      <elementValue elementRef="TRIM" value="false" id="11"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADOHEADERID" id="12"/>
-      <elementValue elementRef="TRIM" value="false" id="13"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FECHATRANSACCIOND" id="14"/>
-      <elementValue elementRef="TRIM" value="false" id="15"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TIMESTAMP" id="16"/>
-      <elementValue elementRef="TRIM" value="false" id="17"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="LABEL" value="CNX_SINGLE_STORE_SMXTLOG"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_3">
-      <column comment="" key="false" length="-1" name="HEADERID" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="HEADERID_OLD" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETY" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETX" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_PREGUNTA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_RESPUESTA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ESTADOHEADERID" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="680">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_3" show="false"/>
-    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
-    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream" show="false"/>
-    <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV3&quot;))"/>
-    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;" show="false"/>
-    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
-    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="APPEND" value="false"/>
-    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
-    <elementParameter field="CHECK" name="COMPRESS" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;" show="false"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;" show="false"/>
-    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
-    <elementParameter field="CHECK" name="CREATE" value="true"/>
-    <elementParameter field="CHECK" name="SPLIT" value="true"/>
-    <elementParameter field="TEXT" name="SPLIT_EVERY" value="600000"/>
-    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
-    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1" show="false"/>
-    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
-    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="true"/>
-    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90" show="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="TMP_CARGA_CSV"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tFileOutputDelimited_3">
-      <column comment="" key="false" length="-1" name="HEADERID" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="HEADERID_OLD" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETY" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETX" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_PREGUNTA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_RESPUESTA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ESTADOHEADERID" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
-      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
-      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
-    </metadata>
-  </node>
-  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="680">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_3" show="false"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT" show="false"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:13nfikBLIE1o2c6kEZIlVbhWbUXsjH3B6Ivbk7la" show="false"/>
-    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="TEXT" name="GS_PROJECT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="BUCKET" value="context.VG_BucketName"/>
-    <elementParameter field="DIRECTORY" name="LOCALDIR" value="((String)globalMap.get(&quot;RUTA_DIR3&quot;))"/>
-    <elementParameter field="TEXT" name="REMOTEDIR" value="((String)globalMap.get(&quot;GSTOREDIR3&quot;))"/>
-    <elementParameter field="CHECK" name="USE_FILES_LIST" value="false"/>
-    <elementParameter field="TABLE" name="FILES" show="false"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false" show="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" value="&quot;https://storage.googleapis.com&quot;" show="false"/>
-    <elementParameter field="TEXT" name="PART_SIZE" value="50"/>
-    <elementParameter field="TEXT" name="LABEL" value="CARGA_BKT"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-  </node>
-  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="680">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_3" show="false"/>
-    <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY" show="false"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_7XW2wNhREe-LcvCylnTX8A - metadata" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:dgUyuiprYeyBAptar5VQt/pkXCw+SbnFEW/G/uGY" show="false"/>
-    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
-    <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:5KXryuWwDQ1ovt4c0KO3L2EEWa8MdYSX9g8aQPC/" show="false"/>
-    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
-    <elementParameter field="TEXT" name="DATASET" value="context.VG_DST"/>
-    <elementParameter field="TEXT" name="TABLE" value="((String)globalMap.get(&quot;V_TablaName3&quot;))"/>
-    <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="EMPTY"/>
-    <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="GS_SERVICE_ACCOUNT" show="false"/>
-    <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:zyYUGBtjg3oBzw7M0zynYcTguh25ALebfg45LVTu" show="false"/>
-    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="FILE" name="GS_LOCAL_FILE" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="BUCKET_NAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="((String)globalMap.get(&quot;GSTORECSV3&quot;))"/>
-    <elementParameter field="TEXT" name="GS_FILE_HEADER" value="1"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" value="&quot;https://storage.googleapis.com&quot;" show="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
-    <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
-    <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="true"/>
-    <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" value="null"/>
-    <elementParameter field="CHECK" name="DROP" value="true"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
-    <elementParameter field="TEXT" name="LABEL" value="CARGA_TEMPORAL"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_3">
-      <column comment="" key="false" length="-1" name="HEADERID" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="HEADERID_OLD" nullable="false" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETY" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETX" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_PREGUNTA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="COD_RESPUESTA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ESTADOHEADERID" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="200" posY="840">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_6" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String TName = &quot;SSTLGTCUPONTAXI&quot;;&#xA;String T_DBname = &quot;smxtlog&quot;;&#xA;String n= &quot;4&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;Bi.println(&quot;Inicia Carga: &quot;+TName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST+&quot;.SP_&quot;+TName+&quot;_DSA&quot;+&quot;`();&quot;);"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="LABEL" value="SSTLGTCUPONTAXI"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="TEMVAC" name="tJava_6">
-      <column comment="" defaultValue="0" key="false" length="2" name="VACUSU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="7" name="VACTOT" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACLUG" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDES" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACSLT" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDSL" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="3" name="VACOCU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="40" name="VACDOC" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACFOR" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACCND" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
-      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
-      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
-    </metadata>
-  </node>
-  <node componentName="tMysqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="440" posY="840">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_4" show="false"/>
-    <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="MYSQL_8" show="false"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_1"/>
-    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;" show="false"/>
-    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="TYPE" value="MySQL" show="false"/>
-    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:bdrdbG63tqwlUOlih5HzuYFTJ4mONm8/0K3zCBWi" show="false"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SSTLGTCUPONTAXI&quot;"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
-    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
-    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT *&#xA; FROM `SSTLGTCUPONTAXI`&#xD;&#xA;WHERE &#xD;&#xA;`SSTLGTCUPONTAXI`.`FECHATRANSACCIOND`>= '&quot; + context.V_FechaInicio + &quot;' AND `SSTLGTCUPONTAXI`.`FECHATRANSACCIOND`&lt;= '&quot; + context.V_FechaFin + &quot;'&#xD;&#xA; AND `SSTLGTCUPONTAXI`.`ESTADOHEADERID` =1&#xD;&#xA;&quot;"/>
-    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
-    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
-    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
-    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="mysql_id" show="false"/>
-    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;noDatetimeStringSync=true&quot;" show="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CHECK" name="ENABLE_STREAM" value="false"/>
-    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
-    <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="HEADERID" id="0"/>
-      <elementValue elementRef="TRIM" value="false" id="1"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="HEADERID_OLD" id="2"/>
-      <elementValue elementRef="TRIM" value="false" id="3"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="OFFSETX" id="4"/>
-      <elementValue elementRef="TRIM" value="false" id="5"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="KM" id="6"/>
-      <elementValue elementRef="TRIM" value="false" id="7"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALORKM" id="8"/>
-      <elementValue elementRef="TRIM" value="false" id="9"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="MONTO" id="10"/>
-      <elementValue elementRef="TRIM" value="false" id="11"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ESTADOHEADERID" id="12"/>
-      <elementValue elementRef="TRIM" value="false" id="13"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="FECHATRANSACCIOND" id="14"/>
-      <elementValue elementRef="TRIM" value="false" id="15"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TIMESTAMP" id="16"/>
-      <elementValue elementRef="TRIM" value="false" id="17"/>
-    </elementParameter>
-    <elementParameter field="TEXT" name="LABEL" value="CNX_SINGLE_STORE_SMXTLOG"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tDBInput_4">
-      <column comment="" key="false" length="-1" name="HEADERID" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="HEADERID_OLD" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETX" nullable="false" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="KM" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALORKM" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MONTO" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ESTADOHEADERID" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="840">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_4" show="false"/>
-    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
-    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream" show="false"/>
-    <elementParameter field="FILE" name="FILENAME" value="((String)globalMap.get(&quot;RUTACSV4&quot;))"/>
-    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;" show="false"/>
-    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
-    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
-    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="APPEND" value="false"/>
-    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
-    <elementParameter field="CHECK" name="COMPRESS" value="false" show="false"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;" show="false"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;" show="false"/>
-    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
-    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
-    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
-    <elementParameter field="CHECK" name="CREATE" value="true"/>
-    <elementParameter field="CHECK" name="SPLIT" value="true"/>
-    <elementParameter field="TEXT" name="SPLIT_EVERY" value="600000"/>
-    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
-    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1" show="false"/>
-    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
-    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="true"/>
-    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
-    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90" show="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="TMP_CARGA_CSV"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tFileOutputDelimited_4">
-      <column comment="" key="false" length="-1" name="HEADERID" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="HEADERID_OLD" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETX" nullable="false" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="KM" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALORKM" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MONTO" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ESTADOHEADERID" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
-      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
-      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
-    </metadata>
-  </node>
-  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="840" posY="840">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_4" show="false"/>
-    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="true"/>
-    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT" show="false"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:OrLO3mYigQlJ4gvIrbIMUkTakrWxa86P1MNi5n/V" show="false"/>
-    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="TEXT" name="GS_PROJECT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="BUCKET" value="context.VG_BucketName"/>
-    <elementParameter field="DIRECTORY" name="LOCALDIR" value="((String)globalMap.get(&quot;RUTA_DIR4&quot;))"/>
-    <elementParameter field="TEXT" name="REMOTEDIR" value="((String)globalMap.get(&quot;GSTOREDIR4&quot;))"/>
-    <elementParameter field="CHECK" name="USE_FILES_LIST" value="false"/>
-    <elementParameter field="TABLE" name="FILES" show="false"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false" show="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" value="&quot;https://storage.googleapis.com&quot;" show="false"/>
-    <elementParameter field="TEXT" name="PART_SIZE" value="50"/>
-    <elementParameter field="TEXT" name="LABEL" value="CARGA_BKT"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-  </node>
-  <node componentName="tBigQueryBulkExec" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1000" posY="840">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_4" show="false"/>
-    <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY" show="false"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_FemMgNhSEe-LcvCylnTX8A - metadata" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:G+nm7dr4TZ7Q9mKBxCjnBHDBI5BU2HiAzmktUfZZ" show="false"/>
-    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
-    <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:QvnvrM088w98JO+lZCMzN8biEFeXFpe25PzKY8de" show="false"/>
-    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
-    <elementParameter field="TEXT" name="DATASET" value="context.VG_DST"/>
-    <elementParameter field="TEXT" name="TABLE" value="((String)globalMap.get(&quot;V_TablaName4&quot;))"/>
-    <elementParameter field="CHECK" name="CREATE_TABLE_IF_NOT_EXIST" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="ACTION_ON_DATA" value="EMPTY"/>
-    <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="GS_SERVICE_ACCOUNT" show="false"/>
-    <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:YJcZ8p5ZB79DNNhVXaKeaqjKPr9dDsOp9UHDkcH5" show="false"/>
-    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="FILE" name="GS_LOCAL_FILE" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="BUCKET_NAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="TEXT" name="GS_FILE" value="((String)globalMap.get(&quot;GSTORECSV4&quot;))"/>
-    <elementParameter field="TEXT" name="GS_FILE_HEADER" value="1"/>
-    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" value="&quot;https://storage.googleapis.com&quot;" show="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
-    <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
-    <elementParameter field="CHECK" name="SET_FIELD_DELIMITER" value="true"/>
-    <elementParameter field="TEXT" name="FIELD_DELIMITER" value="&quot;|&quot;"/>
-    <elementParameter field="CHECK" name="USE_CUSTOM_NULL_MARKER" value="true"/>
-    <elementParameter field="TEXT" name="CUSTOM_NULL_MARKER" value="null"/>
-    <elementParameter field="CHECK" name="DROP" value="true"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;UTF-8&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
-    <elementParameter field="TEXT" name="LABEL" value="CARGA_TEMPORAL"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="metadata" name="tBigQueryBulkExec_4">
-      <column comment="" key="false" length="-1" name="HEADERID" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="HEADERID_OLD" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="OFFSETX" nullable="false" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="KM" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="VALORKM" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="MONTO" nullable="true" pattern="" precision="-1" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="-1" name="ESTADOHEADERID" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="-1" sourceType="DATE" type="id_Date" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
-    </metadata>
-  </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1160" posY="680">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_3" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:iS5hneMMZqlJhTBNka3YQf0BlK3roow4JMJ1H9wb" show="false"/>
-    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
-    <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:gfp98bNN4DsMSc4iSrJVVbWcVbVIC7mwwGZ+aTsJ" show="false"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
-    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
-    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;CALL `lafavorita-182519.BI_TMP.SP_SSTLGTENCUESTATABLET_DSA`();&quot;"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
-    <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;" show="false"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;" show="false"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;" show="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="AUTO" show="false"/>
-    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="CARGA_DSA"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tBigQuerySQLRow_3"/>
-  </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1160" posY="840">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_4" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:4hog/w4Nfe0VKmygTWZfBEka4OUEocjt6fSN06rq" show="false"/>
-    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
-    <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:NENbvEAUPTPIIBY9noFz14l6PE3DAomyhgpC6ai5" show="false"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
-    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
-    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;CALL `lafavorita-182519.BI_TMP.SP_SSTLGTCUPONTAXI_DSA`();&quot;"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
-    <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/admalteryx/workspace/token.properties&quot;" show="false"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;" show="false"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;" show="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
-    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="AUTO" show="false"/>
-    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
-    <elementParameter field="TEXT" name="LABEL" value="CARGA_DSA"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tBigQuerySQLRow_4"/>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1320" posY="680">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_7" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;Fin Carga: &quot;+((String)globalMap.get(&quot;V_TablaName3&quot;)));&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="LABEL" value="IMP_FIN_CARGA"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="TEMVAC" name="tJava_7">
-      <column comment="" defaultValue="0" key="false" length="2" name="VACUSU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="7" name="VACTOT" nullable="false" pattern="" precision="2" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACLUG" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDES" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="3" name="VACSLT" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="30" name="VACDSL" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="0" key="false" length="3" name="VACOCU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="40" name="VACDOC" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACFOR" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <column comment="" defaultValue="' '" key="false" length="1" name="VACCND" nullable="false" pattern="" precision="0" sourceType="CHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
-      </column>
-      <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
-      <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
-      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
-    </metadata>
-  </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1320" posY="840">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_8" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;Fin Carga: &quot;+((String)globalMap.get(&quot;V_TablaName4&quot;)));&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
-    <elementParameter field="TEXT" name="LABEL" value="IMP_FIN_CARGA"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" label="TEMVAC" name="tJava_8">
       <column comment="" defaultValue="0" key="false" length="2" name="VACUSU" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
@@ -1422,44 +858,6 @@
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tJava_4">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk6" show="false"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" source="tJava_5" target="tDBInput_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12" show="false"/>
-  </connection>
-  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tDBInput_3" offsetLabelX="0" offsetLabelY="0" source="tDBInput_3" target="tFileOutputDelimited_3">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3" show="false"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_3" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_3" target="tGSPut_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk13" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_3" offsetLabelX="0" offsetLabelY="0" source="tGSPut_3" target="tBigQueryBulkExec_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryBulkExec_3" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_3" target="tBigQuerySQLRow_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk8" show="false"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_6" offsetLabelX="0" offsetLabelY="0" source="tJava_6" target="tDBInput_4">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk14" show="false"/>
-  </connection>
-  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tDBInput_4" target="tFileOutputDelimited_4">
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_4" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_4" target="tGSPut_4">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk15" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tGSPut_4" offsetLabelX="0" offsetLabelY="0" source="tGSPut_4" target="tBigQueryBulkExec_4">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk9" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryBulkExec_4" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_4" target="tBigQuerySQLRow_4">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk10" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_3" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_3" target="tJava_7">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk11" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_4" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_4" target="tJava_8">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk12" show="false"/>
   </connection>
   <note opaque="false" posX="120" posY="240" sizeHeight="81" sizeWidth="921" text="TABLAS TRANSACCIONALES "/>
   <subjob>
@@ -1551,66 +949,6 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_5" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_6" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_7" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_8" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
