@@ -232,12 +232,12 @@
     <elementParameter field="TEXT" name="TYPE" value="MySQL" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
     <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:HiTo7g3xUat9FYf1xG7KOPNoITxHAIUM+zVphFYa" show="false"/>
-    <elementParameter field="DBTABLE" name="TABLE" value="&quot;SSTLGTAUTORIZACIONTABLET&quot;"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;VW_SSTLGTAUTORIZACIONTABLET&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `SSTLGTAUTORIZACIONTABLET`.`HEADERID`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`HEADERID_OLD`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`OFFSETY`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`OFFSETX`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`COD_SUPERVISOR`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`MOTIVO`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`VALOR`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`ORIGEN`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`HORA`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`TIEMPO_RESPUESTA`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`ESTADOHEADERID`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND`, &#xA;  `SSTLGTAUTORIZACIONTABLET`.`ETL_TIMESTAMP`&#xA; FROM `SSTLGTAUTORIZACIONTABLET`&#xD;&#xA;WHERE&#xD;&#xA; `SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` >= '&quot;+context.V_FechaInicio+&quot;' AND&#xD;&#xA;`SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` &lt;= '&quot;+context.V_FechaFin+&quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;*&#xA; FROM `VW_SSTLGTAUTORIZACIONTABLET`&#xD;&#xA;WHERE&#xD;&#xA;`VW_SSTLGTAUTORIZACIONTABLET`.`ESTADOHEADERID` = 1 AND &#xD;&#xA;`VW_SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` >= '&quot;+context.V_FechaInicio+&quot;' AND&#xD;&#xA;`VW_SSTLGTAUTORIZACIONTABLET`.`FECHATRANSACCIOND` &lt;= '&quot;+context.V_FechaFin+&quot;'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
@@ -274,13 +274,21 @@
       <elementValue elementRef="TRIM" value="false" id="23"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TIMESTAMP" id="24"/>
       <elementValue elementRef="TRIM" value="false" id="25"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="HORA_AU" id="26"/>
+      <elementValue elementRef="TRIM" value="false" id="27"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="MIM_AU" id="28"/>
+      <elementValue elementRef="TRIM" value="false" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="SEG_AU" id="30"/>
+      <elementValue elementRef="TRIM" value="false" id="31"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="LOCAL" id="32"/>
+      <elementValue elementRef="TRIM" value="false" id="33"/>
     </elementParameter>
     <elementParameter field="TEXT" name="LABEL" value="CNX_SINGLE_STORE_SMXTLOG"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_1">
       <column comment="" key="false" length="30" name="HEADERID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="HEADERID_OLD" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="5" name="OFFSETX" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="COD_SUPERVISOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="6" name="MOTIVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -290,7 +298,11 @@
       <column comment="" key="false" length="6" name="TIEMPO_RESPUESTA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="ESTADOHEADERID" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd hh:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATETIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="HORA_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="MIM_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="SEG_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="LOCAL" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="400">
@@ -327,7 +339,7 @@
     <metadata connector="FLOW" name="tFileOutputDelimited_1">
       <column comment="" key="false" length="30" name="HEADERID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="30" name="HEADERID_OLD" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="OFFSETY" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="5" name="OFFSETX" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="COD_SUPERVISOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="6" name="MOTIVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
@@ -337,7 +349,11 @@
       <column comment="" key="false" length="6" name="TIEMPO_RESPUESTA" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="ESTADOHEADERID" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHATRANSACCIOND" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd hh:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATETIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="HORA_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="MIM_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="SEG_AU" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="LOCAL" nullable="true" pattern="" precision="0" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
       <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="NO1DTA"/>
@@ -552,7 +568,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID_OLD`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`OFFSETX`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`NUMEROTRANSA`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDGRUPOASIS`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDASISTENTE`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`STATUSFINAL`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`TIPOATENCION`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ESTADOHEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ETL_TIMESTAMP`&#xA; FROM `SSTLGTLLAMADOASISTENTE`&#xD;&#xA;WHERE &#xD;&#xA;`SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`>= '&quot; + context.V_FechaInicio + &quot;' AND `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`&lt;= '&quot; + context.V_FechaFin + &quot;'&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`HEADERID_OLD`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`OFFSETX`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`NUMEROTRANSA`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDGRUPOASIS`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`IDASISTENTE`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`STATUSFINAL`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`TIPOATENCION`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ESTADOHEADERID`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`, &#xA;  `SSTLGTLLAMADOASISTENTE`.`ETL_TIMESTAMP`&#xA; FROM `SSTLGTLLAMADOASISTENTE`&#xD;&#xA;WHERE &#xD;&#xA;`SSTLGTLLAMADOASISTENTE`.`ESTADOHEADERID`=1&#xD;&#xA;`SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`>= '&quot; + context.V_FechaInicio + &quot;' AND `SSTLGTLLAMADOASISTENTE`.`FECHATRANSACCIOND`&lt;= '&quot; + context.V_FechaFin + &quot;'&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
