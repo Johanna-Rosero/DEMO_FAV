@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="DEV" jobType="Standard">
   <context confirmationNeeded="false" hide="false" name="DEV">
-    <contextParameter comment="" name="V_FechaFin" prompt="V_FechaFin?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-01-31&quot;" internalId="_o4GjoK7EEe-zp96yAv8H2g"/>
-    <contextParameter comment="" name="V_FechaInicio" prompt="V_FechaInicio?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-01-01&quot;" internalId="_o4Gjoa7EEe-zp96yAv8H2g"/>
+    <contextParameter comment="" name="V_FechaFin" prompt="V_FechaFin?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-02-29&quot;" internalId="_o4GjoK7EEe-zp96yAv8H2g"/>
+    <contextParameter comment="" name="V_FechaInicio" prompt="V_FechaInicio?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-02-01&quot;" internalId="_o4Gjoa7EEe-zp96yAv8H2g"/>
     <contextParameter comment="" name="V_IDUOP" prompt="V_IDUOP?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;999&quot;" internalId="_o4Gjoq7EEe-zp96yAv8H2g"/>
     <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;CRM&quot;" internalId="_o4Gjo67EEe-zp96yAv8H2g"/>
     <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;JOB_CARGA_CRM_DSA/singlestore&quot;" internalId="_o4GjpK7EEe-zp96yAv8H2g"/>
@@ -5091,29 +5091,29 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_3" target="tJava_4">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;A&quot;))"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_3" target="tJava_5">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_3" target="tJava_5">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;R&quot;))"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_3" target="tJava_4">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;A&quot;))"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_4" offsetLabelX="0" offsetLabelY="0" source="tJava_4" target="tRunJob_1">
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk32" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_5" target="tRunJob_4">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If13" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_5" target="tRunJob_2">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_5" target="tRunJob_2">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="!(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If12" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_5" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_5" target="tRunJob_4">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If13" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_27" offsetLabelX="0" offsetLabelY="0" source="tJava_27" target="tBigQueryInput_4">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk45" show="false"/>
@@ -5212,15 +5212,15 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_10" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_10" target="tJava_40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk55" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_8" target="tJava_9">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;A&quot;))"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If3" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_8" target="tJava_10">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_8" target="tJava_10">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;R&quot;))"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If4" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_8" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_8" target="tJava_9">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;A&quot;))"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If3" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_17" offsetLabelX="0" offsetLabelY="0" source="tJava_17" target="tGSDelete_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
@@ -5264,15 +5264,15 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk11" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_10" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_10" target="tJava_16">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If7" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_10" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_10" target="tJava_12">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_10" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_10" target="tJava_12">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="!(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If6" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_10" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_10" target="tJava_16">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If7" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_11" offsetLabelX="0" offsetLabelY="0" source="tJava_11" target="tDBInput_3">
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
@@ -5332,15 +5332,15 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk34" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_21" target="tJava_18">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;A&quot;))"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If9" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_21" target="tJava_22">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_21" target="tJava_22">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;R&quot;))"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If8" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_21" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_21" target="tJava_18">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_ESTADO&quot;).equals(&quot;A&quot;))"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If9" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tJava_18" offsetLabelX="0" offsetLabelY="0" source="tJava_18" target="tJava_28">
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
@@ -5395,15 +5395,15 @@
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk25" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_22" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_22" target="tJava_23">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If11" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_22" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_22" target="tJava_19">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_22" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_22" target="tJava_19">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="!(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If10" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_22" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_22" target="tJava_23">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="(globalMap.get(&quot;V_G_IDUOP&quot;).equals(&quot;999&quot;))"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If11" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_28" offsetLabelX="0" offsetLabelY="0" source="tJava_28" target="tDBInput_10">
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
