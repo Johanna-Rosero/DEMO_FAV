@@ -132,7 +132,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_133_BSC_GEN_COMERV2_SMAX`(&quot;+context.V_ID_FECHA+&quot;, &quot;+context.V_ID_FECHA_5Y+&quot; , &quot;+context.V_ID_FECHA_5YTD+&quot;, &quot;+context.V_ID_FECHA_FIN+&quot;);&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_133_BSC_GEN_COMERV2_SMAX`(&quot;+context.V_ID_FECHA+&quot;, &quot;+context.V_ID_FECHA_5Y+&quot; , &quot;+context.V_ID_FECHA_5YTD+&quot;, &quot;+globalMap.get(&quot;V_ID_FECHA_FIN&quot;)+&quot;);&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
@@ -158,7 +158,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;IF (V_TIPO_CARGA==0) THEN      &#xD;&#xA;    &quot;+context.V_ID_FECHA_FIN+&quot; = `BI_DSA.DAYS_FECHA`(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))-1);&#xD;&#xA;ELSE &#xD;&#xA;    &quot;+context.V_ID_FECHA_FIN +&quot;= `BI_DSA.DAYS_FECHA`(LAST_DAY('&quot;+context.V_FECHA+&quot;'));&#xD;&#xA;END IF;&#xD;&#xA;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;DECLARE V_ID_FECHA_FIN INT64:&#xD;&#xA;&#xD;&#xA;IF (V_TIPO_CARGA==0) THEN      &#xD;&#xA;    SET V_ID_FECHA_FIN = `BI_DSA.DAYS_FECHA`(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))-1);&#xD;&#xA;ELSE &#xD;&#xA;   SET V_ID_FECHA_FIN = `BI_DSA.DAYS_FECHA`(LAST_DAY('&quot;+context.V_FECHA+&quot;'));&#xD;&#xA;END IF;&#xD;&#xA;&#xD;&#xA;SELECT V_ID_FECHA_FIN;&#xD;&#xA;&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace/token.properties&quot;" show="false"/>
@@ -171,20 +171,23 @@
     <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
     <elementParameter field="TEXT" name="LABEL" value="FECHA FIN"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tBigQuerySQLRow_2"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_2">
+      <column comment="" key="false" length="-1" name="V_ID_FECHA_FIN" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+    </metadata>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="120">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;V_ID_FECHA_FIN: &quot; + (context.V_ID_FECHA_FIN));"/>
+  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="120">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;V_ID_FECHA_FIN&quot;, row1.V_ID_FECHA_FIN);&#xA;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJava_1"/>
+    <metadata connector="FLOW" name="tJavaRow_1"/>
   </node>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tJava_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tJavaRow_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tBigQuerySQLRow_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2" show="false"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_1" target="tBigQuerySQLRow_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
@@ -193,11 +196,6 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
-  </subjob>
-  <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
