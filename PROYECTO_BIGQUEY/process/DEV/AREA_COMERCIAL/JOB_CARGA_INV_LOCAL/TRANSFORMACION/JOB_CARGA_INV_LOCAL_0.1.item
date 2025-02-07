@@ -30,7 +30,7 @@
     <elementParameter field="TEXT" name="OOZIE_END_POINT" show="false" value=""/>
     <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" show="false" value="true"/>
     <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" show="false" value="true"/>
-    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="true"/>
     <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
     <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
     <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" show="false" value="false"/>
@@ -266,6 +266,49 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_2"/>
   </node>
+  <node componentName="tParallelize" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="840" posY="240">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_1"/>
+    <elementParameter field="CLOSED_LIST" name="WAIT_FOR" value="All"/>
+    <elementParameter field="TEXT" name="SLEEPTIME" value="100"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tFileDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1040" posY="200">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileDelete_1"/>
+    <elementParameter field="FILE" name="FILENAME" show="false" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_FACTS/DSA_FACT_VENTAS_SMAX/*.csv&quot;"/>
+    <elementParameter field="DIRECTORY" name="DIRECTORY" show="false" value="&quot;C:/Users/bisolutions/Downloads/Talend-Studio-20230428_0423-V8.0.1/delete_folder&quot;"/>
+    <elementParameter field="TEXT" name="PATH" value="context.VG_PathLocal +context.VG_Area +&quot;/&quot;+ context.VG_JobName"/>
+    <elementParameter field="CHECK" name="FAILON" value="false"/>
+    <elementParameter field="CHECK" name="FOLDER" show="false" value="true"/>
+    <elementParameter field="CHECK" name="FOLDER_FILE" value="true"/>
+    <elementParameter field="LABEL" name="NOTE" value="*Note &quot;CURRENT_STATUS&quot; including:&#10;&quot;File (or path) deleted.&quot;&#10;&quot;No file (or path) deleted.&quot;&#10;&quot;File (or path) does not exist or is invalid.&quot;"/>
+    <elementParameter field="TEXT" name="LABEL" value="ELIMINACION ARCHIVOS  LOCALES"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileDelete_1"/>
+  </node>
+  <node componentName="tGSDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="1040" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSDelete_1"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" show="false" value=""/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="context.VG_ServiceAccount"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" show="false" value="enc:system.encryption.key.v1:osxciU6H9QVxAk/7f20IXdd7s0zs0nLeEmgUxN02"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" show="false" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;"/>
+    <elementParameter field="TEXT" name="GS_PROJECT_ID" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="OBJECTS_PREFIX" show="false" value="&quot;&quot;"/>
+    <elementParameter field="TEXT" name="DELIMITER" show="false" value="&quot;&quot;"/>
+    <elementParameter field="CHECK" name="DEL_IN_LIST_BUCKETS" value="true"/>
+    <elementParameter field="TABLE" name="BUCKETS">
+      <elementValue elementRef="BUCKET_NAME" value="context.VG_BucketName"/>
+      <elementValue elementRef="OBJECT_PREFIX" value="context.VG_JobName"/>
+      <elementValue elementRef="OBJECT_DELIMITER" value="&quot;&quot;"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" show="false" value="&quot;https://storage.googleapis.com&quot;"/>
+    <elementParameter field="TEXT" name="LABEL" value="ELIMINACION ARCHIVOS CLOUD STORAGE"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tRunJob_2">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk1"/>
   </connection>
@@ -278,8 +321,17 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_4" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_4" target="tBigQuerySQLRow_5">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk5"/>
   </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_5" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_5" target="tParallelize_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk7"/>
+  </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tBigQuerySQLRow_2">
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="OnComponentOk2"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tParallelize_1" target="tFileDelete_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
+  </connection>
+  <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_1" target="tGSDelete_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="Parallelize"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tBigQuerySQLRow_1"/>
@@ -311,13 +363,28 @@
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
-<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_92de02e0-7e90-4581-9c2b-b3cf054fc9c2"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>HmAxS+ZPl4iAd+ALuN7ur2jGyr2XhkKOWas+pOKMLrIm8fPfNId1pYWqxhxSphlfJ+L4OwAtuxsn&#13;
-nA2ZfN+FSw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_4efd9090-f718-4ba3-9a6b-0badcd2a4c85"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>f7c/bW67ky5Ohdc7LIZ7P1EM/6bgm5nCHg0Y/cvAEZDror7uVzm/LRitvazeo/DZlV314rI3blm3&#13;
-SXaOCgUu3w==</DigestValue></Reference></SignedInfo><SignatureValue>aZSHLhE6eUv8Rfg5LtJzU5us0gXlSvhgnnAKBdRBpyDrn4FERS2e21v3t1PjfveKPykgiAP76ABM&#13;
-Y/p3YVcZw7Eof2Jb9EtW9sGLFHaYFBQeIgUEvLUnHH7JX4/6v/Syi2lb74Cr0TnRVp2IFnh6Rz6k&#13;
-G6+2ia8CFFKuKqT0OdSX4OFp8GR20+Rvk5hNsSgV/A+f9c1ZWjbarRQ9h5PEzUoDAZQ+xOgKkezX&#13;
-R5N6prg4Zqm/iIHZkjuyx8R/WSjqMgFpdVVl3ZLmiFhl6d6LDY2FsJFHtA5/CYW88SSFs/BnTfJ8&#13;
-koS0orLOaXg6NRGkA9uJpoyMwYdEHX9snKUzbQ==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tParallelize_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tFileDelete_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" show="false" value="tGSDelete_1"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" show="false" value="0;0;0"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="_83769902-9b9b-45a1-8b66-bc56839ae3cc"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>l0BFgyAm1EqYMgLd3c8cNV9xakL6UW7Pk78hKIaTTt+K0Ghsbrr4yxCUX98BY1sENXqjlrK/tbxA&#13;
+vKJ64JE/Vw==</DigestValue></Reference><Reference Type="http://www.w3.org/2000/09/xmldsig#SignatureProperties" URI="#_a393f6d5-8796-4d05-bdbb-6c010080e607"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><DigestValue>9bWRj4sPWtYPz4ehOPzgwsbHT5FxsQYr5seOPJ0H9jZ9px08N9b7nLcq9L8nP+ZwUh/SSWiJQrvs&#13;
+FDiZaXZyLQ==</DigestValue></Reference></SignedInfo><SignatureValue>EdQFgnQ5Sstb+CdtFaLNuWQrGkLGrboH3q9xgv21/vl9KYEsTW6S6BSLlZGLlE+0v1fceRnb4uJD&#13;
+RD/nuOnbCGmRbGKE9aZz/nHHmbRBlGUlzdKCuKPzcy5yvsWOAkjDSAZ29tR7MwsMRKAJELEQSLeH&#13;
+Rp94Su8YTEB0VVKw2/2kpuvApczRXwCHLFtfdJtTnK04/n4orVFLzZv8yTGoEtPKTTTqVaGLKRr8&#13;
+V1OgmLeLTgbqXEFiMp/vKEHYikPU8/op9DDxRaITzHDL8Cf3OkQPSlkGHpmIFlz3LHXkI5EpsAXR&#13;
+q3ze1yc1USxpIHWS4xHcbM6JQnRsCsByzJmS7A==</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=FR,ST=Paris,L=Paris,O=Talend Inc.,OU=R&amp;D,CN=Talend Code Signing certificate</X509SubjectName><X509Certificate>MIIFADCCAuigAwIBAgIIA2OsD6bRyj0wDQYJKoZIhvcNAQELBQAwgY0xCzAJBgNVBAYTAkZSMQ4w&#13;
 DAYDVQQIEwVQYXJpczEOMAwGA1UEBxMFUGFyaXMxFDASBgNVBAoTC1RhbGVuZCBJbmMuMQwwCgYD&#13;
 VQQLDANSJkQxFjAUBgNVBAMMDVRhbGVuZCBSJkQgQ0ExIjAgBgkqhkiG9w0BCQEWE3NlY3VyaXR5&#13;
 QHRhbGVuZC5jb20wHhcNMTkwNjAzMDgxODIwWhcNMjkwNjAzMDAwMDAwWjB7MSgwJgYDVQQDEx9U&#13;
@@ -339,4 +406,4 @@ hakvpzhOyLo91h8YAQrEZJdNuKA8IYmBrFZQZDCz0uywKSyFfzPyJhvxylCLG/iDPPfE0VWcrMJ/&#13
 WQJly/2XPg/NBCTF3pSKS0kCiA7PeaI3cWkMYYA3PMwYDvzqs1opBRglG7ikj0bQxSm3lcjMuuvW&#13;
 gBRksFKjP3K/nztsjSoYITOM9jR29ReIL3v0E8RbAFwA2RGq6Dxd0ixfbucMesy5Gnr8tfYy6rW+&#13;
 qSQqd3ah4+PSzBNVwIB4ytpdrG3SlhCI2i2Th8ek8Sjsaquh9qPAerWNd2+84HWOOGj1Xe1qc6vg&#13;
-qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_4efd9090-f718-4ba3-9a6b-0badcd2a4c85" Target="#_92de02e0-7e90-4581-9c2b-b3cf054fc9c2"><Timestamp>2024-10-22 17:02:34</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
+qqu6JoK9EXKDiwBqDVkueIa+MhamE1VDnhn2pPui</X509Certificate></X509Data></KeyInfo><Object><SignatureProperties><SignatureProperty Id="_a393f6d5-8796-4d05-bdbb-6c010080e607" Target="#_83769902-9b9b-45a1-8b66-bc56839ae3cc"><Timestamp>2024-10-29 17:21:57</Timestamp></SignatureProperty></SignatureProperties></Object></Signature></talendfile:ProcessType>
