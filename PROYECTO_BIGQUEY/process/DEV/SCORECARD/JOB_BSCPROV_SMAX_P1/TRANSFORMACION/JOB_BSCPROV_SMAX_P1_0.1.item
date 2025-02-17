@@ -134,7 +134,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="720" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;************************************** No se procesa ventas aborta la carga *********************&quot;);&#xA;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;************************************** Bandera_Aux es 0, no se ejecuta el JOB *********************&quot;);&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
@@ -295,11 +295,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJavaRow_1" target="tJava_2">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Bandera_Procesados == 0"/>
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Bandera_Aux == 0"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJavaRow_1" target="tRunJob_2">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Bandera_Procesados == 1"/>
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.Bandera_Aux == 1"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
   </connection>
   <subjob>
