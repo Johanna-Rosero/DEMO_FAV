@@ -6,6 +6,7 @@
     <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_jOb-AuMdEe-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_jOb-A-MdEe-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_CRI_BASE" prompt="V_ID_CRI_BASE?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_jOb-BOMdEe-5o4PbS6QPhg"/>
+    <contextParameter comment="" name="V_ID_CRITERIO" prompt="V_ID_CRITERIO?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="47" internalId="_TTacEOTbEe-Xhs1LgwbVCA"/>
   </context>
   <context confirmationNeeded="false" hide="false" name="PRO">
     <contextParameter comment="" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/PRO/&quot;" internalId="_jOb-BeMdEe-5o4PbS6QPhg"/>
@@ -13,6 +14,7 @@
     <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_jOb-B-MdEe-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_jOb-COMdEe-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_CRI_BASE" prompt="V_ID_CRI_BASE?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_jOb-CeMdEe-5o4PbS6QPhg"/>
+    <contextParameter comment="" name="V_ID_CRITERIO" prompt="V_ID_CRITERIO?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="47" internalId="_TTacEeTbEe-Xhs1LgwbVCA"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -112,18 +114,18 @@
     <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
   </parameters>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="240" posY="160">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="200" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:hI+LrsJL1Kdi/hab03uG1op+BwKKypUgczaisgqA" show="false"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:dhHBzVvOGgYbEo7+XNW8Ld6fDObvnPQfdH9Lrt2t" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:oIccwSKgrq7Mu5LkIr4hZ0yrCWVBYPCOASltKot8" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:dJtVjqNpf1dgUeES1jQQsIE3JtxX02lqNohLzL+U" show="false"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_133_BSC_CREC_VTA_V2_SMAX`(&quot;+context.V_ID_FECHA+&quot;, &quot;+context.V_ID_CRI_BASE+&quot;);&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_133_BSC_CREC_VTA_V2_SMAX`(&quot;context.V_ID_CRITERIO+&quot;,&quot;+context.V_ID_FECHA+&quot;, &quot;+context.V_ID_CRI_BASE+&quot;);&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
@@ -138,18 +140,18 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_1"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="480" posY="160">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="440" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:l0MLcavHs9syQbuY/5YyRj/UCbWWxboNxtlJREbq" show="false"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:yb1tfZQwzhShynIhiIIUDZtGujLco8ePOQHZXFlB" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:kf+uRpT7dEevcIvupbLxLVBQemV4jvXSZ06tK/o6" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:dIkgpEFmxjPdC5Ri9IYYQTPe2iLvSwc5wLiHcpX4" show="false"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_133_BSC_CREC_VTA_V2_P_SMAX`(&quot;+context.V_ID_FECHA+&quot;, &quot;+context.V_ID_CRI_BASE+&quot;);&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_133_BSC_CREC_VTA_V2_P_SMAX`( &quot;context.V_ID_CRITERIO+&quot; ,&quot;+context.V_ID_FECHA+&quot;, &quot;+context.V_ID_CRI_BASE+&quot;);&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
