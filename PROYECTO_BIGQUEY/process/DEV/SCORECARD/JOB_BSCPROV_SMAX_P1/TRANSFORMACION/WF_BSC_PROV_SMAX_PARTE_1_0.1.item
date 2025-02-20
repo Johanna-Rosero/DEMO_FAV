@@ -47,7 +47,7 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="80" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0" show="false"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" value="" show="false"/>
@@ -288,7 +288,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_1"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="360">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="40" posY="360">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:L3/RQWk1Liz8nowiH881OIOp6iL+bZuKb81LL20t" show="false"/>
@@ -314,7 +314,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_2"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="360">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="360">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3" show="false"/>
     <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;FIN JOB_BSCPROV_SMAX_P1&quot;);"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
@@ -322,14 +322,14 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_3"/>
   </node>
-  <node componentName="tParallelize" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="280" posY="600">
+  <node componentName="tParallelize" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="40" posY="600">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tParallelize_1" show="false"/>
     <elementParameter field="CLOSED_LIST" name="WAIT_FOR" value="All"/>
     <elementParameter field="TEXT" name="SLEEPTIME" value="100"/>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
-  <node componentName="tFileDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="520" posY="520">
+  <node componentName="tFileDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileDelete_1" show="false"/>
     <elementParameter field="FILE" name="FILENAME" value="&quot;C:/TALEND_FLUJOS/CAPTURA_DE_DATOS/ÁREA_COMERCIAL/DSA_FACTS/DSA_FACT_VENTAS_SMAX/*.csv&quot;" show="false"/>
     <elementParameter field="DIRECTORY" name="DIRECTORY" value="&quot;C:/Users/bisolutions/Downloads/Talend-Studio-20230428_0423-V8.0.1/delete_folder&quot;" show="false"/>
@@ -342,7 +342,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tFileDelete_1"/>
   </node>
-  <node componentName="tGSDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="560" posY="680">
+  <node componentName="tGSDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="280" posY="680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSDelete_1" show="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
@@ -446,6 +446,32 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_5"/>
   </node>
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="480" posY="360">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_6" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:NS42rMGU/xGz7Wr95C6zqQNhMWnbDMQf9rxZKxSL" show="false"/>
+    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
+    <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:baNWM+qf52LFwLa/ZYdBbThvd7Q/5Tu2YLDTa8nW" show="false"/>
+    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
+    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_DIM_FECHA_ULTIMA_SC`();&#xD;&#xA;&quot;"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
+    <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="AUTO" show="false"/>
+    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SP_DIM_FECHA_ULTIMA_SC"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tBigQuerySQLRow_6"/>
+  </node>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_1" target="tBigQueryInput_1">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.V_TIPO_CARGA == 1"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
@@ -508,14 +534,17 @@
   <connection connectorName="PARALLELIZE" label="Parallelize" lineStyle="13" metaname="tParallelize_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tParallelize_1" target="tGSDelete_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="Parallelize" show="false"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tJava_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk8" show="false"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tBigQuerySQLRow_6">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk13" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_4" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_4" target="tBigQuerySQLRow_5">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk11" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_5" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_5" target="tBigQuerySQLRow_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_6" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_6" target="tJava_3">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk14" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
@@ -584,6 +613,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_5" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_6" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>

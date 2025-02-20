@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="DEV" jobType="Standard">
   <context confirmationNeeded="false" hide="false" name="DEV">
-    <contextParameter comment="" name="V_FechaFin" prompt="V_FechaFin?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-02-29&quot;" internalId="_Hsu6QLzCEe-EFsjfjmo32A"/>
-    <contextParameter comment="" name="V_FechaInicio" prompt="V_FechaInicio?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-02-01&quot;" internalId="_Hsu6QbzCEe-EFsjfjmo32A"/>
+    <contextParameter comment="" name="V_FechaFin" prompt="V_FechaFin?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-01-31&quot;" internalId="_Hsu6QLzCEe-EFsjfjmo32A"/>
+    <contextParameter comment="" name="V_FechaInicio" prompt="V_FechaInicio?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2024-01-01&quot;" internalId="_Hsu6QbzCEe-EFsjfjmo32A"/>
     <contextParameter comment="" name="V_IDUOP" prompt="V_IDUOP?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;999&quot;" internalId="_Hsu6QrzCEe-EFsjfjmo32A"/>
     <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;CRM&quot;" internalId="_Hsu6Q7zCEe-EFsjfjmo32A"/>
     <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;JOB_CARGA_CRM_DSA/singlestore&quot;" internalId="_Hsu6RLzCEe-EFsjfjmo32A"/>
@@ -2133,6 +2133,36 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_8"/>
   </node>
+  <node componentName="tFileList" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="560" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileList_1" show="false"/>
+    <elementParameter field="DIRECTORY" name="DIRECTORY" value="((String)globalMap.get(&quot;RUTA_DIR7&quot;))"/>
+    <elementParameter field="CLOSED_LIST" name="LIST_MODE" value="FILES"/>
+    <elementParameter field="CHECK" name="INCLUDSUBDIR" value="false"/>
+    <elementParameter field="CLOSED_LIST" name="CASE_SENSITIVE" value="YES"/>
+    <elementParameter field="CHECK" name="ERROR" value="false"/>
+    <elementParameter field="CHECK" name="GLOBEXPRESSIONS" value="true"/>
+    <elementParameter field="TABLE" name="FILES">
+      <elementValue elementRef="FILEMASK" value="&quot;*.csv&quot;" id="0"/>
+    </elementParameter>
+    <elementParameter field="RADIO" name="ORDER_BY_NOTHING" value="true"/>
+    <elementParameter field="RADIO" name="ORDER_BY_FILENAME" value="false"/>
+    <elementParameter field="RADIO" name="ORDER_BY_FILESIZE" value="false"/>
+    <elementParameter field="RADIO" name="ORDER_BY_MODIFIEDDATE" value="false"/>
+    <elementParameter field="RADIO" name="ORDER_ACTION_ASC" value="true"/>
+    <elementParameter field="RADIO" name="ORDER_ACTION_DESC" value="false"/>
+    <elementParameter field="CHECK" name="IFEXCLUDE" value="false"/>
+    <elementParameter field="TEXT" name="EXCLUDEFILEMASK" value="&quot;*.txt&quot;" show="false"/>
+    <elementParameter field="CHECK" name="FORMAT_FILEPATH_TO_SLASH" value="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+  </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;No existen datos en la tabla RECURRENCIAS&quot;);&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="TABLA SIN DATOS"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_1"/>
+  </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tDBConnection_2">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
   </connection>
@@ -2182,8 +2212,8 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row13" show="false"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_12" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_12" target="tGSPut_12">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk56" show="false"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_12" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_12" target="tFileList_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk19" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row14" lineStyle="0" metaname="tDBInput_13" offsetLabelX="0" offsetLabelY="0" source="tDBInput_13" target="tFileOutputDelimited_13">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -2251,6 +2281,14 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQuerySQLRow_8" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_8" target="tJava_16">
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk25" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tFileList_1" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tFileList_1" target="tJava_1">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="((Integer)globalMap.get(&quot;tFileList_1_NB_FILE&quot;)) &lt;= 0"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tFileList_1" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tFileList_1" target="tGSPut_12">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="((Integer)globalMap.get(&quot;tFileList_1_NB_FILE&quot;)) > 0"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
   </connection>
   <note opaque="true" posX="120" posY="200" sizeHeight="81" sizeWidth="921" text="TABLAS TRANSACCIONALES "/>
   <subjob>
@@ -2442,6 +2480,17 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_8" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileList_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="CHECK" name="COLLAPSED" value="true" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
