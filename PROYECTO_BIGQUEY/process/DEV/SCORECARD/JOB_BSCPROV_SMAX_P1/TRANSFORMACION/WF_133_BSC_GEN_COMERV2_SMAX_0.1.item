@@ -8,7 +8,6 @@
     <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_anQ0cOJ7Ee-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_FECHA_5Y" prompt="V_ID_FECHA_5Y?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_anQ0ceJ7Ee-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_FECHA_5YTD" prompt="V_ID_FECHA_5YTD?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_CIlCkOJ8Ee-5o4PbS6QPhg"/>
-    <contextParameter comment="" name="V_ID_FECHA_FIN" prompt="V_ID_FECHA_FIN?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_CIlCkeJ8Ee-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_FECHA" prompt="V_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_tnXJUOPQEe-Xhs1LgwbVCA"/>
   </context>
   <context confirmationNeeded="false" hide="false" name="PRO">
@@ -19,7 +18,6 @@
     <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_anQ0cuJ7Ee-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_FECHA_5Y" prompt="V_ID_FECHA_5Y?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_anQ0c-J7Ee-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_ID_FECHA_5YTD" prompt="V_ID_FECHA_5YTD?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_CIlCkuJ8Ee-5o4PbS6QPhg"/>
-    <contextParameter comment="" name="V_ID_FECHA_FIN" prompt="V_ID_FECHA_FIN?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_CIlCk-J8Ee-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_FECHA" prompt="V_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_tnXJUePQEe-Xhs1LgwbVCA"/>
   </context>
   <parameters>
@@ -158,7 +156,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;DECLARE V_ID_FECHA_FIN INT64:&#xD;&#xA;&#xD;&#xA;IF (V_TIPO_CARGA==0) THEN      &#xD;&#xA;    SET V_ID_FECHA_FIN = `BI_DSA.DAYS_FECHA`(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))-1);&#xD;&#xA;ELSE &#xD;&#xA;   SET V_ID_FECHA_FIN = `BI_DSA.DAYS_FECHA`(LAST_DAY('&quot;+context.V_FECHA+&quot;'));&#xD;&#xA;END IF;&#xD;&#xA;&#xD;&#xA;SELECT V_ID_FECHA_FIN;&#xD;&#xA;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;DECLARE V_ID_FECHA_FIN INT64;&#xD;&#xA;&#xD;&#xA;IF (&quot;+context.V_TIPO_CARGA+&quot;=0) THEN      &#xD;&#xA;    SET V_ID_FECHA_FIN = `BI_DSA.DAYS_FECHA`(DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))-1);&#xD;&#xA;ELSE &#xD;&#xA;   SET V_ID_FECHA_FIN = `BI_DSA.DAYS_FECHA`(LAST_DAY('&quot;+context.V_FECHA+&quot;'));&#xD;&#xA;END IF;&#xD;&#xA;&#xD;&#xA;SELECT V_ID_FECHA_FIN;&#xD;&#xA;&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace/token.properties&quot;" show="false"/>
