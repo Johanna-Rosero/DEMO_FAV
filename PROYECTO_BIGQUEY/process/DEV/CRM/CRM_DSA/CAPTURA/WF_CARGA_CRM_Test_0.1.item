@@ -4,7 +4,7 @@
     <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;CRM&quot;" internalId="_l8DxIHB6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;singlestore&quot;" internalId="_l8DxIXB6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="" name="VG_BucketName" prompt="VG_BucketName?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;bkt_dwh&quot;" internalId="_l8DxInB6Ee-kCLrQn7hTJQ"/>
-    <contextParameter comment="" name="VG_DB" prompt="VG_DB?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;SINGLE_STORE&quot;" internalId="_l8DxI3B6Ee-kCLrQn7hTJQ"/>
+    <contextParameter comment="" name="VG_DB" prompt="VG_DB?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;SINGLE_STORE&quot;" internalId="_l8DxI3B6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="DataSet Stage" name="VG_DSA" prompt="VG_DSA?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;BI_DSA&quot;" internalId="_l8DxJHB6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="DataSet Temporal" name="VG_DST" prompt="VG_DST?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;BI_TMP&quot;" internalId="_l8DxJXB6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="DataSet Target" name="VG_DWH" prompt="VG_DWH?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;EDWH&quot;" internalId="_l8DxJnB6Ee-kCLrQn7hTJQ"/>
@@ -20,7 +20,7 @@
     <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;CRM&quot;" internalId="_l8DxK3B6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;singlestore&quot;" internalId="_l8DxLHB6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="" name="VG_BucketName" prompt="VG_BucketName?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;bkt_dwh&quot;" internalId="_l8DxLXB6Ee-kCLrQn7hTJQ"/>
-    <contextParameter comment="" name="VG_DB" prompt="VG_DB?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;SINGLE_STORE&quot;" internalId="_l8DxLnB6Ee-kCLrQn7hTJQ"/>
+    <contextParameter comment="" name="VG_DB" prompt="VG_DB?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;SINGLE_STORE&quot;" internalId="_l8DxLnB6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="DataSet Stage" name="VG_DSA" prompt="VG_DSA?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;BI_DSA&quot;" internalId="_l8DxL3B6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="DataSet Temporal" name="VG_DST" prompt="VG_DST?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;BI_TMP&quot;" internalId="_l8DxMHB6Ee-kCLrQn7hTJQ"/>
     <contextParameter comment="DataSet Target" name="VG_DWH" prompt="VG_DWH?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;EDWH&quot;" internalId="_l8DxMXB6Ee-kCLrQn7hTJQ"/>
@@ -267,9 +267,9 @@
     <elementParameter field="TEXT" name="DELIMITER" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="DEL_IN_LIST_BUCKETS" value="true"/>
     <elementParameter field="TABLE" name="BUCKETS">
-      <elementValue elementRef="BUCKET_NAME" value="context.VG_BucketName"/>
-      <elementValue elementRef="OBJECT_PREFIX" value="((String)globalMap.get(&quot;V_TablaName1&quot;))"/>
-      <elementValue elementRef="OBJECT_DELIMITER" value="&quot;&quot;"/>
+      <elementValue elementRef="BUCKET_NAME" value="context.VG_BucketName" id="0"/>
+      <elementValue elementRef="OBJECT_PREFIX" value="((String)globalMap.get(&quot;V_TablaName1&quot;))" id="1"/>
+      <elementValue elementRef="OBJECT_DELIMITER" value="&quot;&quot;" id="2"/>
     </elementParameter>
     <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false" show="false"/>
@@ -301,20 +301,20 @@
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
     <elementParameter field="TABLE" name="TRIM_COLUMN">
-      <elementValue elementRef="SCHEMA_COLUMN" value="FECHA"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="COD_PERSONA"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="IDENTIFICACION"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NOMBRE"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="NUMEROTARJETA"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR"/>
-      <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TSTAMP"/>
-      <elementValue elementRef="TRIM" value="false"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHA" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COD_PERSONA" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="IDENTIFICACION" id="4"/>
+      <elementValue elementRef="TRIM" value="false" id="5"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NOMBRE" id="6"/>
+      <elementValue elementRef="TRIM" value="false" id="7"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="NUMEROTARJETA" id="8"/>
+      <elementValue elementRef="TRIM" value="false" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="VALOR" id="10"/>
+      <elementValue elementRef="TRIM" value="false" id="11"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TSTAMP" id="12"/>
+      <elementValue elementRef="TRIM" value="false" id="13"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
