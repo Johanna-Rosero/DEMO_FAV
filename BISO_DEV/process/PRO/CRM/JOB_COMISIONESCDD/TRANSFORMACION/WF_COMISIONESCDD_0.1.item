@@ -15,8 +15,8 @@
     <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;C:/TALEND/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_CVEJqejCEe-ah8WInvjYCQ"/>
   </context>
   <context confirmationNeeded="false" hide="false" name="PRO">
-    <contextParameter comment="" name="FECHA_INI" prompt="FECHA_INI?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;2025-02-01&quot;" internalId="_iRo6aOWVEe-ah8WInvjYCQ"/>
-    <contextParameter comment="" name="FECHA_FIN" prompt="FECHA_FIN?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;2025-02-28&quot;" internalId="_iRo6aeWVEe-ah8WInvjYCQ"/>
+    <contextParameter comment="" name="FECHA_INI" prompt="FECHA_INI?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_iRo6aOWVEe-ah8WInvjYCQ"/>
+    <contextParameter comment="" name="FECHA_FIN" prompt="FECHA_FIN?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_iRo6aeWVEe-ah8WInvjYCQ"/>
     <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_QQA7UJuDEe-KPKXrPQDeSA" type="id_String" value="&quot;CRM&quot;" internalId="_CVEJqujCEe-ah8WInvjYCQ"/>
     <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="_QQA7UJuDEe-KPKXrPQDeSA" type="id_String" value="&quot;JOB_COMISIONESCD/db2&quot;" internalId="_CVEJq-jCEe-ah8WInvjYCQ"/>
     <contextParameter comment="" name="VG_BucketName" prompt="VG_BucketName?" promptNeeded="false" repositoryContextId="_QQA7UJuDEe-KPKXrPQDeSA" type="id_String" value="&quot;bkt_dwh&quot;" internalId="_CVEJrOjCEe-ah8WInvjYCQ"/>
@@ -83,13 +83,13 @@
     <elementParameter field="CHECK" name="DISABLE_INFO" value="false" show="false"/>
     <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="true"/>
     <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="true"/>
-    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="true"/>
     <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" value="false"/>
     <elementParameter field="CHECK" name="ON_FILES_FLAG" value="true"/>
-    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/TalendLogs&quot;"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace4/.metadata&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_STATS" value="&quot;stats_file.txt&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_LOGS" value="&quot;logs_file.txt&quot;"/>
-    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="ISO-8859-15"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="ON_DATABASE_FLAG" value="false"/>
@@ -314,6 +314,18 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tRunJob_1"/>
   </node>
+  <node componentName="tFileDelete" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="40" posY="320">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileDelete_2" show="false"/>
+    <elementParameter field="FILE" name="FILENAME" value="globalMap.get(&quot;RUTA_DIR1&quot;)+&quot;COMCREDD_1.txt&quot;"/>
+    <elementParameter field="DIRECTORY" name="DIRECTORY" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace/delete_folder&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PATH" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace/delete_folder or delete_file&quot;" show="false"/>
+    <elementParameter field="CHECK" name="FAILON" value="true"/>
+    <elementParameter field="CHECK" name="FOLDER" value="false"/>
+    <elementParameter field="CHECK" name="FOLDER_FILE" value="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="*Note &quot;CURRENT_STATUS&quot; including:&#xA;&quot;File (or path) deleted.&quot;&#xA;&quot;No file (or path) deleted.&quot;&#xA;&quot;File (or path) does not exist or is invalid.&quot;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileDelete_2"/>
+  </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tBigQueryInput_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryInput_1" target="tFileOutputDelimited_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
@@ -329,6 +341,9 @@
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tBigQuerySQLRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tFileDelete_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_1" show="false"/>
@@ -352,6 +367,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileDelete_2" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
