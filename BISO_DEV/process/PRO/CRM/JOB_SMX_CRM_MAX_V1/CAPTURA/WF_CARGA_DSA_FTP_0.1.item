@@ -3698,7 +3698,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;TRUNCATE TABLE BI_DSA.REGLAS_CDD;&#xD;&#xA;SELECT &#xD;&#xA;ID_FECHA,&#xD;&#xA;LOCAL,&#xD;&#xA;DIVISION,&#xD;&#xA;NULL AS BODEGA&#xD;&#xA;FROM BI_TMP.REGLAS_CDD;&#xD;&#xA;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;TRUNCATE TABLE BI_DSA.REGLAS_CDD;&#xD;&#xA;INSERT INTO BI_DSA.REGLAS_CDD&#xD;&#xA;SELECT &#xD;&#xA;ID_FECHA,&#xD;&#xA;LOCAL,&#xD;&#xA;DIVISION,&#xD;&#xA;NULL AS BODEGA&#xD;&#xA;FROM BI_TMP.REGLAS_CDD;&#xD;&#xA;&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace/token.properties&quot;" show="false"/>
@@ -3883,6 +3883,9 @@
   <connection connectorName="FLOW" label="row15" lineStyle="0" metaname="tFileInputExcel_15" offsetLabelX="0" offsetLabelY="0" source="tFileInputExcel_15" target="tFileOutputDelimited_15">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row15" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_15" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_15" target="tGSPut_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk31" show="false"/>
   </connection>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tBigQueryBulkExec_16" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_16" target="tBigQuerySQLRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk28" show="false"/>
