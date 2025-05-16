@@ -16,6 +16,7 @@
     <contextParameter comment="" name="V_ID_FECHA_1" prompt="V_ID_FECHA_1?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_sGQDYMxMEe-w1td3MvidCA"/>
     <contextParameter comment="" name="V_ID_FECHA_2" prompt="V_ID_FECHA_2?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_sGQDYcxMEe-w1td3MvidCA"/>
     <contextParameter comment="" name="V_FECHA" prompt="V_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_pTxOcM0tEe-2no5q-gsiyA"/>
+    <contextParameter comment="" name="V_TIPO_CARGA" prompt="V_TIPO_CARGA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_g-uxQDJmEfCQC-XhRYSRNQ"/>
   </context>
   <context confirmationNeeded="false" hide="false" name="DEV">
     <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_5U1xoK2tEe-v08LQrrZGSQ"/>
@@ -33,6 +34,7 @@
     <contextParameter comment="" name="V_ID_FECHA_1" prompt="V_ID_FECHA_1?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_sGQDYsxMEe-w1td3MvidCA"/>
     <contextParameter comment="" name="V_ID_FECHA_2" prompt="V_ID_FECHA_2?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_sGQDY8xMEe-w1td3MvidCA"/>
     <contextParameter comment="" name="V_FECHA" prompt="V_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_pTxOcc0tEe-2no5q-gsiyA"/>
+    <contextParameter comment="" name="V_TIPO_CARGA" prompt="V_TIPO_CARGA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_g-uxQTJmEfCQC-XhRYSRNQ"/>
   </context>
   <context confirmationNeeded="false" hide="false" name="PRO">
     <contextParameter comment="" name="V_ID_FECHA" prompt="V_ID_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_5U1xoK2tEe-v08LQrrZGSQ"/>
@@ -50,6 +52,7 @@
     <contextParameter comment="" name="V_ID_FECHA_1" prompt="V_ID_FECHA_1?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_sGQDZMxMEe-w1td3MvidCA"/>
     <contextParameter comment="" name="V_ID_FECHA_2" prompt="V_ID_FECHA_2?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_sGQDZcxMEe-w1td3MvidCA"/>
     <contextParameter comment="" name="V_FECHA" prompt="V_FECHA?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_pTxOcs0tEe-2no5q-gsiyA"/>
+    <contextParameter comment="" name="V_TIPO_CARGA" prompt="V_TIPO_CARGA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_g-uxQjJmEfCQC-XhRYSRNQ"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -148,6 +151,7 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
+    <routinesParameter id="_wyglMCnMEe-SnvlC8yQvFA" name="Bi"/>
   </parameters>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
@@ -645,7 +649,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_16"/>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="560">
+  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-80" posY="560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_18" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:ZeB+eUzUbyrsT6lhBiou/Yo1W9f9F/EEoqgo10vF" show="false"/>
@@ -2865,6 +2869,14 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tBigQuerySQLRow_69"/>
   </node>
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="-80" posY="480">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;********* - - - - --- UOBSC_INDICE_RH - - CRITERIO=16  NO SE CARGA, PORQUE NO SE CIERRA FINANCIERO ***********************  &quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="TEXT" name="LABEL" value="MENSAJE"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tJava_1"/>
+  </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_1" offsetLabelX="0" offsetLabelY="0" source="tRunJob_1" target="tBigQuerySQLRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
   </connection>
@@ -3150,8 +3162,13 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_6" offsetLabelX="0" offsetLabelY="0" source="tRunJob_6" target="tBigQuerySQLRow_74">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk76" show="false"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_29" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_29" target="tBigQuerySQLRow_18">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk118" show="false"/>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tBigQuerySQLRow_29" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tBigQuerySQLRow_29" target="tBigQuerySQLRow_18">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.V_TIPO_CARGA == 1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tBigQuerySQLRow_29" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tBigQuerySQLRow_29" target="tJava_1">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.V_TIPO_CARGA != 1"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_7" offsetLabelX="0" offsetLabelY="0" source="tRunJob_7" target="tBigQuerySQLRow_93">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk97" show="false"/>
@@ -3667,6 +3684,11 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_69" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
