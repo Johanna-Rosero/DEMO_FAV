@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" hide="false" name="Default">
-    <contextParameter comment="" name="V_TIPO_CARGA" prompt="V_TIPO_CARGA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="0" internalId="_eZTsELjhEe-QAKtg3sgIfQ"/>
+    <contextParameter comment="" name="V_TIPO_CARGA" prompt="V_TIPO_CARGA?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="1" internalId="_eZTsELjhEe-QAKtg3sgIfQ"/>
     <contextParameter comment="" name="Bandera_Local_Ini" prompt="Bandera_Local_Ini?" promptNeeded="false" repositoryContextId="_ztIWUIs_Ee-NFa69cRMxtw" type="id_Integer" value="0" internalId="__5tucMRXEe-2no5q-gsiyA"/>
     <contextParameter comment="" name="Bandera_Procesados" prompt="Bandera_Procesados?" promptNeeded="false" repositoryContextId="_ztIWUIs_Ee-NFa69cRMxtw" type="id_Integer" value="0" internalId="__5tuccRXEe-2no5q-gsiyA"/>
     <contextParameter comment="" name="Bandera_Procesados_Inv" prompt="Bandera_Procesados_Inv?" promptNeeded="false" repositoryContextId="_ztIWUIs_Ee-NFa69cRMxtw" type="id_Integer" value="0" internalId="__5tucsRXEe-2no5q-gsiyA"/>
@@ -222,8 +222,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="880" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;DESDE: &quot; + ((String)globalMap.get(&quot;V_FECHA&quot;)));&#xA;Bi.println(&quot;HASTA: &quot; + ((String)globalMap.get(&quot;V_FECHA_FIN&quot;)));&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;DESDE: &quot; + ((String)globalMap.get(&quot;V_FECHA&quot;)));&#xA;Bi.println(&quot;HASTA: &quot; + ((String)globalMap.get(&quot;V_FECHA_FIN&quot;)));&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="IMP_INICIO"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
@@ -396,8 +396,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="120" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;Inicia Carga JOB_BSCUOP_V2&quot;);&#xA;&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;Inicia Carga JOB_BSCUOP_V2&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="IMP_INICIO"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
@@ -629,7 +629,6 @@
   </node>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="1000">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_6" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="WF_V2_CARGA_MCF_LOCALES_PROD"/>
@@ -685,8 +684,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="600" posY="1000">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;FIN JOB_BSCUOP_V2&quot;);"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;FIN JOB_BSCUOP_V2&quot;);"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="IMP_FIN"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_3"/>
@@ -886,15 +885,10 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_4" offsetLabelX="0" offsetLabelY="0" source="tRunJob_4" target="tBigQuerySQLRow_9">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk14" show="false"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tRunJob_5" target="tJava_3">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk25" show="false"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tRunJob_5" target="tRunJob_6">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" source="tRunJob_5" target="tRunJob_6">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk17" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_6" offsetLabelX="0" offsetLabelY="0" source="tRunJob_6" target="tJava_3">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk18" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_10" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_10" target="tParallelize_2">
