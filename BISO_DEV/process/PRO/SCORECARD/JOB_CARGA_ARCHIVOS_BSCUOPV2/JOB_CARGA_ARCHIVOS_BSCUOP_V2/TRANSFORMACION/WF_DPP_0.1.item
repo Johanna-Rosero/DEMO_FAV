@@ -240,15 +240,15 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="760" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;V_ID_FECHA&quot;,row1.V_ID_FECHA);&#xA;&#xA;&#xA;&#xA;&#xA;Bi.println(&quot;Variables&quot;);&#xA;Bi.println(&quot;V_FECHA: &quot; + (globalMap.get(&quot;V_FECHA&quot;)));&#xA;Bi.println(&quot;V_FECHA_FIN: &quot; + (globalMap.get(&quot;V_FECHA_FIN&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA: &quot; + (globalMap.get(&quot;V_ID_FECHA&quot;)));&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="globalMap.put(&quot;V_ID_FECHA&quot;,row1.V_ID_FECHA);&#xA;&#xA;&#xA;&#xA;&#xA;Bi.println(&quot;Variables&quot;);&#xA;Bi.println(&quot;V_FECHA: &quot; + (globalMap.get(&quot;V_FECHA&quot;)));&#xA;Bi.println(&quot;V_FECHA_FIN: &quot; + (globalMap.get(&quot;V_FECHA_FIN&quot;)));&#xA;Bi.println(&quot;V_ID_FECHA: &quot; + (globalMap.get(&quot;V_ID_FECHA&quot;)));&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1"/>
   </node>
-  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="200" posY="520">
+  <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="400" posY="680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;V_FECHA&quot;, TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,TalendDate.addDate(TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;V_FECHA&quot;)), 1 ,&quot;MM&quot;)));&#xA;Bi.println(&quot;INCREMENTA_FECHA&quot;);&#xA;Bi.println(&quot;V_FECHA : &quot;+(globalMap.get(&quot;V_FECHA&quot;)));&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="globalMap.put(&quot;V_FECHA&quot;, TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,TalendDate.addDate(TalendDate.parseDate(&quot;yyyy-MM-dd&quot;, (String)globalMap.get(&quot;V_FECHA&quot;)), 1 ,&quot;MM&quot;)));&#xA;Bi.println(&quot;INCREMENTA_FECHA&quot;);&#xA;Bi.println(&quot;V_FECHA : &quot;+(globalMap.get(&quot;V_FECHA&quot;)));&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="AUMENTO_FECHA"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
@@ -319,6 +319,7 @@
   </node>
   <node componentName="tRunJob" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="80" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="USE_DYNAMIC_JOB" value="false"/>
     <elementParameter field="TEXT" name="CONTEXT_JOB" value="" show="false"/>
     <elementParameter field="PROCESS_TYPE" name="PROCESS" value="DF_CALIFICACION_LOCAL_SMAX"/>
@@ -600,10 +601,15 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tRunJob_3">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk5" show="false"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_3" offsetLabelX="0" offsetLabelY="0" source="tRunJob_3" target="tRunJob_4">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_3" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tRunJob_3" target="tRunJob_5">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk15" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_3" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tRunJob_3" target="tRunJob_4">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk6" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_4" offsetLabelX="0" offsetLabelY="0" source="tRunJob_4" target="tRunJob_5">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_5" offsetLabelX="0" offsetLabelY="0" source="tRunJob_5" target="tRunJob_6">
