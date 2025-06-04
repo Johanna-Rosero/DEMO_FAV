@@ -270,7 +270,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA; `DOCDETDES_SAMPLING`.`HEADERID`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`SECUENCIALDOCUMENTODETALLE`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`SECUENCIALDESCUENTODETALLE`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`TIPODESCUENTO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`CODIGOCAMPANIA`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`CODIGOPROMOCION`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`VALORDESCUENTOSIMP`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`CANTIDADDESCUENTO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`PESODESCUENTO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`FECHAREGISTRO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`VALORDESCUENTOCIMP`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`IVADESCUENTO`, &#xD;&#xA;  `DOCDETDES_SAMPLING_SAMPLING`.`FECHATRANSACCION`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`ETL_TIMESTAMP`&#xA; FROM `DOCDETDES_SAMPLING`&#xD;&#xA;WHERE &#xD;&#xA;FECHATRANSACCION>= '&quot; + context.V_FechaInicio+ &quot;' AND FECHATRANSACCION&lt;= '&quot; +context.V_FechaFin + &quot;'&#xD;&#xA;AND SUBSTR(HEADERID, 11 , 3) IN  (&quot; + context.V_IDUOP + &quot;)&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xA; `DOCDETDES_SAMPLING`.`HEADERID`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`SECUENCIALDOCUMENTODETALLE`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`SECUENCIALDESCUENTODETALLE`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`TIPODESCUENTO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`CODIGOCAMPANIA`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`CODIGOPROMOCION`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`VALORDESCUENTOSIMP`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`CANTIDADDESCUENTO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`PESODESCUENTO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`FECHAREGISTRO`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`VALORDESCUENTOCIMP`, &#xD;&#xA;  `DOCDETDES_SAMPLING`.`IVADESCUENTO`, &#xD;&#xA;`DOCDETDES_SAMPLING`.`FECHATRANSACCION`, &#xD;&#xA;`DOCDETDES_SAMPLING`.`CODIGOBARRAS`,&#xD;&#xA;`DOCDETDES_SAMPLING`.`CODIGOBARRASPOS`,  &#xD;&#xA;  `DOCDETDES_SAMPLING`.`ETL_TIMESTAMP`&#xD;&#xA; FROM `DOCDETDES_SAMPLING`&#xD;&#xA;&#xA; FROM `DOCDETDES_SAMPLING`&#xD;&#xA;WHERE &#xD;&#xA;FECHATRANSACCION>= '&quot; + context.V_FechaInicio+ &quot;' AND FECHATRANSACCION&lt;= '&quot; +context.V_FechaFin + &quot;'&#xD;&#xA;AND SUBSTR(HEADERID, 11 , 3) IN  (&quot; + context.V_IDUOP + &quot;)&#xD;&#xA;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime" show="false"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false" show="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
@@ -307,8 +307,12 @@
       <elementValue elementRef="TRIM" value="false" id="23"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="FECHATRANSACCION" id="24"/>
       <elementValue elementRef="TRIM" value="false" id="25"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TIMESTAMP" id="26"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOBARRAS" id="26"/>
       <elementValue elementRef="TRIM" value="false" id="27"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOBARRASPOS" id="28"/>
+      <elementValue elementRef="TRIM" value="false" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ETL_TIMESTAMP" id="30"/>
+      <elementValue elementRef="TRIM" value="false" id="31"/>
     </elementParameter>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_8">
@@ -325,6 +329,8 @@
       <column comment="" defaultValue="" key="false" length="12" name="VALORDESCUENTOCIMP" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="12" name="IVADESCUENTO" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHATRANSACCION" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CODIGOBARRAS" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CODIGOBARRASPOS" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
@@ -373,6 +379,8 @@
       <column comment="" defaultValue="" key="false" length="12" name="VALORDESCUENTOCIMP" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="12" name="IVADESCUENTO" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHATRANSACCION" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CODIGOBARRAS" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="CODIGOBARRASPOS" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="TEMVAC"/>
       <additionalProperties key="TABLE_SCHEMA" value="NO1DTA"/>
@@ -455,6 +463,8 @@
       <column comment="" defaultValue="" key="false" length="12" name="VALORDESCUENTOCIMP" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="12" name="IVADESCUENTO" nullable="true" pattern="" precision="4" sourceType="DOUBLE" type="id_Double" usefulColumn="true"/>
       <column comment="" key="false" length="10" name="FECHATRANSACCION" nullable="true" pattern="&quot;yyyy-MM-dd&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="CODIGOBARRAS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="0" name="CODIGOBARRASPOS" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="26" name="ETL_TIMESTAMP" nullable="false" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true"/>
     </metadata>
   </node>
@@ -548,6 +558,14 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk48" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tDBInput_8" offsetLabelX="0" offsetLabelY="0" source="tDBInput_8" target="tFileOutputDelimited_3">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="CODIGOBARRASPOS" id="0"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+      <elementValue elementRef="TRACE_COLUMN" value="CODIGOBARRAS" id="3"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="4"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="5"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
   </connection>
@@ -567,73 +585,73 @@
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBConnection_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBConnection_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSConnection_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPostjob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBClose_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBClose_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSClose_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_6" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_8" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_12" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_7" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
 </talendfile:ProcessType>
