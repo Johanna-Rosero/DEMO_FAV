@@ -1506,7 +1506,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="400" posY="1680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:zdgwQRz0xAZUfiIQhfcc/6wwsRYFHOKW+e3/4xsc" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
@@ -1516,7 +1515,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;UPDATE `BI_DSA.SCORECARD_V2_SMAX` SC   &#xD;&#xA; SET     PONDERACION =CASE                       &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN CRI.FLG_IMPRIME=1 THEN CRI.PONDERACION                       &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;ELSE 0                   END,    &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;POND_ALT =   CASE                       &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN CRI.FLG_IMPRIME=1 THEN CRI.PONDERACION                      &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; ELSE 0                   &#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;END  &#xD;&#xA;FROM (SELECT  CRI.FLG_IMPRIME,                &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;CRI.PONDERACION         &#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;FROM `BI_DSA.LD_DIM_CRI_SC_V2` CRI          &#xD;&#xA;&#x9;&#x9;&#x9;&#x9; INNER JOIN `BI_DSA.SCORECARD_V2_SMAX` SC  &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;ON SC.ID_COMPRADOR=CRI.ID_COMPRADOR  AND SC.ID_CRITERIO=CRI.COD_CRITERIO ) CRI  &#xD;&#xA;WHERE SC.ID_FECHA = &quot;+context.V_ID_FECHA+&quot;;&#xD;&#xA;&#xD;&#xA;  UPDATE `BI_DSA.SCORECARD_V2_SMAX`  SC  &#xD;&#xA;SET      PONDERACION = CASE                         &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN CRI.FLG_IMPRIME=1 THEN CRI.PONDERACION                        &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; ELSE 0                    &#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; END,     &#xD;&#xA; POND_ALT =    CASE                         &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;WHEN CRI.FLG_IMPRIME=1 THEN CRI.PONDERACION                        &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; &#x9;&#x9;ELSE 0                   &#x9;&#xD;&#xA; &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9; END   &#xD;&#xA;FROM ( SELECT  CRI.FLG_IMPRIME,CRI.PONDERACION , CRI.ID_COMPRADOR, SC.ID_PROVEEDOR          &#xD;&#xA;&#x9;&#x9;&#x9;FROM `BI_DSA.LD_DIM_CRI_SC_V2` CRI            &#xD;&#xA;&#x9;&#x9;&#x9;INNER JOIN `BI_DSA.SCORECARD_V2_SMAX`  SC             &#xD;&#xA;&#x9;&#x9;&#x9;ON SC.ID_CRITERIO=CRI.COD_CRITERIO) CRI  &#xD;&#xA; WHERE   SC.ID_FECHA = &quot;+context.V_ID_FECHA+&quot;  AND  SC.ID_PROVEEDOR=0 AND CRI.ID_COMPRADOR=-1;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;MERGE INTO `BI_DSA.SCORECARD_V2_SMAX` AS SC&#xD;&#xA;USING (&#xD;&#xA;  SELECT &#xD;&#xA;    CRI.ID_COMPRADOR,&#xD;&#xA;    CRI.COD_CRITERIO,&#xD;&#xA;    CASE WHEN FLG_IMPRIME= 1 THEN CRI.PONDERACION ELSE 0 END AS PONDERACION,&#xD;&#xA;  FROM `EDWH.DIM_CRI_SC_V2` CRI&#xD;&#xA;) AS CRI&#xD;&#xA;ON SC.ID_COMPRADOR = CRI.ID_COMPRADOR&#xD;&#xA;   AND SC.ID_CRITERIO = CRI.COD_CRITERIO&#xD;&#xA;   AND SC.ID_FECHA=&quot;+context.V_ID_FECHA+&quot;&#xD;&#xA;&#xD;&#xA;WHEN MATCHED THEN&#xD;&#xA;  UPDATE SET&#xD;&#xA;    SC.PONDERACION = CRI.PONDERACION,&#xD;&#xA;    SC.POND_ALT=CRI.PONDERACION;&#xD;&#xA;&#xD;&#xA; MERGE INTO `BI_DSA.SCORECARD_V2_SMAX` AS SC&#xD;&#xA;USING (&#xD;&#xA;  SELECT &#xD;&#xA;    CRI.ID_COMPRADOR,&#xD;&#xA;    CRI.COD_CRITERIO,&#xD;&#xA;    CASE WHEN FLG_IMPRIME= 1 THEN CRI.PONDERACION ELSE 0 END AS PONDERACION,&#xD;&#xA;  FROM `EDWH.DIM_CRI_SC_V2` CRI&#xD;&#xA;  WHERE CRI.ID_COMPRADOR=-1&#xD;&#xA;&#xD;&#xA;) AS CRI&#xD;&#xA;ON SC.ID_COMPRADOR = CRI.ID_COMPRADOR&#xD;&#xA;   AND SC.ID_CRITERIO = CRI.COD_CRITERIO&#xD;&#xA;   AND SC.ID_FECHA=&quot;+context.V_ID_FECHA+&quot;&#xD;&#xA;   AND SC.ID_PROVEEDOR=0 &#xD;&#xA;&#xD;&#xA;WHEN MATCHED THEN&#xD;&#xA;  UPDATE SET&#xD;&#xA;    SC.PONDERACION = CRI.PONDERACION,&#xD;&#xA;    SC.POND_ALT=CRI.PONDERACION;&#xD;&#xA;&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
@@ -1533,7 +1532,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="600" posY="1680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:wIC0pFCEN2ypZCH3rqdwXXlf2ePAB6xzVkCvJj68" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
@@ -1560,7 +1558,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="840" posY="1680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_3" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:i5K34Ghd0t3AFvA7+9ppFYPzltw0nb4ubovh+3am" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
@@ -1587,7 +1584,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="1080" posY="1680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_4" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:yYbGrHAeQhcP5Ju7mXfogJPnwASggOWGzSrA5acF" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
@@ -1614,7 +1610,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="800" posY="1840">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_5" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:5IZ3E4KTy99dycfvs20vMrk2RBRT/fPSjlpU2GKV" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
@@ -1641,7 +1636,6 @@
   </node>
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="3" offsetLabelY="2" posX="1080" posY="1840">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_6" show="false"/>
-    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
     <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:PgVfjUPR7IjUNMsSaCnnjHs26D0+9JyO/ppdoHu1" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
@@ -1837,32 +1831,25 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_36" offsetLabelX="0" offsetLabelY="0" source="tRunJob_36" target="tRunJob_37">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk33" show="false"/>
   </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_37" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tRunJob_37" target="tBigQuerySQLRow_2">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk41" show="false"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_37" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tRunJob_37" target="tBigQuerySQLRow_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_37" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tRunJob_37" target="tBigQuerySQLRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk39" show="false"/>
   </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_37" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tRunJob_37" target="tBigQuerySQLRow_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk41" show="false"/>
+  </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tBigQuerySQLRow_2">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk34" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tBigQuerySQLRow_3">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk35" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_3" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_3" target="tBigQuerySQLRow_4">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk36" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_4" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_4" target="tBigQuerySQLRow_6">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk37" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_6" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_6" target="tBigQuerySQLRow_5">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk38" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_38" offsetLabelX="0" offsetLabelY="0" source="tRunJob_38" target="tRunJob_18">
@@ -1870,223 +1857,223 @@
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_5" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_6" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_7" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_8" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_9" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_10" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_11" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_12" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_13" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_14" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_15" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_16" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_17" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_18" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_19" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_20" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_21" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_22" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_23" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_24" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_25" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_26" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_27" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_28" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_29" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_30" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_31" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="CHECK" name="COLLAPSED" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_32" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_33" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_34" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_35" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_36" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_37" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_5" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_6" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_38" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
 </talendfile:ProcessType>
