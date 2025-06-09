@@ -99,22 +99,49 @@
     <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
   </parameters>
-  <node componentName="tSystem" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="160" posY="120">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSystem_1" show="false"/>
+  <node componentName="tSystem" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="200" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSystem_2" show="false"/>
+    <elementParameter field="CHECK" name="ACTIVATE" value="false"/>
     <elementParameter field="CHECK" name="ROOTDIR" value="false"/>
     <elementParameter field="DIRECTORY" name="DIRECTORY" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace&quot;" show="false"/>
-    <elementParameter field="RADIO" name="USE_SINGLE_COMMAND" value="true"/>
-    <elementParameter field="MEMO_JAVA" name="COMMAND" value="&quot;py C:\\Users\\epml\\Desktop\\DescargaTablas\\prueba2.py&quot;"/>
-    <elementParameter field="RADIO" name="USE_ARRAY_COMMAND" value="false"/>
-    <elementParameter field="TABLE" name="ARRAY_COMMAND" show="false"/>
+    <elementParameter field="RADIO" name="USE_SINGLE_COMMAND" value="false"/>
+    <elementParameter field="MEMO_JAVA" name="COMMAND" value="&quot;cmd /c echo HELLO&quot;" show="false"/>
+    <elementParameter field="RADIO" name="USE_ARRAY_COMMAND" value="true"/>
+    <elementParameter field="TABLE" name="ARRAY_COMMAND">
+      <elementValue elementRef="VALUE" value="&quot;ssh&quot;" id="0"/>
+      <elementValue elementRef="VALUE" value="&quot;-T&quot;" id="1"/>
+      <elementValue elementRef="VALUE" value="&quot;-o&quot;" id="2"/>
+      <elementValue elementRef="VALUE" value="&quot;StrictHostKeyChecking=no&quot;" id="3"/>
+      <elementValue elementRef="VALUE" value="&quot;-i&quot;" id="4"/>
+      <elementValue elementRef="VALUE" value="&quot;C:\\Users\\soporte1acda\\Documents\\publickey&quot;" id="5"/>
+      <elementValue elementRef="VALUE" value="&quot;usr_memsql@svr-j1007342&quot;" id="6"/>
+      <elementValue elementRef="VALUE" value="&quot;bash -l -c 'sh /memsql/etls/tlog_ventas/jobs/JOB_CARGA_DCP_LOCALES_JSON_SINGLE.sh'&quot;" id="7"/>
+    </elementParameter>
     <elementParameter field="CLOSED_LIST" name="OUTPUT" value="OUTPUT_TO_CONSOLE"/>
     <elementParameter field="CLOSED_LIST" name="ERROROUTPUT" value="OUTPUT_TO_CONSOLE"/>
     <elementParameter field="TABLE" name="PARAMS"/>
+    <elementParameter field="TEXT" name="LABEL" value="JOB_CARGA_DCP_LOCALES_JSON"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tSystem_1"/>
+    <metadata connector="FLOW" name="tSystem_2"/>
+  </node>
+  <node componentName="tSCPConnection" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="400" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSCPConnection_1" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;svr-j1007342&quot;"/>
+    <elementParameter field="TEXT" name="PORT" value="22"/>
+    <elementParameter field="TEXT" name="USERNAME" value="&quot;usr_memsql&quot;"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_METHOD" value="PUBLICKEY"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:uqaalBkERuFAfW2W+DM994EK6CyZJkatQ2CY66e4MptqOjzYTtY=" show="false"/>
+    <elementParameter field="FILE" name="PRIVATEKEY" value="&quot;C:/Users/soporte1acda/Documents/publickey&quot;"/>
+    <elementParameter field="PASSWORD" name="PASSPHRASE" value="enc:system.encryption.key.v1:fx64AhFPk1Ukmf4xGnuGN3esE3uce6SsudotaDLr6FByCYUK"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <subjob>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSystem_1" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSystem_2" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tSCPConnection_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
