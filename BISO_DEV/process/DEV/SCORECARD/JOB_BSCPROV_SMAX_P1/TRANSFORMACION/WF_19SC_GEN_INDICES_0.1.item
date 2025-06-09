@@ -32,6 +32,22 @@
     <contextParameter comment="" name="V_FECHA_CC" prompt="V_FECHA_CC?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_bv28guMxEe-5o4PbS6QPhg"/>
     <contextParameter comment="" name="V_FECHA_ICC" prompt="V_FECHA_ICC?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_bv28g-MxEe-5o4PbS6QPhg"/>
   </context>
+  <context confirmationNeeded="false" hide="false" name="DEV_LINUX">
+    <contextParameter comment="" name="Bandera_Aux" prompt="Bandera_Aux?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_Integer" value="0" internalId="_6mm0ICVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="Bandera_Salida" prompt="Bandera_Salida?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_Integer" value="0" internalId="_6mm0ISVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_String" value="&quot;SCORECARD&quot;" internalId="_6mm0IiVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_String" value="&quot;JOB_BSCPROV_SMAX_P1/db2&quot;" internalId="_6mm0IyVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="VG_BucketName" prompt="VG_BucketName?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_String" value="&quot;bkt_dwh&quot;" internalId="_6mm0JCVREfCRZcknvXpBHw"/>
+    <contextParameter comment="DataSet Stage" name="VG_DSA" prompt="VG_DSA?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_String" value="&quot;BI_DSA&quot;" internalId="_6mm0JSVREfCRZcknvXpBHw"/>
+    <contextParameter comment="DataSet Temporal" name="VG_DST" prompt="VG_DST?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_String" value="&quot;BI_TMP&quot;" internalId="_6mm0JiVREfCRZcknvXpBHw"/>
+    <contextParameter comment="DataSet Target" name="VG_DWH" prompt="VG_DWH?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_String" value="&quot;EDWH&quot;" internalId="_6mm0JyVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="VG_JobName" prompt="VG_JobName?" promptNeeded="false" repositoryContextId="_2eZ5gNpvEe-5o4PbS6QPhg" type="id_String" value="&quot;JOB_BSCPROV_SMAX_P1&quot;" internalId="_6mm0KCVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="V_FECHA_CC" prompt="V_FECHA_CC?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_bv28gOMxEe-5o4PbS6QPhg"/>
+    <contextParameter comment="" name="V_FECHA_ICC" prompt="V_FECHA_ICC?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="" internalId="_bv28geMxEe-5o4PbS6QPhg"/>
+    <contextParameter comment="" name="VG_ProjectID" prompt="VG_ProjectID?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;lafavorita-182519&quot;" internalId="_6mm0KSVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="VG_ServiceAccount" prompt="VG_ServiceAccount?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;/talend/Acceso/lafavorita-182519-0d2bcbb1a0db.json&quot;" internalId="_6mm0KiVREfCRZcknvXpBHw"/>
+    <contextParameter comment="" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;/talend/DEV/&quot;" internalId="_6mm0KyVREfCRZcknvXpBHw"/>
+  </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
@@ -254,8 +270,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="40" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="String TName = &quot;INDICES&quot;;&#xA;String T_DBname = &quot;ftp&quot;;&#xA;String n= &quot;1&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;&#xA;"/>
-    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="String TName = &quot;INDICES&quot;;&#xA;String T_DBname = &quot;ftp&quot;;&#xA;String n= &quot;1&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot;+ gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="INDICES"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="TEMVAC" name="tJava_1">
@@ -328,8 +344,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="globalMap.put(&quot;COUNT_REG&quot;, row2.COUNT_REG);"/>
-    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;COUNT_REG&quot;, row2.COUNT_REG);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_3">
       <column comment="" key="false" length="-1" name="COUNT_REG" nullable="true" pattern="" precision="-1" sourceType="STRING" type="id_Integer" originalLength="-1" usefulColumn="true"/>
@@ -337,8 +353,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="360" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;********* NO SE INSERTA DATOS EN LA ETL_CONTROL_CARGA ****************&quot;);"/>
-    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;********* NO SE INSERTA DATOS EN LA ETL_CONTROL_CARGA ****************&quot;);"/>
+    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
   </node>
@@ -398,37 +414,37 @@
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryInput_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
   </subjob>
 </talendfile:ProcessType>
