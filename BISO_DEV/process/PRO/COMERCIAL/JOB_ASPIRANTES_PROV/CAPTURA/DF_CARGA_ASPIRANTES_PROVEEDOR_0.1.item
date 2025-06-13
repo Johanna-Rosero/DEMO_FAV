@@ -50,8 +50,8 @@
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="80" show="false"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="80" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="40" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0" show="false"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" value="" show="false"/>
     <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" value="" show="false"/>
@@ -158,13 +158,13 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;" show="false"/>
     <elementParameter field="TEXT" name="TYPE" value="AS400" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:PObsEbIt/0LGK2nUUeII8VSyq9dUt7fvC6ov98XD2nwqR9OMLzY=" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:uP10CrdPbSyFoaV980yOCEinIkJeXoBuqza8PotyZTtChoS7CTg=" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCSAPTREQUEST&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT req.REQUEST_CODE AS NUMERO_DE_SOLICITUD,&#xD;&#xA;req.COMPANY_NAME AS PROVEEDOR,&#xD;&#xA;req.CORPORATIVO_CODE AS CODIGO,&#xD;&#xA;req.RUC,&#xD;&#xA;compSize.NOMBRECATALOGOVALOR AS TAMANIO_EMPRESA,&#xD;&#xA;comp.COMPANY_TYPE AS TIPO_DE_EMPRESA,&#xD;&#xA;dep.RESPONSIBLE AS COMPRADOR,&#xD;&#xA;dep.DEPARTMENT_CODE || ' ' || dep.DEPARTMENT_DESCRIPTION AS DEPARTAMENTO,&#xD;&#xA;dep.DIVISION_CODE || ' ' || dep.DIVISION_DESCRIPTION AS CLASIFICACION,&#xD;&#xA;'' AS SUBCLASIFICACION,&#xD;&#xA;prod.BRAND AS MARCA,&#xD;&#xA;prod.BARCODE AS CODIGO_BARRAS,&#xD;&#xA;prod.PRODUCT_NAME AS PRODUCTO,&#xD;&#xA;prod.PRODUCT_SIZE || ' ' || prod.UNIT_MEASURE AS TAMANIO,&#xD;&#xA;prod.AMOUNT_DRIVING_UNIT || ' ' || prod.UNIT_MEASURE AS UM,&#xD;&#xA;sta.STATUS_NAME AS ESTADO,&#xD;&#xA;req.DATE_SENDED AS FECHA,&#xD;&#xA;rejType.NOMBRECATALOGOVALOR AS MOTIVO,&#xD;&#xA;come.COMMENT AS OBSERVACION&#xD;&#xA;FROM SMXSIC.SCSAPTREQUEST req&#xD;&#xA;LEFT JOIN SMXSIC.SCSAPTPRODUCT prod ON (req.product_code = prod.product_code)&#xD;&#xA;INNER JOIN SMXSIC.SCSAPTCOMREQ comp ON (comp.company_request_code = req.company_request_code)&#xD;&#xA;INNER JOIN SMXSIC.SCSAPTSTATUS sta ON (sta.status_code = req.current_status)&#xD;&#xA;INNER JOIN SMXSIC.SCSAPTDEPCON dep ON (dep.department_code = req.department_code)&#xD;&#xA;LEFT JOIN SMXSIC.SSPCOTCATALOGOVALOR compSize ON (comp.COMPANY_SIZE = compSize.CODIGOCATALOGOVALOR&#xD;&#xA;AND compSize.CODIGOCATALOGOTIPO = 100450)&#xD;&#xA;LEFT JOIN SMXSIC.SSPCOTCATALOGOVALOR rejType ON (req.REJECTION_TYPE_VALUE_CODE = rejType.CODIGOCATALOGOVALOR&#xD;&#xA;AND req.REJECTION_TYPE_CATALOG_CODE = rejType.CODIGOCATALOGOTIPO)&#xD;&#xA;LEFT JOIN&#xD;&#xA;(SELECT REQUEST_CODE,&#xD;&#xA;COMMENT,&#xD;&#xA;ROW_NUMBER() OVER (PARTITION BY REQUEST_CODE&#xD;&#xA;ORDER BY CREATED_DATE DESC) AS rn&#xD;&#xA;FROM SMXSIC.SCSAPTREQCOM) come ON (come.REQUEST_CODE = req.REQUEST_CODE&#xD;&#xA;AND come.rn = 1)&#xD;&#xA;WHERE req.DATE_SENDED >= '2022-01-01'&#xD;&#xA;ORDER BY req.request_code ASC&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT &#xD;&#xA;req.REQUEST_CODE AS NUMERO_DE_SOLICITUD,&#xD;&#xA;req.COMPANY_NAME AS PROVEEDOR,&#xD;&#xA;req.CORPORATIVO_CODE AS CODIGO,&#xD;&#xA;req.RUC,&#xD;&#xA;compSize.NOMBRECATALOGOVALOR AS TAMANIO_EMPRESA,&#xD;&#xA;comp.COMPANY_TYPE AS TIPO_DE_EMPRESA,&#xD;&#xA;dep.RESPONSIBLE AS COMPRADOR,&#xD;&#xA;dep.DEPARTMENT_CODE || ' ' || dep.DEPARTMENT_DESCRIPTION AS DEPARTAMENTO,&#xD;&#xA;dep.DIVISION_CODE || ' ' || dep.DIVISION_DESCRIPTION AS CLASIFICACION,&#xD;&#xA;'' AS SUBCLASIFICACION,&#xD;&#xA;prod.BRAND AS MARCA,&#xD;&#xA;prod.BARCODE AS CODIGO_BARRAS,&#xD;&#xA;prod.PRODUCT_NAME AS PRODUCTO,&#xD;&#xA;prod.PRODUCT_SIZE || ' ' || prod.UNIT_MEASURE AS TAMANIO,&#xD;&#xA;prod.AMOUNT_DRIVING_UNIT || ' ' || prod.UNIT_MEASURE AS UM,&#xD;&#xA;sta.STATUS_NAME AS ESTADO,&#xD;&#xA;req.DATE_SENDED AS FECHA,&#xD;&#xA;rejType.NOMBRECATALOGOVALOR AS MOTIVO,&#xD;&#xA;come.COMMENT AS OBSERVACION,&#xD;&#xA;comp.FAIR AS FERIA&#xD;&#xA;FROM SMXSIC.SCSAPTREQUEST req&#xD;&#xA;LEFT JOIN SMXSIC.SCSAPTPRODUCT prod ON (req.product_code = prod.product_code)&#xD;&#xA;INNER JOIN SMXSIC.SCSAPTCOMREQ comp ON (comp.company_request_code = req.company_request_code)&#xD;&#xA;INNER JOIN SMXSIC.SCSAPTSTATUS sta ON (sta.status_code = req.current_status)&#xD;&#xA;INNER JOIN SMXSIC.SCSAPTDEPCON dep ON (dep.department_code = req.department_code)&#xD;&#xA;LEFT JOIN SMXSIC.SSPCOTCATALOGOVALOR compSize ON (comp.COMPANY_SIZE = compSize.CODIGOCATALOGOVALOR AND compSize.CODIGOCATALOGOTIPO = 100450)&#xD;&#xA;LEFT JOIN SMXSIC.SSPCOTCATALOGOVALOR rejType ON (req.REJECTION_TYPE_VALUE_CODE = rejType.CODIGOCATALOGOVALOR AND req.REJECTION_TYPE_CATALOG_CODE = rejType.CODIGOCATALOGOTIPO)&#xD;&#xA;LEFT JOIN (SELECT REQUEST_CODE,COMMENT,ROW_NUMBER() OVER (PARTITION BY REQUEST_CODE ORDER BY CREATED_DATE DESC) AS rn&#xD;&#xA;FROM SMXSIC.SCSAPTREQCOM) come ON (come.REQUEST_CODE = req.REQUEST_CODE AND come.rn = 1)&#xD;&#xA;WHERE req.DATE_SENDED >= '2022-01-01'&#xD;&#xA;ORDER BY req.request_code ASC&quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" value="as400_id" show="false"/>
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;" show="false"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
@@ -209,6 +209,8 @@
       <elementValue elementRef="TRIM" value="false" id="35"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="OBSERVACION" id="36"/>
       <elementValue elementRef="TRIM" value="false" id="37"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FERIA" id="38"/>
+      <elementValue elementRef="TRIM" value="false" id="39"/>
     </elementParameter>
     <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
     <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
@@ -234,6 +236,7 @@
       <column comment="" key="false" length="26" name="FECHA" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="6" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="256" name="MOTIVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="1500" name="OBSERVACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FERIA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSPE00018"/>
       <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
@@ -290,6 +293,7 @@
       <column comment="" key="false" length="26" name="FECHA" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="6" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="256" name="MOTIVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="1500" name="OBSERVACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FERIA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="SYSTEM_TABLE_NAME" value="SCSPE00018"/>
       <additionalProperties key="TABLE_SCHEMA" value="SMXSIC"/>
       <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXSIC"/>
@@ -300,13 +304,13 @@
     <elementParameter field="CHECK" name="TSTATCATCHER_STATS" value="true"/>
     <elementParameter field="TEXT" name="ORIGIN" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY" show="false"/>
-    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_zUpmcAfNEe-FEtLL6UtDgQ - metadata" show="false"/>
+    <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_3yrEkEfaEfCIzILTIGFV6w - metadata" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:oYAqUb7auVUdBKN6WZvix3rEWAuTSkMhAvfkK3wI" show="false"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:3vLRTAvvXjp8Y4/TLE3uJHqDLm/JVCg5RDNs7SI7" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:+/Y1IZg947Vwk8Uo4keQU7TLLcmwmGPX8yzjyU4K" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:lYaOu2HQvREBxlgbuJ4Gk6CjpB7Ug64bNPue5H+w" show="false"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="DATASET" value="context.VG_DST"/>
@@ -316,7 +320,7 @@
     <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="GS_SERVICE_ACCOUNT" show="false"/>
     <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:Zld867v2Gujj7p645c6WIT8K15RQ8d75a10AKIVe" show="false"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:pmn6zaosEgVtF7PSRVc06jJglbODhCDyg9Ye3B+W" show="false"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" value="&quot;&quot;" show="false"/>
@@ -356,6 +360,7 @@
       <column comment="" key="false" length="26" name="FECHA" nullable="false" pattern="&quot;yyyy-MM-dd&quot;" precision="6" sourceType="DATE" type="id_Date" usefulColumn="true"/>
       <column comment="" key="false" length="256" name="MOTIVO" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column comment="" key="false" length="1500" name="OBSERVACION" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="FERIA" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="240">
@@ -369,7 +374,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;" show="false"/>
     <elementParameter field="TEXT" name="TYPE" value="AS400" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:SfLmTW3XZcQYFZnwIKP0yhJdu9Po3j1bqT+umKB0wZlhn5YrZi8=" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:tFVeiCLmzYlGYoKNkbyvZlPM8r63Ha9MyFpiHEoQJe3UCcCU1Q4=" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;SCSAPTTRANSITIONS&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
@@ -501,11 +506,11 @@
     <elementParameter field="TECHNICAL" name="SCHEMA:SCHEMA_TYPE" value="REPOSITORY" show="false"/>
     <elementParameter field="TECHNICAL" name="SCHEMA:REPOSITORY_SCHEMA_TYPE" value="_baJbsAf6Ee-FEtLL6UtDgQ - metadata" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:DAnUF1sWgnEvWGr5yNRTWxQzTMsl0TnjOOgUFoas" show="false"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:b057asGi0QqK6SJOA3X4fopnQEyx9m+SR2EQ1CpU" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:Q9B7Ho62xK4g+T1Q18vFaw0iA4bIWXtJLc/womGH" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:1rFgdsYULbLJ+OFK876ohv7h0cs2Vl1sonNOFBFL" show="false"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
     <elementParameter field="TEXT" name="DATASET" value="context.VG_DST"/>
@@ -515,7 +520,7 @@
     <elementParameter field="CHECK" name="BULK_FILE_ALREADY_EXIST" value="true"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="GS_SERVICE_ACCOUNT" show="false"/>
     <elementParameter field="FILE" name="GS_SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:5TNNLbxXyjviSsI9W/JO9LAhvcCx0AQDZUrNEGYj" show="false"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:HoGaepMGEMvPejAqLFf7Khj9J5lFGtwaOP34mYco" show="false"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="GS_LOCAL_FILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="BUCKET_NAME" value="&quot;&quot;" show="false"/>
@@ -557,11 +562,11 @@
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:rvqLJHuMY0NAj3zrI+ouFr3o/uFRQyygwcSkBL5F" show="false"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:whKXBvSiq+Q36PSIpVHYPa5akkL6xg4j31TOweBY" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:U64frF4MnuxCIqY6iRKjvdvyLIxthHA27H2RgrZK" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:O3vzh2Nol7KHLcZV/ki9UBFEpNrwStqC60EpbB81" show="false"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
@@ -583,11 +588,11 @@
   <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:Y3THts/MwYQ1fX+R6Fa06SkfFDd64TlhKkV6oSXE" show="false"/>
+    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:oJ8ROmU4vqN/kzyY7SgsGt4MO900M3U1fHuUBwB2" show="false"/>
     <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
     <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:OczLClSSKFfKSlhHyOe/WbKtTAR/gRBD6szhb6AH" show="false"/>
+    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:lN45SOQIZlLoeOzQjEgPLZVJhCIWNXEwEwcebaeQ" show="false"/>
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
@@ -619,7 +624,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;SMXSIC&quot;"/>
     <elementParameter field="TEXT" name="TYPE" value="AS400" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;smxbi&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:PfK+2fHWreYxymaTXzxstzw/T7FyjLu0jNTZM2rB4aj8iZztze0="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:WUl+F4JXMXSFWdShPwrQAVOYWR4c3R29+3Hy0kCZlU1WzBYA/5w="/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
@@ -633,7 +638,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSConnection_2" show="false"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="context.VG_ServiceAccount"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:TGBnMW5fh4NfB7PDZjJ53EfxyJumsE8xZMEbkGTo" show="false"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:4uvEUOP/swWv9UkX1JI3jFQqNPBY8yRza3Bx4L0Z" show="false"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="TEXT" name="GS_PROJECT_ID" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
@@ -646,7 +651,7 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_2"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:ykfs/NHxv2jyLwOrxSslGQgu6UN9oysoX9dCxd7O" show="false"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:VqA2o3akwyh99Gmd0c7H9BFraVi4k5dKxx4bUsak" show="false"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="TEXT" name="GS_PROJECT_ID" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="BUCKET" value="context.VG_BucketName"/>
@@ -667,7 +672,7 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_2"/>
     <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT" show="false"/>
     <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/key.json&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:2ZvfCihX01MGeDlp4LtKqdkvk/VToEO6ROWWxSyz" show="false"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:NhOBWQXmhG8/FeJ7I3+RenlC8iORQOESnJQ/jlDR" show="false"/>
     <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
     <elementParameter field="TEXT" name="GS_PROJECT_ID" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="BUCKET" value="context.VG_BucketName"/>
@@ -684,8 +689,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String TName = &quot;ASPIRANTES_PROVEEDORES&quot;;&#xA;String T_DBname = &quot;SMXSIC&quot;;&#xA;String n= &quot;1&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#xA;&#xA;/*&#xA;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#xA;*/&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="String TName = &quot;ASPIRANTES_PROVEEDORES&quot;;&#xA;String T_DBname = &quot;SMXSIC&quot;;&#xA;String n= &quot;1&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#xA;&#xA;/*&#xA;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#xA;*/&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="SCSAPTREQUEST"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="TEMVAC" name="tJava_1">
@@ -726,8 +731,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="0" posY="280">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String TName = &quot;SCSAPTTRANSITIONS&quot;;&#xA;String T_DBname = &quot;SMXSIC&quot;;&#xA;String n= &quot;2&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#xA;&#xA;/*&#xA;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#xA;*/&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="String TName = &quot;SCSAPTTRANSITIONS&quot;;&#xA;String T_DBname = &quot;SMXSIC&quot;;&#xA;String n= &quot;2&quot;;&#xA;&#xA;String tName = TName.toLowerCase();&#xA;String gs_db_dir = context.VG_BucketDirectory;&#xA;String gs_bucket = context.VG_BucketName;&#xA;String path = context.VG_PathLocal;&#xA;String job = context.VG_JobName;&#xA;String area = context.VG_Area;&#xA;String dbname = T_DBname;&#xA;&#xA;System.out.println(TName +&quot; &quot;+ tName);&#xA;&#xA;globalMap.put(&quot;V_DBName&quot;+n, T_DBname);&#xA;globalMap.put(&quot;V_TablaName&quot;+n, TName);&#xA;globalMap.put(&quot;RUTACSV&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;+TName+&quot;.csv&quot;);&#xA;globalMap.put(&quot;RUTA_DIR&quot;+n, path + area+&quot;/&quot; + gs_db_dir +&quot;_&quot;+ dbname +&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTOREDIR&quot;+n, gs_db_dir +&quot;_&quot;+ dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;/&quot;);&#xA;globalMap.put(&quot;GSTORECSV&quot;+n, &quot;gs://&quot;+ gs_bucket +&quot;/&quot;+gs_db_dir +&quot;_&quot; +dbname+&quot;/&quot;+tName+&quot;/&quot;+TName+&quot;*.csv&quot;);&#xA;globalMap.put(&quot;GSTORESP&quot;+n, &quot;CALL `&quot;+context.VG_ProjectID+&quot;.&quot;+context.VG_DST +&quot;.SP_DSA_&quot;+TName+&quot;`();&quot;);&#xA;&#xA;/*&#xA;Bi.println(((String)globalMap.get(&quot;V_DBName&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTACSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;RUTA_DIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTOREDIR&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORECSV&quot;+n)));&#xA;Bi.println(((String)globalMap.get(&quot;GSTORESP&quot;+n)));&#xA;*/&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="SCSAPTTRANSITIONS"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="TEMVAC" name="tJava_2">
@@ -767,107 +772,112 @@
     </metadata>
   </node>
   <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="FERIA" id="0"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_1" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_1" target="tGSPut_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk9" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk15" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQueryBulkExec_1" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_1" target="tBigQuerySQLRow_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk5" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk16" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tFileOutputDelimited_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row2" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_2" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_2" target="tGSPut_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk10" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk17" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQueryBulkExec_2" offsetLabelX="0" offsetLabelY="0" source="tBigQueryBulkExec_2" target="tBigQuerySQLRow_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk4" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk18" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_2" offsetLabelX="0" offsetLabelY="0" source="tPrejob_2" target="tDBConnection_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk19" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tDBConnection_1" offsetLabelX="0" offsetLabelY="0" source="tDBConnection_1" target="tGSConnection_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk8" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk20" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_1" offsetLabelX="0" offsetLabelY="0" source="tGSPut_1" target="tBigQueryBulkExec_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk11" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk21" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tGSPut_2" offsetLabelX="0" offsetLabelY="0" source="tGSPut_2" target="tBigQueryBulkExec_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk12" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk22" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_1" offsetLabelX="0" offsetLabelY="0" source="tJava_1" target="tDBInput_1">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk23" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" source="tJava_2" target="tDBInput_2">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk3" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk24" show="false"/>
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQueryBulkExec_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBConnection_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSConnection_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
 </talendfile:ProcessType>
