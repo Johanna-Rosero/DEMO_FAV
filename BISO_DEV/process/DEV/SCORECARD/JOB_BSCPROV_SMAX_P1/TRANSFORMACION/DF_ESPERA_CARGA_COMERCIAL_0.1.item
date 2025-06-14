@@ -192,8 +192,8 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="680" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="if (context.V_TIPO_CARGA == 0){&#xA;&#xA;context.Bandera_Aux = Integer.parseInt(row1.Bandera_Aux);&#xA;System.out.println(&quot;********************* BANDERA COMERCIAL : &quot; + context.Bandera_Aux + &quot; ********************&quot;);&#xA;&#xA;if (context.Bandera_Aux > 0) {&#xA;&#xA;&#x9;&#x9;context.Bandera_Salida = 55;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;***************&quot;);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;Existen VENTAS&quot;);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;globalMap.put(&quot;Bandera_Aux&quot;, context.Bandera_Aux);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;***************&quot;);&#xA;&#x9;&#x9;&#xA;}&#xA;&#x9;&#x9;&#xA;else {&#xA;    &#xA;&#xA;        System.out.println(&quot;*********************&quot;);&#xA;&#xA;        System.out.println(&quot;********************* NO CULMINA LA  CARGA DE COMERCIAL DESCARGA:N° : &quot; + context.Bandera_Salida + &quot; ********************&quot;);&#xA;&#xA;&#xA;        try {&#xA;&#xA;            Thread.sleep(1*40*10000); // Pausa durante 8 minutos (400,000 milisegundos) ESTA PARAMETRIZABLE. &#xA;&#xA;        } catch (InterruptedException e) {&#xA;&#xA;            // Manejar la excepción si es necesario&#xA;    &#x9;}&#xA;    }&#xA;&#xA;}&#xA;else {&#xA;&#xA;System.out.println(&quot;********************* INICIA CARGA MES ANTERIOR *********************&quot;);&#xA;context.Bandera_Salida = 55;&#xA;context.Bandera_Aux = 1;&#xA;&#xA;}&#xD;&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="if (context.V_TIPO_CARGA == 0){&#xA;&#xA;context.Bandera_Aux = Integer.parseInt(input_row.Bandera_Aux);&#xA;System.out.println(&quot;********************* BANDERA COMERCIAL : &quot; + context.Bandera_Aux + &quot; ********************&quot;);&#xA;&#xA;if (context.Bandera_Aux > 0) {&#xA;&#xA;&#x9;&#x9;context.Bandera_Salida = 55;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;***************&quot;);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;Existen VENTAS&quot;);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;globalMap.put(&quot;Bandera_Aux&quot;, context.Bandera_Aux);&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;***************&quot;);&#xA;&#x9;&#x9;&#xA;}&#xA;&#x9;&#x9;&#xA;else {&#xA;    &#xA;&#xA;        System.out.println(&quot;*********************&quot;);&#xA;&#xA;        System.out.println(&quot;********************* NO CULMINA LA  CARGA DE COMERCIAL DESCARGA:N° : &quot; + context.Bandera_Salida + &quot; ********************&quot;);&#xA;&#xA;&#xA;        try {&#xA;&#xA;            Thread.sleep(1*40*10000); // Pausa durante 8 minutos (400,000 milisegundos) ESTA PARAMETRIZABLE. &#xA;&#xA;        } catch (InterruptedException e) {&#xA;&#xA;            // Manejar la excepción si es necesario&#xA;    &#x9;}&#xA;    }&#xA;&#xA;}&#xA;else {&#xA;&#xA;System.out.println(&quot;********************* INICIA CARGA MES ANTERIOR *********************&quot;);&#xA;context.Bandera_Salida = 55;&#xA;context.Bandera_Aux = 1;&#xA;&#xA;}&#xD;&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="SC_LOC_PRO"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1">
@@ -202,8 +202,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="380" posY="-80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;Bandera_Aux:&quot;+context.Bandera_Procesados);&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;Bandera_Aux:&quot;);&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
@@ -284,23 +284,23 @@
   </connection>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLoop_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFixedFlowInput_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="247;247;247"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
   </subjob>
 </talendfile:ProcessType>
