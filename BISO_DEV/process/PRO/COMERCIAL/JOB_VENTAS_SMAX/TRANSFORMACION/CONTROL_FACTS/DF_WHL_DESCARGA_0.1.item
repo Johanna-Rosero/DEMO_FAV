@@ -239,7 +239,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_3" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;//System.out.println(&quot;1P- &quot; + context.bandera_Proceso_SMS); &#xD;&#xA;//context.bandera_Aux= (input_row.ban_aux);&#xA;//System.out.println(&quot;- &quot; + context.codLocal); &#xD;&#xA;//System.out.println(&quot;auxiliar fuera whl espera&quot; + context.bandera_Aux); "/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;//System.out.println(&quot;1P- &quot; + context.bandera_Proceso_SMS); &#xD;&#xA;//context.bandera_Aux= (input_row.ban_aux);&#xA;//System.out.println(&quot;- &quot; + context.codLocal); &#xD;&#xA;//System.out.println(&quot;auxiliar fuera whl espera&quot; + context.bandera_Aux); &#xD;&#xA;&#xD;&#xA;System.out.println(&quot;if whl descarga luego de borra_loc_no_psc ban AUX &quot;+context.bandera_Aux);"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_3">
@@ -347,7 +347,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1080" posY="560">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_6" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="context.bandera_No_Procesados= (input_row.ban_no_procesados);&#xA;&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="context.bandera_No_Procesados= (input_row.ban_no_procesados);&#xA;&#xA;System.out.println(&quot;whl descarga - luego blocdia&quot; + context.bandera_No_Procesados); "/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="ban_no_procesados"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -662,13 +662,13 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_4" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJavaRow_4" target="tRunJob_1">
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_4" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJavaRow_4" target="tRunJob_3">
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_Aux != 0"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
+  </connection>
+  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_4" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJavaRow_4" target="tRunJob_1">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_Aux == 0 "/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If4" show="false"/>
-  </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJavaRow_4" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJavaRow_4" target="tRunJob_3">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_Aux != 0 "/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row5" lineStyle="0" metaname="tRunJob_6" offsetLabelX="0" offsetLabelY="0" source="tRunJob_6" target="tJavaRow_5">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
