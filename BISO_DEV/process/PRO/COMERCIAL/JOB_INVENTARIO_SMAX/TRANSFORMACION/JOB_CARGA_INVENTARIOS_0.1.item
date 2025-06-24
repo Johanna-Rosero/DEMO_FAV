@@ -46,7 +46,8 @@
     <contextParameter comment="" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;/talend/DEV/&quot;" internalId="_7aDqWSVREfCRZcknvXpBHw"/>
   </context>
   <parameters>
-    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
+    <elementParameter field="CHECK" name="LOG4J_RUN_ACTIVATE" value="true" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Warn" show="false"/>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value="{&quot;JOB_RUN_VM_ARGUMENTS&quot;:[&quot;-Xms4096M&quot;,&quot;-Xmx15360M&quot;]}" show="false"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
@@ -247,8 +248,8 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="480" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="globalMap.put(&quot;VarCountLocSmax&quot;,row2.COUNT_LOC_SMAX);&#xA;Bi.println(&quot;*** Cantidad de Locales SMAX ->VarCountLocSmax=&quot;+ (int)globalMap.get(&quot;VarCountLocSmax&quot;));"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="globalMap.put(&quot;VarCountLocSmax&quot;,row2.COUNT_LOC_SMAX);&#xA;log.warn(&quot;*** Cantidad de Locales SMAX ->VarCountLocSmax=&quot;+ (int)globalMap.get(&quot;VarCountLocSmax&quot;));"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_2">
       <column comment="" key="false" length="-1" name="COUNT_LOC_SMAX" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
@@ -287,8 +288,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="360" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;*** ------ INICIA JOB_CARGA_INVENTARIO  ------ ***&quot;);&#xA;Bi.println(&quot;*** Fecha de Carga&#x9;&#x9;&#x9;&#x9;&#x9;-> V_FechaCarga=&quot;+context.V_FechaCarga);&#xA;Bi.println(&quot;*** Bandera de Inicio de Bucle&#x9;&#x9;-> V_BanderaIni=&quot;+context.V_BanderaIni);&#xA;Bi.println(&quot;*** Bandera de Conteo de Registros&#x9;-> V_BanActCount=&quot;+context.V_BanActCount);"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;*** ------ INICIA JOB_CARGA_INVENTARIO  ------ ***&quot;);&#xA;log.warn(&quot;*** Fecha de Carga&#x9;&#x9;&#x9;&#x9;&#x9;-> V_FechaCarga=&quot;+context.V_FechaCarga);&#xA;log.warn(&quot;*** Bandera de Inicio de Bucle&#x9;&#x9;-> V_BanderaIni=&quot;+context.V_BanderaIni);&#xA;log.warn(&quot;*** Bandera de Conteo de Registros&#x9;-> V_BanActCount=&quot;+context.V_BanActCount);"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
@@ -322,8 +323,8 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="920" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_5" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Seteo de Variable &#xA;globalMap.put(&quot;varBanProc&quot;,row9.BAN_PROC);&#xA;&#xA;&#xA;if ((int)globalMap.get(&quot;varBanProc&quot;)>0) {&#xA;&#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;Bi.println(&quot;*** EXISTEN LOCALES GENERADOS PARA INVENTARIOS: N° &quot;+ (int)globalMap.get(&quot;varBanProc&quot;));&#xA;&#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;globalMap.put(&quot;varBanderaGen&quot;,1);&#xA;&#x9;Bi.println(&quot;**************** BANDERA PARA CONTINUAR PROCESO: &quot;+ (int)globalMap.get(&quot;varBanderaGen&quot;));&#xA;&#xA;}else {&#xA; &#x9;//$intBanderaLocalIni  = $intBanderaLocalIni +1;&#xA;&#x9;Bi.println(&quot;**********************************************************************&quot;);&#xA;&#x9;Bi.println(&quot;*** ESPERANDO POR LOCALES PARA SER PROCESADOS&quot;); &#xA;&#x9;Bi.println(&quot;***********************************************************************&quot;);&#x9;&#xA; &#x9;try {&#xA;            Bi.println(&quot;******* INICIA ESPERA DE 10 MINUTOS CICLO: &quot;+context.V_BanderaIni);&#xA;            Thread.sleep(600000);&#xA;           // Thread.sleep(10000);&#xA;            // Continuar con el resto del código después del retraso&#xA;            Bi.println(&quot;******* FIN ESPERA DE 10 MINUTOS CICLO: &quot;+context.V_BanderaIni);&#xA;        } catch (InterruptedException e) {&#xA;            e.printStackTrace();&#xA;        }&#xA;&#x9;&#xA;&#x9;globalMap.put(&quot;varBanderaGen&quot;,0);&#xA;&#x9;Bi.println(&quot;**************** BANDERA PARA CONTINUAR PROCESO: &quot;+(int)globalMap.get(&quot;varBanderaGen&quot;));&#xA;&#xA;}&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="//Seteo de Variable &#xD;&#xA;globalMap.put(&quot;varBanProc&quot;,row9.BAN_PROC);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;if ((int)globalMap.get(&quot;varBanProc&quot;)>0) {&#xD;&#xA;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;log.warn(&quot;*** EXISTEN LOCALES GENERADOS PARA INVENTARIOS: N° &quot;+ (int)globalMap.get(&quot;varBanProc&quot;));&#xD;&#xA;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;globalMap.put(&quot;varBanderaGen&quot;,1);&#xD;&#xA;&#x9;log.warn(&quot;**************** BANDERA PARA CONTINUAR PROCESO: &quot;+ (int)globalMap.get(&quot;varBanderaGen&quot;));&#xD;&#xA;&#xD;&#xA;}else {&#xD;&#xA;&#x9;//$intBanderaLocalIni  = $intBanderaLocalIni +1;&#xD;&#xA;&#x9;log.warn(&quot;**********************************************************************&quot;);&#xD;&#xA;&#x9;log.warn(&quot;*** ESPERANDO POR LOCALES PARA SER PROCESADOS&quot;); &#xD;&#xA;&#x9;log.warn(&quot;***********************************************************************&quot;);&#x9;&#xD;&#xA;&#x9;try {&#xD;&#xA;          log.warn(&quot;******* INICIA ESPERA DE 10 MINUTOS CICLO: &quot;+context.V_BanderaIni);&#xD;&#xA;          Thread.sleep(600000);&#xD;&#xA;         // Thread.sleep(10000);&#xD;&#xA;          // Continuar con el resto del código después del retraso&#xD;&#xA;          log.warn(&quot;******* FIN ESPERA DE 10 MINUTOS CICLO: &quot;+context.V_BanderaIni);&#xD;&#xA;      } catch (InterruptedException e) {&#xD;&#xA;          e.printStackTrace();&#xD;&#xA;      }&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;globalMap.put(&quot;varBanderaGen&quot;,0);&#xD;&#xA;&#x9;log.warn(&quot;**************** BANDERA PARA CONTINUAR PROCESO: &quot;+(int)globalMap.get(&quot;varBanderaGen&quot;));"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_5"/>
   </node>
@@ -389,8 +390,8 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="440" posY="520">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_3" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;**** INICIA CAMBIO PARA QUE TOME LOS 10 PRIMEROS LOCALES Y LAS BODEGAS PORQUE ESTAS NO SE CONTROLAN SI ESTAN EN GEN O PEN&quot;);&#xA;//Seteo de Variable &#xA;globalMap.put(&quot;varBanProcPrimero&quot;,row6.BAN_PROC_PRIMERO);&#xA;Bi.println(&quot;*** Cantidad de Locales que se procesaran Primero&#x9;-> varBanProcPrimero:&quot;+ (int)globalMap.get(&quot;varBanProcPrimero&quot;));&#xA;Bi.println(&quot;*** Bandera de Inicio de Bucle&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;-> V_BanderaIni=&quot;+context.V_BanderaIni);&#xA;&#xA;&#xA;/*&#xA;if (context.ctxBanderaIni==0 &amp;&amp; (int)globalMap.get(&quot;varBanProcPrimero&quot;)>0) {&#xA;&#x9;System.out.println(&quot;Se ejecuta la primera vez&quot;);&#xA;}else {&#xA;  System.out.println(&quot;Se ejecuta la segunda vez&quot;);&#xA;}&#xA;&#xA;*/"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;**** INICIA CAMBIO PARA QUE TOME LOS 10 PRIMEROS LOCALES Y LAS BODEGAS PORQUE ESTAS NO SE CONTROLAN SI ESTAN EN GEN O PEN&quot;);&#xA;//Seteo de Variable &#xA;globalMap.put(&quot;varBanProcPrimero&quot;,row6.BAN_PROC_PRIMERO);&#xA;log.warn(&quot;*** Cantidad de Locales que se procesaran Primero&#x9;-> varBanProcPrimero:&quot;+ (int)globalMap.get(&quot;varBanProcPrimero&quot;));&#xA;log.warn(&quot;*** Bandera de Inicio de Bucle&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;-> V_BanderaIni=&quot;+context.V_BanderaIni);&#xA;&#xA;&#xA;/*&#xA;if (context.ctxBanderaIni==0 &amp;&amp; (int)globalMap.get(&quot;varBanProcPrimero&quot;)>0) {&#xA;&#x9;System.out.println(&quot;Se ejecuta la primera vez&quot;);&#xA;}else {&#xA;  System.out.println(&quot;Se ejecuta la segunda vez&quot;);&#xA;}&#xA;&#xA;*/"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_3">
       <column comment="" key="false" length="-1" name="BAN_PROC" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
@@ -485,8 +486,8 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="760">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="//Seteo de Variable &#xA;globalMap.put(&quot;varBanNoProc&quot;,row3.BAN_NO_PROC);&#xA;&#xA;//System.out.println(&quot;varBanPro: &quot;+ (int)globalMap.get(&quot;varBanProc&quot;));&#xA;&#xA;if ((int)globalMap.get(&quot;varBanNoProc&quot;)>0) {&#xA;&#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;Bi.println(&quot;*** EXISTEN LOCALES PENDIENTES PARA INVENTARIOS: N° &quot;+ (int)globalMap.get(&quot;varBanNoProc&quot;));&#xA;&#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;&#xA;&#x9;//#Desactiva el conteo completo de las Areas a cargar, esta bandera se usa en el WF_CONTEO_AREA_TRABAJO&#xA;    context.V_BanActCount=0;&#xA;    Bi.println(&quot;*** Seteo Bandera de Conteo de Registros&#x9;-> V_BanActCount=&quot;+context.V_BanActCount);&#xA;&#xA;}else {&#xA; &#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;Bi.println(&quot;*** NO EXISTEN LOCALES PENDIENTES PARA INVENTARIOS: N° &quot;+ (int)globalMap.get(&quot;varBanNoProc&quot;));&#xA;&#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;&#x9;&#xA;&#x9;if ((int)globalMap.get(&quot;VarCountLocSmax&quot;)==0) {  &#x9;&#x9;&#xA;&#x9;&#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;&#x9;Bi.println(&quot;*** NO EXISTENE LOCALES GENERADOS EN MAX &quot;);&#xA;&#x9;&#x9;Bi.println(&quot;*************************************************************************&quot;);&#xA;&#x9;}&#xA;&#x9;&#x9;&#xA;&#x9;context.V_BanderaIni=55;&#xA;    Bi.println(&quot;*** Bandera de Fin de Bucle&#x9;&#x9;-> V_BanderaIni=&quot;+context.V_BanderaIni);&#xA;&#xA;}&#xA;&#xA;output_row.OV_BanActCount= context.V_BanActCount;&#xA;output_row.OV_BanderaIni=context.V_BanderaIni;&#xA;&#xA;&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="//Seteo de Variable &#xD;&#xA;globalMap.put(&quot;varBanNoProc&quot;,row3.BAN_NO_PROC);&#xD;&#xA;&#xD;&#xA;//System.out.println(&quot;varBanPro: &quot;+ (int)globalMap.get(&quot;varBanProc&quot;));&#xD;&#xA;&#xD;&#xA;if ((int)globalMap.get(&quot;varBanNoProc&quot;)>0) {&#xD;&#xA;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;log.warn(&quot;*** EXISTEN LOCALES PENDIENTES PARA INVENTARIOS: N° &quot;+ (int)globalMap.get(&quot;varBanNoProc&quot;));&#xD;&#xA;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;//#Desactiva el conteo completo de las Areas a cargar, esta bandera se usa en el WF_CONTEO_AREA_TRABAJO&#xD;&#xA;  context.V_BanActCount=0;&#xD;&#xA;  log.warn(&quot;*** Seteo Bandera de Conteo de Registros&#x9;-> V_BanActCount=&quot;+context.V_BanActCount);&#xD;&#xA;&#xD;&#xA;}else {&#xD;&#xA;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;log.warn(&quot;*** NO EXISTEN LOCALES PENDIENTES PARA INVENTARIOS: N° &quot;+ (int)globalMap.get(&quot;varBanNoProc&quot;));&#xD;&#xA;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;if ((int)globalMap.get(&quot;VarCountLocSmax&quot;)==0) {  &#x9;&#x9;&#xD;&#xA;&#x9;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;&#x9;log.warn(&quot;*** NO EXISTENE LOCALES GENERADOS EN MAX &quot;);&#xD;&#xA;&#x9;&#x9;log.warn(&quot;*************************************************************************&quot;);&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;context.V_BanderaIni=55;&#xD;&#xA;  log.warn(&quot;*** Bandera de Fin de Bucle&#x9;&#x9;-> V_BanderaIni=&quot;+context.V_BanderaIni);&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;output_row.OV_BanActCount= context.V_BanActCount;&#xD;&#xA;output_row.OV_BanderaIni=context.V_BanderaIni;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1">
       <column comment="" key="false" length="-1" name="OV_BanActCount" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
@@ -508,8 +509,8 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="960" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="Bi.println(&quot;*** ------ FINALIZA JOB_CARGA_INVENTARIO  ------ ***&quot;);"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;*** ------ FINALIZA JOB_CARGA_INVENTARIO  ------ ***&quot;);"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
   </node>
@@ -672,78 +673,78 @@
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_3" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_4" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_7" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_5" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_8" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPostjob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;0;0" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tRunJob_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="255;255;255" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_1" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="255;255;255" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_9" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="255;255;255" show="false"/>
-    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="47;47;47"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
 </talendfile:ProcessType>

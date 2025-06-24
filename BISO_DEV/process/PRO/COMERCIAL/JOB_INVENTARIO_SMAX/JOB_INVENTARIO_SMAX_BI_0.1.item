@@ -37,7 +37,8 @@
     <contextParameter comment="" name="VG_PathLocal" prompt="VG_PathLocal?" promptNeeded="false" repositoryContextId="_HffM4C6CEe-fE_6Q2TgshQ" type="id_String" value="&quot;/talend/DEV/&quot;" internalId="_9B05aSVREfCRZcknvXpBHw"/>
   </context>
   <parameters>
-    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
+    <elementParameter field="CHECK" name="LOG4J_RUN_ACTIVATE" value="true" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Warn" show="false"/>
     <elementParameter field="TEXT" name="JOB_RUN_VM_ARGUMENTS" value="{&quot;JOB_RUN_VM_ARGUMENTS&quot;:[&quot;-Xms4096M&quot;,&quot;-Xmx15360M&quot;]}" show="false"/>
     <elementParameter field="CHECK" name="JOB_RUN_VM_ARGUMENTS_OPTION" value="true" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
@@ -186,7 +187,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="520" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;* ----------- Inicio Asignacion de Variables del JOB -----------&quot;);&#xA;Bi.println(&quot;* Fecha de Carga&#x9;&#x9;&#x9;&#x9;&#x9;-> V_FechaCarga=&quot;+(String)globalMap.get(&quot;V_FechaCarga&quot;));&#xA;Bi.println(&quot;* Bandera de Inicio de Bucle&#x9;&#x9;-> V_BanderaIni=&quot;+(int)globalMap.get(&quot;V_BanderaIni&quot;));&#xA;Bi.println(&quot;* Bandera de Conteo de Registros &#x9;-> V_BanActCount=&quot;+ (int)globalMap.get(&quot;V_BanActCount&quot;));&#xA;Bi.println(&quot;* Elimnina Datos de la Tabla BI_DSA.INV_LOCPROMAX&quot;);&#xA;Bi.println(&quot;******************************************************************&quot;);&#xA;Bi.println(&quot;&quot;);&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;* ----------- Inicio Asignacion de Variables del JOB -----------&quot;);&#xA;log.warn(&quot;* Fecha de Carga&#x9;&#x9;&#x9;&#x9;&#x9;-> V_FechaCarga=&quot;+(String)globalMap.get(&quot;V_FechaCarga&quot;));&#xA;log.warn(&quot;* Bandera de Inicio de Bucle&#x9;&#x9;-> V_BanderaIni=&quot;+(int)globalMap.get(&quot;V_BanderaIni&quot;));&#xA;log.warn(&quot;* Bandera de Conteo de Registros &#x9;-> V_BanActCount=&quot;+ (int)globalMap.get(&quot;V_BanActCount&quot;));&#xA;log.warn(&quot;* Elimnina Datos de la Tabla BI_DSA.INV_LOCPROMAX&quot;);&#xA;log.warn(&quot;******************************************************************&quot;);&#xA;&#xA;"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1">
@@ -236,7 +237,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="400" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;**************** INICIO DE BUCLE&#x9;-> V_BanderaIni=&quot;+(int)globalMap.get(&quot;V_BanderaIni&quot;)+&quot; ****************&quot;);&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;**************** INICIO DE BUCLE&#x9;-> V_BanderaIni=&quot;+(int)globalMap.get(&quot;V_BanderaIni&quot;)+&quot; ****************&quot;);&#xA;"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1">
@@ -284,7 +285,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="720" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="&#xA;globalMap.put(&quot;V_BanActCount&quot;,input_row.OV_BanActCount);&#xA;globalMap.put(&quot;V_BanderaIni&quot;,input_row.OV_BanderaIni);&#xA;&#xA;Bi.println(&quot;**************** FIN DE BUCLE&#x9;-> V_BanderaIni=&quot;+(int)globalMap.get(&quot;V_BanderaIni&quot;)+&quot; ****************&quot;);&#xA;Bi.println(&quot;&quot;);&#xA;Bi.println(&quot;&quot;);"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="&#xA;globalMap.put(&quot;V_BanActCount&quot;,input_row.OV_BanActCount);&#xA;globalMap.put(&quot;V_BanderaIni&quot;,input_row.OV_BanderaIni);&#xA;&#xA;log.warn(&quot;**************** FIN DE BUCLE&#x9;-> V_BanderaIni=&quot;+(int)globalMap.get(&quot;V_BanderaIni&quot;)+&quot; ****************&quot;);&#xA;log.warn(&quot;&quot;);&#xA;"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_2">
@@ -298,14 +299,14 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="920" posY="240">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;**************** FINALIZA JOB_SMX_INVENTARIOS_BI  ******************&quot;);"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;**************** FINALIZA JOB_SMX_INVENTARIOS_BI  ******************&quot;);"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_2"/>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="80" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_3" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="Bi.println(&quot;**************** INICIA JOB_SMX_INVENTARIOS_BI  ******************&quot;);"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;**************** INICIA JOB_SMX_INVENTARIOS_BI  ******************&quot;);"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_3"/>
