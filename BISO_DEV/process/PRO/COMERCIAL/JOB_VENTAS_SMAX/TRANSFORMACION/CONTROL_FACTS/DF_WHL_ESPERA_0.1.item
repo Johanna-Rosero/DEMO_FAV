@@ -172,7 +172,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT&#xD;&#xA;&#xD;&#xA;  (&#xD;&#xA;&#x9;&#xD;&#xA;SELECT count(*) &#xD;&#xA;FROM (&#xD;&#xA;   SELECT FECHAVENTA, ATR.CODIGOLOCAL CODIGOREFERENCIA, VENTACOMPLETA,CATH.VALORTIPOESTADO &#xD;&#xA;FROM SMXSIC.SCVENTVENCARARETRA CAT &#xD;&#xA;INNER JOIN SMXSIC.SCVENTVENCARARETRAHIS CATH ON CAT.CODIGOCOMPANIA = CATH.CODIGOCOMPANIA AND CAT.CODIGOCARGAVENTA = CATH.CODIGOCARGAVENTA&#xD;&#xA;INNER JOIN SMXSIC.SSPCOTAREATRABAJO ATR ON ATR.CODIGOCOMPANIA = CAT.CODIGOCOMPANIA AND ATR.CODIGOAREATRABAJO = CAT.CODIGOAREATRABAJO&#xD;&#xA;WHERE CAT.FECHAVENTA = '&quot;+context.fecha_Proceso+&quot;'&#xD;&#xA;AND CATH.CODIGOPROCESO = 611 AND CATH.VALORTIPOESTADO='GEN'&#xD;&#xA;) A &#xD;&#xA;INNER JOIN SMXSIC.SBVMXTLOCNOPROMAX B ON (A.FECHAVENTA=B.SALEDATE AND A.CODIGOREFERENCIA=B.REFERENCECODE)&#xD;&#xA;   &#xD;&#xA;&#x9;)  AS ban_auxiliar&#xD;&#xA;&#xD;&#xA;FROM SYSIBM.SYSDUMMY1&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT&#xD;&#xA;&#xD;&#xA;  (&#xD;&#xA;&#x9;&#xD;&#xA;SELECT count(*) &#xD;&#xA;FROM (&#xD;&#xA;   SELECT FECHAVENTA, ATR.CODIGOLOCAL CODIGOREFERENCIA, VENTACOMPLETA,CATH.VALORTIPOESTADO &#xD;&#xA;FROM SMXSIC.SCVENTVENCARARETRA CAT &#xD;&#xA;INNER JOIN SMXSIC.SCVENTVENCARARETRAHIS CATH ON CAT.CODIGOCOMPANIA = CATH.CODIGOCOMPANIA AND CAT.CODIGOCARGAVENTA = CATH.CODIGOCARGAVENTA&#xD;&#xA;INNER JOIN SMXSIC.SSPCOTAREATRABAJO ATR ON ATR.CODIGOCOMPANIA = CAT.CODIGOCOMPANIA AND ATR.CODIGOAREATRABAJO = CAT.CODIGOAREATRABAJO&#xD;&#xA;WHERE CAT.FECHAVENTA = '&quot;+context.fecha_Proceso+&quot;'&#xD;&#xA;AND CATH.CODIGOPROCESO = 611 AND CATH.VALORTIPOESTADO='GEN'&#xD;&#xA;) A &#xD;&#xA;INNER JOIN SMXSIC.SBVMXTLOCNOPROMAX_2 B ON (A.FECHAVENTA=B.SALEDATE AND A.CODIGOREFERENCIA=B.REFERENCECODE)&#xD;&#xA;   &#xD;&#xA;&#x9;)  AS ban_auxiliar&#xD;&#xA;&#xD;&#xA;FROM SYSIBM.SYSDUMMY1&quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" value="as400_id" show="false"/>
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
@@ -355,14 +355,14 @@
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate1" show="false"/>
   </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7" show="false"/>
+  </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tRunJob_1">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_Aux==0   "/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tJavaRow_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
