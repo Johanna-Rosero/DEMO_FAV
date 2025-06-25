@@ -58,8 +58,8 @@
   </context>
   <parameters>
     <elementParameter field="CHECK" name="LOG4J_RUN_ACTIVATE" value="true" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
-    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="160" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Warn" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="200" show="false"/>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0" show="false"/>
     <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
     <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" value="" show="false"/>
@@ -193,7 +193,7 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_1"/>
   </node>
-  <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="120" posY="160">
+  <node componentName="tPrejob" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="-120" posY="160">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
     <elementParameter field="TEXT" name="LABEL" value="INICIO JOB_MENSAJES_DIRARIOS"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -256,7 +256,7 @@
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="360" posY="480">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_2" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;SMSFlag:&quot; + globalMap.get(&quot;SMSFlag&quot;).)"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;SMSFlag:&quot; + globalMap.get(&quot;SMSFlag&quot;));"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;&#xA;import routines.Bi;"/>
     <elementParameter field="TEXT" name="LABEL" value="Bandera"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -324,11 +324,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk3" show="false"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" outputId="1" source="tJava_2" target="tFileDelete_1">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="Integer.parseInt(globalMap.get(&quot;SMSFlag&quot;)) == 1"/>
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="&quot;1&quot;.equals((String)globalMap.get(&quot;V_RUNAUTOMATICO&quot;))"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
   </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_2" offsetLabelX="0" offsetLabelY="0" outputId="2" source="tJava_2" target="tJava_1">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="Integer.parseInt(globalMap.get(&quot;SMSFlag&quot;)) != 1"/>
+    <elementParameter field="MEMO_JAVA" name="CONDITION" value="!&quot;0&quot;.equals((String)globalMap.get(&quot;V_RUNAUTOMATICO&quot;))"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_1" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_1" target="tJava_2">
