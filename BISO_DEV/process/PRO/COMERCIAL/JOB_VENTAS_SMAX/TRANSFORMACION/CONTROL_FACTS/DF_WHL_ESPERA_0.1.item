@@ -30,7 +30,7 @@
     <contextParameter comment="" name="bandera_Salida" prompt="bandera_Salida?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0" internalId="_nbCzeO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="codLocal" prompt="codLocal?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0" internalId="_nbDacO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="estado" prompt="estado?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDace_gEe6ZV_8K6xwkGQ"/>
-    <contextParameter comment="" name="estado2" prompt="estado2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="" internalId="_nbDacu_gEe6ZV_8K6xwkGQ"/>
+    <contextParameter comment="" name="estado2" prompt="estado2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0" internalId="_nbDacu_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDac-_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso_FinL" prompt="fecha_Proceso_FinL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDadO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso_FinL2" prompt="fecha_Proceso_FinL2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDade_gEe6ZV_8K6xwkGQ"/>
@@ -38,7 +38,7 @@
     <contextParameter comment="" name="fecha_Proceso_IniL2" prompt="fecha_Proceso_IniL2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDad-_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso_Llni_Mig" prompt="fecha_Proceso_Llni_Mig?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="'2021-04-30 00:00:00'" internalId="_nbDaeO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_reproceso" prompt="fecha_reproceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Date" value="" internalId="_nbDaee_gEe6ZV_8K6xwkGQ"/>
-    <contextParameter comment="" name="jobId" prompt="jobId?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDaeu_gEe6ZV_8K6xwkGQ"/>
+    <contextParameter comment="" name="jobId" prompt="jobId?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="&quot;0&quot;" internalId="_nbDaeu_gEe6ZV_8K6xwkGQ"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -172,7 +172,7 @@
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT&#xD;&#xA;&#xD;&#xA;  (&#xD;&#xA;&#x9;&#xD;&#xA;SELECT count(*) &#xD;&#xA;FROM (&#xD;&#xA;   SELECT FECHAVENTA, ATR.CODIGOLOCAL CODIGOREFERENCIA, VENTACOMPLETA,CATH.VALORTIPOESTADO &#xD;&#xA;FROM SMXSIC.SCVENTVENCARARETRA CAT &#xD;&#xA;INNER JOIN SMXSIC.SCVENTVENCARARETRAHIS CATH ON CAT.CODIGOCOMPANIA = CATH.CODIGOCOMPANIA AND CAT.CODIGOCARGAVENTA = CATH.CODIGOCARGAVENTA&#xD;&#xA;INNER JOIN SMXSIC.SSPCOTAREATRABAJO ATR ON ATR.CODIGOCOMPANIA = CAT.CODIGOCOMPANIA AND ATR.CODIGOAREATRABAJO = CAT.CODIGOAREATRABAJO&#xD;&#xA;WHERE CAT.FECHAVENTA = '&quot;+context.fecha_Proceso+&quot;'&#xD;&#xA;AND CATH.CODIGOPROCESO = 611 AND CATH.VALORTIPOESTADO='GEN'&#xD;&#xA;) A &#xD;&#xA;INNER JOIN SMXSIC.SBVMXTLOCNOPROMAX B ON (A.FECHAVENTA=B.SALEDATE AND A.CODIGOREFERENCIA=B.REFERENCECODE)&#xD;&#xA;   &#xD;&#xA;&#x9;)  AS ban_auxiliar&#xD;&#xA;&#xD;&#xA;FROM SYSIBM.SYSDUMMY1&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT&#xD;&#xA;&#xD;&#xA;  (&#xD;&#xA;&#x9;&#xD;&#xA;SELECT count(*) &#xD;&#xA;FROM (&#xD;&#xA;   SELECT FECHAVENTA, ATR.CODIGOLOCAL CODIGOREFERENCIA, VENTACOMPLETA,CATH.VALORTIPOESTADO &#xD;&#xA;FROM SMXSIC.SCVENTVENCARARETRA CAT &#xD;&#xA;INNER JOIN SMXSIC.SCVENTVENCARARETRAHIS CATH ON CAT.CODIGOCOMPANIA = CATH.CODIGOCOMPANIA AND CAT.CODIGOCARGAVENTA = CATH.CODIGOCARGAVENTA&#xD;&#xA;INNER JOIN SMXSIC.SSPCOTAREATRABAJO ATR ON ATR.CODIGOCOMPANIA = CAT.CODIGOCOMPANIA AND ATR.CODIGOAREATRABAJO = CAT.CODIGOAREATRABAJO&#xD;&#xA;WHERE CAT.FECHAVENTA = '&quot;+context.fecha_Proceso+&quot;'&#xD;&#xA;AND CATH.CODIGOPROCESO = 611 AND CATH.VALORTIPOESTADO='GEN'&#xD;&#xA;) A &#xD;&#xA;INNER JOIN SMXSIC.SBVMXTLOCNOPROMAX_2 B ON (A.FECHAVENTA=B.SALEDATE AND A.CODIGOREFERENCIA=B.REFERENCECODE)&#xD;&#xA;   &#xD;&#xA;&#x9;)  AS ban_auxiliar&#xD;&#xA;&#xD;&#xA;FROM SYSIBM.SYSDUMMY1&quot;"/>
     <elementParameter field="MAPPING_TYPE" name="MAPPING" value="as400_id" show="false"/>
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
@@ -288,7 +288,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="1120" posY="400">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_3" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="System.out.print(&quot;\naux Existen locales por procesar, esperando a que generen la entrada de descarga: N° &quot;+context.bandera_Salida);&#xA;&#xA;System.out.println(&quot;while espera fecha Proceso &quot;+context.fecha_Proceso_IniL+&quot; ***************&quot;);&#xA;System.out.println(&quot;while espera Aux &quot;+context.bandera_Aux+&quot; ***************&quot;);&#xA;System.out.println(&quot;while espera Salida&quot;+context.bandera_Salida+&quot; ***************&quot;);&#xA;//System.out.print(&quot;Existen locales por procesar, esperando a que generen la entrada de descarga: N° &quot;);&#xA;//System.out.print(context.bandera_Salida);&#xA;System.out.print(&quot;\n&quot;);&#xA;    &#x9;&#xA;&#xA;if (context.bandera_Aux != null &amp;&amp; context.bandera_Aux > 0) {&#xA;&#xA;&#x9;&#x9;context.bandera_Salida = 55;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;*************** Saliendo de aux************** &quot;);&#xA;&#x9;&#x9;System.out.println(&quot;While Espera Salida Bucle AUX &quot;+context.bandera_Aux+&quot; ***************&quot;);&#xA;System.out.println(&quot;While Espera Salida Bucle SALIDA&quot;+context.bandera_Salida+&quot; ***************&quot;);&#xA;}&#xA;&#x9;&#x9;&#xA;else {&#xA;    &#xA;        System.out.println(&quot;***********Espera**********&quot;);&#xA;        try {&#xA;&#xA;            Thread.sleep(1*60*10000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#xA;&#xA;        } catch (InterruptedException e) {&#xA;&#xA;            // Manejar la excepción si es necesario&#xA;             e.printStackTrace();&#xA;    &#x9;}&#xA;    &#x9;System.out.println(&quot;***********Fin Espera**********&quot;);&#xA;    }&#xA;&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="log.warn(&quot;*********While Espera*******&quot;);&#xD;&#xA;System.out.print(&quot;\naux Existen locales por procesar, esperando a que generen la entrada de descarga: N° &quot;+context.bandera_Salida);&#xA;log.warn(&quot;Existen locales por procesar, esperando a que generen la entrada de descarga: N° &quot;+context.bandera_Salida);&#xD;&#xA;&#xA;System.out.println(&quot;while espera fecha Proceso &quot;+context.fecha_Proceso_IniL+&quot; ***************&quot;);&#xA;System.out.println(&quot;while espera Aux &quot;+context.bandera_Aux+&quot; ***************&quot;);&#xA;System.out.println(&quot;while espera Salida&quot;+context.bandera_Salida+&quot; ***************&quot;);&#xA;//System.out.print(&quot;Existen locales por procesar, esperando a que generen la entrada de descarga: N° &quot;);&#xA;//System.out.print(context.bandera_Salida);&#xA;System.out.print(&quot;\n&quot;);&#xA;&#xD;&#xA;&#xD;&#xA;log.warn(&quot;while espera fecha Proceso &quot;+context.fecha_Proceso_IniL+&quot; ***************&quot;);&#xD;&#xA;log.warn(&quot;while espera Aux &quot;+context.bandera_Aux+&quot; ***************&quot;);&#xD;&#xA;log.warn(&quot;while espera Salida&quot;+context.bandera_Salida+&quot; ***************&quot;);&#xA;&#xA;if (context.bandera_Aux != null &amp;&amp; context.bandera_Aux > 0) {&#xA;&#xA;&#x9;&#x9;context.bandera_Salida = 55;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;System.out.println(&quot;*************** Saliendo de aux************** &quot;);&#xA;System.out.println(&quot;While Espera Salida Bucle AUX &quot;+context.bandera_Aux+&quot; ***************&quot;);&#xA;System.out.println(&quot;While Espera Salida Bucle SALIDA&quot;+context.bandera_Salida+&quot; ***************&quot;);&#xD;&#xA;log.warn(&quot;While Espera Salida Bucle AUX &quot;+context.bandera_Aux+&quot; ***************&quot;);&#xD;&#xA;log.warn(&quot;While Espera Salida Bucle SALIDA&quot;+context.bandera_Salida+&quot; ***************&quot;);&#xA;}&#xA;&#x9;&#x9;&#xA;else {&#xA;    &#xA;        System.out.println(&quot;***********Espera**********&quot;);&#xA;        try {&#xA;&#xA;            Thread.sleep(1*60*10000); // Pausa durante 10 minutos (600,000 milisegundos) ESTA PARAMETRIZABLE. &#xA;&#xA;        } catch (InterruptedException e) {&#xA;&#xA;            // Manejar la excepción si es necesario&#xA;             e.printStackTrace();&#xA;    &#x9;}&#xA;    &#x9;System.out.println(&quot;***********Fin Espera**********&quot;);&#xA;    }&#xA;&#xA;"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="LABEL" value="Locales Procesados"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -355,14 +355,14 @@
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate1" show="false"/>
   </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7" show="false"/>
+  </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tRunJob_1">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_Aux==0   "/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tJavaRow_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -398,7 +398,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
   <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
