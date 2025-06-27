@@ -30,7 +30,7 @@
     <contextParameter comment="" name="bandera_Salida" prompt="bandera_Salida?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0" internalId="_nbCzeO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="codLocal" prompt="codLocal?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0" internalId="_nbDacO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="estado" prompt="estado?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDace_gEe6ZV_8K6xwkGQ"/>
-    <contextParameter comment="" name="estado2" prompt="estado2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="" internalId="_nbDacu_gEe6ZV_8K6xwkGQ"/>
+    <contextParameter comment="" name="estado2" prompt="estado2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Integer" value="0" internalId="_nbDacu_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso" prompt="fecha_Proceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDac-_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso_FinL" prompt="fecha_Proceso_FinL?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDadO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso_FinL2" prompt="fecha_Proceso_FinL2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDade_gEe6ZV_8K6xwkGQ"/>
@@ -38,7 +38,7 @@
     <contextParameter comment="" name="fecha_Proceso_IniL2" prompt="fecha_Proceso_IniL2?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDad-_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_Proceso_Llni_Mig" prompt="fecha_Proceso_Llni_Mig?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="'2021-04-30 00:00:00'" internalId="_nbDaeO_gEe6ZV_8K6xwkGQ"/>
     <contextParameter comment="" name="fecha_reproceso" prompt="fecha_reproceso?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_Date" value="" internalId="_nbDaee_gEe6ZV_8K6xwkGQ"/>
-    <contextParameter comment="" name="jobId" prompt="jobId?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="" internalId="_nbDaeu_gEe6ZV_8K6xwkGQ"/>
+    <contextParameter comment="" name="jobId" prompt="jobId?" promptNeeded="false" repositoryContextId="_IOppgE2lEe6XW9A9Vo6VzA" type="id_String" value="&quot;0&quot;" internalId="_nbDaeu_gEe6ZV_8K6xwkGQ"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -355,14 +355,14 @@
     <elementParameter field="TEXT" name="NUMBER_PARALLEL" value="2" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="iterate1" show="false"/>
   </connection>
+  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_1">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7" show="false"/>
+  </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tRunJob_1">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_Aux==0   "/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
-  </connection>
-  <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tLoop_1" offsetLabelX="0" offsetLabelY="0" source="tLoop_1" target="tJava_1">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk7" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tJavaRow_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -398,7 +398,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
   <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
