@@ -269,34 +269,177 @@
       <column comment="" key="false" length="-1" name="TABLA_2" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tBigQuerySQLRow" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="560" posY="240">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tBigQuerySQLRow_3" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="AUTH_MODE" value="SERVICEACCOUNT"/>
-    <elementParameter field="PASSWORD" name="ACCESS_TOKEN" value="enc:system.encryption.key.v1:0DZA8EKsTAV3WBPMQaY9RHsgGrp/b3KFpU+RwwGJ" show="false"/>
-    <elementParameter field="LABEL" name="ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
-    <elementParameter field="FILE" name="SERVICE_ACCOUNT_CREDENTIALS_FILE" value="context.VG_ServiceAccount"/>
-    <elementParameter field="TEXT" name="CLIENT_ID" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="CLIENT_SECRET" value="enc:system.encryption.key.v1:tiHJHrRq0sBu7SoVEHeqU1eHT7I7ZRKnRP5PR0Yc" show="false"/>
-    <elementParameter field="TEXT" name="PROJECT_ID" value="context.VG_ProjectID"/>
-    <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
-    <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;INSERT INTO BI_DSA.DSA_INV_PARTE_1&#xD;&#xA;SELECT&#xD;&#xA;I.ITEM_CODE AS CODIGOARTICULO,&#xD;&#xA;I.BAR_CODE AS CODIGOBARRAS,&#xD;&#xA;I.AVERAGE_COST AS COSTOPROMEDIO,&#xD;&#xA;I.LAST_PURCHASE_COST AS COSTOULTIMACOMPRA,&#xD;&#xA;I.VALUE_TYPE_CONTROL_COST AS TIPOCONTROLCOSTO,&#xD;&#xA;AREA.WORK_AREA_CODE AS AREATRABAJO,&#xD;&#xA;AREA.DRIVE_UNITY_VALUE AS UNIDADMANEJO,&#xD;&#xA;AREA.LAST_RECEPTION_JDE_CODE AS PROVEEDOR,&#xD;&#xA;AREA.LAST_RECEPTION_DATE AS FECHAULTIMARECEPCION,&#xD;&#xA;AREA.LAST_SALE_DATE AS FECHAULTIMAVENTA,&#xD;&#xA;FIE.QUANTITY AS CAJAS,&#xD;&#xA;FIE.UNITARY_QUANTITY AS UNIDADES,&#xD;&#xA;FIE.WEIGHT AS PESO,&#xD;&#xA;FIE.FIELD_CODE,&#xD;&#xA;CASE I.VALUE_TYPE_CONTROL_COST WHEN 2 THEN AREA.CURRENT_UNITARY_QUANTITY * I.AVERAGE_COST &#xD;&#xA;ELSE AREA.CURRENT_WEIGHT * I.AVERAGE_COST END AS COSTOTOTAL,&#xD;&#xA;AREA.REGISTER_DATE AS FECHAREGISTRO,&#xD;&#xA;FIE.LAST_TRANSACTION_DATE AS FECHAULTIMAMODIFICACION,&#xD;&#xA;AREA.CURRENT_UNITARY_QUANTITY AS UNIDADES_AREA_TRA,&#xD;&#xA;AREA.CURRENT_QUANTITY AS CAJAS_AREA_TRA,&#xD;&#xA;AREA.CURRENT_WEIGHT AS PESO_AREA_TRA,&#xD;&#xA;TIMESTAMP(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')) AS DT_CARGA &#xD;&#xA;FROM SFICWORARE.SFINVTINVENTORY I&#xD;&#xA;INNER JOIN SFICWORARE.&quot;+context.tabla_1+&quot; AREA ON AREA.INVENTORY_UUID = I.UUID&#xD;&#xA;INNER JOIN SFICWORARE.&quot;+context.tabla_2+&quot; FIE ON FIE.INVENTORY_WORK_AREA_UUID = AREA.UUID&#xD;&#xA;WHERE &#xD;&#xA;FIE.FIELD_CODE IN (1,20)&#xD;&#xA;&quot;"/>
-    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
-    <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
-    <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
-    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
-    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="&quot;,&quot;" show="false"/>
-    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;" show="false"/>
-    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;"/>
+  <node componentName="tAS400Input" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="560" posY="240">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_3uEpQCfrEe6thcvOMHm1Hw" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="jt400-9.8.jar"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;BDDINVENTARIOS&quot;"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;SFICWORARE&quot;"/>
+    <elementParameter field="TEXT" name="TYPE" value="AS400" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;csmxbi&quot;"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:nAc9X3PJcL/nUCO7ybR4Zqkv8iX0RStC3moQ1r7IzUPmbhtOtRo="/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT&#xD;&#xA;I.ITEM_CODE AS CODIGOARTICULO,&#xD;&#xA;I.BAR_CODE AS CODIGOBARRAS,&#xD;&#xA;I.AVERAGE_COST AS COSTOPROMEDIO,&#xD;&#xA;I.LAST_PURCHASE_COST AS COSTOULTIMACOMPRA,&#xD;&#xA;I.VALUE_TYPE_CONTROL_COST AS TIPOCONTROLCOSTO,&#xD;&#xA;AREA.WORK_AREA_CODE AS AREATRABAJO,&#xD;&#xA;AREA.DRIVE_UNITY_VALUE AS UNIDADMANEJO,&#xD;&#xA;AREA.LAST_RECEPTION_JDE_CODE AS PROVEEDOR,&#xD;&#xA;AREA.LAST_RECEPTION_DATE AS FECHAULTIMARECEPCION,&#xD;&#xA;AREA.LAST_SALE_DATE AS FECHAULTIMAVENTA,&#xD;&#xA;FIE.QUANTITY AS CAJAS,&#xD;&#xA;FIE.UNITARY_QUANTITY AS UNIDADES,&#xD;&#xA;FIE.WEIGHT AS PESO,&#xD;&#xA;FIE.FIELD_CODE,&#xD;&#xA;FIE.LAST_TRANSACTION_DATE AS FECHAULTIMAMODIFICACION,&#xD;&#xA;CASE I.VALUE_TYPE_CONTROL_COST WHEN '2' THEN AREA.CURRENT_UNITARY_QUANTITY * I.AVERAGE_COST &#xD;&#xA;ELSE AREA.CURRENT_WEIGHT * I.AVERAGE_COST END COSTOTOTAL,&#xD;&#xA;AREA.REGISTER_DATE AS FECHAREGISTRO,&#xD;&#xA;AREA.CURRENT_UNITARY_QUANTITY AS UNIDADES_AREA_TRA,&#xD;&#xA;AREA.CURRENT_QUANTITY AS CAJAS_AREA_TRA,&#xD;&#xA;AREA.CURRENT_WEIGHT AS PESO_AREA_TRA&#xD;&#xA;FROM SFICWORARE.SFINVTINVENTORY I&#xD;&#xA;INNER JOIN SFICWORARE.&quot;+context.tabla_1+&quot; AREA ON AREA.INVENTORY_UUID = I.UUID&#xD;&#xA;INNER JOIN SFICWORARE.&quot;+context.tabla_2+&quot; FIE ON FIE.INVENTORY_WORK_AREA_UUID = AREA.UUID&#xD;&#xA;WHERE &#xD;&#xA;FIE.FIELD_CODE IN (1,20)&#xD;&#xA;&quot;"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="as400_id" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;prompt=false&quot;"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
-    <elementParameter field="CLOSED_LIST" name="RESULT_SIZE" value="AUTO" show="false"/>
-    <elementParameter field="CHECK" name="FORCE_SINGLE_QUERY_EXEC" value="true"/>
-    <elementParameter field="TEXT" name="LABEL" value="CARGA DE AREA"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOARTICULO" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CODIGOBARRAS" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTOPROMEDIO" id="4"/>
+      <elementValue elementRef="TRIM" value="false" id="5"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTOULTIMACOMPRA" id="6"/>
+      <elementValue elementRef="TRIM" value="false" id="7"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="TIPOCONTROLCOSTO" id="8"/>
+      <elementValue elementRef="TRIM" value="false" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="AREATRABAJO" id="10"/>
+      <elementValue elementRef="TRIM" value="false" id="11"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UNIDADMANEJO" id="12"/>
+      <elementValue elementRef="TRIM" value="false" id="13"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PROVEEDOR" id="14"/>
+      <elementValue elementRef="TRIM" value="false" id="15"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAULTIMARECEPCION" id="16"/>
+      <elementValue elementRef="TRIM" value="false" id="17"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAULTIMAVENTA" id="18"/>
+      <elementValue elementRef="TRIM" value="false" id="19"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CAJAS" id="20"/>
+      <elementValue elementRef="TRIM" value="false" id="21"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UNIDADES" id="22"/>
+      <elementValue elementRef="TRIM" value="false" id="23"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESO" id="24"/>
+      <elementValue elementRef="TRIM" value="false" id="25"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FIELD_CODE" id="26"/>
+      <elementValue elementRef="TRIM" value="false" id="27"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAULTIMAMODIFICACION" id="28"/>
+      <elementValue elementRef="TRIM" value="false" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="COSTOTOTAL" id="30"/>
+      <elementValue elementRef="TRIM" value="false" id="31"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="FECHAREGISTRO" id="32"/>
+      <elementValue elementRef="TRIM" value="false" id="33"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UNIDADES_AREA_TRA" id="34"/>
+      <elementValue elementRef="TRIM" value="false" id="35"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="CAJAS_AREA_TRA" id="36"/>
+      <elementValue elementRef="TRIM" value="false" id="37"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PESO_AREA_TRA" id="38"/>
+      <elementValue elementRef="TRIM" value="false" id="39"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="SEELCT"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tBigQuerySQLRow_3">
-      <column comment="" key="false" length="-1" name="TABLA_1" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="TABLA_2" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    <metadata connector="FLOW" name="tDBInput_1">
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="COSTOPROMEDIO" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="COSTOULTIMACOMPRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="TIPOCONTROLCOSTO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="AREATRABAJO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="UNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="PROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAULTIMARECEPCION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAULTIMAVENTA" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="CAJAS" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="UNIDADES" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="PESO" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="FIELD_CODE" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAULTIMAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy &quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="31" name="COSTOTOTAL" nullable="true" pattern="" precision="12" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="UNIDADES_AREA_TRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="CAJAS_AREA_TRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="PESO_AREA_TRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SSPCO00081"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXCORP"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXCORP"/>
     </metadata>
+  </node>
+  <node componentName="tFileOutputDelimited" componentVersion="0.101" offsetLabelX="-8" offsetLabelY="0" posX="720" posY="240">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tFileOutputDelimited_1" show="false"/>
+    <elementParameter field="CHECK" name="USESTREAM" value="false"/>
+    <elementParameter field="TEXT" name="STREAMNAME" value="outputStream" show="false"/>
+    <elementParameter field="FILE" name="FILENAME" value="context.VG_PathLocal+context.VG_Area+&quot;/&quot;+context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory+&quot;/PARTE_&quot;+context.parte+&quot;/&quot;+context.tabla_1+&quot;/&quot;+context.tabla_1+&quot;_.csv&quot;"/>
+    <elementParameter field="TEXT" name="ROWSEPARATOR" value="&quot;\n&quot;" show="false"/>
+    <elementParameter field="CHECK" name="OS_LINE_SEPARATOR_AS_ROW_SEPARATOR" value="true"/>
+    <elementParameter field="OPENED_LIST" name="CSVROWSEPARATOR" value="&quot;\r\n&quot;"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;{&quot;"/>
+    <elementParameter field="CHECK" name="APPEND" value="false"/>
+    <elementParameter field="CHECK" name="INCLUDEHEADER" value="true"/>
+    <elementParameter field="CHECK" name="COMPRESS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ADVANCED_SEPARATOR" value="false"/>
+    <elementParameter field="TEXT" name="THOUSANDS_SEPARATOR" value="" show="false"/>
+    <elementParameter field="TEXT" name="DECIMAL_SEPARATOR" value="&quot;.&quot;" show="false"/>
+    <elementParameter field="CHECK" name="CSV_OPTION" value="true"/>
+    <elementParameter field="TEXT" name="ESCAPE_CHAR" value="&quot;&quot;&quot;"/>
+    <elementParameter field="TEXT" name="TEXT_ENCLOSURE" value="&quot;\&quot;&quot;"/>
+    <elementParameter field="CHECK" name="CREATE" value="true"/>
+    <elementParameter field="CHECK" name="SPLIT" value="true"/>
+    <elementParameter field="TEXT" name="SPLIT_EVERY" value="100000"/>
+    <elementParameter field="CHECK" name="FLUSHONROW" value="false"/>
+    <elementParameter field="TEXT" name="FLUSHONROW_NUM" value="1" show="false"/>
+    <elementParameter field="CHECK" name="ROW_MODE" value="true"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;windows-1252&quot;"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="CUSTOM"/>
+    <elementParameter field="CHECK" name="DELETE_EMPTYFILE" value="true"/>
+    <elementParameter field="CHECK" name="FILE_EXIST_EXCEPTION" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="90" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="ARCHIVO"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tFileOutputDelimited_1">
+      <column comment="" key="false" length="20" name="CODIGOARTICULO" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="CODIGOBARRAS" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="COSTOPROMEDIO" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="COSTOULTIMACOMPRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="TIPOCONTROLCOSTO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="AREATRABAJO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="UNIDADMANEJO" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="20" name="PROVEEDOR" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAULTIMARECEPCION" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAULTIMAVENTA" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="CAJAS" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="UNIDADES" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="PESO" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="5" name="FIELD_CODE" nullable="true" pattern="" precision="0" sourceType="SMALLINT" type="id_Short" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAULTIMAMODIFICACION" nullable="true" pattern="&quot;dd-MM-yyyy &quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="31" name="COSTOTOTAL" nullable="true" pattern="" precision="12" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="26" name="FECHAREGISTRO" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="UNIDADES_AREA_TRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="CAJAS_AREA_TRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="16" name="PESO_AREA_TRA" nullable="true" pattern="" precision="6" sourceType="DECIMAL" type="id_BigDecimal" originalLength="-1" usefulColumn="true"/>
+      <additionalProperties key="SYSTEM_TABLE_NAME" value="SSPCO00081"/>
+      <additionalProperties key="TABLE_SCHEMA" value="SMXCORP"/>
+      <additionalProperties key="SYSTEM_TABLE_SCHEMA" value="SMXCORP"/>
+    </metadata>
+  </node>
+  <node componentName="tGSPut" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="880" posY="240">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_1" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tGSConnection_1" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="AUTH_TYPE" value="SERVICE_ACCOUNT"/>
+    <elementParameter field="FILE" name="SERVICE_ACCOUNT_KEY" value="context.VG_ServiceAccount"/>
+    <elementParameter field="PASSWORD" name="GS_ACCESS_TOKEN" value="enc:system.encryption.key.v1:qIV4OybW2kIwmkF1iUb7deabRIC5MzmARmpqLJOu" show="false"/>
+    <elementParameter field="LABEL" name="GS_ACCESS_TOKEN_WARNING" value="*Note: If the Access Token Expire we won't be able to refresh it!&quot;" show="false"/>
+    <elementParameter field="TEXT" name="GS_PROJECT_ID" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="BUCKET" value="context.VG_BucketName"/>
+    <elementParameter field="DIRECTORY" name="LOCALDIR" value="context.VG_PathLocal+context.VG_Area+&quot;/&quot;+context.VG_JobName+&quot;/&quot;+context.VG_BucketDirectory+&quot;/PARTE_&quot;+context.parte+&quot;/&quot;+context.tabla_1"/>
+    <elementParameter field="TEXT" name="REMOTEDIR" value="context.VG_BucketDirectory+&quot;/PARTE_&quot;+context.parte"/>
+    <elementParameter field="CHECK" name="USE_FILES_LIST" value="false"/>
+    <elementParameter field="TABLE" name="FILES" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
+    <elementParameter field="TEXT" name="REGION_ENDPOINT_GS" value="&quot;https://storage.googleapis.com&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PART_SIZE" value="50"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
   </node>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tBigQuerySQLRow_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk2" show="false"/>
@@ -322,9 +465,15 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
-  <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tJavaRow_2" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_2" target="tBigQuerySQLRow_3">
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJavaRow_2" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_2" target="tDBInput_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk4" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tDBInput_1" offsetLabelX="0" offsetLabelY="0" source="tDBInput_1" target="tFileOutputDelimited_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
+  </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tFileOutputDelimited_1" offsetLabelX="0" offsetLabelY="0" source="tFileOutputDelimited_1" target="tGSPut_1">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk3" show="false"/>
   </connection>
   <note opaque="false" posX="920" posY="40" sizeHeight="81" sizeWidth="201" text="SELECT&#xD;&#xA;I.ITEM_CODE AS CODIGOARTICULO,&#xD;&#xA;I.BAR_CODE AS CODIGOBARRAS,&#xD;&#xA;I.AVERAGE_COST AS COSTOPROMEDIO,&#xD;&#xA;I.LAST_PURCHASE_COST AS COSTOULTIMACOMPRA,&#xD;&#xA;I.VALUE_TYPE_CONTROL_COST AS TIPOCONTROLCOSTO,&#xD;&#xA;AREA.WORK_AREA_CODE AS AREATRABAJO,&#xD;&#xA;AREA.DRIVE_UNITY_VALUE AS UNIDADMANEJO,&#xD;&#xA;AREA.LAST_RECEPTION_JDE_CODE AS PROVEEDOR,&#xD;&#xA;AREA.LAST_RECEPTION_DATE AS FECHAULTIMARECEPCION,&#xD;&#xA;AREA.LAST_SALE_DATE AS FECHAULTIMAVENTA,&#xD;&#xA;FIE.QUANTITY AS CAJAS,&#xD;&#xA;FIE.UNITARY_QUANTITY AS UNIDADES,&#xD;&#xA;FIE.WEIGHT AS PESO,&#xD;&#xA;FIE.FIELD_CODE,&#xD;&#xA;CASE I.VALUE_TYPE_CONTROL_COST WHEN 2 THEN AREA.CURRENT_UNITARY_QUANTITY * I.AVERAGE_COST &#xD;&#xA;ELSE AREA.CURRENT_WEIGHT * I.AVERAGE_COST END AS COSTOTOTAL,&#xD;&#xA;AREA.REGISTER_DATE AS FECHAREGISTRO,&#xD;&#xA;FIE.LAST_TRANSACTION_DATE AS FECHAULTIMAMODIFICACION,&#xD;&#xA;AREA.CURRENT_UNITARY_QUANTITY AS UNIDADES_AREA_TRA,&#xD;&#xA;AREA.CURRENT_QUANTITY AS CAJAS_AREA_TRA,&#xD;&#xA;AREA.CURRENT_WEIGHT AS PESO_AREA_TRA,&#xD;&#xA;TIMESTAMP(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')) AS DT_CARGA &#xD;&#xA;FROM SFICWORARE.SFINVTINVENTORY I&#xD;&#xA;INNER JOIN SFICWORARE.SFINVTINVWORARE_711 AREA ON AREA.INVENTORY_UUID = I.UUID&#xD;&#xA;INNER JOIN SFICWORARE.SFINVTINVWORAREFIE_711 FIE ON FIE.INVENTORY_WORK_AREA_UUID = AREA.UUID&#xD;&#xA;WHERE &#xD;&#xA;FIE.FIELD_CODE IN (&#xD;&#xA;1-- DISPONIBLE SURTIDO CDE LOCAL &#xD;&#xA;--2, -- RESERVA TIENDA CDE&#xD;&#xA;--3, -- RESERVA SISPE CDE&#xD;&#xA;--4, -- RESERVA TAREAS CDE&#xD;&#xA;--28, -- RESERVA CLIENTE CDE&#xD;&#xA;--38, -- RESERVA HORECAS CDE&#xD;&#xA;--7, -- INVENTARIO INICIAL/FISICO CDE LOCAL&#xD;&#xA;--10, -- DEVOLUCION &#xD;&#xA;--11, --RECEPCION&#xD;&#xA;--5, -- VENTAS&#xD;&#xA;--12, -- DESPACHOS&#xD;&#xA;--13, -- TRANSITO ENTRADA CDE LOCAL&#xD;&#xA;--14, -- TRANSITO SALIDA CDE LOCAL&#xD;&#xA;--96, -- RECEPCION DESPACHO&#xD;&#xA;--15, -- CONSUMOS&#xD;&#xA;--16, -- DONACIONES&#xD;&#xA;--18, -- AJUSTE EN MAS&#xD;&#xA;--17 -- AJUSTE EN MENOS&#xD;&#xA;,20&#xD;&#xA;);"/>
   <note opaque="true" posX="720" posY="40" sizeHeight="81" sizeWidth="201" text="CONSULTA ORIGINAL"/>
@@ -341,6 +490,16 @@
   </subjob>
   <subjob>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLoop_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_1" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
+  </subjob>
+  <subjob>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tGSPut_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="93;174;241" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="93;174;241"/>
   </subjob>
