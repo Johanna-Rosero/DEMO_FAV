@@ -293,7 +293,7 @@
     <elementParameter field="TEXT" name="PROJECT_ID" value="&quot;lafavorita-182519&quot;"/>
     <elementParameter field="TEXT" name="AUTHORIZATION_CODE" value="&quot;&quot;" show="false"/>
     <elementParameter field="CHECK" name="USE_LEGACY_SQL" value="false"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_VTA_DDM_SMAX_TMP`();&#xD;&#xA;&#xD;&#xA; CALL `lafavorita-182519.BI_CNT.SP_ETL_CONTROL_CARGA_MAX`((DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')))-1, 'VENTAS');&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;DELETE `BI_DSA.DSA_VTA_LOC_PRO_MAX` &#xD;&#xA;WHERE CONCAT (DATE(FECHA_PROCESO),FECHA_VENTA,CODIGO_LOCAL) IN(&#xD;&#xA;&#xD;&#xA;  SELECT CONCAT(FECHA_ACT, FECHA, CODIGO_AREA_TRABAJO) &#xD;&#xA;  FROM&#xD;&#xA;  (SELECT DISTINCT DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')) FECHA_ACT,&#xD;&#xA;  DATE(A.FECHA) FECHA,&#xD;&#xA;  A.CODIGO_AREA_TRABAJO &#xD;&#xA;  FROM BI_DSA.DSA_SCVENTARTCOBLOCDIA A) B&#xD;&#xA;&#xD;&#xA;);&#xD;&#xA;&#xD;&#xA;INSERT INTO BI_DSA.DSA_VTA_LOC_PRO_MAX (FECHA_PROCESO,FECHA_VENTA,CODIGO_LOCAL,CODIGO_REFERENCIA,VENTA_COMPLETA,VALOR_TIPO_ESTADO,ID_FECHA_VENTA,ETL_TSTAMP)&#xD;&#xA;SELECT &#xD;&#xA;DISTINCT DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')),&#xD;&#xA;CAST(A.FECHA AS DATE),&#xD;&#xA;A.CODIGO_AREA_TRABAJO,&#xD;&#xA;B.COD_REF,&#xD;&#xA;'2' AS Valor1, &#xD;&#xA;'GEN' as Valor2, &#xD;&#xA;BI_DSA.DAYS_FECHA(CAST(A.FECHA AS DATE)),&#xD;&#xA;TIMESTAMP((DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))) &#xD;&#xA;FROM BI_DSA.DSA_SCVENTARTCOBLOCDIA A&#xD;&#xA;INNER JOIN BI_DWH.DIM_UNIDAD_OP_SMAX B ON (A.CODIGO_AREA_TRABAJO=B.ID_LOCAL);&#xD;&#xA;&#xD;&#xA;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;&#xD;&#xA;CALL `lafavorita-182519.BI_DSA.SP_VTA_DDM_SMAX_TMP`();&#xD;&#xA;&#xD;&#xA; CALL `lafavorita-182519.BI_CNT.SP_ETL_CONTROL_CARGA_MAX`((DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')))-1, 'VENTAS');&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;DELETE `BI_DSA.DSA_VTA_LOC_PRO_MAX` &#xD;&#xA;WHERE CONCAT (DATE(FECHA_PROCESO),FECHA_VENTA,CODIGO_LOCAL) IN(&#xD;&#xA;&#xD;&#xA;  SELECT CONCAT(FECHA_ACT, FECHA, CODIGO_AREA_TRABAJO) &#xD;&#xA;  FROM&#xD;&#xA;  (SELECT DISTINCT DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')) FECHA_ACT,&#xD;&#xA;  DATE(A.FECHA) FECHA,&#xD;&#xA;  A.CODIGO_AREA_TRABAJO &#xD;&#xA;  FROM BI_DSA.DSA_SCVENTARTCOBLOCDIA A) B&#xD;&#xA;&#xD;&#xA;);&#xD;&#xA;&#xD;&#xA;INSERT INTO BI_DSA.DSA_VTA_LOC_PRO_MAX (FECHA_PROCESO,FECHA_VENTA,CODIGO_LOCAL,CODIGO_REFERENCIA,VENTA_COMPLETA,VALOR_TIPO_ESTADO,ID_FECHA_VENTA,ETL_TSTAMP)&#xD;&#xA;SELECT &#xD;&#xA;DISTINCT DATE(DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil')),&#xD;&#xA;CAST(A.FECHA AS DATE),&#xD;&#xA;A.CODIGO_AREA_TRABAJO,&#xD;&#xA;B.COD_REF,&#xD;&#xA;'2' AS Valor1, &#xD;&#xA;'GEN' as Valor2, &#xD;&#xA;BI_DSA.DAYS_FECHA(CAST(A.FECHA AS DATE)),&#xD;&#xA;TIMESTAMP((DATETIME(CURRENT_TIMESTAMP(), 'America/Guayaquil'))) &#xD;&#xA;FROM BI_DSA.DSA_SCVENTARTCOBLOCDIA A&#xD;&#xA;INNER JOIN EDWH.DIM_UNIDAD_OP_SMAX B ON (A.CODIGO_AREA_TRABAJO=B.ID_LOCAL);&#xD;&#xA;&#xD;&#xA;&quot;"/>
     <elementParameter field="CHECK" name="USE_REGION_ENDPOINT" value="false"/>
     <elementParameter field="TEXT" name="REGION_ENDPOINT_BQ" value="&quot;https://bigquery.googleapis.com&quot;" show="false"/>
     <elementParameter field="FILE" name="TOKEN_NAME" value="&quot;C:/Users/bisolutions/Documents/Talend/Talend-Studio-20230428_0423-V8.0.1/workspace/token.properties&quot;" show="false"/>
@@ -370,14 +370,14 @@
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tBigQuerySQLRow_2" offsetLabelX="0" offsetLabelY="0" source="tBigQuerySQLRow_2" target="tBigQuerySQLRow_4">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk7" show="false"/>
   </connection>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" source="tJava_3" target="tBigQuerySQLRow_3">
+    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk5" show="false"/>
+  </connection>
   <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" source="tJava_3" target="tJava_4">
     <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_No_Procesados != null &amp;&amp; context.bandera_No_Procesados &lt;= 0"/>
     <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="If1" show="false"/>
-  </connection>
-  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tJava_3" offsetLabelX="0" offsetLabelY="0" source="tJava_3" target="tBigQuerySQLRow_3">
-    <elementParameter field="CHECK" name="ACTIVATE" value="false" show="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk5" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tPrejob_1" offsetLabelX="0" offsetLabelY="0" source="tPrejob_1" target="tJava_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk4" show="false"/>
