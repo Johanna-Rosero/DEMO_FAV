@@ -239,7 +239,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="0">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_3" show="false"/>
-    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;//System.out.println(&quot;1P- &quot; + context.bandera_Proceso_SMS); &#xD;&#xA;//context.bandera_Aux= (input_row.ban_aux);&#xA;//System.out.println(&quot;- &quot; + context.codLocal); &#xD;&#xA;//System.out.println(&quot;auxiliar fuera whl espera&quot; + context.bandera_Aux); &#xD;&#xA;&#xD;&#xA;System.out.println(&quot;if whl descarga luego de borra_loc_no_psc ban AUX &quot;+context.bandera_Aux);&#xD;&#xA;log.warn(&quot;->Bandera Auxiliar: &quot;+context.bandera_Aux+&quot; ->Bandera Salida: &quot;+ context.bandera_Salida);"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="//Code generated according to input schema and output schema&#xA;//System.out.println(&quot;1P- &quot; + context.bandera_Proceso_SMS); &#xD;&#xA;context.bandera_Aux= (input_row.ban_aux);&#xA;//System.out.println(&quot;- &quot; + context.codLocal); &#xD;&#xA;System.out.println(&quot;auxiliar fuera whl espera&quot; + context.bandera_Aux); &#xD;&#xA;log.warn(&quot;auxiliar fuera whl espera&quot; + context.bandera_Aux); &#xD;&#xA;&#xD;&#xA;System.out.println(&quot;if whl descarga luego de borra_loc_no_psc ban AUX &quot;+context.bandera_Aux);&#xD;&#xA;log.warn(&quot;->Bandera Auxiliar: &quot;+context.bandera_Aux+&quot; ->Bandera Salida: &quot;+ context.bandera_Salida);"/>
     <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_3">
@@ -673,9 +673,8 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row2" show="false"/>
   </connection>
-  <connection connectorName="RUN_IF" label="If" lineStyle="6" metaname="tRunJob_7" offsetLabelX="0" offsetLabelY="0" source="tRunJob_7" target="tRunJob_2">
-    <elementParameter field="MEMO_JAVA" name="CONDITION" value="context.bandera_No_Procesados > 0 "/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="If2" show="false"/>
+  <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tRunJob_7" offsetLabelX="0" offsetLabelY="0" source="tRunJob_7" target="tRunJob_2">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk11" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row3" lineStyle="0" metaname="tRunJob_2" offsetLabelX="0" offsetLabelY="0" source="tRunJob_2" target="tJavaRow_3">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
@@ -750,7 +749,7 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
   </connection>
   <subjob>
-    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tPrejob_1" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;93;185"/>
