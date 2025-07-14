@@ -18,8 +18,8 @@
   </context>
   <context confirmationNeeded="false" hide="false" name="PRO">
     <contextParameter comment="" name="V_Estado" prompt="V_Estado?" promptNeeded="false" repositoryContextId="built-in" type="id_Boolean" value="" internalId="_QA0-oXUJEe-1MbHsqS96KQ"/>
-    <contextParameter comment="" name="V_FechaFin" prompt="V_FechaFin?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2025-03-27&quot;" internalId="_1nKoAwpdEfCpr5IVQwfDMg"/>
-    <contextParameter comment="" name="V_FechaInicio" prompt="V_FechaInicio?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2025-03-27&quot;" internalId="_1nKoBApdEfCpr5IVQwfDMg"/>
+    <contextParameter comment="" name="V_FechaFin" prompt="V_FechaFin?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2025-01-31&quot;" internalId="_1nKoAwpdEfCpr5IVQwfDMg"/>
+    <contextParameter comment="" name="V_FechaInicio" prompt="V_FechaInicio?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;2025-01-01&quot;" internalId="_1nKoBApdEfCpr5IVQwfDMg"/>
     <contextParameter comment="" name="V_IDUOP" prompt="V_IDUOP?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;999&quot;" internalId="_1nKoBQpdEfCpr5IVQwfDMg"/>
     <contextParameter comment="" name="VG_Area" prompt="VG_Area?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;CRM&quot;" internalId="_1nKoBgpdEfCpr5IVQwfDMg"/>
     <contextParameter comment="" name="VG_BucketDirectory" prompt="VG_BucketDirectory?" promptNeeded="false" repositoryContextId="_cNQwkHB6Ee-kCLrQn7hTJQ" type="id_String" value="&quot;JOB_CARGA_CRM_DSA/singlestore&quot;" internalId="_1nKoBwpdEfCpr5IVQwfDMg"/>
@@ -89,13 +89,13 @@
     <elementParameter field="CHECK" name="DISABLE_INFO" value="false" show="false"/>
     <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="true"/>
     <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="true"/>
-    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="true"/>
+    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
     <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" value="false"/>
     <elementParameter field="CHECK" name="ON_FILES_FLAG" value="true"/>
-    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace4/.metadata&quot;"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/TalendLogs&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_STATS" value="&quot;stats_file.txt&quot;"/>
     <elementParameter field="TEXT" name="FILENAME_LOGS" value="&quot;logs_file.txt&quot;"/>
-    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;"/>
+    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;" show="false"/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="ISO-8859-15"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="ON_DATABASE_FLAG" value="false"/>
@@ -202,15 +202,15 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="640" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="context.V_FechaInicio = row2.FECHA_INI;&#xA;context.V_FechaFin = row2.FECHA_FIN;&#xA;globalMap.put(&quot;ESTADO&quot;, row2.ESTADO);&#xA;context.V_IDUOP = row2.IDUOP;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="context.V_FechaInicio = row2.FECHA_INI;&#xA;context.V_FechaFin = row2.FECHA_FIN;&#xA;globalMap.put(&quot;ESTADO&quot;, row2.ESTADO);&#xA;context.V_IDUOP = row2.IDUOP;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_2"/>
   </node>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="800" posY="40">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_4" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String Est;&#xA;boolean Estado;&#xA;&#xA;System.out.println(&quot;INICIA CARGA&quot;);&#xA;&#xA;System.out.println(((String)globalMap.get(&quot;ESTADO&quot;)));&#xA;&#xA;Est = ((String)globalMap.get(&quot;ESTADO&quot;));&#xA;&#xA;if (Est.equals(&quot;A&quot;))&#xA;{&#xA;&#x9;java.util.Calendar calendar = java.util.Calendar.getInstance();&#xA;&#x9;calendar.add(java.util.Calendar.DATE, -1);&#xA;&#x9;context.V_FechaInicio = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(calendar.getTime());&#xA;&#x9;context.V_FechaInicio = context.V_FechaInicio + &quot; 00:00:00&quot;;&#xA;&#x9;&#xA;&#x9;&#xA;&#x9;calendar.add(java.util.Calendar.DATE, 1);&#xA;&#x9;context.V_FechaFin = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(calendar.getTime());&#xA;&#x9;context.V_FechaFin = context.V_FechaFin + &quot; 00:00:00&quot;;&#xA;&#x9;System.out.println(&quot;DESDE &quot; + context.V_FechaInicio);&#xA;&#x9;System.out.println(&quot;HASTA &quot; + context.V_FechaFin);&#xA;&#x9;System.out.println(&quot;Es carga NORMAL&quot;);&#xA;&#x9;context.V_Estado = true;&#xA;}&#xA;else&#xA;{&#xA;&#x9;context.V_FechaInicio = context.V_FechaInicio + &quot; 00:00:00&quot;;&#xA;&#x9;context.V_FechaFin = context.V_FechaFin + &quot; 00:00:00&quot;;&#xA;&#x9;System.out.println(&quot;DESDE &quot; + context.V_FechaInicio);&#xA;&#x9;System.out.println(&quot;HASTA &quot; + context.V_FechaFin);&#xA;&#x9;System.out.println(&quot;Es carga REPROCESO&quot;);&#xA;&#x9;System.out.println(&quot;Se repocesan estos UOP: &quot; + context.V_IDUOP);&#xA;&#x9;context.V_Estado = false;&#xA;}&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="//import java.util.List;"/>
+    <elementParameter field="MEMO_EDITOR_JAVA" name="CODE" value="String Est;&#xA;boolean Estado;&#xA;&#xA;System.out.println(&quot;INICIA CARGA&quot;);&#xA;&#xA;System.out.println(((String)globalMap.get(&quot;ESTADO&quot;)));&#xA;&#xA;Est = ((String)globalMap.get(&quot;ESTADO&quot;));&#xA;&#xA;if (Est.equals(&quot;A&quot;))&#xA;{&#xA;&#x9;java.util.Calendar calendar = java.util.Calendar.getInstance();&#xA;&#x9;calendar.add(java.util.Calendar.DATE, -1);&#xA;&#x9;context.V_FechaInicio = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(calendar.getTime());&#xA;&#x9;context.V_FechaInicio = context.V_FechaInicio + &quot; 00:00:00&quot;;&#xA;&#x9;&#xA;&#x9;&#xA;&#x9;calendar.add(java.util.Calendar.DATE, 1);&#xA;&#x9;context.V_FechaFin = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd&quot;).format(calendar.getTime());&#xA;&#x9;context.V_FechaFin = context.V_FechaFin + &quot; 00:00:00&quot;;&#xA;&#x9;System.out.println(&quot;DESDE &quot; + context.V_FechaInicio);&#xA;&#x9;System.out.println(&quot;HASTA &quot; + context.V_FechaFin);&#xA;&#x9;System.out.println(&quot;Es carga NORMAL&quot;);&#xA;&#x9;context.V_Estado = true;&#xA;}&#xA;else&#xA;{&#xA;&#x9;context.V_FechaInicio = context.V_FechaInicio + &quot; 00:00:00&quot;;&#xA;&#x9;context.V_FechaFin = context.V_FechaFin + &quot; 00:00:00&quot;;&#xA;&#x9;System.out.println(&quot;DESDE &quot; + context.V_FechaInicio);&#xA;&#x9;System.out.println(&quot;HASTA &quot; + context.V_FechaFin);&#xA;&#x9;System.out.println(&quot;Es carga REPROCESO&quot;);&#xA;&#x9;System.out.println(&quot;Se repocesan estos UOP: &quot; + context.V_IDUOP);&#xA;&#x9;context.V_Estado = false;&#xA;}&#xA;"/>
+    <elementParameter field="MEMO_EDITOR_IMPORT" name="IMPORT" value="//import java.util.List;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJava_4"/>
   </node>
